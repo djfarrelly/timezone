@@ -1,0 +1,22 @@
+{
+  "name": "Timezone",
+  "version": "0.1.0",
+  "description": "Remote teams + Timezones",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "build": "browserify -t reactify ./app/app.js -o ./public/js/bundle.js",
+    "watch": "watchify -t reactify ./app/app.js -o ./public/js/bundle.js -v",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dan Farrelly <daniel.j.farrelly@gmail.com> (http://djfarrelly.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.0.0",
+    "react-tools": "^0.10.0",
+    "morgan": "^1.0.0",
+    "envify": "^1.2.1",
+    "react": "^0.10.0",
+    "moment-timezone": "0.0.5"
+  }
+}
