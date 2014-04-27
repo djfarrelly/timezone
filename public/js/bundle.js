@@ -1,80 +1,188 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var React = require('react');
-var App = require('./views/app.jsx');
-var moment = require('moment-timezone');
+var React  = require('react'),
+    moment = require('moment-timezone');
 
-var timezones = [
-  { city: 'New York', tz: 'America/New_York' },
-  { city: 'San Antonio', tz: 'America/Chicago' },
-  { city: 'San Francisco', tz: 'America/Los_Angeles' },
-  { city: 'London', tz: 'Europe/London' }
+var App = require('./views/app.jsx');
+
+// The global time:
+var time = moment();
+
+// The people and their timezones
+var people = [
+  {
+    name: 'Dan',
+    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/dan.jpg',
+    city: 'San Antonio',
+    tz: 'America/Chicago'
+  },
+  {
+    name: 'Niel',
+    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/niel.jpg',
+    city: 'Cape Town',
+    tz: 'Africa/Johannesburg'
+  },
+  {
+    name: 'Sunil',
+    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/sunil.png',
+    city: 'San Francisco',
+    tz: 'America/Los_Angeles'
+  },
+  {
+    name: 'Zach',
+    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/zach.jpg',
+    city: 'Superior, CO',
+    tz: 'America/Denver'
+  },
+  {
+    name: 'Joel',
+    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/joel.png',
+    city: 'Cape Town',
+    tz: 'Africa/Johannesburg'
+  },
+  {
+    name: 'Brian',
+    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/brian.png',
+    city: 'Waco',
+    tz: 'America/Chicago'
+  },
+  {
+    name: 'Andy',
+    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/andy.jpg',
+    city: 'San Francisco',
+    tz: 'America/Los_Angeles'
+  },
 ];
 
+
+function appendTime(person) {
+  person.time = moment( time ).tz( person.tz );
+}
+
+function sortByTimezone(a, b){
+  return a.time.zone() - b.time.zone();
+}
+
+// Append a moment date to each person
+people.forEach(appendTime);
+people.sort(sortByTimezone);
+
+
+// Organize into timezones
+var timezones = {};
+
+people.forEach(function(person){
+  var offset = person.time.zone();
+  if ( !timezones[ offset ] ) timezones[ offset ] = [];
+  timezones[ offset ].push( person );
+});
+
+
 var app = App({
-  time: moment( new Date() ),
+  time: time,
   timezones: timezones
 });
 
-var targetNode = document.body;
+window.app = app;
+
+
+// Testing updating the UI
+// setInterval(function() {
+//   app.setProps({ time: time.add('minute', 1) });
+// }, 1000);
+
+
+var targetNode = document.querySelector('#app');
 
 React.renderComponent( app, targetNode );
 },{"./views/app.jsx":2,"moment-timezone":6,"react":144}],2:[function(require,module,exports){
-/** @jsx React.DOM */var React = require('react');
-var TimeSelect = require('./timeSelect.jsx');
-var TimezoneList = require('./timezoneList.jsx');
+/** @jsx React.DOM */var React        = require('react'),
+    TimeSelect   = require('./timeSelect.jsx'),
+    TimezoneList = require('./timezoneList.jsx');
 
 module.exports = React.createClass({displayName: 'exports',
   render: function() {
     return React.DOM.div( {className:"container"}, 
       TimeSelect( {time:this.props.time} ),
-      TimezoneList( {time:this.props.time, collection:this.props.timezones} )
+      TimezoneList( {time:this.props.time, timezones:this.props.timezones} )
     );
   }
 });
 },{"./timeSelect.jsx":3,"./timezoneList.jsx":5,"react":144}],3:[function(require,module,exports){
-/** @jsx React.DOM */var React = require('react');
-var moment = require('moment-timezone');
+/** @jsx React.DOM */var React  = require('react');
 
 module.exports = React.createClass({displayName: 'exports',
-  // getInitialState: function(){
-  //   return { time: new Date() };
-  // },
+  getInitialState: function(){
+    return {
+      menuOpen: false
+    };
+  },
+
+  toggleSelectTimeMenu: function() {
+
+    // testing:
+    this.props.time.add('m', 1);
+
+    this.setState({ menuOpen: !this.state.menuOpen });
+  },
+
   render: function() {
-    var displayTime = moment( this.props.time ).format('h:mm a');
-    return React.DOM.div(null, 
-      React.DOM.h2(null, displayTime)
+    
+    var displayTime = this.props.time.format('h:mm a');
+
+    return React.DOM.header(null, 
+      React.DOM.h2( {className:"active-time", onClick:this.toggleSelectTimeMenu}, 
+        displayTime
+      ),
+      React.DOM.div( {className: this.state.menuOpen ? 'select-time-menu open' : 'select-time-menu closed' }, 
+        React.DOM.h3(null, "Time")
+      )
     );
+
   }
 });
-},{"moment-timezone":6,"react":144}],4:[function(require,module,exports){
-/** @jsx React.DOM */var React = require('react');
-var moment = require('moment-timezone');
+},{"react":144}],4:[function(require,module,exports){
+/** @jsx React.DOM */var React = require('react'),
+    moment = require('moment-timezone');
 
 module.exports = React.createClass({displayName: 'exports',
   render: function() {
-    var localTime = this.props.time.tz( this.props.model.tz );
-    var displayTime = localTime.format('h:mm a');
-    var offset = localTime.format('Z');
-    return React.DOM.div(null, 
-      React.DOM.h3(null, this.props.model.city),
-      React.DOM.p(null, displayTime),
-      React.DOM.p(null, "GMT ", offset)
+
+    // We clone the time object itself so the this time is bound to
+    // the global app time
+    console.info( 'time', this.props.time );
+    var localTime   = moment( this.props.time ).zone( parseInt( this.props.offset, 10) ),
+        displayTime = localTime.format('h:mm a'),
+        offset      = localTime.format('Z');
+
+    return React.DOM.div( {className:"timezone"}, 
+      React.DOM.h3( {className:"timezone-time"}, displayTime),
+      React.DOM.p( {className:"timezone-offset"}, offset),
+      this.props.model.map(function(person){
+        return React.DOM.div( {className:"person"}, 
+            React.DOM.img( {src:person.avatar, className:"avatar"}),
+            React.DOM.p( {className:"person-name"}, person.name)
+          );
+      })      
     );
   }
 });
 },{"moment-timezone":6,"react":144}],5:[function(require,module,exports){
-/** @jsx React.DOM */var React = require('react');
-var Timezone = require('./timezone.jsx');
+/** @jsx React.DOM */var React    = require('react'),
+    Timezone = require('./timezone.jsx');
 
 module.exports = React.createClass({displayName: 'exports',
   render: function() {
-    
-    var list = this.props.collection.map(function(model){
-      return Timezone( {time:this.props.time, model:model} );
-    }.bind(this));
+
+    var offsets = Object.keys( this.props.timezones );
+
+    offsets.sort(function(a, b){ return b - a; });
 
     return React.DOM.div( {className:"timezone-list"}, 
-      list
+      offsets.map(function(offset){
+        return Timezone( {time:this.props.time, 
+                         offset:offset,
+                         model:this.props.timezones[ offset ]} );
+      }.bind(this))
     );
   }
 });

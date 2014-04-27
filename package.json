@@ -17,6 +17,7 @@
     "morgan": "^1.0.0",
     "envify": "^1.2.1",
     "react": "^0.10.0",
-    "moment-timezone": "0.0.5"
+    "moment-timezone": "0.0.5",
+    "stylus": "^0.44.0"
   }
 }

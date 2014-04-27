@@ -1,15 +1,19 @@
-var React = require('react');
-var Timezone = require('./timezone.jsx');
+var React    = require('react'),
+    Timezone = require('./timezone.jsx');
 
 module.exports = React.createClass({
   render: function() {
-    
-    var list = this.props.collection.map(function(model){
-      return <Timezone time={this.props.time} model={model} />;
-    }.bind(this));
+
+    var offsets = Object.keys( this.props.timezones );
+
+    offsets.sort(function(a, b){ return b - a; });
 
     return <div className="timezone-list">
-      {list}
+      {offsets.map(function(offset){
+        return <Timezone time={this.props.time} 
+                         offset={offset}
+                         model={this.props.timezones[ offset ]} />;
+      }.bind(this))}
     </div>;
   }
 });

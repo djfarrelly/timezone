@@ -1,14 +1,32 @@
-var React = require('react');
-var moment = require('moment-timezone');
+var React  = require('react');
 
 module.exports = React.createClass({
-  // getInitialState: function(){
-  //   return { time: new Date() };
-  // },
+  getInitialState: function(){
+    return {
+      menuOpen: false
+    };
+  },
+
+  toggleSelectTimeMenu: function() {
+
+    // testing:
+    this.props.time.add('m', 1);
+
+    this.setState({ menuOpen: !this.state.menuOpen });
+  },
+
   render: function() {
-    var displayTime = moment( this.props.time ).format('h:mm a');
-    return <div>
-      <h2>{displayTime}</h2>
-    </div>;
+    
+    var displayTime = this.props.time.format('h:mm a');
+
+    return <header>
+      <h2 className="active-time" onClick={this.toggleSelectTimeMenu}>
+        {displayTime}
+      </h2>
+      <div className={ this.state.menuOpen ? 'select-time-menu open' : 'select-time-menu closed' }>
+        <h3>Time</h3>
+      </div>
+    </header>;
+
   }
 });
