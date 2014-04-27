@@ -84,12 +84,6 @@ var app = App({
 window.app = app;
 
 
-// Testing updating the UI
-// setInterval(function() {
-//   app.setProps({ time: time.add('minute', 1) });
-// }, 1000);
-
-
 var targetNode = document.querySelector('#app');
 
 React.renderComponent( app, targetNode );
