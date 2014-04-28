@@ -50,6 +50,12 @@ var people = [
     city: 'San Francisco',
     tz: 'America/Los_Angeles'
   },
+  {
+    name: 'Åsa',
+    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/asa.jpg',
+    city: 'Zurich',
+    tz: 'Europe/Zurich'
+  },
 ];
 
 
