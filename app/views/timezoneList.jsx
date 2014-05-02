@@ -10,7 +10,9 @@ module.exports = React.createClass({
 
     return <div className="timezone-list">
       {offsets.map(function(offset){
-        return <Timezone time={this.props.time} 
+        return <Timezone key={offset}
+                         time={this.props.time}
+                         timeFormat={this.props.timeFormat}
                          offset={offset}
                          model={this.props.timezones[ offset ]} />;
       }.bind(this))}

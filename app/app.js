@@ -7,57 +7,7 @@ var App = require('./views/app.jsx');
 var time = moment();
 
 // The people and their timezones
-var people = [
-  {
-    name: 'Dan',
-    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/dan.jpg',
-    city: 'San Antonio',
-    tz: 'America/Chicago'
-  },
-  {
-    name: 'Niel',
-    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/niel.jpg',
-    city: 'Cape Town',
-    tz: 'Africa/Johannesburg'
-  },
-  {
-    name: 'Sunil',
-    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/sunil.png',
-    city: 'San Francisco',
-    tz: 'America/Los_Angeles'
-  },
-  {
-    name: 'Zach',
-    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/zach.jpg',
-    city: 'Superior, CO',
-    tz: 'America/Denver'
-  },
-  {
-    name: 'Joel',
-    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/joel.png',
-    city: 'Cape Town',
-    tz: 'Africa/Johannesburg'
-  },
-  {
-    name: 'Brian',
-    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/brian.png',
-    city: 'Waco',
-    tz: 'America/Chicago'
-  },
-  {
-    name: 'Andy',
-    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/andy.jpg',
-    city: 'San Francisco',
-    tz: 'America/Los_Angeles'
-  },
-  {
-    name: 'Åsa',
-    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/asa.jpg',
-    city: 'Zurich',
-    tz: 'Europe/Zurich'
-  },
-];
-
+var people = require('./people.js');
 
 function appendTime(person) {
   person.time = moment( time ).tz( person.tz );
@@ -82,14 +32,57 @@ people.forEach(function(person){
 });
 
 
-var app = App({
-  time: time,
-  timezones: timezones
-});
-
-window.app = app;
-
-
+// Add the component to the DOM
 var targetNode = document.querySelector('#app');
 
-React.renderComponent( app, targetNode );
+React.renderComponent(
+  App({
+    time: time,
+    timezones: timezones
+  }),
+  targetNode
+);
+
+
+var KEY = {
+  LEFT:  37,
+  RIGHT: 39
+};
+
+// Listen to keyup for timechange
+window.addEventListener('keyup', function(e){
+
+  if (e.keyCode === KEY.RIGHT){
+    time.add('h', 1);
+  } else if (e.keyCode === KEY.LEFT){
+    time.subtract('h', 1);
+  }
+
+  // Push new data to re-render component
+  React.renderComponent(
+    App({
+      time: time,
+      timezones: timezones
+    }),
+    targetNode
+  );
+
+});
+
+// Check every 10 seconds for an updated time
+setInterval(function(){
+
+  var now = moment();
+  if (now.minute() === time.minute()) return;
+
+  time.minute( now.minute() );
+  
+  React.renderComponent(
+    App({
+      time: time,
+      timezones: timezones
+    }),
+    targetNode
+  );
+
+}, 1000 * 10);

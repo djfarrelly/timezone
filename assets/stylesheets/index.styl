@@ -3,6 +3,7 @@
 
 $brandColor     = rgb(143, 189, 255)
 $brandColorText = rgb(255, 255, 255) 
+$textColor      = rgb(50, 50, 50)
 
 
 // Basic
@@ -16,14 +17,13 @@ html
 body
   height: 100%
   margin: 0
-  overflow: hidden
 
   background: #fff url(/images/worldmap.png) no-repeat 50% 50%
   background-size: contain
 
   font-family: 'Open Sans', Helvetica, sans-serif
   font-weight: 300
-  color: rgb(50,50,50)
+  color: $textColor
 
 h1, h2, h3, h4, h5
   font-weight: 300
@@ -36,8 +36,10 @@ h1, h2, h3, h4, h5
   height: 100%
 
 header
+  position: fixed
   width: 100%
-  padding: 0.6em
+  height: 3em
+  padding: 0.8em
   text-align: center
   background: $brandColor
   color: $brandColorText
@@ -47,6 +49,7 @@ header
   margin: 0
   font-size: 1.5em
   line-height: 1em
+  cursor: pointer
 
 .select-time-menu
   max-height: 0
@@ -61,6 +64,7 @@ header
 .timezone-list
   display: flex
   height: 100%;
+  padding-top: 3em
   justify-content: center
 
 .timezone
@@ -68,18 +72,19 @@ header
   max-width: 10em
   padding: 1em
   text-align: center
-  background: -moz-linear-gradient(left, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.9) 100%)
-  background: -webkit-linear-gradient(left, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.9) 100%)
-  background: -o-linear-gradient(left, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.9) 100%)
-  background: -ms-linear-gradient(left, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.9) 100%)
-  background: linear-gradient(to right, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.9) 100%)
+  background: -moz-linear-gradient(right, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.9) 100%)
+  background: -webkit-linear-gradient(right, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.9) 100%)
+  background: -o-linear-gradient(right, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.9) 100%)
+  background: -ms-linear-gradient(right, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.9) 100%)
+  background: linear-gradient(to left, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.9) 100%)
   
 .timezone-time
   margin: 0
 
 .timezone-offset
   margin: 0
-  font-size: 0.8em
+  font-size: 0.7em
+  color: lighten($textColor, 50%)
 
 .person
   margin: 1em 0
@@ -88,5 +93,6 @@ header
   margin: 0.2em
 
 .avatar
-  max-width: 80px
+  width: 80px
+  height: 80px
   border-radius: 500px

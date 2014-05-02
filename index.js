@@ -11,7 +11,6 @@ app.use(
     src:     __dirname + '/assets',
     dest:    __dirname + '/public',
     compile: function (str, path, fn) {
-      console.info('Compiling:', str, path)
       return stylus(str)
         .set('filename', path)
         .set('compress', true);
