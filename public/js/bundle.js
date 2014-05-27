@@ -110,20 +110,20 @@ module.exports = [
   {
     name: 'Joel',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/joel.png',
-    city: 'Cape Town',
-    tz: 'Africa/Johannesburg'
+    city: 'San Francisco',
+    tz: 'America/Los_Angeles'
   },
   {
     name: 'Leo',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/leo.png',
-    city: 'Cape Town',
-    tz: 'Africa/Johannesburg'
+    city: 'San Francisco',
+    tz: 'America/Los_Angeles'
   },
   {
     name: 'Brian',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/brian.png',
-    city: 'Waco',
-    tz: 'America/Chicago'
+    city: 'Colorado',
+    tz: 'America/Denver'
   },
   {
     name: 'Andy',
@@ -134,8 +134,8 @@ module.exports = [
   {
     name: 'Åsa',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/asa.jpg',
-    city: 'Zurich',
-    tz: 'Europe/Zurich'
+    city: 'Stockholm',
+    tz: 'Europe/Stockholm'
   },
   {
     name: 'Carolyn',
@@ -214,6 +214,12 @@ module.exports = [
     avatar: 'https://pbs.twimg.com/profile_images/460543526195847168/97f7wvBU_400x400.jpeg',
     city: 'Morelia, MX',
     tz: 'America/Mexico_City'
+  },
+  {
+    name: 'Michael',
+    avatar: 'https://pbs.twimg.com/profile_images/463013133091500032/1kP83aKc_400x400.jpeg',
+    city: 'Cape Town',
+    tz: 'Africa/Johannesburg'
   },
 ];
 },{}],3:[function(require,module,exports){
