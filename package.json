@@ -12,12 +12,13 @@
   "author": "Dan Farrelly <daniel.j.farrelly@gmail.com> (http://djfarrelly.com/)",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.0.0",
-    "react-tools": "^0.10.0",
-    "morgan": "^1.0.0",
     "envify": "^1.2.1",
-    "react": "^0.10.0",
+    "express": "^4.0.0",
     "moment-timezone": "0.0.5",
+    "morgan": "^1.0.0",
+    "node-jsx": "^0.10.0",
+    "react": "^0.10.0",
+    "react-tools": "^0.10.0",
     "stylus": "^0.44.0"
   }
 }

@@ -2,12 +2,10 @@ var React  = require('react'),
     moment = require('moment-timezone');
 
 var App = require('./views/app.jsx');
+var people = require('./people.js');
 
 // The global time:
 var time = moment();
-
-// The people and their timezones
-var people = require('./people.js');
 
 function appendTime(person) {
   person.time = moment( time ).tz( person.tz );

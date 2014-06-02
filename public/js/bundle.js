@@ -3,12 +3,10 @@ var React  = require('react'),
     moment = require('moment-timezone');
 
 var App = require('./views/app.jsx');
+var people = require('./people.js');
 
 // The global time:
 var time = moment();
-
-// The people and their timezones
-var people = require('./people.js');
 
 function appendTime(person) {
   person.time = moment( time ).tz( person.tz );
@@ -223,7 +221,9 @@ module.exports = [
   },
 ];
 },{}],3:[function(require,module,exports){
-/** @jsx React.DOM */var React        = require('react'),
+/** @jsx React.DOM */
+
+var React        = require('react'),
     TimezoneList = require('./timezoneList.jsx');
 
 module.exports = React.createClass({displayName: 'exports',
@@ -241,20 +241,24 @@ module.exports = React.createClass({displayName: 'exports',
     
     var displayTime = this.props.time.format( this.state.timeFormat );
 
-    return React.DOM.div( {className:"container"}, 
-      React.DOM.header(null, 
-        React.DOM.h2( {className:"active-time", onClick:this.toggleTimeFormat}, 
-          displayTime
-        )
-      ),
-      TimezoneList( {time:this.props.time,
-                    timeFormat:this.state.timeFormat,
-                    timezones:this.props.timezones} )
+    return (
+      React.DOM.div( {className:"container"}, 
+        React.DOM.header(null, 
+          React.DOM.h2( {className:"active-time", onClick:this.toggleTimeFormat}, 
+            displayTime
+          )
+        ),
+        TimezoneList( {time:this.props.time,
+                      timeFormat:this.state.timeFormat,
+                      timezones:this.props.timezones} )
+      )
     );
   }
 });
 },{"./timezoneList.jsx":5,"react":144}],4:[function(require,module,exports){
-/** @jsx React.DOM */var React = require('react'),
+/** @jsx React.DOM */
+
+var React = require('react'),
     moment = require('moment-timezone');
 
 module.exports = React.createClass({displayName: 'exports',
@@ -284,7 +288,9 @@ module.exports = React.createClass({displayName: 'exports',
   }
 });
 },{"moment-timezone":6,"react":144}],5:[function(require,module,exports){
-/** @jsx React.DOM */var React    = require('react'),
+/** @jsx React.DOM */
+
+var React    = require('react'),
     Timezone = require('./timezone.jsx');
 
 module.exports = React.createClass({displayName: 'exports',
