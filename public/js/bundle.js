@@ -102,8 +102,8 @@ module.exports = [
   {
     name: 'Sunil',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/sunil.png',
-    city: 'San Francisco',
-    tz: 'America/Los_Angeles'
+    city: 'DC',
+    tz: 'America/New_York'
   },
   {
     name: 'Joel',
@@ -120,8 +120,8 @@ module.exports = [
   {
     name: 'Brian',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/brian.png',
-    city: 'Colorado',
-    tz: 'America/Denver'
+    city: 'San Francisco',
+    tz: 'America/Los_Angeles'
   },
   {
     name: 'Andy',
@@ -150,8 +150,8 @@ module.exports = [
   {
     name: 'Mary',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/mary.jpg',
-    city: 'Spokane, WA',
-    tz: 'America/Los_Angeles'
+    city: 'Kansas City',
+    tz: 'America/Chicago'
   },
   {
     name: 'Adam',
@@ -219,6 +219,12 @@ module.exports = [
     city: 'Cape Town',
     tz: 'Africa/Johannesburg'
   },
+  {
+    name: 'Kevin',
+    avatar: 'https://pbs.twimg.com/profile_images/440167205603246080/u2TRSuzc_400x400.png',
+    city: 'Sweden',
+    tz: 'Europe/Stockholm'
+  }
 ];
 },{}],3:[function(require,module,exports){
 /** @jsx React.DOM */
