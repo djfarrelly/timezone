@@ -142,5 +142,11 @@ module.exports = [
     avatar: 'https://pbs.twimg.com/profile_images/453520542453084160/HdqtD5Zm_400x400.jpeg',
     city: 'Toronto',
     tz: 'America/New_York'
+  },
+  {
+    name: 'Jamie',
+    avatar: 'https://pbs.twimg.com/profile_images/472145910084820993/Voo7aiLG_400x400.png',
+    city: 'Dallas',
+    tz: 'America/Chicago'
   }
 ];
