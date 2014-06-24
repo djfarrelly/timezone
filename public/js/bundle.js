@@ -90,8 +90,8 @@ module.exports = [
   {
     name: 'Dan',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/dan.jpg',
-    city: 'San Antonio, TX',
-    tz: 'America/Chicago'
+    city: '',
+    tz: 'America/Los_Angeles'
   },
   {
     name: 'Niel',
@@ -150,8 +150,8 @@ module.exports = [
   {
     name: 'Mary',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/mary.jpg',
-    city: 'Kansas City',
-    tz: 'America/Chicago'
+    city: 'Maui',
+    tz: 'Pacific/Honolulu'
   },
   {
     name: 'Adam',
