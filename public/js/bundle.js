@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var React  = require('react'),
     moment = require('moment-timezone');
 
@@ -197,7 +197,7 @@ module.exports = [
   },
   {
     name: 'Rodolphe',
-    avatar: 'https://pbs.twimg.com/profile_images/450611913852854272/15Zd82e3_400x400.jpeg',
+    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/rodolphe.jpg',
     city: 'Paris',
     tz: 'Europe/Paris'
   },
@@ -215,15 +215,15 @@ module.exports = [
   },
   {
     name: 'Michael',
-    avatar: 'https://pbs.twimg.com/profile_images/463013133091500032/1kP83aKc_400x400.jpeg',
+    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/michael.jpg',
     city: 'Cape Town',
     tz: 'Africa/Johannesburg'
   },
   {
-    name: 'Kevin',
-    avatar: 'https://pbs.twimg.com/profile_images/440167205603246080/u2TRSuzc_400x400.png',
-    city: 'Sweden',
-    tz: 'Europe/Stockholm'
+    name: 'Mike',
+    avatar: 'https://pbs.twimg.com/profile_images/489294095513178112/xpS3wZwt_400x400.jpeg',
+    city: 'Barcelona',
+    tz: 'Europe/Madrid'
   },
   {
     name: 'Tom',
@@ -232,12 +232,13 @@ module.exports = [
     tz: 'America/New_York'
   },
   {
-    name: 'Jamie',
-    avatar: 'https://pbs.twimg.com/profile_images/472145910084820993/Voo7aiLG_400x400.png',
-    city: 'Dallas',
-    tz: 'America/Chicago'
-  }
+    name: 'Amanda',
+    avatar: 'https://pbs.twimg.com/profile_images/455154282572967936/uB4HnHO9_400x400.jpeg',
+    city: 'Honolulu',
+    tz: 'Pacific/Honolulu'
+  },
 ];
+
 },{}],3:[function(require,module,exports){
 /** @jsx React.DOM */
 
@@ -260,15 +261,15 @@ module.exports = React.createClass({displayName: 'exports',
     var displayTime = this.props.time.format( this.state.timeFormat );
 
     return (
-      React.DOM.div( {className:"container"}, 
+      React.DOM.div({className: "container"}, 
         React.DOM.header(null, 
-          React.DOM.h2( {className:"active-time", onClick:this.toggleTimeFormat}, 
+          React.DOM.h2({className: "active-time", onClick: this.toggleTimeFormat}, 
             displayTime
           )
-        ),
-        TimezoneList( {time:this.props.time,
-                      timeFormat:this.state.timeFormat,
-                      timezones:this.props.timezones} )
+        ), 
+        TimezoneList({time: this.props.time, 
+                      timeFormat: this.state.timeFormat, 
+                      timezones: this.props.timezones})
       )
     );
   }
@@ -293,15 +294,15 @@ module.exports = React.createClass({displayName: 'exports',
       return a.name > b.name ? 1 : -1;
     })
 
-    return React.DOM.div( {className:"timezone"}, 
-      React.DOM.h3( {className:"timezone-time"}, displayTime),
-      React.DOM.p( {className:"timezone-offset"}, offset),
+    return React.DOM.div({className: "timezone"}, 
+      React.DOM.h3({className: "timezone-time"}, displayTime), 
+      React.DOM.p({className: "timezone-offset"}, offset), 
       this.props.model.map(function(person){
-        return React.DOM.div( {className:"person", key:person.name}, 
-            React.DOM.img( {src:person.avatar, className:"avatar"}),
-            React.DOM.p( {className:"person-name"}, person.name)
+        return React.DOM.div({className: "person", key: person.name}, 
+            React.DOM.img({src: person.avatar, className: "avatar"}), 
+            React.DOM.p({className: "person-name"}, person.name)
           );
-      })      
+      })
     );
   }
 });
@@ -318,13 +319,13 @@ module.exports = React.createClass({displayName: 'exports',
 
     offsets.sort(function(a, b){ return b - a; });
 
-    return React.DOM.div( {className:"timezone-list"}, 
+    return React.DOM.div({className: "timezone-list"}, 
       offsets.map(function(offset){
-        return Timezone( {key:offset,
-                         time:this.props.time,
-                         timeFormat:this.props.timeFormat,
-                         offset:offset,
-                         model:this.props.timezones[ offset ]} );
+        return Timezone({key: offset, 
+                         time: this.props.time, 
+                         timeFormat: this.props.timeFormat, 
+                         offset: offset, 
+                         model: this.props.timezones[ offset]});
       }.bind(this))
     );
   }
@@ -333,549 +334,7 @@ module.exports = React.createClass({displayName: 'exports',
 module.exports = require("./moment-timezone");
 module.exports.tz.add(require('./moment-timezone.json'));
 
-},{"./moment-timezone":7,"./moment-timezone.json":8}],7:[function(require,module,exports){
-// moment-timezone.js
-// version : 0.0.5
-// author : Tim Wood
-// license : MIT
-// github.com/timrwood/moment-timezone
-
-(function () {
-
-	var VERSION = "0.0.5";
-
-	function onload(moment) {
-		var oldZoneName = moment.fn.zoneName,
-			oldZoneAbbr = moment.fn.zoneAbbr,
-
-			defaultRule,
-			rules = {},
-			ruleSets = {},
-			zones = {},
-			zoneSets = {},
-			links = {},
-
-			TIME_RULE_WALL_CLOCK = 0,
-			TIME_RULE_UTC        = 1,
-			TIME_RULE_STANDARD   = 2,
-
-			DAY_RULE_DAY_OF_MONTH   = 7,
-			DAY_RULE_LAST_WEEKDAY   = 8;
-
-		if (moment.tz !== undefined) {
-			// Do not load moment-timezone a second time.
-			return;
-		}
-
-		// converts time in the HH:mm:ss format to absolute number of minutes
-		function parseMinutes (input) {
-			input = input + '';
-			var output = input.split(':'),
-				sign = ~input.indexOf('-') ? -1 : 1,
-				hour = Math.abs(+output[0]),
-				minute = parseInt(output[1], 10) || 0,
-				second = parseInt(output[2], 10) || 0;
-
-			return sign * ((hour * 60) + (minute) + (second / 60));
-		}
-
-		/************************************
-			Rules
-		************************************/
-
-		function Rule (name, startYear, endYear, month, day, dayRule, time, timeRule, offset, letters) {
-			this.name      = name;
-			this.startYear = +startYear;
-			this.endYear   = +endYear;
-			this.month     = +month;
-			this.day       = +day;
-			this.dayRule   = +dayRule;
-			this.time      = parseMinutes(time);
-			this.timeRule  = +timeRule;
-			this.offset    = parseMinutes(offset);
-			this.letters   = letters || '';
-			this.date = memoize(this.date);
-			this.weekdayAfter = memoize(this.weekdayAfter);
-			this.lastWeekday = memoize(this.lastWeekday);
-		}
-
-		Rule.prototype = {
-			contains : function (year) {
-				return (year >= this.startYear && year <= this.endYear);
-			},
-
-			start : function (year) {
-				year = Math.min(Math.max(year, this.startYear), this.endYear);
-				return moment.utc([year, this.month, this.date(year), 0, this.time]);
-			},
-
-			date : function (year) {
-				if (this.dayRule === DAY_RULE_DAY_OF_MONTH) {
-					return this.day;
-				} else if (this.dayRule === DAY_RULE_LAST_WEEKDAY) {
-					return this.lastWeekday(year);
-				}
-				return this.weekdayAfter(year);
-			},
-
-			weekdayAfter : function (year) {
-				var day = this.day,
-					firstDayOfWeek = moment([year, this.month, 1]).day(),
-					output = this.dayRule + 1 - firstDayOfWeek;
-
-				while (output < day) {
-					output += 7;
-				}
-
-				return output;
-			},
-
-			lastWeekday : function (year) {
-				var day = this.day,
-					dow = day % 7,
-					lastDowOfMonth = moment([year, this.month + 1, 1]).day(),
-					daysInMonth = moment([year, this.month, 1]).daysInMonth(),
-					output = daysInMonth + (dow - (lastDowOfMonth - 1)) - (~~(day / 7) * 7);
-
-				if (dow >= lastDowOfMonth) {
-					output -= 7;
-				}
-				return output;
-			}
-		};
-
-		/************************************
-			Rule Year
-		************************************/
-
-		function RuleYear (year, rule) {
-			this.rule = rule;
-			this.start = rule.start(year);
-		}
-
-		RuleYear.prototype = {
-			equals : function (other) {
-				if (!other || other.rule !== this.rule) {
-					return false;
-				}
-				return Math.abs(other.start - this.start) < 86400000; // 24 * 60 * 60 * 1000
-			}
-		};
-
-		function sortRuleYears (a, b) {
-			if (a.isLast) {
-				return -1;
-			}
-			if (b.isLast) {
-				return 1;
-			}
-			return b.start - a.start;
-		}
-
-		/************************************
-			Rule Sets
-		************************************/
-
-		function RuleSet (name) {
-			this.name = name;
-			this.rules = [];
-			this.lastYearRule = memoize(this.lastYearRule);
-		}
-
-		RuleSet.prototype = {
-			add : function (rule) {
-				this.rules.push(rule);
-			},
-
-			ruleYears : function (mom, lastZone) {
-				var i, j,
-					year = mom.year(),
-					rule,
-					lastZoneRule,
-					rules = [];
-
-				for (i = 0; i < this.rules.length; i++) {
-					rule = this.rules[i];
-					if (rule.contains(year)) {
-						rules.push(new RuleYear(year, rule));
-					} else if (rule.contains(year + 1)) {
-						rules.push(new RuleYear(year + 1, rule));
-					}
-				}
-				rules.push(new RuleYear(year - 1, this.lastYearRule(year - 1)));
-
-				if (lastZone) {
-					lastZoneRule = new RuleYear(year - 1, lastZone.lastRule());
-					lastZoneRule.start = lastZone.until.clone().utc();
-					lastZoneRule.isLast = lastZone.ruleSet !== this;
-					rules.push(lastZoneRule);
-				}
-
-				rules.sort(sortRuleYears);
-				return rules;
-			},
-
-			rule : function (mom, offset, lastZone) {
-				var rules = this.ruleYears(mom, lastZone),
-					lastOffset = 0,
-					rule,
-					lastZoneOffset,
-					lastZoneOffsetAbs,
-					lastRule,
-					i;
-
-				if (lastZone) {
-					lastZoneOffset = lastZone.offset + lastZone.lastRule().offset;
-					lastZoneOffsetAbs = Math.abs(lastZoneOffset) * 90000;
-				}
-
-				// make sure to include the previous rule's offset
-				for (i = rules.length - 1; i > -1; i--) {
-					lastRule = rule;
-					rule = rules[i];
-
-					if (rule.equals(lastRule)) {
-						continue;
-					}
-
-					if (lastZone && !rule.isLast && Math.abs(rule.start - lastZone.until) <= lastZoneOffsetAbs) {
-						lastOffset += lastZoneOffset - offset;
-					}
-
-					if (rule.rule.timeRule === TIME_RULE_STANDARD) {
-						lastOffset = offset;
-					}
-
-					if (rule.rule.timeRule !== TIME_RULE_UTC) {
-						rule.start.add('m', -lastOffset);
-					}
-
-					lastOffset = rule.rule.offset + offset;
-				}
-
-				for (i = 0; i < rules.length; i++) {
-					rule = rules[i];
-					if (mom >= rule.start && !rule.isLast) {
-						return rule.rule;
-					}
-				}
-
-				return defaultRule;
-			},
-
-			lastYearRule : function (year) {
-				var i,
-					rule,
-					start,
-					bestRule = defaultRule,
-					largest = -1e30;
-
-				for (i = 0; i < this.rules.length; i++) {
-					rule = this.rules[i];
-					if (year >= rule.startYear) {
-						start = rule.start(year);
-						if (start > largest) {
-							largest = start;
-							bestRule = rule;
-						}
-					}
-				}
-
-				return bestRule;
-			}
-		};
-
-		/************************************
-			Zone
-		************************************/
-
-		function Zone (name, offset, ruleSet, letters, until, untilOffset) {
-			var i,
-				untilArray = typeof until === 'string' ? until.split('_') : [9999];
-
-			this.name = name;
-			this.offset = parseMinutes(offset);
-			this.ruleSet = ruleSet;
-			this.letters = letters;
-			this.lastRule = memoize(this.lastRule);
-
-			for (i = 0; i < untilArray.length; i++) {
-				untilArray[i] = +untilArray[i];
-			}
-			this.until = moment.utc(untilArray).subtract('m', parseMinutes(untilOffset));
-		}
-
-		Zone.prototype = {
-			rule : function (mom, lastZone) {
-				return this.ruleSet.rule(mom, this.offset, lastZone);
-			},
-
-			lastRule : function () {
-				return this.rule(this.until);
-			},
-
-			format : function (rule) {
-				return this.letters.replace("%s", rule.letters);
-			}
-		};
-
-		/************************************
-			Zone Set
-		************************************/
-
-		function sortZones (a, b) {
-			return a.until - b.until;
-		}
-
-		function ZoneSet (name) {
-			this.name = normalizeName(name);
-			this.displayName = name;
-			this.zones = [];
-			this.zoneAndRule = memoize(this.zoneAndRule, function (mom) {
-				return +mom;
-			});
-		}
-
-		ZoneSet.prototype = {
-			zoneAndRule : function (mom) {
-				var i,
-					zone,
-					lastZone;
-
-				mom = mom.clone().utc();
-				for (i = 0; i < this.zones.length; i++) {
-					zone = this.zones[i];
-					if (mom < zone.until) {
-						break;
-					}
-					lastZone = zone;
-				}
-
-				return [zone, zone.rule(mom, lastZone)];
-			},
-
-			add : function (zone) {
-				this.zones.push(zone);
-				this.zones.sort(sortZones);
-			},
-
-			format : function (mom) {
-				var zoneAndRule = this.zoneAndRule(mom);
-				return zoneAndRule[0].format(zoneAndRule[1]);
-			},
-
-			offset : function (mom) {
-				var zoneAndRule = this.zoneAndRule(mom);
-				return -(zoneAndRule[0].offset + zoneAndRule[1].offset);
-			}
-		};
-
-		/************************************
-			Global Methods
-		************************************/
-
-		function memoize (fn, keyFn) {
-			var cache = {};
-			return function (first) {
-				var key = keyFn ? keyFn.apply(this, arguments) : first;
-				return key in cache ?
-					cache[key] :
-					(cache[key] = fn.apply(this, arguments));
-			};
-		}
-
-		function addRules (rules) {
-			var i, j, rule;
-			for (i in rules) {
-				rule = rules[i];
-				for (j = 0; j < rule.length; j++) {
-					addRule(i + '\t' + rule[j]);
-				}
-			}
-		}
-
-		function addRule (ruleString) {
-			// don't duplicate rules
-			if (rules[ruleString]) {
-				return rules[ruleString];
-			}
-
-			var p = ruleString.split(/\s/),
-				name = normalizeName(p[0]),
-				rule = new Rule(name, p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10]);
-
-			// cache the rule so we don't add it again
-			rules[ruleString] = rule;
-
-			// add to the ruleset
-			getRuleSet(name).add(rule);
-
-			return rule;
-		}
-
-		function normalizeName (name) {
-			return (name || '').toLowerCase().replace(/\//g, '_');
-		}
-
-		function addZones (zones) {
-			var i, j, zone;
-			for (i in zones) {
-				zone = zones[i];
-				for (j = 0; j < zone.length; j++) {
-					addZone(i + '\t' + zone[j]);
-				}
-			}
-		}
-
-		function addLinks (linksToAdd) {
-			var i;
-			for (i in linksToAdd) {
-				links[normalizeName(i)] = normalizeName(linksToAdd[i]);
-			}
-		}
-
-		function addZone (zoneString) {
-			// don't duplicate zones
-			if (zones[zoneString]) {
-				return zones[zoneString];
-			}
-
-			var p = zoneString.split(/\s/),
-				name = normalizeName(p[0]),
-				zone = new Zone(name, p[1], getRuleSet(p[2]), p[3], p[4], p[5]);
-
-			// cache the zone so we don't add it again
-			zones[zoneString] = zone;
-
-			// add to the zoneset
-			getZoneSet(p[0]).add(zone);
-
-			return zone;
-		}
-
-		function getRuleSet (name) {
-			name = normalizeName(name);
-			if (!ruleSets[name]) {
-				ruleSets[name] = new RuleSet(name);
-			}
-			return ruleSets[name];
-		}
-
-		function getZoneSet (name) {
-			var machineName = normalizeName(name);
-			if (links[machineName]) {
-				machineName = links[machineName];
-			}
-			if (!zoneSets[machineName]) {
-				zoneSets[machineName] = new ZoneSet(name);
-			}
-			return zoneSets[machineName];
-		}
-
-		function add (data) {
-			if (!data) {
-				return;
-			}
-			if (data.zones) {
-				addZones(data.zones);
-			}
-			if (data.rules) {
-				addRules(data.rules);
-			}
-			if (data.links) {
-				addLinks(data.links);
-			}
-		}
-
-		// overwrite moment.updateOffset
-		moment.updateOffset = function (mom, keepTime) {
-			var offset;
-			if (mom._z) {
-				offset = mom._z.offset(mom);
-				if (Math.abs(offset) < 16) {
-					offset = offset / 60;
-				}
-				mom.zone(offset, keepTime);
-			}
-		};
-
-		function getZoneSets() {
-			var sets = [],
-				zoneName;
-			for (zoneName in zoneSets) {
-				sets.push(zoneSets[zoneName]);
-			}
-			return sets;
-		}
-
-		moment.fn.tz = function (name) {
-			if (name) {
-				this._z = getZoneSet(name);
-				if (this._z) {
-					moment.updateOffset(this);
-				}
-				return this;
-			}
-			if (this._z) {
-				return this._z.displayName;
-			}
-		};
-
-		moment.fn.zoneName = function () {
-			if (this._z) {
-				return this._z.format(this);
-			}
-			return oldZoneName.call(this);
-		};
-
-		moment.fn.zoneAbbr = function () {
-			if (this._z) {
-				return this._z.format(this);
-			}
-			return oldZoneAbbr.call(this);
-		};
-
-		// Make sure moment's clone includes the newly added properties
-		moment.momentProperties._z = null;
-
-		moment.tz = function () {
-			var args = [], i, len = arguments.length - 1;
-			for (i = 0; i < len; i++) {
-				args[i] = arguments[i];
-			}
-			var m = moment.apply(null, args);
-			var preTzOffset = m.zone();
-			m.tz(arguments[len]);
-			return m.add('minutes', m.zone() - preTzOffset);
-		};
-
-		moment.tz.add = add;
-		moment.tz.addRule = addRule;
-		moment.tz.addZone = addZone;
-		moment.tz.zones = getZoneSets;
-
-		moment.tz.version = VERSION;
-
-		moment.tz.zoneExists = function (name) {
-			return getZoneSet(name).zones.length > 0;
-		};
-
-		// add default rule
-		defaultRule = addRule("- 0 9999 0 0 0 0 0 0");
-
-		return moment;
-	}
-
-	if (typeof define === "function" && define.amd) {
-		define("moment-timezone", ["moment"], onload);
-	} else if (typeof module !== 'undefined') {
-		module.exports = onload(require('moment'));
-	} else if (typeof window !== "undefined" && window.moment) {
-		onload(window.moment);
-	}
-}).apply(this);
-
-},{"moment":9}],8:[function(require,module,exports){
+},{"./moment-timezone":8,"./moment-timezone.json":7}],7:[function(require,module,exports){
 module.exports={
 	"links": {
 		"Africa/Asmera": "Africa/Asmara",
@@ -8440,22 +7899,563 @@ module.exports={
 		]
 	}
 }
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
+// moment-timezone.js
+// version : 0.0.5
+// author : Tim Wood
+// license : MIT
+// github.com/timrwood/moment-timezone
+
+(function () {
+
+	var VERSION = "0.0.5";
+
+	function onload(moment) {
+		var oldZoneName = moment.fn.zoneName,
+			oldZoneAbbr = moment.fn.zoneAbbr,
+
+			defaultRule,
+			rules = {},
+			ruleSets = {},
+			zones = {},
+			zoneSets = {},
+			links = {},
+
+			TIME_RULE_WALL_CLOCK = 0,
+			TIME_RULE_UTC        = 1,
+			TIME_RULE_STANDARD   = 2,
+
+			DAY_RULE_DAY_OF_MONTH   = 7,
+			DAY_RULE_LAST_WEEKDAY   = 8;
+
+		if (moment.tz !== undefined) {
+			// Do not load moment-timezone a second time.
+			return;
+		}
+
+		// converts time in the HH:mm:ss format to absolute number of minutes
+		function parseMinutes (input) {
+			input = input + '';
+			var output = input.split(':'),
+				sign = ~input.indexOf('-') ? -1 : 1,
+				hour = Math.abs(+output[0]),
+				minute = parseInt(output[1], 10) || 0,
+				second = parseInt(output[2], 10) || 0;
+
+			return sign * ((hour * 60) + (minute) + (second / 60));
+		}
+
+		/************************************
+			Rules
+		************************************/
+
+		function Rule (name, startYear, endYear, month, day, dayRule, time, timeRule, offset, letters) {
+			this.name      = name;
+			this.startYear = +startYear;
+			this.endYear   = +endYear;
+			this.month     = +month;
+			this.day       = +day;
+			this.dayRule   = +dayRule;
+			this.time      = parseMinutes(time);
+			this.timeRule  = +timeRule;
+			this.offset    = parseMinutes(offset);
+			this.letters   = letters || '';
+			this.date = memoize(this.date);
+			this.weekdayAfter = memoize(this.weekdayAfter);
+			this.lastWeekday = memoize(this.lastWeekday);
+		}
+
+		Rule.prototype = {
+			contains : function (year) {
+				return (year >= this.startYear && year <= this.endYear);
+			},
+
+			start : function (year) {
+				year = Math.min(Math.max(year, this.startYear), this.endYear);
+				return moment.utc([year, this.month, this.date(year), 0, this.time]);
+			},
+
+			date : function (year) {
+				if (this.dayRule === DAY_RULE_DAY_OF_MONTH) {
+					return this.day;
+				} else if (this.dayRule === DAY_RULE_LAST_WEEKDAY) {
+					return this.lastWeekday(year);
+				}
+				return this.weekdayAfter(year);
+			},
+
+			weekdayAfter : function (year) {
+				var day = this.day,
+					firstDayOfWeek = moment([year, this.month, 1]).day(),
+					output = this.dayRule + 1 - firstDayOfWeek;
+
+				while (output < day) {
+					output += 7;
+				}
+
+				return output;
+			},
+
+			lastWeekday : function (year) {
+				var day = this.day,
+					dow = day % 7,
+					lastDowOfMonth = moment([year, this.month + 1, 1]).day(),
+					daysInMonth = moment([year, this.month, 1]).daysInMonth(),
+					output = daysInMonth + (dow - (lastDowOfMonth - 1)) - (~~(day / 7) * 7);
+
+				if (dow >= lastDowOfMonth) {
+					output -= 7;
+				}
+				return output;
+			}
+		};
+
+		/************************************
+			Rule Year
+		************************************/
+
+		function RuleYear (year, rule) {
+			this.rule = rule;
+			this.start = rule.start(year);
+		}
+
+		RuleYear.prototype = {
+			equals : function (other) {
+				if (!other || other.rule !== this.rule) {
+					return false;
+				}
+				return Math.abs(other.start - this.start) < 86400000; // 24 * 60 * 60 * 1000
+			}
+		};
+
+		function sortRuleYears (a, b) {
+			if (a.isLast) {
+				return -1;
+			}
+			if (b.isLast) {
+				return 1;
+			}
+			return b.start - a.start;
+		}
+
+		/************************************
+			Rule Sets
+		************************************/
+
+		function RuleSet (name) {
+			this.name = name;
+			this.rules = [];
+			this.lastYearRule = memoize(this.lastYearRule);
+		}
+
+		RuleSet.prototype = {
+			add : function (rule) {
+				this.rules.push(rule);
+			},
+
+			ruleYears : function (mom, lastZone) {
+				var i, j,
+					year = mom.year(),
+					rule,
+					lastZoneRule,
+					rules = [];
+
+				for (i = 0; i < this.rules.length; i++) {
+					rule = this.rules[i];
+					if (rule.contains(year)) {
+						rules.push(new RuleYear(year, rule));
+					} else if (rule.contains(year + 1)) {
+						rules.push(new RuleYear(year + 1, rule));
+					}
+				}
+				rules.push(new RuleYear(year - 1, this.lastYearRule(year - 1)));
+
+				if (lastZone) {
+					lastZoneRule = new RuleYear(year - 1, lastZone.lastRule());
+					lastZoneRule.start = lastZone.until.clone().utc();
+					lastZoneRule.isLast = lastZone.ruleSet !== this;
+					rules.push(lastZoneRule);
+				}
+
+				rules.sort(sortRuleYears);
+				return rules;
+			},
+
+			rule : function (mom, offset, lastZone) {
+				var rules = this.ruleYears(mom, lastZone),
+					lastOffset = 0,
+					rule,
+					lastZoneOffset,
+					lastZoneOffsetAbs,
+					lastRule,
+					i;
+
+				if (lastZone) {
+					lastZoneOffset = lastZone.offset + lastZone.lastRule().offset;
+					lastZoneOffsetAbs = Math.abs(lastZoneOffset) * 90000;
+				}
+
+				// make sure to include the previous rule's offset
+				for (i = rules.length - 1; i > -1; i--) {
+					lastRule = rule;
+					rule = rules[i];
+
+					if (rule.equals(lastRule)) {
+						continue;
+					}
+
+					if (lastZone && !rule.isLast && Math.abs(rule.start - lastZone.until) <= lastZoneOffsetAbs) {
+						lastOffset += lastZoneOffset - offset;
+					}
+
+					if (rule.rule.timeRule === TIME_RULE_STANDARD) {
+						lastOffset = offset;
+					}
+
+					if (rule.rule.timeRule !== TIME_RULE_UTC) {
+						rule.start.add('m', -lastOffset);
+					}
+
+					lastOffset = rule.rule.offset + offset;
+				}
+
+				for (i = 0; i < rules.length; i++) {
+					rule = rules[i];
+					if (mom >= rule.start && !rule.isLast) {
+						return rule.rule;
+					}
+				}
+
+				return defaultRule;
+			},
+
+			lastYearRule : function (year) {
+				var i,
+					rule,
+					start,
+					bestRule = defaultRule,
+					largest = -1e30;
+
+				for (i = 0; i < this.rules.length; i++) {
+					rule = this.rules[i];
+					if (year >= rule.startYear) {
+						start = rule.start(year);
+						if (start > largest) {
+							largest = start;
+							bestRule = rule;
+						}
+					}
+				}
+
+				return bestRule;
+			}
+		};
+
+		/************************************
+			Zone
+		************************************/
+
+		function Zone (name, offset, ruleSet, letters, until, untilOffset) {
+			var i,
+				untilArray = typeof until === 'string' ? until.split('_') : [9999];
+
+			this.name = name;
+			this.offset = parseMinutes(offset);
+			this.ruleSet = ruleSet;
+			this.letters = letters;
+			this.lastRule = memoize(this.lastRule);
+
+			for (i = 0; i < untilArray.length; i++) {
+				untilArray[i] = +untilArray[i];
+			}
+			this.until = moment.utc(untilArray).subtract('m', parseMinutes(untilOffset));
+		}
+
+		Zone.prototype = {
+			rule : function (mom, lastZone) {
+				return this.ruleSet.rule(mom, this.offset, lastZone);
+			},
+
+			lastRule : function () {
+				return this.rule(this.until);
+			},
+
+			format : function (rule) {
+				return this.letters.replace("%s", rule.letters);
+			}
+		};
+
+		/************************************
+			Zone Set
+		************************************/
+
+		function sortZones (a, b) {
+			return a.until - b.until;
+		}
+
+		function ZoneSet (name) {
+			this.name = normalizeName(name);
+			this.displayName = name;
+			this.zones = [];
+			this.zoneAndRule = memoize(this.zoneAndRule, function (mom) {
+				return +mom;
+			});
+		}
+
+		ZoneSet.prototype = {
+			zoneAndRule : function (mom) {
+				var i,
+					zone,
+					lastZone;
+
+				mom = mom.clone().utc();
+				for (i = 0; i < this.zones.length; i++) {
+					zone = this.zones[i];
+					if (mom < zone.until) {
+						break;
+					}
+					lastZone = zone;
+				}
+
+				return [zone, zone.rule(mom, lastZone)];
+			},
+
+			add : function (zone) {
+				this.zones.push(zone);
+				this.zones.sort(sortZones);
+			},
+
+			format : function (mom) {
+				var zoneAndRule = this.zoneAndRule(mom);
+				return zoneAndRule[0].format(zoneAndRule[1]);
+			},
+
+			offset : function (mom) {
+				var zoneAndRule = this.zoneAndRule(mom);
+				return -(zoneAndRule[0].offset + zoneAndRule[1].offset);
+			}
+		};
+
+		/************************************
+			Global Methods
+		************************************/
+
+		function memoize (fn, keyFn) {
+			var cache = {};
+			return function (first) {
+				var key = keyFn ? keyFn.apply(this, arguments) : first;
+				return key in cache ?
+					cache[key] :
+					(cache[key] = fn.apply(this, arguments));
+			};
+		}
+
+		function addRules (rules) {
+			var i, j, rule;
+			for (i in rules) {
+				rule = rules[i];
+				for (j = 0; j < rule.length; j++) {
+					addRule(i + '\t' + rule[j]);
+				}
+			}
+		}
+
+		function addRule (ruleString) {
+			// don't duplicate rules
+			if (rules[ruleString]) {
+				return rules[ruleString];
+			}
+
+			var p = ruleString.split(/\s/),
+				name = normalizeName(p[0]),
+				rule = new Rule(name, p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10]);
+
+			// cache the rule so we don't add it again
+			rules[ruleString] = rule;
+
+			// add to the ruleset
+			getRuleSet(name).add(rule);
+
+			return rule;
+		}
+
+		function normalizeName (name) {
+			return (name || '').toLowerCase().replace(/\//g, '_');
+		}
+
+		function addZones (zones) {
+			var i, j, zone;
+			for (i in zones) {
+				zone = zones[i];
+				for (j = 0; j < zone.length; j++) {
+					addZone(i + '\t' + zone[j]);
+				}
+			}
+		}
+
+		function addLinks (linksToAdd) {
+			var i;
+			for (i in linksToAdd) {
+				links[normalizeName(i)] = normalizeName(linksToAdd[i]);
+			}
+		}
+
+		function addZone (zoneString) {
+			// don't duplicate zones
+			if (zones[zoneString]) {
+				return zones[zoneString];
+			}
+
+			var p = zoneString.split(/\s/),
+				name = normalizeName(p[0]),
+				zone = new Zone(name, p[1], getRuleSet(p[2]), p[3], p[4], p[5]);
+
+			// cache the zone so we don't add it again
+			zones[zoneString] = zone;
+
+			// add to the zoneset
+			getZoneSet(p[0]).add(zone);
+
+			return zone;
+		}
+
+		function getRuleSet (name) {
+			name = normalizeName(name);
+			if (!ruleSets[name]) {
+				ruleSets[name] = new RuleSet(name);
+			}
+			return ruleSets[name];
+		}
+
+		function getZoneSet (name) {
+			var machineName = normalizeName(name);
+			if (links[machineName]) {
+				machineName = links[machineName];
+			}
+			if (!zoneSets[machineName]) {
+				zoneSets[machineName] = new ZoneSet(name);
+			}
+			return zoneSets[machineName];
+		}
+
+		function add (data) {
+			if (!data) {
+				return;
+			}
+			if (data.zones) {
+				addZones(data.zones);
+			}
+			if (data.rules) {
+				addRules(data.rules);
+			}
+			if (data.links) {
+				addLinks(data.links);
+			}
+		}
+
+		// overwrite moment.updateOffset
+		moment.updateOffset = function (mom, keepTime) {
+			var offset;
+			if (mom._z) {
+				offset = mom._z.offset(mom);
+				if (Math.abs(offset) < 16) {
+					offset = offset / 60;
+				}
+				mom.zone(offset, keepTime);
+			}
+		};
+
+		function getZoneSets() {
+			var sets = [],
+				zoneName;
+			for (zoneName in zoneSets) {
+				sets.push(zoneSets[zoneName]);
+			}
+			return sets;
+		}
+
+		moment.fn.tz = function (name) {
+			if (name) {
+				this._z = getZoneSet(name);
+				if (this._z) {
+					moment.updateOffset(this);
+				}
+				return this;
+			}
+			if (this._z) {
+				return this._z.displayName;
+			}
+		};
+
+		moment.fn.zoneName = function () {
+			if (this._z) {
+				return this._z.format(this);
+			}
+			return oldZoneName.call(this);
+		};
+
+		moment.fn.zoneAbbr = function () {
+			if (this._z) {
+				return this._z.format(this);
+			}
+			return oldZoneAbbr.call(this);
+		};
+
+		// Make sure moment's clone includes the newly added properties
+		moment.momentProperties._z = null;
+
+		moment.tz = function () {
+			var args = [], i, len = arguments.length - 1;
+			for (i = 0; i < len; i++) {
+				args[i] = arguments[i];
+			}
+			var m = moment.apply(null, args);
+			var preTzOffset = m.zone();
+			m.tz(arguments[len]);
+			return m.add('minutes', m.zone() - preTzOffset);
+		};
+
+		moment.tz.add = add;
+		moment.tz.addRule = addRule;
+		moment.tz.addZone = addZone;
+		moment.tz.zones = getZoneSets;
+
+		moment.tz.version = VERSION;
+
+		moment.tz.zoneExists = function (name) {
+			return getZoneSet(name).zones.length > 0;
+		};
+
+		// add default rule
+		defaultRule = addRule("- 0 9999 0 0 0 0 0 0");
+
+		return moment;
+	}
+
+	if (typeof define === "function" && define.amd) {
+		define("moment-timezone", ["moment"], onload);
+	} else if (typeof module !== 'undefined') {
+		module.exports = onload(require('moment'));
+	} else if (typeof window !== "undefined" && window.moment) {
+		onload(window.moment);
+	}
+}).apply(this);
+
+},{"moment":9}],9:[function(require,module,exports){
 (function (global){
 //! moment.js
-//! version : 2.6.0
+//! version : 2.8.1
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 //! license : MIT
 //! momentjs.com
 
 (function (undefined) {
-
     /************************************
         Constants
     ************************************/
 
     var moment,
-        VERSION = "2.6.0",
+        VERSION = '2.8.1',
         // the global-scope this is NOT the global object in Node.js
         globalScope = typeof global !== 'undefined' ? global : this,
         oldGlobalMoment,
@@ -8470,21 +8470,11 @@ module.exports={
         SECOND = 5,
         MILLISECOND = 6,
 
-        // internal storage for language config files
-        languages = {},
+        // internal storage for locale config files
+        locales = {},
 
-        // moment internal properties
-        momentProperties = {
-            _isAMomentObject: null,
-            _i : null,
-            _f : null,
-            _l : null,
-            _strict : null,
-            _isUTC : null,
-            _offset : null,  // optional. Combine with _isUTC
-            _pf : null,
-            _lang : null  // optional
-        },
+        // extra moment internal properties (plugins register props here)
+        momentProperties = [],
 
         // check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports),
@@ -8588,6 +8578,15 @@ module.exports={
         // format function strings
         formatFunctions = {},
 
+        // default relative time thresholds
+        relativeTimeThresholds = {
+            s: 45,  // seconds to minute
+            m: 45,  // minutes to hour
+            h: 22,  // hours to day
+            d: 26,  // days to month
+            M: 11   // months to year
+        },
+
         // tokens to ordinalize and pad
         ordinalizeTokens = 'DDD w W M D d'.split(' '),
         paddedTokens = 'M D H h m s w W'.split(' '),
@@ -8597,10 +8596,10 @@ module.exports={
                 return this.month() + 1;
             },
             MMM  : function (format) {
-                return this.lang().monthsShort(this, format);
+                return this.localeData().monthsShort(this, format);
             },
             MMMM : function (format) {
-                return this.lang().months(this, format);
+                return this.localeData().months(this, format);
             },
             D    : function () {
                 return this.date();
@@ -8612,13 +8611,13 @@ module.exports={
                 return this.day();
             },
             dd   : function (format) {
-                return this.lang().weekdaysMin(this, format);
+                return this.localeData().weekdaysMin(this, format);
             },
             ddd  : function (format) {
-                return this.lang().weekdaysShort(this, format);
+                return this.localeData().weekdaysShort(this, format);
             },
             dddd : function (format) {
-                return this.lang().weekdays(this, format);
+                return this.localeData().weekdays(this, format);
             },
             w    : function () {
                 return this.week();
@@ -8664,10 +8663,10 @@ module.exports={
                 return this.isoWeekday();
             },
             a    : function () {
-                return this.lang().meridiem(this.hours(), this.minutes(), true);
+                return this.localeData().meridiem(this.hours(), this.minutes(), true);
             },
             A    : function () {
-                return this.lang().meridiem(this.hours(), this.minutes(), false);
+                return this.localeData().meridiem(this.hours(), this.minutes(), false);
             },
             H    : function () {
                 return this.hours();
@@ -8695,19 +8694,19 @@ module.exports={
             },
             Z    : function () {
                 var a = -this.zone(),
-                    b = "+";
+                    b = '+';
                 if (a < 0) {
                     a = -a;
-                    b = "-";
+                    b = '-';
                 }
-                return b + leftZeroFill(toInt(a / 60), 2) + ":" + leftZeroFill(toInt(a) % 60, 2);
+                return b + leftZeroFill(toInt(a / 60), 2) + ':' + leftZeroFill(toInt(a) % 60, 2);
             },
             ZZ   : function () {
                 var a = -this.zone(),
-                    b = "+";
+                    b = '+';
                 if (a < 0) {
                     a = -a;
-                    b = "-";
+                    b = '-';
                 }
                 return b + leftZeroFill(toInt(a / 60), 2) + leftZeroFill(toInt(a) % 60, 2);
             },
@@ -8725,7 +8724,19 @@ module.exports={
             }
         },
 
+        deprecations = {},
+
         lists = ['months', 'monthsShort', 'weekdays', 'weekdaysShort', 'weekdaysMin'];
+
+    // Pick the first defined of two or three arguments. dfl comes from
+    // default.
+    function dfl(a, b, c) {
+        switch (arguments.length) {
+            case 2: return a != null ? a : b;
+            case 3: return a != null ? a : b != null ? b : c;
+            default: throw new Error('Implement me');
+        }
+    }
 
     function defaultParsingFlags() {
         // We need to deep clone this object, and es5 standard is not very
@@ -8744,21 +8755,29 @@ module.exports={
         };
     }
 
+    function printMsg(msg) {
+        if (moment.suppressDeprecationWarnings === false &&
+                typeof console !== 'undefined' && console.warn) {
+            console.warn("Deprecation warning: " + msg);
+        }
+    }
+
     function deprecate(msg, fn) {
         var firstTime = true;
-        function printMsg() {
-            if (moment.suppressDeprecationWarnings === false &&
-                    typeof console !== 'undefined' && console.warn) {
-                console.warn("Deprecation warning: " + msg);
-            }
-        }
         return extend(function () {
             if (firstTime) {
-                printMsg();
+                printMsg(msg);
                 firstTime = false;
             }
             return fn.apply(this, arguments);
         }, fn);
+    }
+
+    function deprecateSimple(name, msg) {
+        if (!deprecations[name]) {
+            printMsg(msg);
+            deprecations[name] = true;
+        }
     }
 
     function padToken(func, count) {
@@ -8768,7 +8787,7 @@ module.exports={
     }
     function ordinalizeToken(func, period) {
         return function (a) {
-            return this.lang().ordinal(func.call(this, a), period);
+            return this.localeData().ordinal(func.call(this, a), period);
         };
     }
 
@@ -8787,14 +8806,16 @@ module.exports={
         Constructors
     ************************************/
 
-    function Language() {
-
+    function Locale() {
     }
 
     // Moment prototype object
-    function Moment(config) {
-        checkOverflow(config);
-        extend(this, config);
+    function Moment(config, skipOverflow) {
+        if (skipOverflow !== false) {
+            checkOverflow(config);
+        }
+        copyConfig(this, config);
+        this._d = new Date(+config._d);
     }
 
     // Duration Constructor
@@ -8828,6 +8849,8 @@ module.exports={
 
         this._data = {};
 
+        this._locale = moment.localeData();
+
         this._bubble();
     }
 
@@ -8843,26 +8866,62 @@ module.exports={
             }
         }
 
-        if (b.hasOwnProperty("toString")) {
+        if (b.hasOwnProperty('toString')) {
             a.toString = b.toString;
         }
 
-        if (b.hasOwnProperty("valueOf")) {
+        if (b.hasOwnProperty('valueOf')) {
             a.valueOf = b.valueOf;
         }
 
         return a;
     }
 
-    function cloneMoment(m) {
-        var result = {}, i;
-        for (i in m) {
-            if (m.hasOwnProperty(i) && momentProperties.hasOwnProperty(i)) {
-                result[i] = m[i];
+    function copyConfig(to, from) {
+        var i, prop, val;
+
+        if (typeof from._isAMomentObject !== 'undefined') {
+            to._isAMomentObject = from._isAMomentObject;
+        }
+        if (typeof from._i !== 'undefined') {
+            to._i = from._i;
+        }
+        if (typeof from._f !== 'undefined') {
+            to._f = from._f;
+        }
+        if (typeof from._l !== 'undefined') {
+            to._l = from._l;
+        }
+        if (typeof from._strict !== 'undefined') {
+            to._strict = from._strict;
+        }
+        if (typeof from._tzm !== 'undefined') {
+            to._tzm = from._tzm;
+        }
+        if (typeof from._isUTC !== 'undefined') {
+            to._isUTC = from._isUTC;
+        }
+        if (typeof from._offset !== 'undefined') {
+            to._offset = from._offset;
+        }
+        if (typeof from._pf !== 'undefined') {
+            to._pf = from._pf;
+        }
+        if (typeof from._locale !== 'undefined') {
+            to._locale = from._locale;
+        }
+
+        if (momentProperties.length > 0) {
+            for (i in momentProperties) {
+                prop = momentProperties[i];
+                val = from[prop];
+                if (typeof val !== 'undefined') {
+                    to[prop] = val;
+                }
             }
         }
 
-        return result;
+        return to;
     }
 
     function absRound(number) {
@@ -8885,7 +8944,51 @@ module.exports={
         return (sign ? (forceSign ? '+' : '') : '-') + output;
     }
 
-    // helper function for _.addTime and _.subtractTime
+    function positiveMomentsDifference(base, other) {
+        var res = {milliseconds: 0, months: 0};
+
+        res.months = other.month() - base.month() +
+            (other.year() - base.year()) * 12;
+        if (base.clone().add(res.months, 'M').isAfter(other)) {
+            --res.months;
+        }
+
+        res.milliseconds = +other - +(base.clone().add(res.months, 'M'));
+
+        return res;
+    }
+
+    function momentsDifference(base, other) {
+        var res;
+        other = makeAs(other, base);
+        if (base.isBefore(other)) {
+            res = positiveMomentsDifference(base, other);
+        } else {
+            res = positiveMomentsDifference(other, base);
+            res.milliseconds = -res.milliseconds;
+            res.months = -res.months;
+        }
+
+        return res;
+    }
+
+    // TODO: remove 'name' arg after deprecation is removed
+    function createAdder(direction, name) {
+        return function (val, period) {
+            var dur, tmp;
+            //invert the arguments, but complain about it
+            if (period !== null && !isNaN(+period)) {
+                deprecateSimple(name, "moment()." + name  + "(period, number) is deprecated. Please use moment()." + name + "(number, period).");
+                tmp = val; val = period; period = tmp;
+            }
+
+            val = typeof val === 'string' ? +val : val;
+            dur = moment.duration(val, period);
+            addOrSubtractDurationFromMoment(this, dur, direction);
+            return this;
+        };
+    }
+
     function addOrSubtractDurationFromMoment(mom, duration, isAdding, updateOffset) {
         var milliseconds = duration._milliseconds,
             days = duration._days,
@@ -8912,8 +9015,8 @@ module.exports={
     }
 
     function isDate(input) {
-        return  Object.prototype.toString.call(input) === '[object Date]' ||
-                input instanceof Date;
+        return Object.prototype.toString.call(input) === '[object Date]' ||
+            input instanceof Date;
     }
 
     // compare two arrays, return the number of differences
@@ -8973,7 +9076,7 @@ module.exports={
 
         moment[field] = function (format, index) {
             var i, getter,
-                method = moment.fn._lang[field],
+                method = moment._locale[field],
                 results = [];
 
             if (typeof format === 'number') {
@@ -8983,7 +9086,7 @@ module.exports={
 
             getter = function (i) {
                 var m = moment().utc().set(setter, i);
-                return method.call(moment.fn._lang, m, format || '');
+                return method.call(moment._locale, m, format || '');
             };
 
             if (index != null) {
@@ -9068,8 +9171,48 @@ module.exports={
         return m._isValid;
     }
 
-    function normalizeLanguage(key) {
+    function normalizeLocale(key) {
         return key ? key.toLowerCase().replace('_', '-') : key;
+    }
+
+    // pick the locale from the array
+    // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
+    // substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
+    function chooseLocale(names) {
+        var i = 0, j, next, locale, split;
+
+        while (i < names.length) {
+            split = normalizeLocale(names[i]).split('-');
+            j = split.length;
+            next = normalizeLocale(names[i + 1]);
+            next = next ? next.split('-') : null;
+            while (j > 0) {
+                locale = loadLocale(split.slice(0, j).join('-'));
+                if (locale) {
+                    return locale;
+                }
+                if (next && next.length >= j && compareArrays(split, next, true) >= j - 1) {
+                    //the next array item is better than a shallower substring of this one
+                    break;
+                }
+                j--;
+            }
+            i++;
+        }
+        return null;
+    }
+
+    function loadLocale(name) {
+        var oldLocale = null;
+        if (!locales[name] && hasModule) {
+            try {
+                oldLocale = moment.locale();
+                require('./locale/' + name);
+                // because defineLocale currently also sets the global locale, we want to undo that for lazy loaded locales
+                moment.locale(oldLocale);
+            } catch (e) { }
+        }
+        return locales[name];
     }
 
     // Return a moment from input, that is local/utc/zone equivalent to model.
@@ -9079,11 +9222,11 @@ module.exports={
     }
 
     /************************************
-        Languages
+        Locale
     ************************************/
 
 
-    extend(Language.prototype, {
+    extend(Locale.prototype, {
 
         set : function (config) {
             var prop, i;
@@ -9097,12 +9240,12 @@ module.exports={
             }
         },
 
-        _months : "January_February_March_April_May_June_July_August_September_October_November_December".split("_"),
+        _months : 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_'),
         months : function (m) {
             return this._months[m.month()];
         },
 
-        _monthsShort : "Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),
+        _monthsShort : 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_'),
         monthsShort : function (m) {
             return this._monthsShort[m.month()];
         },
@@ -9128,17 +9271,17 @@ module.exports={
             }
         },
 
-        _weekdays : "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),
+        _weekdays : 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_'),
         weekdays : function (m) {
             return this._weekdays[m.day()];
         },
 
-        _weekdaysShort : "Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),
+        _weekdaysShort : 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
         weekdaysShort : function (m) {
             return this._weekdaysShort[m.day()];
         },
 
-        _weekdaysMin : "Su_Mo_Tu_We_Th_Fr_Sa".split("_"),
+        _weekdaysMin : 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
         weekdaysMin : function (m) {
             return this._weekdaysMin[m.day()];
         },
@@ -9165,11 +9308,11 @@ module.exports={
         },
 
         _longDateFormat : {
-            LT : "h:mm A",
-            L : "MM/DD/YYYY",
-            LL : "MMMM D YYYY",
-            LLL : "MMMM D YYYY LT",
-            LLLL : "dddd, MMMM D YYYY LT"
+            LT : 'h:mm A',
+            L : 'MM/DD/YYYY',
+            LL : 'MMMM D, YYYY',
+            LLL : 'MMMM D, YYYY LT',
+            LLLL : 'dddd, MMMM D, YYYY LT'
         },
         longDateFormat : function (key) {
             var output = this._longDateFormat[key];
@@ -9211,35 +9354,37 @@ module.exports={
         },
 
         _relativeTime : {
-            future : "in %s",
-            past : "%s ago",
-            s : "a few seconds",
-            m : "a minute",
-            mm : "%d minutes",
-            h : "an hour",
-            hh : "%d hours",
-            d : "a day",
-            dd : "%d days",
-            M : "a month",
-            MM : "%d months",
-            y : "a year",
-            yy : "%d years"
+            future : 'in %s',
+            past : '%s ago',
+            s : 'a few seconds',
+            m : 'a minute',
+            mm : '%d minutes',
+            h : 'an hour',
+            hh : '%d hours',
+            d : 'a day',
+            dd : '%d days',
+            M : 'a month',
+            MM : '%d months',
+            y : 'a year',
+            yy : '%d years'
         },
+
         relativeTime : function (number, withoutSuffix, string, isFuture) {
             var output = this._relativeTime[string];
             return (typeof output === 'function') ?
                 output(number, withoutSuffix, string, isFuture) :
                 output.replace(/%d/i, number);
         },
+
         pastFuture : function (diff, output) {
             var format = this._relativeTime[diff > 0 ? 'future' : 'past'];
             return typeof format === 'function' ? format(output) : format.replace(/%s/i, output);
         },
 
         ordinal : function (number) {
-            return this._ordinal.replace("%d", number);
+            return this._ordinal.replace('%d', number);
         },
-        _ordinal : "%d",
+        _ordinal : '%d',
 
         preparse : function (string) {
             return string;
@@ -9264,78 +9409,6 @@ module.exports={
         }
     });
 
-    // Loads a language definition into the `languages` cache.  The function
-    // takes a key and optionally values.  If not in the browser and no values
-    // are provided, it will load the language file module.  As a convenience,
-    // this function also returns the language values.
-    function loadLang(key, values) {
-        values.abbr = key;
-        if (!languages[key]) {
-            languages[key] = new Language();
-        }
-        languages[key].set(values);
-        return languages[key];
-    }
-
-    // Remove a language from the `languages` cache. Mostly useful in tests.
-    function unloadLang(key) {
-        delete languages[key];
-    }
-
-    // Determines which language definition to use and returns it.
-    //
-    // With no parameters, it will return the global language.  If you
-    // pass in a language key, such as 'en', it will return the
-    // definition for 'en', so long as 'en' has already been loaded using
-    // moment.lang.
-    function getLangDefinition(key) {
-        var i = 0, j, lang, next, split,
-            get = function (k) {
-                if (!languages[k] && hasModule) {
-                    try {
-                        require('./lang/' + k);
-                    } catch (e) { }
-                }
-                return languages[k];
-            };
-
-        if (!key) {
-            return moment.fn._lang;
-        }
-
-        if (!isArray(key)) {
-            //short-circuit everything else
-            lang = get(key);
-            if (lang) {
-                return lang;
-            }
-            key = [key];
-        }
-
-        //pick the language from the array
-        //try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
-        //substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
-        while (i < key.length) {
-            split = normalizeLanguage(key[i]).split('-');
-            j = split.length;
-            next = normalizeLanguage(key[i + 1]);
-            next = next ? next.split('-') : null;
-            while (j > 0) {
-                lang = get(split.slice(0, j).join('-'));
-                if (lang) {
-                    return lang;
-                }
-                if (next && next.length >= j && compareArrays(split, next, true) >= j - 1) {
-                    //the next array item is better than a shallower substring of this one
-                    break;
-                }
-                j--;
-            }
-            i++;
-        }
-        return moment.fn._lang;
-    }
-
     /************************************
         Formatting
     ************************************/
@@ -9343,9 +9416,9 @@ module.exports={
 
     function removeFormattingTokens(input) {
         if (input.match(/\[[\s\S]/)) {
-            return input.replace(/^\[|\]$/g, "");
+            return input.replace(/^\[|\]$/g, '');
         }
-        return input.replace(/\\/g, "");
+        return input.replace(/\\/g, '');
     }
 
     function makeFormatFunction(format) {
@@ -9360,7 +9433,7 @@ module.exports={
         }
 
         return function (mom) {
-            var output = "";
+            var output = '';
             for (i = 0; i < length; i++) {
                 output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
             }
@@ -9370,12 +9443,11 @@ module.exports={
 
     // format date using native date object
     function formatMoment(m, format) {
-
         if (!m.isValid()) {
-            return m.lang().invalidDate();
+            return m.localeData().invalidDate();
         }
 
-        format = expandFormat(format, m.lang());
+        format = expandFormat(format, m.localeData());
 
         if (!formatFunctions[format]) {
             formatFunctions[format] = makeFormatFunction(format);
@@ -9384,11 +9456,11 @@ module.exports={
         return formatFunctions[format](m);
     }
 
-    function expandFormat(format, lang) {
+    function expandFormat(format, locale) {
         var i = 5;
 
         function replaceLongDateFormatTokens(input) {
-            return lang.longDateFormat(input) || input;
+            return locale.longDateFormat(input) || input;
         }
 
         localFormattingTokens.lastIndex = 0;
@@ -9429,13 +9501,19 @@ module.exports={
         case 'ggggg':
             return strict ? parseTokenSixDigits : parseTokenOneToSixDigits;
         case 'S':
-            if (strict) { return parseTokenOneDigit; }
+            if (strict) {
+                return parseTokenOneDigit;
+            }
             /* falls through */
         case 'SS':
-            if (strict) { return parseTokenTwoDigits; }
+            if (strict) {
+                return parseTokenTwoDigits;
+            }
             /* falls through */
         case 'SSS':
-            if (strict) { return parseTokenThreeDigits; }
+            if (strict) {
+                return parseTokenThreeDigits;
+            }
             /* falls through */
         case 'DDD':
             return parseTokenOneToThreeDigits;
@@ -9447,7 +9525,7 @@ module.exports={
             return parseTokenWord;
         case 'a':
         case 'A':
-            return getLangDefinition(config._l)._meridiemParse;
+            return config._locale._meridiemParse;
         case 'X':
             return parseTokenTimestampMs;
         case 'Z':
@@ -9484,13 +9562,13 @@ module.exports={
         case 'Do':
             return parseTokenOrdinal;
         default :
-            a = new RegExp(regexpEscape(unescapeFormat(token.replace('\\', '')), "i"));
+            a = new RegExp(regexpEscape(unescapeFormat(token.replace('\\', '')), 'i'));
             return a;
         }
     }
 
     function timezoneMinutesFromString(string) {
-        string = string || "";
+        string = string || '';
         var possibleTzMatches = (string.match(parseTokenTimezone) || []),
             tzChunk = possibleTzMatches[possibleTzMatches.length - 1] || [],
             parts = (tzChunk + '').match(parseTimezoneChunker) || ['-', 0, 0],
@@ -9519,7 +9597,7 @@ module.exports={
             break;
         case 'MMM' : // fall through to MMMM
         case 'MMMM' :
-            a = getLangDefinition(config._l).monthsParse(input);
+            a = config._locale.monthsParse(input);
             // if we didn't find a month name, mark the date as invalid.
             if (a != null) {
                 datePartArray[MONTH] = a;
@@ -9559,7 +9637,7 @@ module.exports={
         // AM / PM
         case 'a' : // fall through to A
         case 'A' :
-            config._isPm = getLangDefinition(config._l).isPM(input);
+            config._isPm = config._locale.isPM(input);
             break;
         // 24 HOUR
         case 'H' : // fall through to hh
@@ -9595,30 +9673,85 @@ module.exports={
             config._useUTC = true;
             config._tzm = timezoneMinutesFromString(input);
             break;
+        // WEEKDAY - human
+        case 'dd':
+        case 'ddd':
+        case 'dddd':
+            a = config._locale.weekdaysParse(input);
+            // if we didn't get a weekday name, mark the date as invalid
+            if (a != null) {
+                config._w = config._w || {};
+                config._w['d'] = a;
+            } else {
+                config._pf.invalidWeekday = input;
+            }
+            break;
+        // WEEK, WEEK DAY - numeric
         case 'w':
         case 'ww':
         case 'W':
         case 'WW':
         case 'd':
-        case 'dd':
-        case 'ddd':
-        case 'dddd':
         case 'e':
         case 'E':
             token = token.substr(0, 1);
             /* falls through */
-        case 'gg':
         case 'gggg':
-        case 'GG':
         case 'GGGG':
         case 'GGGGG':
             token = token.substr(0, 2);
             if (input) {
                 config._w = config._w || {};
-                config._w[token] = input;
+                config._w[token] = toInt(input);
             }
             break;
+        case 'gg':
+        case 'GG':
+            config._w = config._w || {};
+            config._w[token] = moment.parseTwoDigitYear(input);
         }
+    }
+
+    function dayOfYearFromWeekInfo(config) {
+        var w, weekYear, week, weekday, dow, doy, temp;
+
+        w = config._w;
+        if (w.GG != null || w.W != null || w.E != null) {
+            dow = 1;
+            doy = 4;
+
+            // TODO: We need to take the current isoWeekYear, but that depends on
+            // how we interpret now (local, utc, fixed offset). So create
+            // a now version of current config (take local/utc/offset flags, and
+            // create now).
+            weekYear = dfl(w.GG, config._a[YEAR], weekOfYear(moment(), 1, 4).year);
+            week = dfl(w.W, 1);
+            weekday = dfl(w.E, 1);
+        } else {
+            dow = config._locale._week.dow;
+            doy = config._locale._week.doy;
+
+            weekYear = dfl(w.gg, config._a[YEAR], weekOfYear(moment(), dow, doy).year);
+            week = dfl(w.w, 1);
+
+            if (w.d != null) {
+                // weekday -- low day numbers are considered next week
+                weekday = w.d;
+                if (weekday < dow) {
+                    ++week;
+                }
+            } else if (w.e != null) {
+                // local weekday -- counting starts from begining of week
+                weekday = w.e + dow;
+            } else {
+                // default to begining of week
+                weekday = dow;
+            }
+        }
+        temp = dayOfYearFromWeeks(weekYear, week, weekday, doy, dow);
+
+        config._a[YEAR] = temp.year;
+        config._dayOfYear = temp.dayOfYear;
     }
 
     // convert an array to a date.
@@ -9626,8 +9759,7 @@ module.exports={
     // note: all values past the year are optional and will default to the lowest possible value.
     // [year, month, day , hour, minute, second, millisecond]
     function dateFromConfig(config) {
-        var i, date, input = [], currentDate,
-            yearToUse, fixYear, w, temp, lang, weekday, week;
+        var i, date, input = [], currentDate, yearToUse;
 
         if (config._d) {
             return;
@@ -9637,39 +9769,12 @@ module.exports={
 
         //compute day of the year from weeks and weekdays
         if (config._w && config._a[DATE] == null && config._a[MONTH] == null) {
-            fixYear = function (val) {
-                var intVal = parseInt(val, 10);
-                return val ?
-                  (val.length < 3 ? (intVal > 68 ? 1900 + intVal : 2000 + intVal) : intVal) :
-                  (config._a[YEAR] == null ? moment().weekYear() : config._a[YEAR]);
-            };
-
-            w = config._w;
-            if (w.GG != null || w.W != null || w.E != null) {
-                temp = dayOfYearFromWeeks(fixYear(w.GG), w.W || 1, w.E, 4, 1);
-            }
-            else {
-                lang = getLangDefinition(config._l);
-                weekday = w.d != null ?  parseWeekday(w.d, lang) :
-                  (w.e != null ?  parseInt(w.e, 10) + lang._week.dow : 0);
-
-                week = parseInt(w.w, 10) || 1;
-
-                //if we're parsing 'd', then the low day numbers may be next week
-                if (w.d != null && weekday < lang._week.dow) {
-                    week++;
-                }
-
-                temp = dayOfYearFromWeeks(fixYear(w.gg), week, weekday, lang._week.doy, lang._week.dow);
-            }
-
-            config._a[YEAR] = temp.year;
-            config._dayOfYear = temp.dayOfYear;
+            dayOfYearFromWeekInfo(config);
         }
 
         //if the day of the year is set, figure out what it is
         if (config._dayOfYear) {
-            yearToUse = config._a[YEAR] == null ? currentDate[YEAR] : config._a[YEAR];
+            yearToUse = dfl(config._a[YEAR], currentDate[YEAR]);
 
             if (config._dayOfYear > daysInYear(yearToUse)) {
                 config._pf._overflowDayOfYear = true;
@@ -9694,11 +9799,12 @@ module.exports={
             config._a[i] = input[i] = (config._a[i] == null) ? (i === 2 ? 1 : 0) : config._a[i];
         }
 
-        // add the offsets to the time to be parsed so that we can have a clean array for checking isValid
-        input[HOUR] += toInt((config._tzm || 0) / 60);
-        input[MINUTE] += toInt((config._tzm || 0) % 60);
-
         config._d = (config._useUTC ? makeUTCDate : makeDate).apply(null, input);
+        // Apply timezone offset from input. The actual zone can be changed
+        // with parseZone.
+        if (config._tzm != null) {
+            config._d.setUTCMinutes(config._d.getUTCMinutes() + config._tzm);
+        }
     }
 
     function dateFromObject(config) {
@@ -9737,18 +9843,21 @@ module.exports={
 
     // date from string and format string
     function makeDateFromStringAndFormat(config) {
+        if (config._f === moment.ISO_8601) {
+            parseISO(config);
+            return;
+        }
 
         config._a = [];
         config._pf.empty = true;
 
         // This array is used to make a Date, either with `new Date` or `Date.UTC`
-        var lang = getLangDefinition(config._l),
-            string = '' + config._i,
+        var string = '' + config._i,
             i, parsedInput, tokens, token, skipped,
             stringLength = string.length,
             totalParsedInputLength = 0;
 
-        tokens = expandFormat(config._f, lang).match(formattingTokens) || [];
+        tokens = expandFormat(config._f, config._locale).match(formattingTokens) || [];
 
         for (i = 0; i < tokens.length; i++) {
             token = tokens[i];
@@ -9823,7 +9932,7 @@ module.exports={
 
         for (i = 0; i < config._f.length; i++) {
             currentScore = 0;
-            tempConfig = extend({}, config);
+            tempConfig = copyConfig({}, config);
             tempConfig._pf = defaultParsingFlags();
             tempConfig._f = config._f[i];
             makeDateFromStringAndFormat(tempConfig);
@@ -9850,7 +9959,7 @@ module.exports={
     }
 
     // date from iso format
-    function makeDateFromString(config) {
+    function parseISO(config) {
         var i, l,
             string = config._i,
             match = isoRegex.exec(string);
@@ -9860,7 +9969,7 @@ module.exports={
             for (i = 0, l = isoDates.length; i < l; i++) {
                 if (isoDates[i][1].exec(string)) {
                     // match[5] should be "T" or undefined
-                    config._f = isoDates[i][0] + (match[6] || " ");
+                    config._f = isoDates[i][0] + (match[6] || ' ');
                     break;
                 }
             }
@@ -9871,30 +9980,36 @@ module.exports={
                 }
             }
             if (string.match(parseTokenTimezone)) {
-                config._f += "Z";
+                config._f += 'Z';
             }
             makeDateFromStringAndFormat(config);
+        } else {
+            config._isValid = false;
         }
-        else {
+    }
+
+    // date from iso format or fallback
+    function makeDateFromString(config) {
+        parseISO(config);
+        if (config._isValid === false) {
+            delete config._isValid;
             moment.createFromInputFallback(config);
         }
     }
 
     function makeDateFromInput(config) {
-        var input = config._i,
-            matched = aspNetJsonRegex.exec(input);
-
+        var input = config._i, matched;
         if (input === undefined) {
             config._d = new Date();
-        } else if (matched) {
+        } else if (isDate(input)) {
+            config._d = new Date(+input);
+        } else if ((matched = aspNetJsonRegex.exec(input)) !== null) {
             config._d = new Date(+matched[1]);
         } else if (typeof input === 'string') {
             makeDateFromString(config);
         } else if (isArray(input)) {
             config._a = input.slice(0);
             dateFromConfig(config);
-        } else if (isDate(input)) {
-            config._d = new Date(+input);
         } else if (typeof(input) === 'object') {
             dateFromObject(config);
         } else if (typeof(input) === 'number') {
@@ -9925,13 +10040,13 @@ module.exports={
         return date;
     }
 
-    function parseWeekday(input, language) {
+    function parseWeekday(input, locale) {
         if (typeof input === 'string') {
             if (!isNaN(input)) {
                 input = parseInt(input, 10);
             }
             else {
-                input = language.weekdaysParse(input);
+                input = locale.weekdaysParse(input);
                 if (typeof input !== 'number') {
                     return null;
                 }
@@ -9946,29 +10061,33 @@ module.exports={
 
 
     // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
-    function substituteTimeAgo(string, number, withoutSuffix, isFuture, lang) {
-        return lang.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
+    function substituteTimeAgo(string, number, withoutSuffix, isFuture, locale) {
+        return locale.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
     }
 
-    function relativeTime(milliseconds, withoutSuffix, lang) {
-        var seconds = round(Math.abs(milliseconds) / 1000),
-            minutes = round(seconds / 60),
-            hours = round(minutes / 60),
-            days = round(hours / 24),
-            years = round(days / 365),
-            args = seconds < 45 && ['s', seconds] ||
+    function relativeTime(posNegDuration, withoutSuffix, locale) {
+        var duration = moment.duration(posNegDuration).abs(),
+            seconds = round(duration.as('s')),
+            minutes = round(duration.as('m')),
+            hours = round(duration.as('h')),
+            days = round(duration.as('d')),
+            months = round(duration.as('M')),
+            years = round(duration.as('y')),
+
+            args = seconds < relativeTimeThresholds.s && ['s', seconds] ||
                 minutes === 1 && ['m'] ||
-                minutes < 45 && ['mm', minutes] ||
+                minutes < relativeTimeThresholds.m && ['mm', minutes] ||
                 hours === 1 && ['h'] ||
-                hours < 22 && ['hh', hours] ||
+                hours < relativeTimeThresholds.h && ['hh', hours] ||
                 days === 1 && ['d'] ||
-                days <= 25 && ['dd', days] ||
-                days <= 45 && ['M'] ||
-                days < 345 && ['MM', round(days / 30)] ||
+                days < relativeTimeThresholds.d && ['dd', days] ||
+                months === 1 && ['M'] ||
+                months < relativeTimeThresholds.M && ['MM', months] ||
                 years === 1 && ['y'] || ['yy', years];
+
         args[2] = withoutSuffix;
-        args[3] = milliseconds > 0;
-        args[4] = lang;
+        args[3] = +posNegDuration > 0;
+        args[4] = locale;
         return substituteTimeAgo.apply({}, args);
     }
 
@@ -9999,7 +10118,7 @@ module.exports={
             daysToDayOfWeek += 7;
         }
 
-        adjustedMoment = moment(mom).add('d', daysToDayOfWeek);
+        adjustedMoment = moment(mom).add(daysToDayOfWeek, 'd');
         return {
             week: Math.ceil(adjustedMoment.dayOfYear() / 7),
             year: adjustedMoment.year()
@@ -10010,6 +10129,7 @@ module.exports={
     function dayOfYearFromWeeks(year, week, weekday, firstDayOfWeekOfYear, firstDayOfWeek) {
         var d = makeUTCDate(year, 0, 1).getUTCDay(), daysToAdd, dayOfYear;
 
+        d = d === 0 ? 7 : d;
         weekday = weekday != null ? weekday : firstDayOfWeek;
         daysToAdd = firstDayOfWeek - d + (d > firstDayOfWeekOfYear ? 7 : 0) - (d < firstDayOfWeek ? 7 : 0);
         dayOfYear = 7 * (week - 1) + (weekday - firstDayOfWeek) + daysToAdd + 1;
@@ -10028,18 +10148,18 @@ module.exports={
         var input = config._i,
             format = config._f;
 
+        config._locale = config._locale || moment.localeData(config._l);
+
         if (input === null || (format === undefined && input === '')) {
             return moment.invalid({nullInput: true});
         }
 
         if (typeof input === 'string') {
-            config._i = input = getLangDefinition().preparse(input);
+            config._i = input = config._locale.preparse(input);
         }
 
         if (moment.isMoment(input)) {
-            config = cloneMoment(input);
-
-            config._d = new Date(+input._d);
+            return new Moment(input, true);
         } else if (format) {
             if (isArray(format)) {
                 makeDateFromStringAndArray(config);
@@ -10053,12 +10173,12 @@ module.exports={
         return new Moment(config);
     }
 
-    moment = function (input, format, lang, strict) {
+    moment = function (input, format, locale, strict) {
         var c;
 
-        if (typeof(lang) === "boolean") {
-            strict = lang;
-            lang = undefined;
+        if (typeof(locale) === "boolean") {
+            strict = locale;
+            locale = undefined;
         }
         // object construction must be done this way.
         // https://github.com/moment/moment/issues/1423
@@ -10066,7 +10186,7 @@ module.exports={
         c._isAMomentObject = true;
         c._i = input;
         c._f = format;
-        c._l = lang;
+        c._l = locale;
         c._strict = strict;
         c._isUTC = false;
         c._pf = defaultParsingFlags();
@@ -10077,21 +10197,56 @@ module.exports={
     moment.suppressDeprecationWarnings = false;
 
     moment.createFromInputFallback = deprecate(
-            "moment construction falls back to js Date. This is " +
-            "discouraged and will be removed in upcoming major " +
-            "release. Please refer to " +
-            "https://github.com/moment/moment/issues/1407 for more info.",
-            function (config) {
-        config._d = new Date(config._i);
-    });
+        'moment construction falls back to js Date. This is ' +
+        'discouraged and will be removed in upcoming major ' +
+        'release. Please refer to ' +
+        'https://github.com/moment/moment/issues/1407 for more info.',
+        function (config) {
+            config._d = new Date(config._i);
+        }
+    );
+
+    // Pick a moment m from moments so that m[fn](other) is true for all
+    // other. This relies on the function fn to be transitive.
+    //
+    // moments should either be an array of moment objects or an array, whose
+    // first element is an array of moment objects.
+    function pickBy(fn, moments) {
+        var res, i;
+        if (moments.length === 1 && isArray(moments[0])) {
+            moments = moments[0];
+        }
+        if (!moments.length) {
+            return moment();
+        }
+        res = moments[0];
+        for (i = 1; i < moments.length; ++i) {
+            if (moments[i][fn](res)) {
+                res = moments[i];
+            }
+        }
+        return res;
+    }
+
+    moment.min = function () {
+        var args = [].slice.call(arguments, 0);
+
+        return pickBy('isBefore', args);
+    };
+
+    moment.max = function () {
+        var args = [].slice.call(arguments, 0);
+
+        return pickBy('isAfter', args);
+    };
 
     // creating with utc
-    moment.utc = function (input, format, lang, strict) {
+    moment.utc = function (input, format, locale, strict) {
         var c;
 
-        if (typeof(lang) === "boolean") {
-            strict = lang;
-            lang = undefined;
+        if (typeof(locale) === "boolean") {
+            strict = locale;
+            locale = undefined;
         }
         // object construction must be done this way.
         // https://github.com/moment/moment/issues/1423
@@ -10099,7 +10254,7 @@ module.exports={
         c._isAMomentObject = true;
         c._useUTC = true;
         c._isUTC = true;
-        c._l = lang;
+        c._l = locale;
         c._i = input;
         c._f = format;
         c._strict = strict;
@@ -10120,7 +10275,8 @@ module.exports={
             match = null,
             sign,
             ret,
-            parseIso;
+            parseIso,
+            diffRes;
 
         if (moment.isDuration(input)) {
             duration = {
@@ -10136,7 +10292,7 @@ module.exports={
                 duration.milliseconds = input;
             }
         } else if (!!(match = aspNetTimeSpanJsonRegex.exec(input))) {
-            sign = (match[1] === "-") ? -1 : 1;
+            sign = (match[1] === '-') ? -1 : 1;
             duration = {
                 y: 0,
                 d: toInt(match[DATE]) * sign,
@@ -10146,7 +10302,7 @@ module.exports={
                 ms: toInt(match[MILLISECOND]) * sign
             };
         } else if (!!(match = isoDurationRegex.exec(input))) {
-            sign = (match[1] === "-") ? -1 : 1;
+            sign = (match[1] === '-') ? -1 : 1;
             parseIso = function (inp) {
                 // We'd normally use ~~inp for this, but unfortunately it also
                 // converts floats to ints.
@@ -10164,12 +10320,19 @@ module.exports={
                 s: parseIso(match[7]),
                 w: parseIso(match[8])
             };
+        } else if (typeof duration === 'object' &&
+                ('from' in duration || 'to' in duration)) {
+            diffRes = momentsDifference(moment(duration.from), moment(duration.to));
+
+            duration = {};
+            duration.ms = diffRes.milliseconds;
+            duration.M = diffRes.months;
         }
 
         ret = new Duration(duration);
 
-        if (moment.isDuration(input) && input.hasOwnProperty('_lang')) {
-            ret._lang = input._lang;
+        if (moment.isDuration(input) && input.hasOwnProperty('_locale')) {
+            ret._locale = input._locale;
         }
 
         return ret;
@@ -10181,6 +10344,9 @@ module.exports={
     // default format
     moment.defaultFormat = isoFormat;
 
+    // constant that refers to the ISO standard
+    moment.ISO_8601 = function () {};
+
     // Plugins that add properties should also add the key here (null value),
     // so we can properly clone ourselves.
     moment.momentProperties = momentProperties;
@@ -10189,32 +10355,94 @@ module.exports={
     // It is intended to keep the offset in sync with the timezone.
     moment.updateOffset = function () {};
 
-    // This function will load languages and then set the global language.  If
-    // no arguments are passed in, it will simply return the current global
-    // language key.
-    moment.lang = function (key, values) {
-        var r;
-        if (!key) {
-            return moment.fn._lang._abbr;
+    // This function allows you to set a threshold for relative time strings
+    moment.relativeTimeThreshold = function (threshold, limit) {
+        if (relativeTimeThresholds[threshold] === undefined) {
+            return false;
         }
-        if (values) {
-            loadLang(normalizeLanguage(key), values);
-        } else if (values === null) {
-            unloadLang(key);
-            key = 'en';
-        } else if (!languages[key]) {
-            getLangDefinition(key);
+        if (limit === undefined) {
+            return relativeTimeThresholds[threshold];
         }
-        r = moment.duration.fn._lang = moment.fn._lang = getLangDefinition(key);
-        return r._abbr;
+        relativeTimeThresholds[threshold] = limit;
+        return true;
     };
 
-    // returns language data
-    moment.langData = function (key) {
-        if (key && key._lang && key._lang._abbr) {
-            key = key._lang._abbr;
+    moment.lang = deprecate(
+        "moment.lang is deprecated. Use moment.locale instead.",
+        function (key, value) {
+            return moment.locale(key, value);
         }
-        return getLangDefinition(key);
+    );
+
+    // This function will load locale and then set the global locale.  If
+    // no arguments are passed in, it will simply return the current global
+    // locale key.
+    moment.locale = function (key, values) {
+        var data;
+        if (key) {
+            if (typeof(values) !== "undefined") {
+                data = moment.defineLocale(key, values);
+            }
+            else {
+                data = moment.localeData(key);
+            }
+
+            if (data) {
+                moment.duration._locale = moment._locale = data;
+            }
+        }
+
+        return moment._locale._abbr;
+    };
+
+    moment.defineLocale = function (name, values) {
+        if (values !== null) {
+            values.abbr = name;
+            if (!locales[name]) {
+                locales[name] = new Locale();
+            }
+            locales[name].set(values);
+
+            // backwards compat for now: also set the locale
+            moment.locale(name);
+
+            return locales[name];
+        } else {
+            // useful for testing
+            delete locales[name];
+            return null;
+        }
+    };
+
+    moment.langData = deprecate(
+        "moment.langData is deprecated. Use moment.localeData instead.",
+        function (key) {
+            return moment.localeData(key);
+        }
+    );
+
+    // returns locale data
+    moment.localeData = function (key) {
+        var locale;
+
+        if (key && key._locale && key._locale._abbr) {
+            key = key._locale._abbr;
+        }
+
+        if (!key) {
+            return moment._locale;
+        }
+
+        if (!isArray(key)) {
+            //short-circuit everything else
+            locale = loadLocale(key);
+            if (locale) {
+                return locale;
+            }
+            key = [key];
+        }
+
+        return chooseLocale(key);
     };
 
     // compare moment object
@@ -10276,7 +10504,7 @@ module.exports={
         },
 
         toString : function () {
-            return this.clone().lang('en').format("ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
+            return this.clone().locale('en').format("ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
         },
 
         toDate : function () {
@@ -10310,7 +10538,6 @@ module.exports={
         },
 
         isDSTShifted : function () {
-
             if (this._a) {
                 return this.isValid() && compareArrays(this._a, (this._isUTC ? moment.utc(this._a) : moment(this._a)).toArray()) > 0;
             }
@@ -10326,44 +10553,30 @@ module.exports={
             return this._pf.overflow;
         },
 
-        utc : function () {
-            return this.zone(0);
+        utc : function (keepLocalTime) {
+            return this.zone(0, keepLocalTime);
         },
 
-        local : function () {
-            this.zone(0);
-            this._isUTC = false;
+        local : function (keepLocalTime) {
+            if (this._isUTC) {
+                this.zone(0, keepLocalTime);
+                this._isUTC = false;
+
+                if (keepLocalTime) {
+                    this.add(this._d.getTimezoneOffset(), 'm');
+                }
+            }
             return this;
         },
 
         format : function (inputString) {
             var output = formatMoment(this, inputString || moment.defaultFormat);
-            return this.lang().postformat(output);
+            return this.localeData().postformat(output);
         },
 
-        add : function (input, val) {
-            var dur;
-            // switch args to support add('s', 1) and add(1, 's')
-            if (typeof input === 'string') {
-                dur = moment.duration(+val, input);
-            } else {
-                dur = moment.duration(input, val);
-            }
-            addOrSubtractDurationFromMoment(this, dur, 1);
-            return this;
-        },
+        add : createAdder(1, 'add'),
 
-        subtract : function (input, val) {
-            var dur;
-            // switch args to support subtract('s', 1) and subtract(1, 's')
-            if (typeof input === 'string') {
-                dur = moment.duration(+val, input);
-            } else {
-                dur = moment.duration(input, val);
-            }
-            addOrSubtractDurationFromMoment(this, dur, -1);
-            return this;
-        },
+        subtract : createAdder(-1, 'subtract'),
 
         diff : function (input, units, asFloat) {
             var that = makeAs(input, this),
@@ -10400,17 +10613,18 @@ module.exports={
         },
 
         from : function (time, withoutSuffix) {
-            return moment.duration(this.diff(time)).lang(this.lang()._abbr).humanize(!withoutSuffix);
+            return moment.duration({to: this, from: time}).locale(this.locale()).humanize(!withoutSuffix);
         },
 
         fromNow : function (withoutSuffix) {
             return this.from(moment(), withoutSuffix);
         },
 
-        calendar : function () {
+        calendar : function (time) {
             // We want to compare the start of today, vs this.
             // Getting start-of-today depends on whether we're zone'd or not.
-            var sod = makeAs(moment(), this).startOf('day'),
+            var now = time || moment(),
+                sod = makeAs(now, this).startOf('day'),
                 diff = this.diff(sod, 'days', true),
                 format = diff < -6 ? 'sameElse' :
                     diff < -1 ? 'lastWeek' :
@@ -10418,7 +10632,7 @@ module.exports={
                     diff < 1 ? 'sameDay' :
                     diff < 2 ? 'nextDay' :
                     diff < 7 ? 'nextWeek' : 'sameElse';
-            return this.format(this.lang().calendar(format, this));
+            return this.format(this.localeData().calendar(format, this));
         },
 
         isLeapYear : function () {
@@ -10433,8 +10647,8 @@ module.exports={
         day : function (input) {
             var day = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
             if (input != null) {
-                input = parseWeekday(input, this.lang());
-                return this.add({ d : input - day });
+                input = parseWeekday(input, this.localeData());
+                return this.add(input - day, 'd');
             } else {
                 return day;
             }
@@ -10442,7 +10656,7 @@ module.exports={
 
         month : makeAccessor('Month', true),
 
-        startOf: function (units) {
+        startOf : function (units) {
             units = normalizeUnits(units);
             // the following switch intentionally omits break keywords
             // to utilize falling through the cases.
@@ -10487,7 +10701,7 @@ module.exports={
 
         endOf: function (units) {
             units = normalizeUnits(units);
-            return this.startOf(units).add((units === 'isoWeek' ? 'week' : units), 1).subtract('ms', 1);
+            return this.startOf(units).add(1, (units === 'isoWeek' ? 'week' : units)).subtract(1, 'ms');
         },
 
         isAfter: function (input, units) {
@@ -10505,39 +10719,52 @@ module.exports={
             return +this.clone().startOf(units) === +makeAs(input, this).startOf(units);
         },
 
-        min: function (other) {
-            other = moment.apply(null, arguments);
-            return other < this ? this : other;
-        },
+        min: deprecate(
+                 'moment().min is deprecated, use moment.min instead. https://github.com/moment/moment/issues/1548',
+                 function (other) {
+                     other = moment.apply(null, arguments);
+                     return other < this ? this : other;
+                 }
+         ),
 
-        max: function (other) {
-            other = moment.apply(null, arguments);
-            return other > this ? this : other;
-        },
+        max: deprecate(
+                'moment().max is deprecated, use moment.max instead. https://github.com/moment/moment/issues/1548',
+                function (other) {
+                    other = moment.apply(null, arguments);
+                    return other > this ? this : other;
+                }
+        ),
 
-        // keepTime = true means only change the timezone, without affecting
-        // the local hour. So 5:31:26 +0300 --[zone(2, true)]--> 5:31:26 +0200
-        // It is possible that 5:31:26 doesn't exist int zone +0200, so we
-        // adjust the time as needed, to be valid.
+        // keepLocalTime = true means only change the timezone, without
+        // affecting the local hour. So 5:31:26 +0300 --[zone(2, true)]-->
+        // 5:31:26 +0200 It is possible that 5:31:26 doesn't exist int zone
+        // +0200, so we adjust the time as needed, to be valid.
         //
         // Keeping the time actually adds/subtracts (one hour)
         // from the actual represented time. That is why we call updateOffset
         // a second time. In case it wants us to change the offset again
         // _changeInProgress == true case, then we have to adjust, because
         // there is no such time in the given timezone.
-        zone : function (input, keepTime) {
-            var offset = this._offset || 0;
+        zone : function (input, keepLocalTime) {
+            var offset = this._offset || 0,
+                localAdjust;
             if (input != null) {
-                if (typeof input === "string") {
+                if (typeof input === 'string') {
                     input = timezoneMinutesFromString(input);
                 }
                 if (Math.abs(input) < 16) {
                     input = input * 60;
                 }
+                if (!this._isUTC && keepLocalTime) {
+                    localAdjust = this._d.getTimezoneOffset();
+                }
                 this._offset = input;
                 this._isUTC = true;
+                if (localAdjust != null) {
+                    this.subtract(localAdjust, 'm');
+                }
                 if (offset !== input) {
-                    if (!keepTime || this._changeInProgress) {
+                    if (!keepLocalTime || this._changeInProgress) {
                         addOrSubtractDurationFromMoment(this,
                                 moment.duration(offset - input, 'm'), 1, false);
                     } else if (!this._changeInProgress) {
@@ -10553,11 +10780,11 @@ module.exports={
         },
 
         zoneAbbr : function () {
-            return this._isUTC ? "UTC" : "";
+            return this._isUTC ? 'UTC' : '';
         },
 
         zoneName : function () {
-            return this._isUTC ? "Coordinated Universal Time" : "";
+            return this._isUTC ? 'Coordinated Universal Time' : '';
         },
 
         parseZone : function () {
@@ -10586,7 +10813,7 @@ module.exports={
 
         dayOfYear : function (input) {
             var dayOfYear = round((moment(this).startOf('day') - moment(this).startOf('year')) / 864e5) + 1;
-            return input == null ? dayOfYear : this.add("d", (input - dayOfYear));
+            return input == null ? dayOfYear : this.add((input - dayOfYear), 'd');
         },
 
         quarter : function (input) {
@@ -10594,28 +10821,28 @@ module.exports={
         },
 
         weekYear : function (input) {
-            var year = weekOfYear(this, this.lang()._week.dow, this.lang()._week.doy).year;
-            return input == null ? year : this.add("y", (input - year));
+            var year = weekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).year;
+            return input == null ? year : this.add((input - year), 'y');
         },
 
         isoWeekYear : function (input) {
             var year = weekOfYear(this, 1, 4).year;
-            return input == null ? year : this.add("y", (input - year));
+            return input == null ? year : this.add((input - year), 'y');
         },
 
         week : function (input) {
-            var week = this.lang().week(this);
-            return input == null ? week : this.add("d", (input - week) * 7);
+            var week = this.localeData().week(this);
+            return input == null ? week : this.add((input - week) * 7, 'd');
         },
 
         isoWeek : function (input) {
             var week = weekOfYear(this, 1, 4).week;
-            return input == null ? week : this.add("d", (input - week) * 7);
+            return input == null ? week : this.add((input - week) * 7, 'd');
         },
 
         weekday : function (input) {
-            var weekday = (this.day() + 7 - this.lang()._week.dow) % 7;
-            return input == null ? weekday : this.add("d", input - weekday);
+            var weekday = (this.day() + 7 - this.localeData()._week.dow) % 7;
+            return input == null ? weekday : this.add(input - weekday, 'd');
         },
 
         isoWeekday : function (input) {
@@ -10630,7 +10857,7 @@ module.exports={
         },
 
         weeksInYear : function () {
-            var weekInfo = this._lang._week;
+            var weekInfo = this.localeData()._week;
             return weeksInYear(this.year(), weekInfo.dow, weekInfo.doy);
         },
 
@@ -10647,16 +10874,32 @@ module.exports={
             return this;
         },
 
-        // If passed a language key, it will set the language for this
-        // instance.  Otherwise, it will return the language configuration
+        // If passed a locale key, it will set the locale for this
+        // instance.  Otherwise, it will return the locale configuration
         // variables for this instance.
-        lang : function (key) {
+        locale : function (key) {
             if (key === undefined) {
-                return this._lang;
+                return this._locale._abbr;
             } else {
-                this._lang = getLangDefinition(key);
+                this._locale = moment.localeData(key);
                 return this;
             }
+        },
+
+        lang : deprecate(
+            "moment().lang() is deprecated. Use moment().localeData() instead.",
+            function (key) {
+                if (key === undefined) {
+                    return this.localeData();
+                } else {
+                    this._locale = moment.localeData(key);
+                    return this;
+                }
+            }
+        ),
+
+        localeData : function () {
+            return this._locale;
         }
     });
 
@@ -10665,7 +10908,7 @@ module.exports={
 
         // TODO: Move this out of here!
         if (typeof value === 'string') {
-            value = mom.lang().monthsParse(value);
+            value = mom.localeData().monthsParse(value);
             // TODO: Another silent failure?
             if (typeof value !== 'number') {
                 return mom;
@@ -10712,9 +10955,9 @@ module.exports={
     moment.fn.hour = moment.fn.hours = makeAccessor('Hours', true);
     // moment.fn.month is defined separately
     moment.fn.date = makeAccessor('Date', true);
-    moment.fn.dates = deprecate("dates accessor is deprecated. Use date instead.", makeAccessor('Date', true));
+    moment.fn.dates = deprecate('dates accessor is deprecated. Use date instead.', makeAccessor('Date', true));
     moment.fn.year = makeAccessor('FullYear', true);
-    moment.fn.years = deprecate("years accessor is deprecated. Use year instead.", makeAccessor('FullYear', true));
+    moment.fn.years = deprecate('years accessor is deprecated. Use year instead.', makeAccessor('FullYear', true));
 
     // add plural methods
     moment.fn.days = moment.fn.day;
@@ -10731,6 +10974,17 @@ module.exports={
     ************************************/
 
 
+    function daysToYears (days) {
+        // 400 years have 146097 days (taking into account leap year rules)
+        return days * 400 / 146097;
+    }
+
+    function yearsToDays (years) {
+        // years * 365 + absRound(years / 4) -
+        //     absRound(years / 100) + absRound(years / 400);
+        return years * 146097 / 400;
+    }
+
     extend(moment.duration.fn = Duration.prototype, {
 
         _bubble : function () {
@@ -10738,7 +10992,7 @@ module.exports={
                 days = this._days,
                 months = this._months,
                 data = this._data,
-                seconds, minutes, hours, years;
+                seconds, minutes, hours, years = 0;
 
             // The following code bubbles up values, see the tests for
             // examples of what that means.
@@ -10754,13 +11008,38 @@ module.exports={
             data.hours = hours % 24;
 
             days += absRound(hours / 24);
-            data.days = days % 30;
 
+            // Accurately convert days to years, assume start from year 0.
+            years = absRound(daysToYears(days));
+            days -= absRound(yearsToDays(years));
+
+            // 30 days to a month
+            // TODO (iskren): Use anchor date (like 1st Jan) to compute this.
             months += absRound(days / 30);
-            data.months = months % 12;
+            days %= 30;
 
-            years = absRound(months / 12);
+            // 12 months -> 1 year
+            years += absRound(months / 12);
+            months %= 12;
+
+            data.days = days;
+            data.months = months;
             data.years = years;
+        },
+
+        abs : function () {
+            this._milliseconds = Math.abs(this._milliseconds);
+            this._days = Math.abs(this._days);
+            this._months = Math.abs(this._months);
+
+            this._data.milliseconds = Math.abs(this._data.milliseconds);
+            this._data.seconds = Math.abs(this._data.seconds);
+            this._data.minutes = Math.abs(this._data.minutes);
+            this._data.hours = Math.abs(this._data.hours);
+            this._data.months = Math.abs(this._data.months);
+            this._data.years = Math.abs(this._data.years);
+
+            return this;
         },
 
         weeks : function () {
@@ -10775,14 +11054,13 @@ module.exports={
         },
 
         humanize : function (withSuffix) {
-            var difference = +this,
-                output = relativeTime(difference, !withSuffix, this.lang());
+            var output = relativeTime(this, !withSuffix, this.localeData());
 
             if (withSuffix) {
-                output = this.lang().pastFuture(difference, output);
+                output = this.localeData().pastFuture(+this, output);
             }
 
-            return this.lang().postformat(output);
+            return this.localeData().postformat(output);
         },
 
         add : function (input, val) {
@@ -10816,13 +11094,39 @@ module.exports={
         },
 
         as : function (units) {
+            var days, months;
             units = normalizeUnits(units);
-            return this['as' + units.charAt(0).toUpperCase() + units.slice(1) + 's']();
+
+            days = this._days + this._milliseconds / 864e5;
+            if (units === 'month' || units === 'year') {
+                months = this._months + daysToYears(days) * 12;
+                return units === 'month' ? months : months / 12;
+            } else {
+                days += yearsToDays(this._months / 12);
+                switch (units) {
+                    case 'week': return days / 7;
+                    case 'day': return days;
+                    case 'hour': return days * 24;
+                    case 'minute': return days * 24 * 60;
+                    case 'second': return days * 24 * 60 * 60;
+                    case 'millisecond': return days * 24 * 60 * 60 * 1000;
+                    default: throw new Error('Unknown unit ' + units);
+                }
+            }
         },
 
         lang : moment.fn.lang,
+        locale : moment.fn.locale,
 
-        toIsoString : function () {
+        toIsoString : deprecate(
+            "toIsoString() is deprecated. Please use toISOString() instead " +
+            "(notice the capitals)",
+            function () {
+                return this.toISOString();
+            }
+        ),
+
+        toISOString : function () {
             // inspired by https://github.com/dordille/moment-isoduration/blob/master/moment.isoduration.js
             var years = Math.abs(this.years()),
                 months = Math.abs(this.months()),
@@ -10846,6 +11150,10 @@ module.exports={
                 (hours ? hours + 'H' : '') +
                 (minutes ? minutes + 'M' : '') +
                 (seconds ? seconds + 'S' : '');
+        },
+
+        localeData : function () {
+            return this._locale;
         }
     });
 
@@ -10855,32 +11163,44 @@ module.exports={
         };
     }
 
-    function makeDurationAsGetter(name, factor) {
-        moment.duration.fn['as' + name] = function () {
-            return +this / factor;
-        };
-    }
-
     for (i in unitMillisecondFactors) {
         if (unitMillisecondFactors.hasOwnProperty(i)) {
-            makeDurationAsGetter(i, unitMillisecondFactors[i]);
             makeDurationGetter(i.toLowerCase());
         }
     }
 
-    makeDurationAsGetter('Weeks', 6048e5);
+    moment.duration.fn.asMilliseconds = function () {
+        return this.as('ms');
+    };
+    moment.duration.fn.asSeconds = function () {
+        return this.as('s');
+    };
+    moment.duration.fn.asMinutes = function () {
+        return this.as('m');
+    };
+    moment.duration.fn.asHours = function () {
+        return this.as('h');
+    };
+    moment.duration.fn.asDays = function () {
+        return this.as('d');
+    };
+    moment.duration.fn.asWeeks = function () {
+        return this.as('weeks');
+    };
     moment.duration.fn.asMonths = function () {
-        return (+this - this.years() * 31536e6) / 2592e6 + this.years() * 12;
+        return this.as('M');
+    };
+    moment.duration.fn.asYears = function () {
+        return this.as('y');
     };
 
-
     /************************************
-        Default Lang
+        Default Locale
     ************************************/
 
 
-    // Set default language, other languages will inherit from English.
-    moment.lang('en', {
+    // Set default locale, other locale will inherit from English.
+    moment.locale('en', {
         ordinal : function (number) {
             var b = number % 10,
                 output = (toInt(number % 100 / 10) === 1) ? 'th' :
@@ -10891,7 +11211,7 @@ module.exports={
         }
     });
 
-    /* EMBED_LANGUAGES */
+    /* EMBED_LOCALES */
 
     /************************************
         Exposing Moment
@@ -10905,9 +11225,9 @@ module.exports={
         oldGlobalMoment = globalScope.moment;
         if (shouldDeprecate) {
             globalScope.moment = deprecate(
-                    "Accessing Moment through the global scope is " +
-                    "deprecated, and will be removed in an upcoming " +
-                    "release.",
+                    'Accessing Moment through the global scope is ' +
+                    'deprecated, and will be removed in an upcoming ' +
+                    'release.',
                     moment);
         } else {
             globalScope.moment = moment;
@@ -10917,8 +11237,8 @@ module.exports={
     // CommonJS module is defined
     if (hasModule) {
         module.exports = moment;
-    } else if (typeof define === "function" && define.amd) {
-        define("moment", function (require, exports, module) {
+    } else if (typeof define === 'function' && define.amd) {
+        define('moment', function (require, exports, module) {
             if (module.config && module.config() && module.config().noGlobal === true) {
                 // release the global variable
                 globalScope.moment = oldGlobalMoment;
@@ -10932,7 +11252,7 @@ module.exports={
     }
 }).call(this);
 
-}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],10:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -12318,8 +12638,8 @@ var DOMProperty = {
 
 module.exports = DOMProperty;
 
-}).call(this,require("UPikzY"))
-},{"./invariant":121,"UPikzY":145}],18:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./invariant":121,"_process":145}],18:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -12503,8 +12823,8 @@ var DOMPropertyOperations = {
 
 module.exports = DOMPropertyOperations;
 
-}).call(this,require("UPikzY"))
-},{"./DOMProperty":17,"./escapeTextForBrowser":107,"./memoizeStringOnly":129,"./warning":143,"UPikzY":145}],19:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./DOMProperty":17,"./escapeTextForBrowser":107,"./memoizeStringOnly":129,"./warning":143,"_process":145}],19:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -12694,8 +13014,8 @@ var Danger = {
 
 module.exports = Danger;
 
-}).call(this,require("UPikzY"))
-},{"./ExecutionEnvironment":29,"./createNodesFromMarkup":102,"./emptyFunction":105,"./getMarkupWrap":114,"./invariant":121,"UPikzY":145}],20:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ExecutionEnvironment":29,"./createNodesFromMarkup":102,"./emptyFunction":105,"./getMarkupWrap":114,"./invariant":121,"_process":145}],20:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -13236,8 +13556,8 @@ var EventListener = {
 
 module.exports = EventListener;
 
-}).call(this,require("UPikzY"))
-},{"./emptyFunction":105,"UPikzY":145}],25:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./emptyFunction":105,"_process":145}],25:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -13535,8 +13855,8 @@ var EventPluginHub = {
 
 module.exports = EventPluginHub;
 
-}).call(this,require("UPikzY"))
-},{"./EventPluginRegistry":26,"./EventPluginUtils":27,"./ExecutionEnvironment":29,"./accumulate":96,"./forEachAccumulated":110,"./invariant":121,"./isEventSupported":122,"./monitorCodeUse":134,"UPikzY":145}],26:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./EventPluginRegistry":26,"./EventPluginUtils":27,"./ExecutionEnvironment":29,"./accumulate":96,"./forEachAccumulated":110,"./invariant":121,"./isEventSupported":122,"./monitorCodeUse":134,"_process":145}],26:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -13820,8 +14140,8 @@ var EventPluginRegistry = {
 
 module.exports = EventPluginRegistry;
 
-}).call(this,require("UPikzY"))
-},{"./invariant":121,"UPikzY":145}],27:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./invariant":121,"_process":145}],27:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -14038,8 +14358,8 @@ var EventPluginUtils = {
 
 module.exports = EventPluginUtils;
 
-}).call(this,require("UPikzY"))
-},{"./EventConstants":23,"./invariant":121,"UPikzY":145}],28:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./EventConstants":23,"./invariant":121,"_process":145}],28:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -14185,8 +14505,8 @@ var EventPropagators = {
 
 module.exports = EventPropagators;
 
-}).call(this,require("UPikzY"))
-},{"./EventConstants":23,"./EventPluginHub":25,"./accumulate":96,"./forEachAccumulated":110,"UPikzY":145}],29:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./EventConstants":23,"./EventPluginHub":25,"./accumulate":96,"./forEachAccumulated":110,"_process":145}],29:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -14395,8 +14715,8 @@ var LinkedValueUtils = {
 
 module.exports = LinkedValueUtils;
 
-}).call(this,require("UPikzY"))
-},{"./ReactPropTypes":73,"./invariant":121,"./warning":143,"UPikzY":145}],31:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactPropTypes":73,"./invariant":121,"./warning":143,"_process":145}],31:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -14583,8 +14903,8 @@ var PooledClass = {
 
 module.exports = PooledClass;
 
-}).call(this,require("UPikzY"))
-},{"./invariant":121,"UPikzY":145}],33:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./invariant":121,"_process":145}],33:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -14684,8 +15004,8 @@ React.version = '0.10.0';
 
 module.exports = React;
 
-}).call(this,require("UPikzY"))
-},{"./DOMPropertyOperations":18,"./EventPluginUtils":27,"./ExecutionEnvironment":29,"./ReactChildren":35,"./ReactComponent":36,"./ReactCompositeComponent":38,"./ReactContext":39,"./ReactCurrentOwner":40,"./ReactDOM":41,"./ReactDOMComponent":43,"./ReactDefaultInjection":53,"./ReactInstanceHandles":62,"./ReactMount":64,"./ReactMultiChild":66,"./ReactPerf":69,"./ReactPropTypes":73,"./ReactServerRendering":77,"./ReactTextComponent":79,"./onlyChild":137,"UPikzY":145}],34:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./DOMPropertyOperations":18,"./EventPluginUtils":27,"./ExecutionEnvironment":29,"./ReactChildren":35,"./ReactComponent":36,"./ReactCompositeComponent":38,"./ReactContext":39,"./ReactCurrentOwner":40,"./ReactDOM":41,"./ReactDOMComponent":43,"./ReactDefaultInjection":53,"./ReactInstanceHandles":62,"./ReactMount":64,"./ReactMultiChild":66,"./ReactPerf":69,"./ReactPropTypes":73,"./ReactServerRendering":77,"./ReactTextComponent":79,"./onlyChild":137,"_process":145}],34:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -14730,8 +15050,8 @@ var ReactBrowserComponentMixin = {
 
 module.exports = ReactBrowserComponentMixin;
 
-}).call(this,require("UPikzY"))
-},{"./ReactMount":64,"./invariant":121,"UPikzY":145}],35:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactMount":64,"./invariant":121,"_process":145}],35:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -14866,8 +15186,8 @@ var ReactChildren = {
 
 module.exports = ReactChildren;
 
-}).call(this,require("UPikzY"))
-},{"./PooledClass":32,"./invariant":121,"./traverseAllChildren":142,"UPikzY":145}],36:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./PooledClass":32,"./invariant":121,"./traverseAllChildren":142,"_process":145}],36:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -15465,8 +15785,8 @@ var ReactComponent = {
 
 module.exports = ReactComponent;
 
-}).call(this,require("UPikzY"))
-},{"./ReactCurrentOwner":40,"./ReactOwner":68,"./ReactUpdates":80,"./invariant":121,"./keyMirror":127,"./merge":130,"./monitorCodeUse":134,"UPikzY":145}],37:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactCurrentOwner":40,"./ReactOwner":68,"./ReactUpdates":80,"./invariant":121,"./keyMirror":127,"./merge":130,"./monitorCodeUse":134,"_process":145}],37:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -15593,8 +15913,8 @@ var ReactComponentBrowserEnvironment = {
 
 module.exports = ReactComponentBrowserEnvironment;
 
-}).call(this,require("UPikzY"))
-},{"./ReactDOMIDOperations":45,"./ReactMarkupChecksum":63,"./ReactMount":64,"./ReactPerf":69,"./ReactReconcileTransaction":75,"./getReactRootElementInContainer":116,"./invariant":121,"UPikzY":145}],38:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactDOMIDOperations":45,"./ReactMarkupChecksum":63,"./ReactMount":64,"./ReactPerf":69,"./ReactReconcileTransaction":75,"./getReactRootElementInContainer":116,"./invariant":121,"_process":145}],38:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -17184,8 +17504,8 @@ var ReactCompositeComponent = {
 
 module.exports = ReactCompositeComponent;
 
-}).call(this,require("UPikzY"))
-},{"./ReactComponent":36,"./ReactContext":39,"./ReactCurrentOwner":40,"./ReactErrorUtils":56,"./ReactOwner":68,"./ReactPerf":69,"./ReactPropTransferer":70,"./ReactPropTypeLocationNames":71,"./ReactPropTypeLocations":72,"./ReactUpdates":80,"./instantiateReactComponent":120,"./invariant":121,"./keyMirror":127,"./merge":130,"./mixInto":133,"./monitorCodeUse":134,"./objMap":135,"./shouldUpdateReactComponent":140,"./warning":143,"UPikzY":145}],39:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactComponent":36,"./ReactContext":39,"./ReactCurrentOwner":40,"./ReactErrorUtils":56,"./ReactOwner":68,"./ReactPerf":69,"./ReactPropTransferer":70,"./ReactPropTypeLocationNames":71,"./ReactPropTypeLocations":72,"./ReactUpdates":80,"./instantiateReactComponent":120,"./invariant":121,"./keyMirror":127,"./merge":130,"./mixInto":133,"./monitorCodeUse":134,"./objMap":135,"./shouldUpdateReactComponent":140,"./warning":143,"_process":145}],39:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -17994,8 +18314,8 @@ mixInto(ReactDOMComponent, ReactBrowserComponentMixin);
 
 module.exports = ReactDOMComponent;
 
-}).call(this,require("UPikzY"))
-},{"./CSSPropertyOperations":12,"./DOMProperty":17,"./DOMPropertyOperations":18,"./ReactBrowserComponentMixin":34,"./ReactComponent":36,"./ReactEventEmitter":57,"./ReactMount":64,"./ReactMultiChild":66,"./ReactPerf":69,"./escapeTextForBrowser":107,"./invariant":121,"./keyOf":128,"./merge":130,"./mixInto":133,"UPikzY":145}],44:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./CSSPropertyOperations":12,"./DOMProperty":17,"./DOMPropertyOperations":18,"./ReactBrowserComponentMixin":34,"./ReactComponent":36,"./ReactEventEmitter":57,"./ReactMount":64,"./ReactMultiChild":66,"./ReactPerf":69,"./escapeTextForBrowser":107,"./invariant":121,"./keyOf":128,"./merge":130,"./mixInto":133,"_process":145}],44:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -18280,8 +18600,8 @@ var ReactDOMIDOperations = {
 
 module.exports = ReactDOMIDOperations;
 
-}).call(this,require("UPikzY"))
-},{"./CSSPropertyOperations":12,"./DOMChildrenOperations":16,"./DOMPropertyOperations":18,"./ReactMount":64,"./ReactPerf":69,"./invariant":121,"UPikzY":145}],46:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./CSSPropertyOperations":12,"./DOMChildrenOperations":16,"./DOMPropertyOperations":18,"./ReactMount":64,"./ReactPerf":69,"./invariant":121,"_process":145}],46:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -18529,8 +18849,8 @@ var ReactDOMInput = ReactCompositeComponent.createClass({
 
 module.exports = ReactDOMInput;
 
-}).call(this,require("UPikzY"))
-},{"./AutoFocusMixin":10,"./DOMPropertyOperations":18,"./LinkedValueUtils":30,"./ReactBrowserComponentMixin":34,"./ReactCompositeComponent":38,"./ReactDOM":41,"./ReactMount":64,"./invariant":121,"./merge":130,"UPikzY":145}],48:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./AutoFocusMixin":10,"./DOMPropertyOperations":18,"./LinkedValueUtils":30,"./ReactBrowserComponentMixin":34,"./ReactCompositeComponent":38,"./ReactDOM":41,"./ReactMount":64,"./invariant":121,"./merge":130,"_process":145}],48:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -18588,8 +18908,8 @@ var ReactDOMOption = ReactCompositeComponent.createClass({
 
 module.exports = ReactDOMOption;
 
-}).call(this,require("UPikzY"))
-},{"./ReactBrowserComponentMixin":34,"./ReactCompositeComponent":38,"./ReactDOM":41,"./warning":143,"UPikzY":145}],49:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactBrowserComponentMixin":34,"./ReactCompositeComponent":38,"./ReactDOM":41,"./warning":143,"_process":145}],49:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -18772,8 +19092,8 @@ var ReactDOMSelect = ReactCompositeComponent.createClass({
 
 module.exports = ReactDOMSelect;
 
-}).call(this,require("UPikzY"))
-},{"./AutoFocusMixin":10,"./LinkedValueUtils":30,"./ReactBrowserComponentMixin":34,"./ReactCompositeComponent":38,"./ReactDOM":41,"./invariant":121,"./merge":130,"UPikzY":145}],50:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./AutoFocusMixin":10,"./LinkedValueUtils":30,"./ReactBrowserComponentMixin":34,"./ReactCompositeComponent":38,"./ReactDOM":41,"./invariant":121,"./merge":130,"_process":145}],50:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -19111,8 +19431,8 @@ var ReactDOMTextarea = ReactCompositeComponent.createClass({
 
 module.exports = ReactDOMTextarea;
 
-}).call(this,require("UPikzY"))
-},{"./AutoFocusMixin":10,"./DOMPropertyOperations":18,"./LinkedValueUtils":30,"./ReactBrowserComponentMixin":34,"./ReactCompositeComponent":38,"./ReactDOM":41,"./invariant":121,"./merge":130,"./warning":143,"UPikzY":145}],52:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./AutoFocusMixin":10,"./DOMPropertyOperations":18,"./LinkedValueUtils":30,"./ReactBrowserComponentMixin":34,"./ReactCompositeComponent":38,"./ReactDOM":41,"./invariant":121,"./merge":130,"./warning":143,"_process":145}],52:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -19317,8 +19637,8 @@ module.exports = {
   inject: inject
 };
 
-}).call(this,require("UPikzY"))
-},{"./ChangeEventPlugin":13,"./ClientReactRootIndex":14,"./CompositionEventPlugin":15,"./DefaultDOMPropertyConfig":20,"./DefaultEventPluginOrder":21,"./EnterLeaveEventPlugin":22,"./ExecutionEnvironment":29,"./MobileSafariClickEventPlugin":31,"./ReactBrowserComponentMixin":34,"./ReactComponentBrowserEnvironment":37,"./ReactDOM":41,"./ReactDOMButton":42,"./ReactDOMForm":44,"./ReactDOMImg":46,"./ReactDOMInput":47,"./ReactDOMOption":48,"./ReactDOMSelect":49,"./ReactDOMTextarea":51,"./ReactDefaultBatchingStrategy":52,"./ReactDefaultPerf":54,"./ReactEventTopLevelCallback":59,"./ReactInjection":60,"./ReactInstanceHandles":62,"./ReactMount":64,"./SelectEventPlugin":81,"./ServerReactRootIndex":82,"./SimpleEventPlugin":83,"./createFullPageComponent":101,"UPikzY":145}],54:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ChangeEventPlugin":13,"./ClientReactRootIndex":14,"./CompositionEventPlugin":15,"./DefaultDOMPropertyConfig":20,"./DefaultEventPluginOrder":21,"./EnterLeaveEventPlugin":22,"./ExecutionEnvironment":29,"./MobileSafariClickEventPlugin":31,"./ReactBrowserComponentMixin":34,"./ReactComponentBrowserEnvironment":37,"./ReactDOM":41,"./ReactDOMButton":42,"./ReactDOMForm":44,"./ReactDOMImg":46,"./ReactDOMInput":47,"./ReactDOMOption":48,"./ReactDOMSelect":49,"./ReactDOMTextarea":51,"./ReactDefaultBatchingStrategy":52,"./ReactDefaultPerf":54,"./ReactEventTopLevelCallback":59,"./ReactInjection":60,"./ReactInstanceHandles":62,"./ReactMount":64,"./SelectEventPlugin":81,"./ServerReactRootIndex":82,"./SimpleEventPlugin":83,"./createFullPageComponent":101,"_process":145}],54:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -20146,8 +20466,8 @@ var ReactEventEmitter = merge(ReactEventEmitterMixin, {
 
 module.exports = ReactEventEmitter;
 
-}).call(this,require("UPikzY"))
-},{"./EventConstants":23,"./EventListener":24,"./EventPluginHub":25,"./EventPluginRegistry":26,"./ExecutionEnvironment":29,"./ReactEventEmitterMixin":58,"./ViewportMetrics":95,"./invariant":121,"./isEventSupported":122,"./merge":130,"UPikzY":145}],58:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./EventConstants":23,"./EventListener":24,"./EventPluginHub":25,"./EventPluginRegistry":26,"./ExecutionEnvironment":29,"./ReactEventEmitterMixin":58,"./ViewportMetrics":95,"./invariant":121,"./isEventSupported":122,"./merge":130,"_process":145}],58:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -20886,8 +21206,8 @@ var ReactInstanceHandles = {
 
 module.exports = ReactInstanceHandles;
 
-}).call(this,require("UPikzY"))
-},{"./ReactRootIndex":76,"./invariant":121,"UPikzY":145}],63:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactRootIndex":76,"./invariant":121,"_process":145}],63:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -21594,8 +21914,8 @@ var ReactMount = {
 
 module.exports = ReactMount;
 
-}).call(this,require("UPikzY"))
-},{"./DOMProperty":17,"./ReactEventEmitter":57,"./ReactInstanceHandles":62,"./ReactPerf":69,"./containsNode":98,"./getReactRootElementInContainer":116,"./instantiateReactComponent":120,"./invariant":121,"./shouldUpdateReactComponent":140,"UPikzY":145}],65:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./DOMProperty":17,"./ReactEventEmitter":57,"./ReactInstanceHandles":62,"./ReactPerf":69,"./containsNode":98,"./getReactRootElementInContainer":116,"./instantiateReactComponent":120,"./invariant":121,"./shouldUpdateReactComponent":140,"_process":145}],65:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -22328,8 +22648,8 @@ var ReactOwner = {
 
 module.exports = ReactOwner;
 
-}).call(this,require("UPikzY"))
-},{"./emptyObject":106,"./invariant":121,"UPikzY":145}],69:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./emptyObject":106,"./invariant":121,"_process":145}],69:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -22417,8 +22737,8 @@ function _noMeasure(objName, fnName, func) {
 
 module.exports = ReactPerf;
 
-}).call(this,require("UPikzY"))
-},{"UPikzY":145}],70:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"_process":145}],70:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -22568,8 +22888,8 @@ var ReactPropTransferer = {
 
 module.exports = ReactPropTransferer;
 
-}).call(this,require("UPikzY"))
-},{"./emptyFunction":105,"./invariant":121,"./joinClasses":126,"./merge":130,"UPikzY":145}],71:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./emptyFunction":105,"./invariant":121,"./joinClasses":126,"./merge":130,"_process":145}],71:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -22603,8 +22923,8 @@ if ("production" !== process.env.NODE_ENV) {
 
 module.exports = ReactPropTypeLocationNames;
 
-}).call(this,require("UPikzY"))
-},{"UPikzY":145}],72:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"_process":145}],72:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -22997,8 +23317,8 @@ function createChainableTypeChecker(validate) {
 
 module.exports = Props;
 
-}).call(this,require("UPikzY"))
-},{"./ReactComponent":36,"./ReactPropTypeLocationNames":71,"./createObjectFrom":103,"./warning":143,"UPikzY":145}],74:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactComponent":36,"./ReactPropTypeLocationNames":71,"./createObjectFrom":103,"./warning":143,"_process":145}],74:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -23375,8 +23695,8 @@ module.exports = {
   renderComponentToStaticMarkup: renderComponentToStaticMarkup
 };
 
-}).call(this,require("UPikzY"))
-},{"./ReactComponent":36,"./ReactInstanceHandles":62,"./ReactMarkupChecksum":63,"./ReactServerRenderingTransaction":78,"./instantiateReactComponent":120,"./invariant":121,"UPikzY":145}],78:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactComponent":36,"./ReactInstanceHandles":62,"./ReactMarkupChecksum":63,"./ReactServerRenderingTransaction":78,"./instantiateReactComponent":120,"./invariant":121,"_process":145}],78:[function(require,module,exports){
 /**
  * Copyright 2014 Facebook, Inc.
  *
@@ -23768,8 +24088,8 @@ var ReactUpdates = {
 
 module.exports = ReactUpdates;
 
-}).call(this,require("UPikzY"))
-},{"./ReactPerf":69,"./invariant":121,"UPikzY":145}],81:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactPerf":69,"./invariant":121,"_process":145}],81:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -24425,8 +24745,8 @@ var SimpleEventPlugin = {
 
 module.exports = SimpleEventPlugin;
 
-}).call(this,require("UPikzY"))
-},{"./EventConstants":23,"./EventPluginUtils":27,"./EventPropagators":28,"./SyntheticClipboardEvent":84,"./SyntheticDragEvent":86,"./SyntheticEvent":87,"./SyntheticFocusEvent":88,"./SyntheticKeyboardEvent":89,"./SyntheticMouseEvent":90,"./SyntheticTouchEvent":91,"./SyntheticUIEvent":92,"./SyntheticWheelEvent":93,"./invariant":121,"./keyOf":128,"UPikzY":145}],84:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./EventConstants":23,"./EventPluginUtils":27,"./EventPropagators":28,"./SyntheticClipboardEvent":84,"./SyntheticDragEvent":86,"./SyntheticEvent":87,"./SyntheticFocusEvent":88,"./SyntheticKeyboardEvent":89,"./SyntheticMouseEvent":90,"./SyntheticTouchEvent":91,"./SyntheticUIEvent":92,"./SyntheticWheelEvent":93,"./invariant":121,"./keyOf":128,"_process":145}],84:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -25383,8 +25703,8 @@ var Transaction = {
 
 module.exports = Transaction;
 
-}).call(this,require("UPikzY"))
-},{"./invariant":121,"UPikzY":145}],95:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./invariant":121,"_process":145}],95:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -25480,8 +25800,8 @@ function accumulate(current, next) {
 
 module.exports = accumulate;
 
-}).call(this,require("UPikzY"))
-},{"./invariant":121,"UPikzY":145}],97:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./invariant":121,"_process":145}],97:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -25630,8 +25950,8 @@ function copyProperties(obj, a, b, c, d, e, f) {
 
 module.exports = copyProperties;
 
-}).call(this,require("UPikzY"))
-},{"UPikzY":145}],100:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"_process":145}],100:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -25790,8 +26110,8 @@ function createFullPageComponent(componentClass) {
 
 module.exports = createFullPageComponent;
 
-}).call(this,require("UPikzY"))
-},{"./ReactCompositeComponent":38,"./invariant":121,"UPikzY":145}],102:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactCompositeComponent":38,"./invariant":121,"_process":145}],102:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -25887,8 +26207,8 @@ function createNodesFromMarkup(markup, handleScript) {
 
 module.exports = createNodesFromMarkup;
 
-}).call(this,require("UPikzY"))
-},{"./ExecutionEnvironment":29,"./createArrayFrom":100,"./getMarkupWrap":114,"./invariant":121,"UPikzY":145}],103:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ExecutionEnvironment":29,"./createArrayFrom":100,"./getMarkupWrap":114,"./invariant":121,"_process":145}],103:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -25952,8 +26272,8 @@ function createObjectFrom(keys, values /* = true */) {
 
 module.exports = createObjectFrom;
 
-}).call(this,require("UPikzY"))
-},{"UPikzY":145}],104:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"_process":145}],104:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -26087,8 +26407,8 @@ if ("production" !== process.env.NODE_ENV) {
 
 module.exports = emptyObject;
 
-}).call(this,require("UPikzY"))
-},{"UPikzY":145}],107:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"_process":145}],107:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -26197,8 +26517,8 @@ function flattenChildren(children) {
 
 module.exports = flattenChildren;
 
-}).call(this,require("UPikzY"))
-},{"./invariant":121,"./traverseAllChildren":142,"UPikzY":145}],109:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./invariant":121,"./traverseAllChildren":142,"_process":145}],109:[function(require,module,exports){
 /**
  * Copyright 2014 Facebook, Inc.
  *
@@ -26553,8 +26873,8 @@ function getMarkupWrap(nodeName) {
 
 module.exports = getMarkupWrap;
 
-}).call(this,require("UPikzY"))
-},{"./ExecutionEnvironment":29,"./invariant":121,"UPikzY":145}],115:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ExecutionEnvironment":29,"./invariant":121,"_process":145}],115:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -26879,8 +27199,8 @@ function instantiateReactComponent(descriptor) {
 
 module.exports = instantiateReactComponent;
 
-}).call(this,require("UPikzY"))
-},{"./warning":143,"UPikzY":145}],121:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./warning":143,"_process":145}],121:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -26945,8 +27265,8 @@ if ("production" !== process.env.NODE_ENV) {
 
 module.exports = invariant;
 
-}).call(this,require("UPikzY"))
-},{"UPikzY":145}],122:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"_process":145}],122:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -27243,8 +27563,8 @@ var keyMirror = function(obj) {
 
 module.exports = keyMirror;
 
-}).call(this,require("UPikzY"))
-},{"./invariant":121,"UPikzY":145}],128:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./invariant":121,"_process":145}],128:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -27506,8 +27826,8 @@ var mergeHelpers = {
 
 module.exports = mergeHelpers;
 
-}).call(this,require("UPikzY"))
-},{"./invariant":121,"./keyMirror":127,"UPikzY":145}],132:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./invariant":121,"./keyMirror":127,"_process":145}],132:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -27630,8 +27950,8 @@ function monitorCodeUse(eventName, data) {
 
 module.exports = monitorCodeUse;
 
-}).call(this,require("UPikzY"))
-},{"./invariant":121,"UPikzY":145}],135:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./invariant":121,"_process":145}],135:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -27775,8 +28095,8 @@ function onlyChild(children) {
 
 module.exports = onlyChild;
 
-}).call(this,require("UPikzY"))
-},{"./ReactComponent":36,"./invariant":121,"UPikzY":145}],138:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactComponent":36,"./invariant":121,"_process":145}],138:[function(require,module,exports){
 /**
  * Copyright 2013-2014 Facebook, Inc.
  *
@@ -27935,8 +28255,8 @@ function shouldUpdateReactComponent(prevComponentInstance, nextDescriptor) {
 
 module.exports = shouldUpdateReactComponent;
 
-}).call(this,require("UPikzY"))
-},{"UPikzY":145}],141:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"_process":145}],141:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014 Facebook, Inc.
@@ -28014,8 +28334,8 @@ function toArray(obj) {
 
 module.exports = toArray;
 
-}).call(this,require("UPikzY"))
-},{"./invariant":121,"UPikzY":145}],142:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./invariant":121,"_process":145}],142:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2014 Facebook, Inc.
@@ -28208,8 +28528,8 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 
-}).call(this,require("UPikzY"))
-},{"./ReactInstanceHandles":62,"./ReactTextComponent":79,"./invariant":121,"UPikzY":145}],143:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactInstanceHandles":62,"./ReactTextComponent":79,"./invariant":121,"_process":145}],143:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014 Facebook, Inc.
@@ -28260,8 +28580,8 @@ if ("production" !== process.env.NODE_ENV) {
 
 module.exports = warning;
 
-}).call(this,require("UPikzY"))
-},{"./emptyFunction":105,"UPikzY":145}],144:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./emptyFunction":105,"_process":145}],144:[function(require,module,exports){
 module.exports = require('./lib/React');
 
 },{"./lib/React":33}],145:[function(require,module,exports){
@@ -28329,4 +28649,4 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}]},{},[1])
+},{}]},{},[1]);
