@@ -109,7 +109,7 @@ module.exports = [
   },
   {
     name: 'Rodolphe',
-    avatar: 'https://pbs.twimg.com/profile_images/450611913852854272/15Zd82e3_400x400.jpeg',
+    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/rodolphe.jpg',
     city: 'Paris',
     tz: 'Europe/Paris'
   },
@@ -127,15 +127,15 @@ module.exports = [
   },
   {
     name: 'Michael',
-    avatar: 'https://pbs.twimg.com/profile_images/463013133091500032/1kP83aKc_400x400.jpeg',
+    avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/michael.jpg',
     city: 'Cape Town',
     tz: 'Africa/Johannesburg'
   },
   {
-    name: 'Kevin',
-    avatar: 'https://pbs.twimg.com/profile_images/440167205603246080/u2TRSuzc_400x400.png',
-    city: 'Sweden',
-    tz: 'Europe/Stockholm'
+    name: 'Mike',
+    avatar: 'https://pbs.twimg.com/profile_images/489294095513178112/xpS3wZwt_400x400.jpeg',
+    city: 'Barcelona',
+    tz: 'Europe/Madrid'
   },
   {
     name: 'Tom',
@@ -144,9 +144,9 @@ module.exports = [
     tz: 'America/New_York'
   },
   {
-    name: 'Jamie',
-    avatar: 'https://pbs.twimg.com/profile_images/472145910084820993/Voo7aiLG_400x400.png',
-    city: 'Dallas',
-    tz: 'America/Chicago'
-  }
+    name: 'Amanda',
+    avatar: 'https://pbs.twimg.com/profile_images/455154282572967936/uB4HnHO9_400x400.jpeg',
+    city: 'Honolulu',
+    tz: 'Pacific/Honolulu'
+  },
 ];
