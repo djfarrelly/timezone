@@ -3,7 +3,7 @@ module.exports = [
     name: 'Dan',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/dan.jpg',
     city: '',
-    tz: 'America/Los_Angeles'
+    tz: 'America/New_York'
   },
   {
     name: 'Niel',
@@ -62,8 +62,8 @@ module.exports = [
   {
     name: 'Mary',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/mary.jpg',
-    city: 'Maui',
-    tz: 'Pacific/Honolulu'
+    city: 'San Francisco',
+    tz: 'America/Los_Angeles'
   },
   {
     name: 'Adam',
