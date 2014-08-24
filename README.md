@@ -12,7 +12,6 @@ installed on your system to compile the project assets. After install Node.js, r
 
 ```bash
   $ npm install -g browserify
-  $ npm install -g reactify
 ```
 
 Update your `people.js` file with the appropriate information. Timezone codes
