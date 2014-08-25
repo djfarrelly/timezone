@@ -74,7 +74,7 @@ setInterval(function(){
   if (now.minute() === time.minute()) return;
 
   time.minute( now.minute() );
-  
+
   React.renderComponent(
     App({
       time: time,

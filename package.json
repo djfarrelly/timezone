@@ -19,7 +19,7 @@
     "node-jsx": "^0.10.0",
     "react": "^0.10.0",
     "react-tools": "^0.10.0",
-    "stylus": "^0.44.0"
+    "stylus": "^0.48.1"
   },
   "devDependencies": {
     "reactify": "^0.14.0"

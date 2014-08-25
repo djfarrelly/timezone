@@ -26,8 +26,8 @@ app.use(
     dest:    __dirname + '/public',
     compile: function (str, path, fn) {
       return stylus(str)
-        .set('filename', path)
-        .set('compress', true);
+        .set('filename', path);
+        // .set('compress', true);
     }
   })
 );

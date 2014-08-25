@@ -1,8 +1,8 @@
 
 // Variables
 
-$brandColor     = rgb(143, 189, 255)
-$brandColorText = rgb(255, 255, 255) 
+$brandColor     = #3E4651 //rgb(143, 189, 255)
+$brandColorText = rgb(255, 255, 255)
 $textColor      = rgb(50, 50, 50)
 
 
@@ -18,8 +18,7 @@ body
   height: 100%
   margin: 0
 
-  background: #fff url(/images/worldmap.png) no-repeat 50% 50%
-  background-size: contain
+  background: #fff
 
   font-family: 'Ubuntu', 'Open Sans', Helvetica, sans-serif
   font-weight: 300
@@ -58,7 +57,7 @@ header
 
   &.open
     max-height: 10em
-  
+
 
 
 .timezone-list
@@ -80,29 +79,65 @@ header
   max-width: 10em
   padding: 1em
   text-align: center
-  background: -moz-linear-gradient(right, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.9) 100%)
-  background: -webkit-linear-gradient(right, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.9) 100%)
-  background: -o-linear-gradient(right, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.9) 100%)
-  background: -ms-linear-gradient(right, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.9) 100%)
-  background: linear-gradient(to left, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.9) 100%)
-  
+
+
+// Shade the timezones
+for hour in 12...25
+  $lightness = (hour - 11) / 24 * 50% + 30%
+  $alpha = (hour - 11) / 16 * 0.6 + 0.1
+  $color = hsla(220, 30%, $lightness, $alpha)
+  $complementaryHour = 24 - hour
+  .timezone-hour-{$complementaryHour},
+  .timezone-hour-{hour}
+    background-color: $color
+
+    // This currently doesn't matter:
+    .timezone-time
+      color: contrast($color, $textColor).ratio >= 1 ? $textColor : #fff
+
 .timezone-time
   margin: 0
 
 .timezone-offset
   margin: 0
   font-size: 0.7em
-  color: lighten($textColor, 50%)
+  color: #61676F
 
 .person
-  margin: 1em 0
+  position: relative
+  margin: 0.8em 0
 
-.person-name
-  margin: 0.2em
+  &:hover
+    .person-info
+      opacity: 1
+
+.person-info
+  position: absolute
+  left: -20%
+  bottom: -2em
+  z-index: 1000
+  width: 140%
+  max-height: 3em
+  padding: 0.2em 0.4em
+
+  opacity: 0
+  transition: all 200ms
+  background: #fff
+  border-radius: 2px
   font-size: 0.8em
   font-weight: bold
 
+  p
+    margin: 0
+
+.person-city
+  font-size: 0.8em
+  font-weight: normal
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
+
 .avatar
-  width: 80px
-  height: 80px
+  width: 100%
+  max-width: 80px
   border-radius: 40px
