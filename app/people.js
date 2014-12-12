@@ -75,7 +75,7 @@ module.exports = [
     name: 'Courtney',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/courtney.jpg',
     city: 'Nashville, TN',
-    tz: 'America/New_York'
+    tz: 'America/Chicago'
   },
   {
     name: 'Daniel',
