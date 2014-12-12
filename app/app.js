@@ -51,9 +51,9 @@ var KEY = {
 window.addEventListener('keyup', function(e){
 
   if (e.keyCode === KEY.RIGHT){
-    time.add('h', 1);
+    time.add(1, 'h');
   } else if (e.keyCode === KEY.LEFT){
-    time.subtract('h', 1);
+    time.subtract(1, 'h');
   }
 
   // Push new data to re-render component
@@ -74,7 +74,7 @@ setInterval(function(){
   if (now.minute() === time.minute()) return;
 
   time.minute( now.minute() );
-  
+
   React.renderComponent(
     App({
       time: time,

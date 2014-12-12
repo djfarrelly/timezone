@@ -2,7 +2,7 @@ module.exports = [
   {
     name: 'Dan',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/dan.jpg',
-    city: '',
+    city: 'NYC',
     tz: 'America/New_York'
   },
   {
@@ -44,8 +44,8 @@ module.exports = [
   {
     name: 'Åsa',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/asa.jpg',
-    city: 'Stockholm',
-    tz: 'Europe/Stockholm'
+    city: 'Sydney',
+    tz: 'Australia/Sydney'
   },
   {
     name: 'Carolyn',
@@ -68,7 +68,7 @@ module.exports = [
   {
     name: 'Adam',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/adam.jpg',
-    city: 'Lapeer, Michigan',
+    city: 'Michigan',
     tz: 'America/Detroit'
   },
   {
@@ -80,8 +80,8 @@ module.exports = [
   {
     name: 'Daniel',
     avatar: 'https://d389zggrogs7qo.cloudfront.net/images/team/daniel.jpg',
-    city: 'Louisville, KY',
-    tz: 'America/New_York'
+    city: 'San Francisco',
+    tz: 'America/Los_Angeles'
   },
   {
     name: 'Steven',
@@ -115,15 +115,15 @@ module.exports = [
   },
   {
     name: 'Nicole',
-    avatar: 'https://pbs.twimg.com/profile_images/438429157081370624/VXdKPSh9_400x400.jpeg',
+    avatar: 'https://pbs.twimg.com/profile_images/518546661010731009/Gs6_cBrj_400x400.jpeg',
     city: 'Portland, OR',
     tz: 'America/Los_Angeles'
   },
   {
     name: 'Octavio',
     avatar: 'https://pbs.twimg.com/profile_images/460543526195847168/97f7wvBU_400x400.jpeg',
-    city: 'Morelia, MX',
-    tz: 'America/Mexico_City'
+    city: 'Buenos Aires',
+    tz: 'America/Argentina/Buenos_Aires'
   },
   {
     name: 'Michael',
@@ -144,9 +144,21 @@ module.exports = [
     tz: 'America/New_York'
   },
   {
-    name: 'Amanda',
-    avatar: 'https://pbs.twimg.com/profile_images/455154282572967936/uB4HnHO9_400x400.jpeg',
-    city: 'Honolulu',
-    tz: 'Pacific/Honolulu'
+    name: 'José',
+    avatar: 'https://pbs.twimg.com/profile_images/378800000867532731/SEk8E-zN_400x400.jpeg',
+    city: 'Madrid',
+    tz: 'Europe/Madrid'
   },
+  {
+    name: 'Amy',
+    avatar: 'https://pbs.twimg.com/profile_images/539578887273857024/ZZV0Py2q_400x400.jpeg',
+    city: 'Los Angeles',
+    tz: 'America/Los_Angeles'
+  },
+  {
+    name: 'Tom',
+    avatar: 'https://pbs.twimg.com/profile_images/495889645289226240/dey_F2v4_400x400.jpeg',
+    city: 'London',
+    tz: 'Europe/London'
+  }
 ];

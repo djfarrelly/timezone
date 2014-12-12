@@ -1,10 +1,11 @@
 var express = require('express'),
-    app     = express(),
-    logger  = require('morgan'),
-    stylus  = require('stylus'),
-    React   = require('react'),
-    moment  = require('moment-timezone'),
-    fs      = require('fs');
+    app = express(),
+    logger = require('morgan'),
+    stylus = require('stylus'),
+    autoprefixer  = require('autoprefixer-stylus'),
+    React = require('react'),
+    moment = require('moment-timezone'),
+    fs = require('fs');
 
 // Allow direct requiring of .jsx files
 require('node-jsx').install({extension: '.jsx'});
@@ -26,8 +27,9 @@ app.use(
     dest:    __dirname + '/public',
     compile: function (str, path, fn) {
       return stylus(str)
-        .set('filename', path)
-        .set('compress', true);
+        .use(autoprefixer())
+        .set('filename', path);
+        // .set('compress', true);
     }
   })
 );
