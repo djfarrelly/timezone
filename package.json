@@ -12,6 +12,7 @@
   "author": "Dan Farrelly <daniel.j.farrelly@gmail.com> (http://djfarrelly.com/)",
   "license": "MIT",
   "dependencies": {
+    "autoprefixer-stylus": "^0.4.0",
     "envify": "^1.2.1",
     "express": "^4.8.5",
     "moment-timezone": "0.0.5",
