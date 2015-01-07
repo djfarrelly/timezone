@@ -1,11 +1,11 @@
-var express = require('express'),
-    app = express(),
-    logger = require('morgan'),
-    stylus = require('stylus'),
-    autoprefixer  = require('autoprefixer-stylus'),
-    React = require('react'),
-    moment = require('moment-timezone'),
-    fs = require('fs');
+var express = require('express');
+var app = express();
+var logger = require('morgan');
+var stylus = require('stylus');
+var autoprefixer  = require('autoprefixer-stylus');
+var React = require('react');
+var moment = require('moment-timezone');
+var fs = require('fs');
 
 // Allow direct requiring of .jsx files
 require('node-jsx').install({extension: '.jsx'});
