@@ -18,7 +18,7 @@ function template (body, done) {
   });
 }
 
-app.use(logger());
+app.use(logger('common'));
 
 // Stylus
 app.use(
