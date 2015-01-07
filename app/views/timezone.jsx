@@ -24,7 +24,8 @@ module.exports = React.createClass({
       <h3 className="timezone-time">{displayTime}</h3>
       <p className="timezone-offset">{offset}</p>
       {this.props.model.map(function(person){
-        return <Person model={person} />;
+        var key = person.name + Math.floor(Math.random() * 10);
+        return <Person model={person} key={key} />;
       })}
     </div>;
   }
