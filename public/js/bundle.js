@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/danielfarrelly/Projects/timezone/app/app.js":[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var React  = require('react');
 var moment = require('moment-timezone');
 
@@ -87,13 +87,13 @@ setInterval(function(){
 
 }, 1000 * 10);
 
-},{"./views/app.jsx":"/Users/danielfarrelly/Projects/timezone/app/views/app.jsx","moment-timezone":"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/index.js","react":"/Users/danielfarrelly/Projects/timezone/node_modules/react/react.js"}],"/Users/danielfarrelly/Projects/timezone/app/views/app.jsx":[function(require,module,exports){
+},{"./views/app.jsx":2,"moment-timezone":7,"react":155}],2:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React        = require('react');
 var TimezoneList = require('./timezoneList.jsx');
 
-module.exports = React.createClass({displayName: 'exports',
+module.exports = React.createClass({displayName: "exports",
   getInitialState: function() {
     return {
       timeFormat: 'h:mm a'
@@ -109,46 +109,46 @@ module.exports = React.createClass({displayName: 'exports',
     var displayTime = this.props.time.format( this.state.timeFormat );
 
     return (
-      React.DOM.div({className: "container"}, 
-        React.DOM.header(null, 
-          React.DOM.h2({className: "active-time", onClick: this.toggleTimeFormat}, 
+      React.createElement("div", {className: "container"}, 
+        React.createElement("header", null, 
+          React.createElement("h2", {className: "active-time", onClick: this.toggleTimeFormat}, 
             displayTime
           )
         ), 
-        TimezoneList({time: this.props.time, 
+        React.createElement(TimezoneList, {time: this.props.time, 
                       timeFormat: this.state.timeFormat, 
                       timezones: this.props.timezones})
       )
     );
   }
 });
-},{"./timezoneList.jsx":"/Users/danielfarrelly/Projects/timezone/app/views/timezoneList.jsx","react":"/Users/danielfarrelly/Projects/timezone/node_modules/react/react.js"}],"/Users/danielfarrelly/Projects/timezone/app/views/person.jsx":[function(require,module,exports){
+},{"./timezoneList.jsx":5,"react":155}],3:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
 var moment = require('moment-timezone');
 
-module.exports = React.createClass({displayName: 'exports',
+module.exports = React.createClass({displayName: "exports",
   render: function() {
     var person = this.props.model;
-    return React.DOM.div({className: "person", key: person.name}, 
-      React.DOM.img({src: person.avatar, className: "avatar"}), 
-      React.DOM.div({className: "person-info"}, 
-        React.DOM.p({className: "person-name"}, person.name), 
-        React.DOM.p({className: "person-city"}, person.city)
+    return React.createElement("div", {className: "person", key: person.name}, 
+      React.createElement("img", {src: person.avatar, className: "avatar"}), 
+      React.createElement("div", {className: "person-info"}, 
+        React.createElement("p", {className: "person-name"}, person.name), 
+        React.createElement("p", {className: "person-city"}, person.city)
       )
     );
   }
 });
 
-},{"moment-timezone":"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/index.js","react":"/Users/danielfarrelly/Projects/timezone/node_modules/react/react.js"}],"/Users/danielfarrelly/Projects/timezone/app/views/timezone.jsx":[function(require,module,exports){
+},{"moment-timezone":7,"react":155}],4:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
 var moment = require('moment-timezone');
 var Person = require('./person.jsx');
 
-module.exports = React.createClass({displayName: 'exports',
+module.exports = React.createClass({displayName: "exports",
   render: function() {
 
     // We clone the time object itself so the this time is bound to
@@ -164,33 +164,33 @@ module.exports = React.createClass({displayName: 'exports',
 
     var timezoneClasses = 'timezone timezone-hour-' + localTime.hour();
 
-    return React.DOM.div({className: timezoneClasses}, 
-      React.DOM.h3({className: "timezone-time"}, displayTime), 
-      React.DOM.p({className: "timezone-offset"}, offset), 
+    return React.createElement("div", {className: timezoneClasses}, 
+      React.createElement("h3", {className: "timezone-time"}, displayTime), 
+      React.createElement("p", {className: "timezone-offset"}, offset), 
       this.props.model.map(function(person){
         var key = person.name + Math.floor(Math.random() * 10);
-        return Person({model: person, key: key});
+        return React.createElement(Person, {model: person, key: key});
       })
     );
   }
 });
 
-},{"./person.jsx":"/Users/danielfarrelly/Projects/timezone/app/views/person.jsx","moment-timezone":"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/index.js","react":"/Users/danielfarrelly/Projects/timezone/node_modules/react/react.js"}],"/Users/danielfarrelly/Projects/timezone/app/views/timezoneList.jsx":[function(require,module,exports){
+},{"./person.jsx":3,"moment-timezone":7,"react":155}],5:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React    = require('react');
 var Timezone = require('./timezone.jsx');
 
-module.exports = React.createClass({displayName: 'exports',
+module.exports = React.createClass({displayName: "exports",
   render: function() {
 
     var offsets = Object.keys( this.props.timezones );
 
     offsets.sort(function(a, b){ return b - a; });
 
-    return React.DOM.div({className: "timezone-list"}, 
+    return React.createElement("div", {className: "timezone-list"}, 
       offsets.map(function(offset){
-        return Timezone({key: offset, 
+        return React.createElement(Timezone, {key: offset, 
                          time: this.props.time, 
                          timeFormat: this.props.timeFormat, 
                          offset: offset, 
@@ -199,8118 +199,1004 @@ module.exports = React.createClass({displayName: 'exports',
     );
   }
 });
-},{"./timezone.jsx":"/Users/danielfarrelly/Projects/timezone/app/views/timezone.jsx","react":"/Users/danielfarrelly/Projects/timezone/node_modules/react/react.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/index.js":[function(require,module,exports){
-module.exports = require("./moment-timezone");
-module.exports.tz.add(require('./moment-timezone.json'));
-
-},{"./moment-timezone":"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/moment-timezone.js","./moment-timezone.json":"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/moment-timezone.json"}],"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/moment-timezone.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=module.exports=module.exports={
-	"links": {
-		"Africa/Asmera": "Africa/Asmara",
-		"Africa/Timbuktu": "Africa/Bamako",
-		"America/Argentina/ComodRivadavia": "America/Argentina/Catamarca",
-		"America/Atka": "America/Adak",
-		"America/Buenos_Aires": "America/Argentina/Buenos_Aires",
-		"America/Catamarca": "America/Argentina/Catamarca",
-		"America/Coral_Harbour": "America/Atikokan",
-		"America/Cordoba": "America/Argentina/Cordoba",
-		"America/Ensenada": "America/Tijuana",
-		"America/Fort_Wayne": "America/Indiana/Indianapolis",
-		"America/Indianapolis": "America/Indiana/Indianapolis",
-		"America/Jujuy": "America/Argentina/Jujuy",
-		"America/Knox_IN": "America/Indiana/Knox",
-		"America/Kralendijk": "America/Curacao",
-		"America/Louisville": "America/Kentucky/Louisville",
-		"America/Lower_Princes": "America/Curacao",
-		"America/Marigot": "America/Guadeloupe",
-		"America/Mendoza": "America/Argentina/Mendoza",
-		"America/Porto_Acre": "America/Rio_Branco",
-		"America/Rosario": "America/Argentina/Cordoba",
-		"America/Shiprock": "America/Denver",
-		"America/St_Barthelemy": "America/Guadeloupe",
-		"America/Virgin": "America/St_Thomas",
-		"Antarctica/South_Pole": "Antarctica/McMurdo",
-		"Arctic/Longyearbyen": "Europe/Oslo",
-		"Asia/Ashkhabad": "Asia/Ashgabat",
-		"Asia/Calcutta": "Asia/Kolkata",
-		"Asia/Chungking": "Asia/Chongqing",
-		"Asia/Dacca": "Asia/Dhaka",
-		"Asia/Istanbul": "Europe/Istanbul",
-		"Asia/Katmandu": "Asia/Kathmandu",
-		"Asia/Macao": "Asia/Macau",
-		"Asia/Saigon": "Asia/Ho_Chi_Minh",
-		"Asia/Tel_Aviv": "Asia/Jerusalem",
-		"Asia/Thimbu": "Asia/Thimphu",
-		"Asia/Ujung_Pandang": "Asia/Makassar",
-		"Asia/Ulan_Bator": "Asia/Ulaanbaatar",
-		"Atlantic/Faeroe": "Atlantic/Faroe",
-		"Atlantic/Jan_Mayen": "Europe/Oslo",
-		"Australia/ACT": "Australia/Sydney",
-		"Australia/Canberra": "Australia/Sydney",
-		"Australia/LHI": "Australia/Lord_Howe",
-		"Australia/NSW": "Australia/Sydney",
-		"Australia/North": "Australia/Darwin",
-		"Australia/Queensland": "Australia/Brisbane",
-		"Australia/South": "Australia/Adelaide",
-		"Australia/Tasmania": "Australia/Hobart",
-		"Australia/Victoria": "Australia/Melbourne",
-		"Australia/West": "Australia/Perth",
-		"Australia/Yancowinna": "Australia/Broken_Hill",
-		"Brazil/Acre": "America/Rio_Branco",
-		"Brazil/DeNoronha": "America/Noronha",
-		"Brazil/East": "America/Sao_Paulo",
-		"Brazil/West": "America/Manaus",
-		"Canada/Atlantic": "America/Halifax",
-		"Canada/Central": "America/Winnipeg",
-		"Canada/East-Saskatchewan": "America/Regina",
-		"Canada/Eastern": "America/Toronto",
-		"Canada/Mountain": "America/Edmonton",
-		"Canada/Newfoundland": "America/St_Johns",
-		"Canada/Pacific": "America/Vancouver",
-		"Canada/Saskatchewan": "America/Regina",
-		"Canada/Yukon": "America/Whitehorse",
-		"Chile/Continental": "America/Santiago",
-		"Chile/EasterIsland": "Pacific/Easter",
-		"Cuba": "America/Havana",
-		"Egypt": "Africa/Cairo",
-		"Eire": "Europe/Dublin",
-		"Etc/GMT+0": "Etc/GMT",
-		"Etc/GMT-0": "Etc/GMT",
-		"Etc/GMT0": "Etc/GMT",
-		"Etc/Greenwich": "Etc/GMT",
-		"Etc/Universal": "Etc/UTC",
-		"Etc/Zulu": "Etc/UTC",
-		"Europe/Belfast": "Europe/London",
-		"Europe/Bratislava": "Europe/Prague",
-		"Europe/Busingen": "Europe/Zurich",
-		"Europe/Guernsey": "Europe/London",
-		"Europe/Isle_of_Man": "Europe/London",
-		"Europe/Jersey": "Europe/London",
-		"Europe/Ljubljana": "Europe/Belgrade",
-		"Europe/Mariehamn": "Europe/Helsinki",
-		"Europe/Nicosia": "Asia/Nicosia",
-		"Europe/Podgorica": "Europe/Belgrade",
-		"Europe/San_Marino": "Europe/Rome",
-		"Europe/Sarajevo": "Europe/Belgrade",
-		"Europe/Skopje": "Europe/Belgrade",
-		"Europe/Tiraspol": "Europe/Chisinau",
-		"Europe/Vatican": "Europe/Rome",
-		"Europe/Zagreb": "Europe/Belgrade",
-		"GB": "Europe/London",
-		"GB-Eire": "Europe/London",
-		"GMT": "Etc/GMT",
-		"GMT+0": "Etc/GMT",
-		"GMT-0": "Etc/GMT",
-		"GMT0": "Etc/GMT",
-		"Greenwich": "Etc/GMT",
-		"Hongkong": "Asia/Hong_Kong",
-		"Iceland": "Atlantic/Reykjavik",
-		"Iran": "Asia/Tehran",
-		"Israel": "Asia/Jerusalem",
-		"Jamaica": "America/Jamaica",
-		"Japan": "Asia/Tokyo",
-		"Kwajalein": "Pacific/Kwajalein",
-		"Libya": "Africa/Tripoli",
-		"Mexico/BajaNorte": "America/Tijuana",
-		"Mexico/BajaSur": "America/Mazatlan",
-		"Mexico/General": "America/Mexico_City",
-		"NZ": "Pacific/Auckland",
-		"NZ-CHAT": "Pacific/Chatham",
-		"Navajo": "America/Denver",
-		"PRC": "Asia/Shanghai",
-		"Pacific/Ponape": "Pacific/Pohnpei",
-		"Pacific/Samoa": "Pacific/Pago_Pago",
-		"Pacific/Truk": "Pacific/Chuuk",
-		"Pacific/Yap": "Pacific/Chuuk",
-		"Poland": "Europe/Warsaw",
-		"Portugal": "Europe/Lisbon",
-		"ROC": "Asia/Taipei",
-		"ROK": "Asia/Seoul",
-		"Singapore": "Asia/Singapore",
-		"Turkey": "Europe/Istanbul",
-		"UCT": "Etc/UCT",
-		"US/Alaska": "America/Anchorage",
-		"US/Aleutian": "America/Adak",
-		"US/Arizona": "America/Phoenix",
-		"US/Central": "America/Chicago",
-		"US/East-Indiana": "America/Indiana/Indianapolis",
-		"US/Eastern": "America/New_York",
-		"US/Hawaii": "Pacific/Honolulu",
-		"US/Indiana-Starke": "America/Indiana/Knox",
-		"US/Michigan": "America/Detroit",
-		"US/Mountain": "America/Denver",
-		"US/Pacific": "America/Los_Angeles",
-		"US/Samoa": "Pacific/Pago_Pago",
-		"UTC": "Etc/UTC",
-		"Universal": "Etc/UTC",
-		"W-SU": "Europe/Moscow",
-		"Zulu": "Etc/UTC"
-	},
-	"meta": {
-		"Africa/Abidjan": {
-			"lat": 5.3167,
-			"lon": -3.9667,
-			"rules": ""
-		},
-		"Africa/Accra": {
-			"lat": 5.55,
-			"lon": 0.2167,
-			"rules": "Ghana"
-		},
-		"Africa/Addis_Ababa": {
-			"lat": 9.0333,
-			"lon": 38.7,
-			"rules": ""
-		},
-		"Africa/Algiers": {
-			"lat": 36.7833,
-			"lon": 3.05,
-			"rules": "Algeria"
-		},
-		"Africa/Asmara": {
-			"lat": 15.3333,
-			"lon": 38.8833,
-			"rules": ""
-		},
-		"Africa/Bamako": {
-			"lat": 12.65,
-			"lon": -8,
-			"rules": ""
-		},
-		"Africa/Bangui": {
-			"lat": 4.3667,
-			"lon": 18.5833,
-			"rules": ""
-		},
-		"Africa/Banjul": {
-			"lat": 13.4667,
-			"lon": -15.35,
-			"rules": ""
-		},
-		"Africa/Bissau": {
-			"lat": 11.85,
-			"lon": -14.4167,
-			"rules": ""
-		},
-		"Africa/Blantyre": {
-			"lat": -14.2167,
-			"lon": 35,
-			"rules": ""
-		},
-		"Africa/Brazzaville": {
-			"lat": -3.7333,
-			"lon": 15.2833,
-			"rules": ""
-		},
-		"Africa/Bujumbura": {
-			"lat": -2.6167,
-			"lon": 29.3667,
-			"rules": ""
-		},
-		"Africa/Cairo": {
-			"lat": 30.05,
-			"lon": 31.25,
-			"rules": "Egypt"
-		},
-		"Africa/Casablanca": {
-			"lat": 33.65,
-			"lon": -6.4167,
-			"rules": "Morocco"
-		},
-		"Africa/Ceuta": {
-			"lat": 35.8833,
-			"lon": -4.6833,
-			"rules": "Spain SpainAfrica EU"
-		},
-		"Africa/Conakry": {
-			"lat": 9.5167,
-			"lon": -12.2833,
-			"rules": ""
-		},
-		"Africa/Dakar": {
-			"lat": 14.6667,
-			"lon": -16.5667,
-			"rules": ""
-		},
-		"Africa/Dar_es_Salaam": {
-			"lat": -5.2,
-			"lon": 39.2833,
-			"rules": ""
-		},
-		"Africa/Djibouti": {
-			"lat": 11.6,
-			"lon": 43.15,
-			"rules": ""
-		},
-		"Africa/Douala": {
-			"lat": 4.05,
-			"lon": 9.7,
-			"rules": ""
-		},
-		"Africa/El_Aaiun": {
-			"lat": 27.15,
-			"lon": -12.8,
-			"rules": ""
-		},
-		"Africa/Freetown": {
-			"lat": 8.5,
-			"lon": -12.75,
-			"rules": "SL"
-		},
-		"Africa/Gaborone": {
-			"lat": -23.35,
-			"lon": 25.9167,
-			"rules": ""
-		},
-		"Africa/Harare": {
-			"lat": -16.1667,
-			"lon": 31.05,
-			"rules": ""
-		},
-		"Africa/Johannesburg": {
-			"lat": -25.75,
-			"lon": 28,
-			"rules": "SA"
-		},
-		"Africa/Juba": {
-			"lat": 4.85,
-			"lon": 31.6,
-			"rules": "Sudan"
-		},
-		"Africa/Kampala": {
-			"lat": 0.3167,
-			"lon": 32.4167,
-			"rules": ""
-		},
-		"Africa/Khartoum": {
-			"lat": 15.6,
-			"lon": 32.5333,
-			"rules": "Sudan"
-		},
-		"Africa/Kigali": {
-			"lat": -0.05,
-			"lon": 30.0667,
-			"rules": ""
-		},
-		"Africa/Kinshasa": {
-			"lat": -3.7,
-			"lon": 15.3,
-			"rules": ""
-		},
-		"Africa/Lagos": {
-			"lat": 6.45,
-			"lon": 3.4,
-			"rules": ""
-		},
-		"Africa/Libreville": {
-			"lat": 0.3833,
-			"lon": 9.45,
-			"rules": ""
-		},
-		"Africa/Lome": {
-			"lat": 6.1333,
-			"lon": 1.2167,
-			"rules": ""
-		},
-		"Africa/Luanda": {
-			"lat": -7.2,
-			"lon": 13.2333,
-			"rules": ""
-		},
-		"Africa/Lubumbashi": {
-			"lat": -10.3333,
-			"lon": 27.4667,
-			"rules": ""
-		},
-		"Africa/Lusaka": {
-			"lat": -14.5833,
-			"lon": 28.2833,
-			"rules": ""
-		},
-		"Africa/Malabo": {
-			"lat": 3.75,
-			"lon": 8.7833,
-			"rules": ""
-		},
-		"Africa/Maputo": {
-			"lat": -24.0333,
-			"lon": 32.5833,
-			"rules": ""
-		},
-		"Africa/Maseru": {
-			"lat": -28.5333,
-			"lon": 27.5,
-			"rules": ""
-		},
-		"Africa/Mbabane": {
-			"lat": -25.7,
-			"lon": 31.1,
-			"rules": ""
-		},
-		"Africa/Mogadishu": {
-			"lat": 2.0667,
-			"lon": 45.3667,
-			"rules": ""
-		},
-		"Africa/Monrovia": {
-			"lat": 6.3,
-			"lon": -9.2167,
-			"rules": ""
-		},
-		"Africa/Nairobi": {
-			"lat": -0.7167,
-			"lon": 36.8167,
-			"rules": ""
-		},
-		"Africa/Ndjamena": {
-			"lat": 12.1167,
-			"lon": 15.05,
-			"rules": ""
-		},
-		"Africa/Niamey": {
-			"lat": 13.5167,
-			"lon": 2.1167,
-			"rules": ""
-		},
-		"Africa/Nouakchott": {
-			"lat": 18.1,
-			"lon": -14.05,
-			"rules": ""
-		},
-		"Africa/Ouagadougou": {
-			"lat": 12.3667,
-			"lon": -0.4833,
-			"rules": ""
-		},
-		"Africa/Porto-Novo": {
-			"lat": 6.4833,
-			"lon": 2.6167,
-			"rules": ""
-		},
-		"Africa/Sao_Tome": {
-			"lat": 0.3333,
-			"lon": 6.7333,
-			"rules": ""
-		},
-		"Africa/Tripoli": {
-			"lat": 32.9,
-			"lon": 13.1833,
-			"rules": "Libya"
-		},
-		"Africa/Tunis": {
-			"lat": 36.8,
-			"lon": 10.1833,
-			"rules": "Tunisia"
-		},
-		"Africa/Windhoek": {
-			"lat": -21.4333,
-			"lon": 17.1,
-			"rules": "Namibia"
-		},
-		"America/Adak": {
-			"lat": 51.88,
-			"lon": -175.3419,
-			"rules": "US"
-		},
-		"America/Anchorage": {
-			"lat": 61.2181,
-			"lon": -148.0997,
-			"rules": "US"
-		},
-		"America/Anguilla": {
-			"lat": 18.2,
-			"lon": -62.9333,
-			"rules": ""
-		},
-		"America/Antigua": {
-			"lat": 17.05,
-			"lon": -60.2,
-			"rules": ""
-		},
-		"America/Araguaina": {
-			"lat": -6.8,
-			"lon": -47.8,
-			"rules": "Brazil"
-		},
-		"America/Argentina/Buenos_Aires": {
-			"lat": -33.4,
-			"lon": -57.55,
-			"rules": "Arg"
-		},
-		"America/Argentina/Catamarca": {
-			"lat": -27.5333,
-			"lon": -64.2167,
-			"rules": "Arg"
-		},
-		"America/Argentina/Cordoba": {
-			"lat": -30.6,
-			"lon": -63.8167,
-			"rules": "Arg"
-		},
-		"America/Argentina/Jujuy": {
-			"lat": -23.8167,
-			"lon": -64.7,
-			"rules": "Arg"
-		},
-		"America/Argentina/La_Rioja": {
-			"lat": -28.5667,
-			"lon": -65.15,
-			"rules": "Arg"
-		},
-		"America/Argentina/Mendoza": {
-			"lat": -31.1167,
-			"lon": -67.1833,
-			"rules": "Arg"
-		},
-		"America/Argentina/Rio_Gallegos": {
-			"lat": -50.3667,
-			"lon": -68.7833,
-			"rules": "Arg"
-		},
-		"America/Argentina/Salta": {
-			"lat": -23.2167,
-			"lon": -64.5833,
-			"rules": "Arg"
-		},
-		"America/Argentina/San_Juan": {
-			"lat": -30.4667,
-			"lon": -67.4833,
-			"rules": "Arg"
-		},
-		"America/Argentina/San_Luis": {
-			"lat": -32.6833,
-			"lon": -65.65,
-			"rules": "Arg SanLuis"
-		},
-		"America/Argentina/Tucuman": {
-			"lat": -25.1833,
-			"lon": -64.7833,
-			"rules": "Arg"
-		},
-		"America/Argentina/Ushuaia": {
-			"lat": -53.2,
-			"lon": -67.7,
-			"rules": "Arg"
-		},
-		"America/Aruba": {
-			"lat": 12.5,
-			"lon": -68.0333,
-			"rules": ""
-		},
-		"America/Asuncion": {
-			"lat": -24.7333,
-			"lon": -56.3333,
-			"rules": "Para"
-		},
-		"America/Atikokan": {
-			"lat": 48.7586,
-			"lon": -90.3783,
-			"rules": "Canada"
-		},
-		"America/Bahia": {
-			"lat": -11.0167,
-			"lon": -37.4833,
-			"rules": "Brazil"
-		},
-		"America/Bahia_Banderas": {
-			"lat": 20.8,
-			"lon": -104.75,
-			"rules": "Mexico"
-		},
-		"America/Barbados": {
-			"lat": 13.1,
-			"lon": -58.3833,
-			"rules": "Barb"
-		},
-		"America/Belem": {
-			"lat": -0.55,
-			"lon": -47.5167,
-			"rules": "Brazil"
-		},
-		"America/Belize": {
-			"lat": 17.5,
-			"lon": -87.8,
-			"rules": "Belize"
-		},
-		"America/Blanc-Sablon": {
-			"lat": 51.4167,
-			"lon": -56.8833,
-			"rules": "Canada"
-		},
-		"America/Boa_Vista": {
-			"lat": 2.8167,
-			"lon": -59.3333,
-			"rules": "Brazil"
-		},
-		"America/Bogota": {
-			"lat": 4.6,
-			"lon": -73.9167,
-			"rules": "CO"
-		},
-		"America/Boise": {
-			"lat": 43.6136,
-			"lon": -115.7975,
-			"rules": "US"
-		},
-		"America/Cambridge_Bay": {
-			"lat": 69.1139,
-			"lon": -104.9472,
-			"rules": "NT_YK Canada"
-		},
-		"America/Campo_Grande": {
-			"lat": -19.55,
-			"lon": -53.3833,
-			"rules": "Brazil"
-		},
-		"America/Cancun": {
-			"lat": 21.0833,
-			"lon": -85.2333,
-			"rules": "Mexico"
-		},
-		"America/Caracas": {
-			"lat": 10.5,
-			"lon": -65.0667,
-			"rules": ""
-		},
-		"America/Cayenne": {
-			"lat": 4.9333,
-			"lon": -51.6667,
-			"rules": ""
-		},
-		"America/Cayman": {
-			"lat": 19.3,
-			"lon": -80.6167,
-			"rules": ""
-		},
-		"America/Chicago": {
-			"lat": 41.85,
-			"lon": -86.35,
-			"rules": "US Chicago"
-		},
-		"America/Chihuahua": {
-			"lat": 28.6333,
-			"lon": -105.9167,
-			"rules": "Mexico"
-		},
-		"America/Costa_Rica": {
-			"lat": 9.9333,
-			"lon": -83.9167,
-			"rules": "CR"
-		},
-		"America/Creston": {
-			"lat": 49.1,
-			"lon": -115.4833,
-			"rules": ""
-		},
-		"America/Cuiaba": {
-			"lat": -14.4167,
-			"lon": -55.9167,
-			"rules": "Brazil"
-		},
-		"America/Curacao": {
-			"lat": 12.1833,
-			"lon": -69,
-			"rules": ""
-		},
-		"America/Danmarkshavn": {
-			"lat": 76.7667,
-			"lon": -17.3333,
-			"rules": "EU"
-		},
-		"America/Dawson": {
-			"lat": 64.0667,
-			"lon": -138.5833,
-			"rules": "NT_YK Canada"
-		},
-		"America/Dawson_Creek": {
-			"lat": 59.7667,
-			"lon": -119.7667,
-			"rules": "Canada Vanc"
-		},
-		"America/Denver": {
-			"lat": 39.7392,
-			"lon": -103.0158,
-			"rules": "US Denver"
-		},
-		"America/Detroit": {
-			"lat": 42.3314,
-			"lon": -82.9542,
-			"rules": "US Detroit"
-		},
-		"America/Dominica": {
-			"lat": 15.3,
-			"lon": -60.6,
-			"rules": ""
-		},
-		"America/Edmonton": {
-			"lat": 53.55,
-			"lon": -112.5333,
-			"rules": "Edm Canada"
-		},
-		"America/Eirunepe": {
-			"lat": -5.3333,
-			"lon": -68.1333,
-			"rules": "Brazil"
-		},
-		"America/El_Salvador": {
-			"lat": 13.7,
-			"lon": -88.8,
-			"rules": "Salv"
-		},
-		"America/Fortaleza": {
-			"lat": -2.2833,
-			"lon": -37.5,
-			"rules": "Brazil"
-		},
-		"America/Glace_Bay": {
-			"lat": 46.2,
-			"lon": -58.05,
-			"rules": "Canada Halifax"
-		},
-		"America/Godthab": {
-			"lat": 64.1833,
-			"lon": -50.2667,
-			"rules": "EU"
-		},
-		"America/Goose_Bay": {
-			"lat": 53.3333,
-			"lon": -59.5833,
-			"rules": "Canada StJohns"
-		},
-		"America/Grand_Turk": {
-			"lat": 21.4667,
-			"lon": -70.8667,
-			"rules": "TC"
-		},
-		"America/Grenada": {
-			"lat": 12.05,
-			"lon": -60.25,
-			"rules": ""
-		},
-		"America/Guadeloupe": {
-			"lat": 16.2333,
-			"lon": -60.4667,
-			"rules": ""
-		},
-		"America/Guatemala": {
-			"lat": 14.6333,
-			"lon": -89.4833,
-			"rules": "Guat"
-		},
-		"America/Guayaquil": {
-			"lat": -1.8333,
-			"lon": -78.1667,
-			"rules": ""
-		},
-		"America/Guyana": {
-			"lat": 6.8,
-			"lon": -57.8333,
-			"rules": ""
-		},
-		"America/Halifax": {
-			"lat": 44.65,
-			"lon": -62.4,
-			"rules": "Halifax Canada"
-		},
-		"America/Havana": {
-			"lat": 23.1333,
-			"lon": -81.6333,
-			"rules": "Cuba"
-		},
-		"America/Hermosillo": {
-			"lat": 29.0667,
-			"lon": -109.0333,
-			"rules": "Mexico"
-		},
-		"America/Indiana/Indianapolis": {
-			"lat": 39.7683,
-			"lon": -85.8419,
-			"rules": "US Indianapolis"
-		},
-		"America/Indiana/Knox": {
-			"lat": 41.2958,
-			"lon": -85.375,
-			"rules": "US Starke"
-		},
-		"America/Indiana/Marengo": {
-			"lat": 38.3756,
-			"lon": -85.6553,
-			"rules": "US Marengo"
-		},
-		"America/Indiana/Petersburg": {
-			"lat": 38.4919,
-			"lon": -86.7214,
-			"rules": "US Pike"
-		},
-		"America/Indiana/Tell_City": {
-			"lat": 37.9531,
-			"lon": -85.2386,
-			"rules": "US Perry"
-		},
-		"America/Indiana/Vevay": {
-			"lat": 38.7478,
-			"lon": -84.9328,
-			"rules": "US"
-		},
-		"America/Indiana/Vincennes": {
-			"lat": 38.6772,
-			"lon": -86.4714,
-			"rules": "US Vincennes"
-		},
-		"America/Indiana/Winamac": {
-			"lat": 41.0514,
-			"lon": -85.3969,
-			"rules": "US Pulaski"
-		},
-		"America/Inuvik": {
-			"lat": 68.3497,
-			"lon": -132.2833,
-			"rules": "NT_YK Canada"
-		},
-		"America/Iqaluit": {
-			"lat": 63.7333,
-			"lon": -67.5333,
-			"rules": "NT_YK Canada"
-		},
-		"America/Jamaica": {
-			"lat": 18,
-			"lon": -75.2,
-			"rules": "US"
-		},
-		"America/Juneau": {
-			"lat": 58.3019,
-			"lon": -133.5803,
-			"rules": "US"
-		},
-		"America/Kentucky/Louisville": {
-			"lat": 38.2542,
-			"lon": -84.2406,
-			"rules": "US Louisville"
-		},
-		"America/Kentucky/Monticello": {
-			"lat": 36.8297,
-			"lon": -83.1508,
-			"rules": "US"
-		},
-		"America/Kralendijk": {
-			"lat": 12.1508,
-			"lon": -67.7233,
-			"rules": ""
-		},
-		"America/La_Paz": {
-			"lat": -15.5,
-			"lon": -67.85,
-			"rules": ""
-		},
-		"America/Lima": {
-			"lat": -11.95,
-			"lon": -76.95,
-			"rules": "Peru"
-		},
-		"America/Los_Angeles": {
-			"lat": 34.0522,
-			"lon": -117.7572,
-			"rules": "US CA"
-		},
-		"America/Lower_Princes": {
-			"lat": 18.0514,
-			"lon": -62.9528,
-			"rules": ""
-		},
-		"America/Maceio": {
-			"lat": -8.3333,
-			"lon": -34.2833,
-			"rules": "Brazil"
-		},
-		"America/Managua": {
-			"lat": 12.15,
-			"lon": -85.7167,
-			"rules": "Nic"
-		},
-		"America/Manaus": {
-			"lat": -2.8667,
-			"lon": -59.9833,
-			"rules": "Brazil"
-		},
-		"America/Marigot": {
-			"lat": 18.0667,
-			"lon": -62.9167,
-			"rules": ""
-		},
-		"America/Martinique": {
-			"lat": 14.6,
-			"lon": -60.9167,
-			"rules": ""
-		},
-		"America/Matamoros": {
-			"lat": 25.8333,
-			"lon": -96.5,
-			"rules": "US Mexico"
-		},
-		"America/Mazatlan": {
-			"lat": 23.2167,
-			"lon": -105.5833,
-			"rules": "Mexico"
-		},
-		"America/Menominee": {
-			"lat": 45.1078,
-			"lon": -86.3858,
-			"rules": "US Menominee"
-		},
-		"America/Merida": {
-			"lat": 20.9667,
-			"lon": -88.3833,
-			"rules": "Mexico"
-		},
-		"America/Metlakatla": {
-			"lat": 55.1269,
-			"lon": -130.4236,
-			"rules": "US"
-		},
-		"America/Mexico_City": {
-			"lat": 19.4,
-			"lon": -98.85,
-			"rules": "Mexico"
-		},
-		"America/Miquelon": {
-			"lat": 47.05,
-			"lon": -55.6667,
-			"rules": "Canada"
-		},
-		"America/Moncton": {
-			"lat": 46.1,
-			"lon": -63.2167,
-			"rules": "Canada Moncton"
-		},
-		"America/Monterrey": {
-			"lat": 25.6667,
-			"lon": -99.6833,
-			"rules": "US Mexico"
-		},
-		"America/Montevideo": {
-			"lat": -33.1167,
-			"lon": -55.8167,
-			"rules": "Uruguay"
-		},
-		"America/Montreal": {
-			"lat": 45.5167,
-			"lon": -72.4333,
-			"rules": "Mont Canada"
-		},
-		"America/Montserrat": {
-			"lat": 16.7167,
-			"lon": -61.7833,
-			"rules": ""
-		},
-		"America/Nassau": {
-			"lat": 25.0833,
-			"lon": -76.65,
-			"rules": "Bahamas US"
-		},
-		"America/New_York": {
-			"lat": 40.7142,
-			"lon": -73.9936,
-			"rules": "US NYC"
-		},
-		"America/Nipigon": {
-			"lat": 49.0167,
-			"lon": -87.7333,
-			"rules": "Canada"
-		},
-		"America/Nome": {
-			"lat": 64.5011,
-			"lon": -164.5936,
-			"rules": "US"
-		},
-		"America/Noronha": {
-			"lat": -2.15,
-			"lon": -31.5833,
-			"rules": "Brazil"
-		},
-		"America/North_Dakota/Beulah": {
-			"lat": 47.2642,
-			"lon": -100.2222,
-			"rules": "US"
-		},
-		"America/North_Dakota/Center": {
-			"lat": 47.1164,
-			"lon": -100.7008,
-			"rules": "US"
-		},
-		"America/North_Dakota/New_Salem": {
-			"lat": 46.845,
-			"lon": -100.5892,
-			"rules": "US"
-		},
-		"America/Ojinaga": {
-			"lat": 29.5667,
-			"lon": -103.5833,
-			"rules": "Mexico US"
-		},
-		"America/Panama": {
-			"lat": 8.9667,
-			"lon": -78.4667,
-			"rules": ""
-		},
-		"America/Pangnirtung": {
-			"lat": 66.1333,
-			"lon": -64.2667,
-			"rules": "NT_YK Canada"
-		},
-		"America/Paramaribo": {
-			"lat": 5.8333,
-			"lon": -54.8333,
-			"rules": ""
-		},
-		"America/Phoenix": {
-			"lat": 33.4483,
-			"lon": -111.9267,
-			"rules": "US"
-		},
-		"America/Port-au-Prince": {
-			"lat": 18.5333,
-			"lon": -71.6667,
-			"rules": "Haiti"
-		},
-		"America/Port_of_Spain": {
-			"lat": 10.65,
-			"lon": -60.4833,
-			"rules": ""
-		},
-		"America/Porto_Velho": {
-			"lat": -7.2333,
-			"lon": -62.1,
-			"rules": "Brazil"
-		},
-		"America/Puerto_Rico": {
-			"lat": 18.4683,
-			"lon": -65.8939,
-			"rules": "US"
-		},
-		"America/Rainy_River": {
-			"lat": 48.7167,
-			"lon": -93.4333,
-			"rules": "Canada"
-		},
-		"America/Rankin_Inlet": {
-			"lat": 62.8167,
-			"lon": -91.9169,
-			"rules": "NT_YK Canada"
-		},
-		"America/Recife": {
-			"lat": -7.95,
-			"lon": -33.1,
-			"rules": "Brazil"
-		},
-		"America/Regina": {
-			"lat": 50.4,
-			"lon": -103.35,
-			"rules": "Regina"
-		},
-		"America/Resolute": {
-			"lat": 74.6956,
-			"lon": -93.1708,
-			"rules": "NT_YK Canada"
-		},
-		"America/Rio_Branco": {
-			"lat": -8.0333,
-			"lon": -66.2,
-			"rules": "Brazil"
-		},
-		"America/Santa_Isabel": {
-			"lat": 30.3,
-			"lon": -113.1333,
-			"rules": "CA US Mexico"
-		},
-		"America/Santarem": {
-			"lat": -1.5667,
-			"lon": -53.1333,
-			"rules": "Brazil"
-		},
-		"America/Santiago": {
-			"lat": -32.55,
-			"lon": -69.3333,
-			"rules": "Chile"
-		},
-		"America/Santo_Domingo": {
-			"lat": 18.4667,
-			"lon": -68.1,
-			"rules": "DR US"
-		},
-		"America/Sao_Paulo": {
-			"lat": -22.4667,
-			"lon": -45.3833,
-			"rules": "Brazil"
-		},
-		"America/Scoresbysund": {
-			"lat": 70.4833,
-			"lon": -20.0333,
-			"rules": "C-Eur EU"
-		},
-		"America/Shiprock": {
-			"lat": 36.7856,
-			"lon": -107.3136,
-			"rules": ""
-		},
-		"America/Sitka": {
-			"lat": 57.1764,
-			"lon": -134.6981,
-			"rules": "US"
-		},
-		"America/St_Barthelemy": {
-			"lat": 17.8833,
-			"lon": -61.15,
-			"rules": ""
-		},
-		"America/St_Johns": {
-			"lat": 47.5667,
-			"lon": -51.2833,
-			"rules": "StJohns Canada"
-		},
-		"America/St_Kitts": {
-			"lat": 17.3,
-			"lon": -61.2833,
-			"rules": ""
-		},
-		"America/St_Lucia": {
-			"lat": 14.0167,
-			"lon": -61,
-			"rules": ""
-		},
-		"America/St_Thomas": {
-			"lat": 18.35,
-			"lon": -63.0667,
-			"rules": ""
-		},
-		"America/St_Vincent": {
-			"lat": 13.15,
-			"lon": -60.7667,
-			"rules": ""
-		},
-		"America/Swift_Current": {
-			"lat": 50.2833,
-			"lon": -106.1667,
-			"rules": "Canada Regina Swift"
-		},
-		"America/Tegucigalpa": {
-			"lat": 14.1,
-			"lon": -86.7833,
-			"rules": "Hond"
-		},
-		"America/Thule": {
-			"lat": 76.5667,
-			"lon": -67.2167,
-			"rules": "Thule"
-		},
-		"America/Thunder_Bay": {
-			"lat": 48.3833,
-			"lon": -88.75,
-			"rules": "Canada Mont"
-		},
-		"America/Tijuana": {
-			"lat": 32.5333,
-			"lon": -116.9833,
-			"rules": "CA US Mexico"
-		},
-		"America/Toronto": {
-			"lat": 43.65,
-			"lon": -78.6167,
-			"rules": "Canada Toronto"
-		},
-		"America/Tortola": {
-			"lat": 18.45,
-			"lon": -63.3833,
-			"rules": ""
-		},
-		"America/Vancouver": {
-			"lat": 49.2667,
-			"lon": -122.8833,
-			"rules": "Vanc Canada"
-		},
-		"America/Whitehorse": {
-			"lat": 60.7167,
-			"lon": -134.95,
-			"rules": "NT_YK Canada"
-		},
-		"America/Winnipeg": {
-			"lat": 49.8833,
-			"lon": -96.85,
-			"rules": "Winn Canada"
-		},
-		"America/Yakutat": {
-			"lat": 59.5469,
-			"lon": -138.2728,
-			"rules": "US"
-		},
-		"America/Yellowknife": {
-			"lat": 62.45,
-			"lon": -113.65,
-			"rules": "NT_YK Canada"
-		},
-		"Antarctica/Casey": {
-			"lat": -65.7167,
-			"lon": 110.5167,
-			"rules": ""
-		},
-		"Antarctica/Davis": {
-			"lat": -67.4167,
-			"lon": 77.9667,
-			"rules": ""
-		},
-		"Antarctica/DumontDUrville": {
-			"lat": -65.3333,
-			"lon": 140.0167,
-			"rules": ""
-		},
-		"Antarctica/Macquarie": {
-			"lat": -53.5,
-			"lon": 158.95,
-			"rules": "Aus AT"
-		},
-		"Antarctica/Mawson": {
-			"lat": -66.4,
-			"lon": 62.8833,
-			"rules": ""
-		},
-		"Antarctica/McMurdo": {
-			"lat": -76.1667,
-			"lon": 166.6,
-			"rules": "NZAQ"
-		},
-		"Antarctica/Palmer": {
-			"lat": -63.2,
-			"lon": -63.9,
-			"rules": "ArgAQ ChileAQ"
-		},
-		"Antarctica/Rothera": {
-			"lat": -66.4333,
-			"lon": -67.8667,
-			"rules": ""
-		},
-		"Antarctica/South_Pole": {
-			"lat": -90,
-			"lon": 0,
-			"rules": ""
-		},
-		"Antarctica/Syowa": {
-			"lat": -68.9939,
-			"lon": 39.59,
-			"rules": ""
-		},
-		"Antarctica/Vostok": {
-			"lat": -77.6,
-			"lon": 106.9,
-			"rules": ""
-		},
-		"Arctic/Longyearbyen": {
-			"lat": 78,
-			"lon": 16,
-			"rules": ""
-		},
-		"Asia/Aden": {
-			"lat": 12.75,
-			"lon": 45.2,
-			"rules": ""
-		},
-		"Asia/Almaty": {
-			"lat": 43.25,
-			"lon": 76.95,
-			"rules": "RussiaAsia"
-		},
-		"Asia/Amman": {
-			"lat": 31.95,
-			"lon": 35.9333,
-			"rules": "Jordan"
-		},
-		"Asia/Anadyr": {
-			"lat": 64.75,
-			"lon": 177.4833,
-			"rules": "Russia"
-		},
-		"Asia/Aqtau": {
-			"lat": 44.5167,
-			"lon": 50.2667,
-			"rules": "RussiaAsia"
-		},
-		"Asia/Aqtobe": {
-			"lat": 50.2833,
-			"lon": 57.1667,
-			"rules": "RussiaAsia"
-		},
-		"Asia/Ashgabat": {
-			"lat": 37.95,
-			"lon": 58.3833,
-			"rules": "RussiaAsia"
-		},
-		"Asia/Baghdad": {
-			"lat": 33.35,
-			"lon": 44.4167,
-			"rules": "Iraq"
-		},
-		"Asia/Bahrain": {
-			"lat": 26.3833,
-			"lon": 50.5833,
-			"rules": ""
-		},
-		"Asia/Baku": {
-			"lat": 40.3833,
-			"lon": 49.85,
-			"rules": "RussiaAsia EUAsia Azer"
-		},
-		"Asia/Bangkok": {
-			"lat": 13.75,
-			"lon": 100.5167,
-			"rules": ""
-		},
-		"Asia/Beirut": {
-			"lat": 33.8833,
-			"lon": 35.5,
-			"rules": "Lebanon"
-		},
-		"Asia/Bishkek": {
-			"lat": 42.9,
-			"lon": 74.6,
-			"rules": "RussiaAsia Kyrgyz"
-		},
-		"Asia/Brunei": {
-			"lat": 4.9333,
-			"lon": 114.9167,
-			"rules": ""
-		},
-		"Asia/Choibalsan": {
-			"lat": 48.0667,
-			"lon": 114.5,
-			"rules": "Mongol"
-		},
-		"Asia/Chongqing": {
-			"lat": 29.5667,
-			"lon": 106.5833,
-			"rules": "PRC"
-		},
-		"Asia/Colombo": {
-			"lat": 6.9333,
-			"lon": 79.85,
-			"rules": ""
-		},
-		"Asia/Damascus": {
-			"lat": 33.5,
-			"lon": 36.3,
-			"rules": "Syria"
-		},
-		"Asia/Dhaka": {
-			"lat": 23.7167,
-			"lon": 90.4167,
-			"rules": "Dhaka"
-		},
-		"Asia/Dili": {
-			"lat": -7.45,
-			"lon": 125.5833,
-			"rules": ""
-		},
-		"Asia/Dubai": {
-			"lat": 25.3,
-			"lon": 55.3,
-			"rules": ""
-		},
-		"Asia/Dushanbe": {
-			"lat": 38.5833,
-			"lon": 68.8,
-			"rules": "RussiaAsia"
-		},
-		"Asia/Gaza": {
-			"lat": 31.5,
-			"lon": 34.4667,
-			"rules": "Zion EgyptAsia Jordan Palestine"
-		},
-		"Asia/Harbin": {
-			"lat": 45.75,
-			"lon": 126.6833,
-			"rules": "PRC"
-		},
-		"Asia/Hebron": {
-			"lat": 31.5333,
-			"lon": 35.095,
-			"rules": "Zion EgyptAsia Jordan Palestine"
-		},
-		"Asia/Ho_Chi_Minh": {
-			"lat": 10.75,
-			"lon": 106.6667,
-			"rules": ""
-		},
-		"Asia/Hong_Kong": {
-			"lat": 22.2833,
-			"lon": 114.15,
-			"rules": "HK"
-		},
-		"Asia/Hovd": {
-			"lat": 48.0167,
-			"lon": 91.65,
-			"rules": "Mongol"
-		},
-		"Asia/Irkutsk": {
-			"lat": 52.2667,
-			"lon": 104.3333,
-			"rules": "Russia"
-		},
-		"Asia/Jakarta": {
-			"lat": -5.8333,
-			"lon": 106.8,
-			"rules": ""
-		},
-		"Asia/Jayapura": {
-			"lat": -1.4667,
-			"lon": 140.7,
-			"rules": ""
-		},
-		"Asia/Jerusalem": {
-			"lat": 31.7667,
-			"lon": 35.2333,
-			"rules": "Zion"
-		},
-		"Asia/Kabul": {
-			"lat": 34.5167,
-			"lon": 69.2,
-			"rules": ""
-		},
-		"Asia/Kamchatka": {
-			"lat": 53.0167,
-			"lon": 158.65,
-			"rules": "Russia"
-		},
-		"Asia/Karachi": {
-			"lat": 24.8667,
-			"lon": 67.05,
-			"rules": "Pakistan"
-		},
-		"Asia/Kashgar": {
-			"lat": 39.4833,
-			"lon": 75.9833,
-			"rules": "PRC"
-		},
-		"Asia/Kathmandu": {
-			"lat": 27.7167,
-			"lon": 85.3167,
-			"rules": ""
-		},
-		"Asia/Khandyga": {
-			"lat": 62.6564,
-			"lon": 135.5539,
-			"rules": "Russia"
-		},
-		"Asia/Kolkata": {
-			"lat": 22.5333,
-			"lon": 88.3667,
-			"rules": ""
-		},
-		"Asia/Krasnoyarsk": {
-			"lat": 56.0167,
-			"lon": 92.8333,
-			"rules": "Russia"
-		},
-		"Asia/Kuala_Lumpur": {
-			"lat": 3.1667,
-			"lon": 101.7,
-			"rules": ""
-		},
-		"Asia/Kuching": {
-			"lat": 1.55,
-			"lon": 110.3333,
-			"rules": "NBorneo"
-		},
-		"Asia/Kuwait": {
-			"lat": 29.3333,
-			"lon": 47.9833,
-			"rules": ""
-		},
-		"Asia/Macau": {
-			"lat": 22.2333,
-			"lon": 113.5833,
-			"rules": "Macau PRC"
-		},
-		"Asia/Magadan": {
-			"lat": 59.5667,
-			"lon": 150.8,
-			"rules": "Russia"
-		},
-		"Asia/Makassar": {
-			"lat": -4.8833,
-			"lon": 119.4,
-			"rules": ""
-		},
-		"Asia/Manila": {
-			"lat": 14.5833,
-			"lon": 121,
-			"rules": "Phil"
-		},
-		"Asia/Muscat": {
-			"lat": 23.6,
-			"lon": 58.5833,
-			"rules": ""
-		},
-		"Asia/Nicosia": {
-			"lat": 35.1667,
-			"lon": 33.3667,
-			"rules": "Cyprus EUAsia"
-		},
-		"Asia/Novokuznetsk": {
-			"lat": 53.75,
-			"lon": 87.1167,
-			"rules": "Russia"
-		},
-		"Asia/Novosibirsk": {
-			"lat": 55.0333,
-			"lon": 82.9167,
-			"rules": "Russia"
-		},
-		"Asia/Omsk": {
-			"lat": 55,
-			"lon": 73.4,
-			"rules": "Russia"
-		},
-		"Asia/Oral": {
-			"lat": 51.2167,
-			"lon": 51.35,
-			"rules": "RussiaAsia"
-		},
-		"Asia/Phnom_Penh": {
-			"lat": 11.55,
-			"lon": 104.9167,
-			"rules": ""
-		},
-		"Asia/Pontianak": {
-			"lat": 0.0333,
-			"lon": 109.3333,
-			"rules": ""
-		},
-		"Asia/Pyongyang": {
-			"lat": 39.0167,
-			"lon": 125.75,
-			"rules": ""
-		},
-		"Asia/Qatar": {
-			"lat": 25.2833,
-			"lon": 51.5333,
-			"rules": ""
-		},
-		"Asia/Qyzylorda": {
-			"lat": 44.8,
-			"lon": 65.4667,
-			"rules": "RussiaAsia"
-		},
-		"Asia/Rangoon": {
-			"lat": 16.7833,
-			"lon": 96.1667,
-			"rules": ""
-		},
-		"Asia/Riyadh": {
-			"lat": 24.6333,
-			"lon": 46.7167,
-			"rules": ""
-		},
-		"Asia/Sakhalin": {
-			"lat": 46.9667,
-			"lon": 142.7,
-			"rules": "Russia"
-		},
-		"Asia/Samarkand": {
-			"lat": 39.6667,
-			"lon": 66.8,
-			"rules": "RussiaAsia"
-		},
-		"Asia/Seoul": {
-			"lat": 37.55,
-			"lon": 126.9667,
-			"rules": "ROK"
-		},
-		"Asia/Shanghai": {
-			"lat": 31.2333,
-			"lon": 121.4667,
-			"rules": "Shang PRC"
-		},
-		"Asia/Singapore": {
-			"lat": 1.2833,
-			"lon": 103.85,
-			"rules": ""
-		},
-		"Asia/Taipei": {
-			"lat": 25.05,
-			"lon": 121.5,
-			"rules": "Taiwan"
-		},
-		"Asia/Tashkent": {
-			"lat": 41.3333,
-			"lon": 69.3,
-			"rules": "RussiaAsia"
-		},
-		"Asia/Tbilisi": {
-			"lat": 41.7167,
-			"lon": 44.8167,
-			"rules": "RussiaAsia E-EurAsia"
-		},
-		"Asia/Tehran": {
-			"lat": 35.6667,
-			"lon": 51.4333,
-			"rules": "Iran"
-		},
-		"Asia/Thimphu": {
-			"lat": 27.4667,
-			"lon": 89.65,
-			"rules": ""
-		},
-		"Asia/Tokyo": {
-			"lat": 35.6544,
-			"lon": 139.7447,
-			"rules": "Japan"
-		},
-		"Asia/Ulaanbaatar": {
-			"lat": 47.9167,
-			"lon": 106.8833,
-			"rules": "Mongol"
-		},
-		"Asia/Urumqi": {
-			"lat": 43.8,
-			"lon": 87.5833,
-			"rules": "PRC"
-		},
-		"Asia/Ust-Nera": {
-			"lat": 64.5603,
-			"lon": 143.2267,
-			"rules": "Russia"
-		},
-		"Asia/Vientiane": {
-			"lat": 17.9667,
-			"lon": 102.6,
-			"rules": ""
-		},
-		"Asia/Vladivostok": {
-			"lat": 43.1667,
-			"lon": 131.9333,
-			"rules": "Russia"
-		},
-		"Asia/Yakutsk": {
-			"lat": 62,
-			"lon": 129.6667,
-			"rules": "Russia"
-		},
-		"Asia/Yekaterinburg": {
-			"lat": 56.85,
-			"lon": 60.6,
-			"rules": "Russia"
-		},
-		"Asia/Yerevan": {
-			"lat": 40.1833,
-			"lon": 44.5,
-			"rules": "RussiaAsia"
-		},
-		"Atlantic/Azores": {
-			"lat": 37.7333,
-			"lon": -24.3333,
-			"rules": "Port W-Eur EU"
-		},
-		"Atlantic/Bermuda": {
-			"lat": 32.2833,
-			"lon": -63.2333,
-			"rules": "Bahamas US"
-		},
-		"Atlantic/Canary": {
-			"lat": 28.1,
-			"lon": -14.6,
-			"rules": "EU"
-		},
-		"Atlantic/Cape_Verde": {
-			"lat": 14.9167,
-			"lon": -22.4833,
-			"rules": ""
-		},
-		"Atlantic/Faroe": {
-			"lat": 62.0167,
-			"lon": -5.2333,
-			"rules": "EU"
-		},
-		"Atlantic/Madeira": {
-			"lat": 32.6333,
-			"lon": -15.1,
-			"rules": "Port EU"
-		},
-		"Atlantic/Reykjavik": {
-			"lat": 64.15,
-			"lon": -20.15,
-			"rules": "Iceland"
-		},
-		"Atlantic/South_Georgia": {
-			"lat": -53.7333,
-			"lon": -35.4667,
-			"rules": ""
-		},
-		"Atlantic/St_Helena": {
-			"lat": -14.0833,
-			"lon": -4.3,
-			"rules": ""
-		},
-		"Atlantic/Stanley": {
-			"lat": -50.3,
-			"lon": -56.15,
-			"rules": "Falk"
-		},
-		"Australia/Adelaide": {
-			"lat": -33.0833,
-			"lon": 138.5833,
-			"rules": "Aus AS"
-		},
-		"Australia/Brisbane": {
-			"lat": -26.5333,
-			"lon": 153.0333,
-			"rules": "Aus AQ"
-		},
-		"Australia/Broken_Hill": {
-			"lat": -30.05,
-			"lon": 141.45,
-			"rules": "Aus AN AS"
-		},
-		"Australia/Currie": {
-			"lat": -38.0667,
-			"lon": 143.8667,
-			"rules": "Aus AT"
-		},
-		"Australia/Darwin": {
-			"lat": -11.5333,
-			"lon": 130.8333,
-			"rules": "Aus"
-		},
-		"Australia/Eucla": {
-			"lat": -30.2833,
-			"lon": 128.8667,
-			"rules": "Aus AW"
-		},
-		"Australia/Hobart": {
-			"lat": -41.1167,
-			"lon": 147.3167,
-			"rules": "Aus AT"
-		},
-		"Australia/Lindeman": {
-			"lat": -19.7333,
-			"lon": 149,
-			"rules": "Aus AQ Holiday"
-		},
-		"Australia/Lord_Howe": {
-			"lat": -30.45,
-			"lon": 159.0833,
-			"rules": "LH"
-		},
-		"Australia/Melbourne": {
-			"lat": -36.1833,
-			"lon": 144.9667,
-			"rules": "Aus AV"
-		},
-		"Australia/Perth": {
-			"lat": -30.05,
-			"lon": 115.85,
-			"rules": "Aus AW"
-		},
-		"Australia/Sydney": {
-			"lat": -32.1333,
-			"lon": 151.2167,
-			"rules": "Aus AN"
-		},
-		"CET": {
-			"rules": "C-Eur"
-		},
-		"CST6CDT": {
-			"rules": "US"
-		},
-		"EET": {
-			"rules": "EU"
-		},
-		"EST": {
-			"rules": ""
-		},
-		"EST5EDT": {
-			"rules": "US"
-		},
-		"Etc/GMT": {
-			"rules": ""
-		},
-		"Etc/GMT+1": {
-			"rules": ""
-		},
-		"Etc/GMT+10": {
-			"rules": ""
-		},
-		"Etc/GMT+11": {
-			"rules": ""
-		},
-		"Etc/GMT+12": {
-			"rules": ""
-		},
-		"Etc/GMT+2": {
-			"rules": ""
-		},
-		"Etc/GMT+3": {
-			"rules": ""
-		},
-		"Etc/GMT+4": {
-			"rules": ""
-		},
-		"Etc/GMT+5": {
-			"rules": ""
-		},
-		"Etc/GMT+6": {
-			"rules": ""
-		},
-		"Etc/GMT+7": {
-			"rules": ""
-		},
-		"Etc/GMT+8": {
-			"rules": ""
-		},
-		"Etc/GMT+9": {
-			"rules": ""
-		},
-		"Etc/GMT-1": {
-			"rules": ""
-		},
-		"Etc/GMT-10": {
-			"rules": ""
-		},
-		"Etc/GMT-11": {
-			"rules": ""
-		},
-		"Etc/GMT-12": {
-			"rules": ""
-		},
-		"Etc/GMT-13": {
-			"rules": ""
-		},
-		"Etc/GMT-14": {
-			"rules": ""
-		},
-		"Etc/GMT-2": {
-			"rules": ""
-		},
-		"Etc/GMT-3": {
-			"rules": ""
-		},
-		"Etc/GMT-4": {
-			"rules": ""
-		},
-		"Etc/GMT-5": {
-			"rules": ""
-		},
-		"Etc/GMT-6": {
-			"rules": ""
-		},
-		"Etc/GMT-7": {
-			"rules": ""
-		},
-		"Etc/GMT-8": {
-			"rules": ""
-		},
-		"Etc/GMT-9": {
-			"rules": ""
-		},
-		"Etc/UCT": {
-			"rules": ""
-		},
-		"Etc/UTC": {
-			"rules": ""
-		},
-		"Europe/Amsterdam": {
-			"lat": 52.3667,
-			"lon": 4.9,
-			"rules": "Neth C-Eur EU"
-		},
-		"Europe/Andorra": {
-			"lat": 42.5,
-			"lon": 1.5167,
-			"rules": "EU"
-		},
-		"Europe/Athens": {
-			"lat": 37.9667,
-			"lon": 23.7167,
-			"rules": "Greece EU"
-		},
-		"Europe/Belgrade": {
-			"lat": 44.8333,
-			"lon": 20.5,
-			"rules": "C-Eur EU"
-		},
-		"Europe/Berlin": {
-			"lat": 52.5,
-			"lon": 13.3667,
-			"rules": "C-Eur SovietZone Germany EU"
-		},
-		"Europe/Bratislava": {
-			"lat": 48.15,
-			"lon": 17.1167,
-			"rules": ""
-		},
-		"Europe/Brussels": {
-			"lat": 50.8333,
-			"lon": 4.3333,
-			"rules": "C-Eur Belgium EU"
-		},
-		"Europe/Bucharest": {
-			"lat": 44.4333,
-			"lon": 26.1,
-			"rules": "Romania C-Eur E-Eur EU"
-		},
-		"Europe/Budapest": {
-			"lat": 47.5,
-			"lon": 19.0833,
-			"rules": "C-Eur Hungary EU"
-		},
-		"Europe/Busingen": {
-			"lat": 47.7,
-			"lon": 8.6833,
-			"rules": ""
-		},
-		"Europe/Chisinau": {
-			"lat": 47,
-			"lon": 28.8333,
-			"rules": "Romania C-Eur Russia E-Eur EU"
-		},
-		"Europe/Copenhagen": {
-			"lat": 55.6667,
-			"lon": 12.5833,
-			"rules": "Denmark C-Eur EU"
-		},
-		"Europe/Dublin": {
-			"lat": 53.3333,
-			"lon": -5.75,
-			"rules": "GB-Eire EU"
-		},
-		"Europe/Gibraltar": {
-			"lat": 36.1333,
-			"lon": -4.65,
-			"rules": "GB-Eire EU"
-		},
-		"Europe/Guernsey": {
-			"lat": 49.45,
-			"lon": -1.4667,
-			"rules": ""
-		},
-		"Europe/Helsinki": {
-			"lat": 60.1667,
-			"lon": 24.9667,
-			"rules": "Finland EU"
-		},
-		"Europe/Isle_of_Man": {
-			"lat": 54.15,
-			"lon": -3.5333,
-			"rules": ""
-		},
-		"Europe/Istanbul": {
-			"lat": 41.0167,
-			"lon": 28.9667,
-			"rules": "Turkey EU"
-		},
-		"Europe/Jersey": {
-			"lat": 49.2,
-			"lon": -1.8833,
-			"rules": ""
-		},
-		"Europe/Kaliningrad": {
-			"lat": 54.7167,
-			"lon": 20.5,
-			"rules": "C-Eur Poland Russia"
-		},
-		"Europe/Kiev": {
-			"lat": 50.4333,
-			"lon": 30.5167,
-			"rules": "C-Eur Russia E-Eur EU"
-		},
-		"Europe/Lisbon": {
-			"lat": 38.7167,
-			"lon": -8.8667,
-			"rules": "Port W-Eur EU"
-		},
-		"Europe/Ljubljana": {
-			"lat": 46.05,
-			"lon": 14.5167,
-			"rules": ""
-		},
-		"Europe/London": {
-			"lat": 51.5083,
-			"lon": 0.1253,
-			"rules": "GB-Eire EU"
-		},
-		"Europe/Luxembourg": {
-			"lat": 49.6,
-			"lon": 6.15,
-			"rules": "Lux Belgium C-Eur EU"
-		},
-		"Europe/Madrid": {
-			"lat": 40.4,
-			"lon": -2.3167,
-			"rules": "Spain EU"
-		},
-		"Europe/Malta": {
-			"lat": 35.9,
-			"lon": 14.5167,
-			"rules": "Italy C-Eur Malta EU"
-		},
-		"Europe/Mariehamn": {
-			"lat": 60.1,
-			"lon": 19.95,
-			"rules": ""
-		},
-		"Europe/Minsk": {
-			"lat": 53.9,
-			"lon": 27.5667,
-			"rules": "C-Eur Russia"
-		},
-		"Europe/Monaco": {
-			"lat": 43.7,
-			"lon": 7.3833,
-			"rules": "France EU"
-		},
-		"Europe/Moscow": {
-			"lat": 55.75,
-			"lon": 37.5833,
-			"rules": "Russia"
-		},
-		"Europe/Oslo": {
-			"lat": 59.9167,
-			"lon": 10.75,
-			"rules": "Norway C-Eur EU"
-		},
-		"Europe/Paris": {
-			"lat": 48.8667,
-			"lon": 2.3333,
-			"rules": "France C-Eur EU"
-		},
-		"Europe/Podgorica": {
-			"lat": 42.4333,
-			"lon": 19.2667,
-			"rules": ""
-		},
-		"Europe/Prague": {
-			"lat": 50.0833,
-			"lon": 14.4333,
-			"rules": "C-Eur Czech EU"
-		},
-		"Europe/Riga": {
-			"lat": 56.95,
-			"lon": 24.1,
-			"rules": "C-Eur Russia Latvia EU"
-		},
-		"Europe/Rome": {
-			"lat": 41.9,
-			"lon": 12.4833,
-			"rules": "Italy C-Eur EU"
-		},
-		"Europe/Samara": {
-			"lat": 53.2,
-			"lon": 50.15,
-			"rules": "Russia"
-		},
-		"Europe/San_Marino": {
-			"lat": 43.9167,
-			"lon": 12.4667,
-			"rules": ""
-		},
-		"Europe/Sarajevo": {
-			"lat": 43.8667,
-			"lon": 18.4167,
-			"rules": ""
-		},
-		"Europe/Simferopol": {
-			"lat": 44.95,
-			"lon": 34.1,
-			"rules": "C-Eur Russia E-Eur EU"
-		},
-		"Europe/Skopje": {
-			"lat": 41.9833,
-			"lon": 21.4333,
-			"rules": ""
-		},
-		"Europe/Sofia": {
-			"lat": 42.6833,
-			"lon": 23.3167,
-			"rules": "C-Eur Bulg E-Eur EU"
-		},
-		"Europe/Stockholm": {
-			"lat": 59.3333,
-			"lon": 18.05,
-			"rules": "EU"
-		},
-		"Europe/Tallinn": {
-			"lat": 59.4167,
-			"lon": 24.75,
-			"rules": "C-Eur Russia EU"
-		},
-		"Europe/Tirane": {
-			"lat": 41.3333,
-			"lon": 19.8333,
-			"rules": "Albania EU"
-		},
-		"Europe/Uzhgorod": {
-			"lat": 48.6167,
-			"lon": 22.3,
-			"rules": "C-Eur Russia E-Eur EU"
-		},
-		"Europe/Vaduz": {
-			"lat": 47.15,
-			"lon": 9.5167,
-			"rules": "EU"
-		},
-		"Europe/Vatican": {
-			"lat": 41.9022,
-			"lon": 12.4531,
-			"rules": ""
-		},
-		"Europe/Vienna": {
-			"lat": 48.2167,
-			"lon": 16.3333,
-			"rules": "C-Eur Austria EU"
-		},
-		"Europe/Vilnius": {
-			"lat": 54.6833,
-			"lon": 25.3167,
-			"rules": "C-Eur Russia EU"
-		},
-		"Europe/Volgograd": {
-			"lat": 48.7333,
-			"lon": 44.4167,
-			"rules": "Russia"
-		},
-		"Europe/Warsaw": {
-			"lat": 52.25,
-			"lon": 21,
-			"rules": "C-Eur Poland W-Eur EU"
-		},
-		"Europe/Zagreb": {
-			"lat": 45.8,
-			"lon": 15.9667,
-			"rules": ""
-		},
-		"Europe/Zaporozhye": {
-			"lat": 47.8333,
-			"lon": 35.1667,
-			"rules": "C-Eur Russia E-Eur EU"
-		},
-		"Europe/Zurich": {
-			"lat": 47.3833,
-			"lon": 8.5333,
-			"rules": "Swiss EU"
-		},
-		"HST": {
-			"rules": ""
-		},
-		"Indian/Antananarivo": {
-			"lat": -17.0833,
-			"lon": 47.5167,
-			"rules": ""
-		},
-		"Indian/Chagos": {
-			"lat": -6.6667,
-			"lon": 72.4167,
-			"rules": ""
-		},
-		"Indian/Christmas": {
-			"lat": -9.5833,
-			"lon": 105.7167,
-			"rules": ""
-		},
-		"Indian/Cocos": {
-			"lat": -11.8333,
-			"lon": 96.9167,
-			"rules": ""
-		},
-		"Indian/Comoro": {
-			"lat": -10.3167,
-			"lon": 43.2667,
-			"rules": ""
-		},
-		"Indian/Kerguelen": {
-			"lat": -48.6472,
-			"lon": 70.2175,
-			"rules": ""
-		},
-		"Indian/Mahe": {
-			"lat": -3.3333,
-			"lon": 55.4667,
-			"rules": ""
-		},
-		"Indian/Maldives": {
-			"lat": 4.1667,
-			"lon": 73.5,
-			"rules": ""
-		},
-		"Indian/Mauritius": {
-			"lat": -19.8333,
-			"lon": 57.5,
-			"rules": "Mauritius"
-		},
-		"Indian/Mayotte": {
-			"lat": -11.2167,
-			"lon": 45.2333,
-			"rules": ""
-		},
-		"Indian/Reunion": {
-			"lat": -19.1333,
-			"lon": 55.4667,
-			"rules": ""
-		},
-		"MET": {
-			"rules": "C-Eur"
-		},
-		"MST": {
-			"rules": ""
-		},
-		"MST7MDT": {
-			"rules": "US"
-		},
-		"PST8PDT": {
-			"rules": "US"
-		},
-		"Pacific/Apia": {
-			"lat": -12.1667,
-			"lon": -170.2667,
-			"rules": "WS"
-		},
-		"Pacific/Auckland": {
-			"lat": -35.1333,
-			"lon": 174.7667,
-			"rules": "NZ"
-		},
-		"Pacific/Chatham": {
-			"lat": -42.05,
-			"lon": -175.45,
-			"rules": "Chatham"
-		},
-		"Pacific/Chuuk": {
-			"lat": 7.4167,
-			"lon": 151.7833,
-			"rules": ""
-		},
-		"Pacific/Easter": {
-			"lat": -26.85,
-			"lon": -108.5667,
-			"rules": "Chile"
-		},
-		"Pacific/Efate": {
-			"lat": -16.3333,
-			"lon": 168.4167,
-			"rules": "Vanuatu"
-		},
-		"Pacific/Enderbury": {
-			"lat": -2.8667,
-			"lon": -170.9167,
-			"rules": ""
-		},
-		"Pacific/Fakaofo": {
-			"lat": -8.6333,
-			"lon": -170.7667,
-			"rules": ""
-		},
-		"Pacific/Fiji": {
-			"lat": -17.8667,
-			"lon": 178.4167,
-			"rules": "Fiji"
-		},
-		"Pacific/Funafuti": {
-			"lat": -7.4833,
-			"lon": 179.2167,
-			"rules": ""
-		},
-		"Pacific/Galapagos": {
-			"lat": 0.9,
-			"lon": -88.4,
-			"rules": ""
-		},
-		"Pacific/Gambier": {
-			"lat": -22.8667,
-			"lon": -133.05,
-			"rules": ""
-		},
-		"Pacific/Guadalcanal": {
-			"lat": -8.4667,
-			"lon": 160.2,
-			"rules": ""
-		},
-		"Pacific/Guam": {
-			"lat": 13.4667,
-			"lon": 144.75,
-			"rules": ""
-		},
-		"Pacific/Honolulu": {
-			"lat": 21.3069,
-			"lon": -156.1417,
-			"rules": ""
-		},
-		"Pacific/Johnston": {
-			"lat": 16.75,
-			"lon": -168.4833,
-			"rules": ""
-		},
-		"Pacific/Kiritimati": {
-			"lat": 1.8667,
-			"lon": -156.6667,
-			"rules": ""
-		},
-		"Pacific/Kosrae": {
-			"lat": 5.3167,
-			"lon": 162.9833,
-			"rules": ""
-		},
-		"Pacific/Kwajalein": {
-			"lat": 9.0833,
-			"lon": 167.3333,
-			"rules": ""
-		},
-		"Pacific/Majuro": {
-			"lat": 7.15,
-			"lon": 171.2,
-			"rules": ""
-		},
-		"Pacific/Marquesas": {
-			"lat": -9,
-			"lon": -138.5,
-			"rules": ""
-		},
-		"Pacific/Midway": {
-			"lat": 28.2167,
-			"lon": -176.6333,
-			"rules": ""
-		},
-		"Pacific/Nauru": {
-			"lat": 0.5167,
-			"lon": 166.9167,
-			"rules": ""
-		},
-		"Pacific/Niue": {
-			"lat": -18.9833,
-			"lon": -168.0833,
-			"rules": ""
-		},
-		"Pacific/Norfolk": {
-			"lat": -28.95,
-			"lon": 167.9667,
-			"rules": ""
-		},
-		"Pacific/Noumea": {
-			"lat": -21.7333,
-			"lon": 166.45,
-			"rules": "NC"
-		},
-		"Pacific/Pago_Pago": {
-			"lat": -13.7333,
-			"lon": -169.3,
-			"rules": ""
-		},
-		"Pacific/Palau": {
-			"lat": 7.3333,
-			"lon": 134.4833,
-			"rules": ""
-		},
-		"Pacific/Pitcairn": {
-			"lat": -24.9333,
-			"lon": -129.9167,
-			"rules": ""
-		},
-		"Pacific/Pohnpei": {
-			"lat": 6.9667,
-			"lon": 158.2167,
-			"rules": ""
-		},
-		"Pacific/Port_Moresby": {
-			"lat": -8.5,
-			"lon": 147.1667,
-			"rules": ""
-		},
-		"Pacific/Rarotonga": {
-			"lat": -20.7667,
-			"lon": -158.2333,
-			"rules": "Cook"
-		},
-		"Pacific/Saipan": {
-			"lat": 15.2,
-			"lon": 145.75,
-			"rules": ""
-		},
-		"Pacific/Tahiti": {
-			"lat": -16.4667,
-			"lon": -148.4333,
-			"rules": ""
-		},
-		"Pacific/Tarawa": {
-			"lat": 1.4167,
-			"lon": 173,
-			"rules": ""
-		},
-		"Pacific/Tongatapu": {
-			"lat": -20.8333,
-			"lon": -174.8333,
-			"rules": "Tonga"
-		},
-		"Pacific/Wake": {
-			"lat": 19.2833,
-			"lon": 166.6167,
-			"rules": ""
-		},
-		"Pacific/Wallis": {
-			"lat": -12.7,
-			"lon": -175.8333,
-			"rules": ""
-		},
-		"WET": {
-			"rules": "EU"
-		}
-	},
-	"rules": {
-		"AN": [
-			"1971 1985 9 0 8 2 2 1",
-			"1972 1972 1 27 7 2 2 0",
-			"1973 1981 2 1 0 2 2 0",
-			"1982 1982 3 1 0 2 2 0",
-			"1983 1985 2 1 0 2 2 0",
-			"1986 1989 2 15 0 2 2 0",
-			"1986 1986 9 19 7 2 2 1",
-			"1987 1999 9 0 8 2 2 1",
-			"1990 1995 2 1 0 2 2 0",
-			"1996 2005 2 0 8 2 2 0",
-			"2000 2000 7 0 8 2 2 1",
-			"2001 2007 9 0 8 2 2 1",
-			"2006 2006 3 1 0 2 2 0",
-			"2007 2007 2 0 8 2 2 0",
-			"2008 9999 3 1 0 2 2 0",
-			"2008 9999 9 1 0 2 2 1"
-		],
-		"AQ": [
-			"1971 1971 9 0 8 2 2 1",
-			"1972 1972 1 0 8 2 2 0",
-			"1989 1991 9 0 8 2 2 1",
-			"1990 1992 2 1 0 2 2 0"
-		],
-		"AS": [
-			"1971 1985 9 0 8 2 2 1",
-			"1986 1986 9 19 7 2 2 1",
-			"1987 2007 9 0 8 2 2 1",
-			"1972 1972 1 27 7 2 2 0",
-			"1973 1985 2 1 0 2 2 0",
-			"1986 1990 2 15 0 2 2 0",
-			"1991 1991 2 3 7 2 2 0",
-			"1992 1992 2 22 7 2 2 0",
-			"1993 1993 2 7 7 2 2 0",
-			"1994 1994 2 20 7 2 2 0",
-			"1995 2005 2 0 8 2 2 0",
-			"2006 2006 3 2 7 2 2 0",
-			"2007 2007 2 0 8 2 2 0",
-			"2008 9999 3 1 0 2 2 0",
-			"2008 9999 9 1 0 2 2 1"
-		],
-		"AT": [
-			"1967 1967 9 1 0 2 2 1",
-			"1968 1968 2 0 8 2 2 0",
-			"1968 1985 9 0 8 2 2 1",
-			"1969 1971 2 8 0 2 2 0",
-			"1972 1972 1 0 8 2 2 0",
-			"1973 1981 2 1 0 2 2 0",
-			"1982 1983 2 0 8 2 2 0",
-			"1984 1986 2 1 0 2 2 0",
-			"1986 1986 9 15 0 2 2 1",
-			"1987 1990 2 15 0 2 2 0",
-			"1987 1987 9 22 0 2 2 1",
-			"1988 1990 9 0 8 2 2 1",
-			"1991 1999 9 1 0 2 2 1",
-			"1991 2005 2 0 8 2 2 0",
-			"2000 2000 7 0 8 2 2 1",
-			"2001 9999 9 1 0 2 2 1",
-			"2006 2006 3 1 0 2 2 0",
-			"2007 2007 2 0 8 2 2 0",
-			"2008 9999 3 1 0 2 2 0"
-		],
-		"AV": [
-			"1971 1985 9 0 8 2 2 1",
-			"1972 1972 1 0 8 2 2 0",
-			"1973 1985 2 1 0 2 2 0",
-			"1986 1990 2 15 0 2 2 0",
-			"1986 1987 9 15 0 2 2 1",
-			"1988 1999 9 0 8 2 2 1",
-			"1991 1994 2 1 0 2 2 0",
-			"1995 2005 2 0 8 2 2 0",
-			"2000 2000 7 0 8 2 2 1",
-			"2001 2007 9 0 8 2 2 1",
-			"2006 2006 3 1 0 2 2 0",
-			"2007 2007 2 0 8 2 2 0",
-			"2008 9999 3 1 0 2 2 0",
-			"2008 9999 9 1 0 2 2 1"
-		],
-		"AW": [
-			"1974 1974 9 0 8 2 2 1",
-			"1975 1975 2 1 0 2 2 0",
-			"1983 1983 9 0 8 2 2 1",
-			"1984 1984 2 1 0 2 2 0",
-			"1991 1991 10 17 7 2 2 1",
-			"1992 1992 2 1 0 2 2 0",
-			"2006 2006 11 3 7 2 2 1",
-			"2007 2009 2 0 8 2 2 0",
-			"2007 2008 9 0 8 2 2 1"
-		],
-		"Albania": [
-			"1940 1940 5 16 7 0 0 1 S",
-			"1942 1942 10 2 7 3 0 0",
-			"1943 1943 2 29 7 2 0 1 S",
-			"1943 1943 3 10 7 3 0 0",
-			"1974 1974 4 4 7 0 0 1 S",
-			"1974 1974 9 2 7 0 0 0",
-			"1975 1975 4 1 7 0 0 1 S",
-			"1975 1975 9 2 7 0 0 0",
-			"1976 1976 4 2 7 0 0 1 S",
-			"1976 1976 9 3 7 0 0 0",
-			"1977 1977 4 8 7 0 0 1 S",
-			"1977 1977 9 2 7 0 0 0",
-			"1978 1978 4 6 7 0 0 1 S",
-			"1978 1978 9 1 7 0 0 0",
-			"1979 1979 4 5 7 0 0 1 S",
-			"1979 1979 8 30 7 0 0 0",
-			"1980 1980 4 3 7 0 0 1 S",
-			"1980 1980 9 4 7 0 0 0",
-			"1981 1981 3 26 7 0 0 1 S",
-			"1981 1981 8 27 7 0 0 0",
-			"1982 1982 4 2 7 0 0 1 S",
-			"1982 1982 9 3 7 0 0 0",
-			"1983 1983 3 18 7 0 0 1 S",
-			"1983 1983 9 1 7 0 0 0",
-			"1984 1984 3 1 7 0 0 1 S"
-		],
-		"Algeria": [
-			"1916 1916 5 14 7 23 2 1 S",
-			"1916 1919 9 1 0 23 2 0",
-			"1917 1917 2 24 7 23 2 1 S",
-			"1918 1918 2 9 7 23 2 1 S",
-			"1919 1919 2 1 7 23 2 1 S",
-			"1920 1920 1 14 7 23 2 1 S",
-			"1920 1920 9 23 7 23 2 0",
-			"1921 1921 2 14 7 23 2 1 S",
-			"1921 1921 5 21 7 23 2 0",
-			"1939 1939 8 11 7 23 2 1 S",
-			"1939 1939 10 19 7 1 0 0",
-			"1944 1945 3 1 1 2 0 1 S",
-			"1944 1944 9 8 7 2 0 0",
-			"1945 1945 8 16 7 1 0 0",
-			"1971 1971 3 25 7 23 2 1 S",
-			"1971 1971 8 26 7 23 2 0",
-			"1977 1977 4 6 7 0 0 1 S",
-			"1977 1977 9 21 7 0 0 0",
-			"1978 1978 2 24 7 1 0 1 S",
-			"1978 1978 8 22 7 3 0 0",
-			"1980 1980 3 25 7 0 0 1 S",
-			"1980 1980 9 31 7 2 0 0"
-		],
-		"Arg": [
-			"1930 1930 11 1 7 0 0 1 S",
-			"1931 1931 3 1 7 0 0 0",
-			"1931 1931 9 15 7 0 0 1 S",
-			"1932 1940 2 1 7 0 0 0",
-			"1932 1939 10 1 7 0 0 1 S",
-			"1940 1940 6 1 7 0 0 1 S",
-			"1941 1941 5 15 7 0 0 0",
-			"1941 1941 9 15 7 0 0 1 S",
-			"1943 1943 7 1 7 0 0 0",
-			"1943 1943 9 15 7 0 0 1 S",
-			"1946 1946 2 1 7 0 0 0",
-			"1946 1946 9 1 7 0 0 1 S",
-			"1963 1963 9 1 7 0 0 0",
-			"1963 1963 11 15 7 0 0 1 S",
-			"1964 1966 2 1 7 0 0 0",
-			"1964 1966 9 15 7 0 0 1 S",
-			"1967 1967 3 2 7 0 0 0",
-			"1967 1968 9 1 0 0 0 1 S",
-			"1968 1969 3 1 0 0 0 0",
-			"1974 1974 0 23 7 0 0 1 S",
-			"1974 1974 4 1 7 0 0 0",
-			"1988 1988 11 1 7 0 0 1 S",
-			"1989 1993 2 1 0 0 0 0",
-			"1989 1992 9 15 0 0 0 1 S",
-			"1999 1999 9 1 0 0 0 1 S",
-			"2000 2000 2 3 7 0 0 0",
-			"2007 2007 11 30 7 0 0 1 S",
-			"2008 2009 2 15 0 0 0 0",
-			"2008 2008 9 15 0 0 0 1 S"
-		],
-		"ArgAQ": [
-			"1964 1966 2 1 7 0 0 0",
-			"1964 1966 9 15 7 0 0 1 S",
-			"1967 1967 3 2 7 0 0 0",
-			"1967 1968 9 1 0 0 0 1 S",
-			"1968 1969 3 1 0 0 0 0",
-			"1974 1974 0 23 7 0 0 1 S",
-			"1974 1974 4 1 7 0 0 0"
-		],
-		"Aus": [
-			"1917 1917 0 1 7 0:1 0 1",
-			"1917 1917 2 25 7 2 0 0",
-			"1942 1942 0 1 7 2 0 1",
-			"1942 1942 2 29 7 2 0 0",
-			"1942 1942 8 27 7 2 0 1",
-			"1943 1944 2 0 8 2 0 0",
-			"1943 1943 9 3 7 2 0 1"
-		],
-		"Austria": [
-			"1920 1920 3 5 7 2 2 1 S",
-			"1920 1920 8 13 7 2 2 0",
-			"1946 1946 3 14 7 2 2 1 S",
-			"1946 1948 9 1 0 2 2 0",
-			"1947 1947 3 6 7 2 2 1 S",
-			"1948 1948 3 18 7 2 2 1 S",
-			"1980 1980 3 6 7 0 0 1 S",
-			"1980 1980 8 28 7 0 0 0"
-		],
-		"Azer": [
-			"1997 9999 2 0 8 4 0 1 S",
-			"1997 9999 9 0 8 5 0 0"
-		],
-		"Bahamas": [
-			"1964 1975 9 0 8 2 0 0 S",
-			"1964 1975 3 0 8 2 0 1 D"
-		],
-		"Barb": [
-			"1977 1977 5 12 7 2 0 1 D",
-			"1977 1978 9 1 0 2 0 0 S",
-			"1978 1980 3 15 0 2 0 1 D",
-			"1979 1979 8 30 7 2 0 0 S",
-			"1980 1980 8 25 7 2 0 0 S"
-		],
-		"Belgium": [
-			"1918 1918 2 9 7 0 2 1 S",
-			"1918 1919 9 1 6 23 2 0",
-			"1919 1919 2 1 7 23 2 1 S",
-			"1920 1920 1 14 7 23 2 1 S",
-			"1920 1920 9 23 7 23 2 0",
-			"1921 1921 2 14 7 23 2 1 S",
-			"1921 1921 9 25 7 23 2 0",
-			"1922 1922 2 25 7 23 2 1 S",
-			"1922 1927 9 1 6 23 2 0",
-			"1923 1923 3 21 7 23 2 1 S",
-			"1924 1924 2 29 7 23 2 1 S",
-			"1925 1925 3 4 7 23 2 1 S",
-			"1926 1926 3 17 7 23 2 1 S",
-			"1927 1927 3 9 7 23 2 1 S",
-			"1928 1928 3 14 7 23 2 1 S",
-			"1928 1938 9 2 0 2 2 0",
-			"1929 1929 3 21 7 2 2 1 S",
-			"1930 1930 3 13 7 2 2 1 S",
-			"1931 1931 3 19 7 2 2 1 S",
-			"1932 1932 3 3 7 2 2 1 S",
-			"1933 1933 2 26 7 2 2 1 S",
-			"1934 1934 3 8 7 2 2 1 S",
-			"1935 1935 2 31 7 2 2 1 S",
-			"1936 1936 3 19 7 2 2 1 S",
-			"1937 1937 3 4 7 2 2 1 S",
-			"1938 1938 2 27 7 2 2 1 S",
-			"1939 1939 3 16 7 2 2 1 S",
-			"1939 1939 10 19 7 2 2 0",
-			"1940 1940 1 25 7 2 2 1 S",
-			"1944 1944 8 17 7 2 2 0",
-			"1945 1945 3 2 7 2 2 1 S",
-			"1945 1945 8 16 7 2 2 0",
-			"1946 1946 4 19 7 2 2 1 S",
-			"1946 1946 9 7 7 2 2 0"
-		],
-		"Belize": [
-			"1918 1942 9 2 0 0 0 0:30 HD",
-			"1919 1943 1 9 0 0 0 0 S",
-			"1973 1973 11 5 7 0 0 1 D",
-			"1974 1974 1 9 7 0 0 0 S",
-			"1982 1982 11 18 7 0 0 1 D",
-			"1983 1983 1 12 7 0 0 0 S"
-		],
-		"Brazil": [
-			"1931 1931 9 3 7 11 0 1 S",
-			"1932 1933 3 1 7 0 0 0",
-			"1932 1932 9 3 7 0 0 1 S",
-			"1949 1952 11 1 7 0 0 1 S",
-			"1950 1950 3 16 7 1 0 0",
-			"1951 1952 3 1 7 0 0 0",
-			"1953 1953 2 1 7 0 0 0",
-			"1963 1963 11 9 7 0 0 1 S",
-			"1964 1964 2 1 7 0 0 0",
-			"1965 1965 0 31 7 0 0 1 S",
-			"1965 1965 2 31 7 0 0 0",
-			"1965 1965 11 1 7 0 0 1 S",
-			"1966 1968 2 1 7 0 0 0",
-			"1966 1967 10 1 7 0 0 1 S",
-			"1985 1985 10 2 7 0 0 1 S",
-			"1986 1986 2 15 7 0 0 0",
-			"1986 1986 9 25 7 0 0 1 S",
-			"1987 1987 1 14 7 0 0 0",
-			"1987 1987 9 25 7 0 0 1 S",
-			"1988 1988 1 7 7 0 0 0",
-			"1988 1988 9 16 7 0 0 1 S",
-			"1989 1989 0 29 7 0 0 0",
-			"1989 1989 9 15 7 0 0 1 S",
-			"1990 1990 1 11 7 0 0 0",
-			"1990 1990 9 21 7 0 0 1 S",
-			"1991 1991 1 17 7 0 0 0",
-			"1991 1991 9 20 7 0 0 1 S",
-			"1992 1992 1 9 7 0 0 0",
-			"1992 1992 9 25 7 0 0 1 S",
-			"1993 1993 0 31 7 0 0 0",
-			"1993 1995 9 11 0 0 0 1 S",
-			"1994 1995 1 15 0 0 0 0",
-			"1996 1996 1 11 7 0 0 0",
-			"1996 1996 9 6 7 0 0 1 S",
-			"1997 1997 1 16 7 0 0 0",
-			"1997 1997 9 6 7 0 0 1 S",
-			"1998 1998 2 1 7 0 0 0",
-			"1998 1998 9 11 7 0 0 1 S",
-			"1999 1999 1 21 7 0 0 0",
-			"1999 1999 9 3 7 0 0 1 S",
-			"2000 2000 1 27 7 0 0 0",
-			"2000 2001 9 8 0 0 0 1 S",
-			"2001 2006 1 15 0 0 0 0",
-			"2002 2002 10 3 7 0 0 1 S",
-			"2003 2003 9 19 7 0 0 1 S",
-			"2004 2004 10 2 7 0 0 1 S",
-			"2005 2005 9 16 7 0 0 1 S",
-			"2006 2006 10 5 7 0 0 1 S",
-			"2007 2007 1 25 7 0 0 0",
-			"2007 2007 9 8 0 0 0 1 S",
-			"2008 9999 9 15 0 0 0 1 S",
-			"2008 2011 1 15 0 0 0 0",
-			"2012 2012 1 22 0 0 0 0",
-			"2013 2014 1 15 0 0 0 0",
-			"2015 2015 1 22 0 0 0 0",
-			"2016 2022 1 15 0 0 0 0",
-			"2023 2023 1 22 0 0 0 0",
-			"2024 2025 1 15 0 0 0 0",
-			"2026 2026 1 22 0 0 0 0",
-			"2027 2033 1 15 0 0 0 0",
-			"2034 2034 1 22 0 0 0 0",
-			"2035 2036 1 15 0 0 0 0",
-			"2037 2037 1 22 0 0 0 0",
-			"2038 9999 1 15 0 0 0 0"
-		],
-		"Bulg": [
-			"1979 1979 2 31 7 23 0 1 S",
-			"1979 1979 9 1 7 1 0 0",
-			"1980 1982 3 1 6 23 0 1 S",
-			"1980 1980 8 29 7 1 0 0",
-			"1981 1981 8 27 7 2 0 0"
-		],
-		"C-Eur": [
-			"1916 1916 3 30 7 23 0 1 S",
-			"1916 1916 9 1 7 1 0 0",
-			"1917 1918 3 15 1 2 2 1 S",
-			"1917 1918 8 15 1 2 2 0",
-			"1940 1940 3 1 7 2 2 1 S",
-			"1942 1942 10 2 7 2 2 0",
-			"1943 1943 2 29 7 2 2 1 S",
-			"1943 1943 9 4 7 2 2 0",
-			"1944 1945 3 1 1 2 2 1 S",
-			"1944 1944 9 2 7 2 2 0",
-			"1945 1945 8 16 7 2 2 0",
-			"1977 1980 3 1 0 2 2 1 S",
-			"1977 1977 8 0 8 2 2 0",
-			"1978 1978 9 1 7 2 2 0",
-			"1979 1995 8 0 8 2 2 0",
-			"1981 9999 2 0 8 2 2 1 S",
-			"1996 9999 9 0 8 2 2 0"
-		],
-		"CA": [
-			"1948 1948 2 14 7 2 0 1 D",
-			"1949 1949 0 1 7 2 0 0 S",
-			"1950 1966 3 0 8 2 0 1 D",
-			"1950 1961 8 0 8 2 0 0 S",
-			"1962 1966 9 0 8 2 0 0 S"
-		],
-		"CO": [
-			"1992 1992 4 3 7 0 0 1 S",
-			"1993 1993 3 4 7 0 0 0"
-		],
-		"CR": [
-			"1979 1980 1 0 8 0 0 1 D",
-			"1979 1980 5 1 0 0 0 0 S",
-			"1991 1992 0 15 6 0 0 1 D",
-			"1991 1991 6 1 7 0 0 0 S",
-			"1992 1992 2 15 7 0 0 0 S"
-		],
-		"Canada": [
-			"1918 1918 3 14 7 2 0 1 D",
-			"1918 1918 9 27 7 2 0 0 S",
-			"1942 1942 1 9 7 2 0 1 W",
-			"1945 1945 7 14 7 23 1 1 P",
-			"1945 1945 8 30 7 2 0 0 S",
-			"1974 1986 3 0 8 2 0 1 D",
-			"1974 2006 9 0 8 2 0 0 S",
-			"1987 2006 3 1 0 2 0 1 D",
-			"2007 9999 2 8 0 2 0 1 D",
-			"2007 9999 10 1 0 2 0 0 S"
-		],
-		"Chatham": [
-			"1974 1974 10 1 0 2:45 2 1 D",
-			"1975 1975 1 0 8 2:45 2 0 S",
-			"1975 1988 9 0 8 2:45 2 1 D",
-			"1976 1989 2 1 0 2:45 2 0 S",
-			"1989 1989 9 8 0 2:45 2 1 D",
-			"1990 2006 9 1 0 2:45 2 1 D",
-			"1990 2007 2 15 0 2:45 2 0 S",
-			"2007 9999 8 0 8 2:45 2 1 D",
-			"2008 9999 3 1 0 2:45 2 0 S"
-		],
-		"Chicago": [
-			"1920 1920 5 13 7 2 0 1 D",
-			"1920 1921 9 0 8 2 0 0 S",
-			"1921 1921 2 0 8 2 0 1 D",
-			"1922 1966 3 0 8 2 0 1 D",
-			"1922 1954 8 0 8 2 0 0 S",
-			"1955 1966 9 0 8 2 0 0 S"
-		],
-		"Chile": [
-			"1927 1932 8 1 7 0 0 1 S",
-			"1928 1932 3 1 7 0 0 0",
-			"1942 1942 5 1 7 4 1 0",
-			"1942 1942 7 1 7 5 1 1 S",
-			"1946 1946 6 15 7 4 1 1 S",
-			"1946 1946 8 1 7 3 1 0",
-			"1947 1947 3 1 7 4 1 0",
-			"1968 1968 10 3 7 4 1 1 S",
-			"1969 1969 2 30 7 3 1 0",
-			"1969 1969 10 23 7 4 1 1 S",
-			"1970 1970 2 29 7 3 1 0",
-			"1971 1971 2 14 7 3 1 0",
-			"1970 1972 9 9 0 4 1 1 S",
-			"1972 1986 2 9 0 3 1 0",
-			"1973 1973 8 30 7 4 1 1 S",
-			"1974 1987 9 9 0 4 1 1 S",
-			"1987 1987 3 12 7 3 1 0",
-			"1988 1989 2 9 0 3 1 0",
-			"1988 1988 9 1 0 4 1 1 S",
-			"1989 1989 9 9 0 4 1 1 S",
-			"1990 1990 2 18 7 3 1 0",
-			"1990 1990 8 16 7 4 1 1 S",
-			"1991 1996 2 9 0 3 1 0",
-			"1991 1997 9 9 0 4 1 1 S",
-			"1997 1997 2 30 7 3 1 0",
-			"1998 1998 2 9 0 3 1 0",
-			"1998 1998 8 27 7 4 1 1 S",
-			"1999 1999 3 4 7 3 1 0",
-			"1999 2010 9 9 0 4 1 1 S",
-			"2000 2007 2 9 0 3 1 0",
-			"2008 2008 2 30 7 3 1 0",
-			"2009 2009 2 9 0 3 1 0",
-			"2010 2010 3 1 0 3 1 0",
-			"2011 2011 4 2 0 3 1 0",
-			"2011 2011 7 16 0 4 1 1 S",
-			"2012 9999 3 23 0 3 1 0",
-			"2012 9999 8 2 0 4 1 1 S"
-		],
-		"ChileAQ": [
-			"1972 1986 2 9 0 3 1 0",
-			"1974 1987 9 9 0 4 1 1 S",
-			"1987 1987 3 12 7 3 1 0",
-			"1988 1989 2 9 0 3 1 0",
-			"1988 1988 9 1 0 4 1 1 S",
-			"1989 1989 9 9 0 4 1 1 S",
-			"1990 1990 2 18 7 3 1 0",
-			"1990 1990 8 16 7 4 1 1 S",
-			"1991 1996 2 9 0 3 1 0",
-			"1991 1997 9 9 0 4 1 1 S",
-			"1997 1997 2 30 7 3 1 0",
-			"1998 1998 2 9 0 3 1 0",
-			"1998 1998 8 27 7 4 1 1 S",
-			"1999 1999 3 4 7 3 1 0",
-			"1999 2010 9 9 0 4 1 1 S",
-			"2000 2007 2 9 0 3 1 0",
-			"2008 2008 2 30 7 3 1 0",
-			"2009 2009 2 9 0 3 1 0",
-			"2010 2010 3 1 0 3 1 0",
-			"2011 2011 4 2 0 3 1 0",
-			"2011 2011 7 16 0 4 1 1 S",
-			"2012 9999 3 23 0 3 1 0",
-			"2012 9999 8 2 0 4 1 1 S"
-		],
-		"Cook": [
-			"1978 1978 10 12 7 0 0 0:30 HS",
-			"1979 1991 2 1 0 0 0 0",
-			"1979 1990 9 0 8 0 0 0:30 HS"
-		],
-		"Cuba": [
-			"1928 1928 5 10 7 0 0 1 D",
-			"1928 1928 9 10 7 0 0 0 S",
-			"1940 1942 5 1 0 0 0 1 D",
-			"1940 1942 8 1 0 0 0 0 S",
-			"1945 1946 5 1 0 0 0 1 D",
-			"1945 1946 8 1 0 0 0 0 S",
-			"1965 1965 5 1 7 0 0 1 D",
-			"1965 1965 8 30 7 0 0 0 S",
-			"1966 1966 4 29 7 0 0 1 D",
-			"1966 1966 9 2 7 0 0 0 S",
-			"1967 1967 3 8 7 0 0 1 D",
-			"1967 1968 8 8 0 0 0 0 S",
-			"1968 1968 3 14 7 0 0 1 D",
-			"1969 1977 3 0 8 0 0 1 D",
-			"1969 1971 9 0 8 0 0 0 S",
-			"1972 1974 9 8 7 0 0 0 S",
-			"1975 1977 9 0 8 0 0 0 S",
-			"1978 1978 4 7 7 0 0 1 D",
-			"1978 1990 9 8 0 0 0 0 S",
-			"1979 1980 2 15 0 0 0 1 D",
-			"1981 1985 4 5 0 0 0 1 D",
-			"1986 1989 2 14 0 0 0 1 D",
-			"1990 1997 3 1 0 0 0 1 D",
-			"1991 1995 9 8 0 0 2 0 S",
-			"1996 1996 9 6 7 0 2 0 S",
-			"1997 1997 9 12 7 0 2 0 S",
-			"1998 1999 2 0 8 0 2 1 D",
-			"1998 2003 9 0 8 0 2 0 S",
-			"2000 2004 3 1 0 0 2 1 D",
-			"2006 2010 9 0 8 0 2 0 S",
-			"2007 2007 2 8 0 0 2 1 D",
-			"2008 2008 2 15 0 0 2 1 D",
-			"2009 2010 2 8 0 0 2 1 D",
-			"2011 2011 2 15 0 0 2 1 D",
-			"2011 2011 10 13 7 0 2 0 S",
-			"2012 2012 3 1 7 0 2 1 D",
-			"2012 9999 10 1 0 0 2 0 S",
-			"2013 9999 2 8 0 0 2 1 D"
-		],
-		"Cyprus": [
-			"1975 1975 3 13 7 0 0 1 S",
-			"1975 1975 9 12 7 0 0 0",
-			"1976 1976 4 15 7 0 0 1 S",
-			"1976 1976 9 11 7 0 0 0",
-			"1977 1980 3 1 0 0 0 1 S",
-			"1977 1977 8 25 7 0 0 0",
-			"1978 1978 9 2 7 0 0 0",
-			"1979 1997 8 0 8 0 0 0",
-			"1981 1998 2 0 8 0 0 1 S"
-		],
-		"Czech": [
-			"1945 1945 3 8 7 2 2 1 S",
-			"1945 1945 10 18 7 2 2 0",
-			"1946 1946 4 6 7 2 2 1 S",
-			"1946 1949 9 1 0 2 2 0",
-			"1947 1947 3 20 7 2 2 1 S",
-			"1948 1948 3 18 7 2 2 1 S",
-			"1949 1949 3 9 7 2 2 1 S"
-		],
-		"DR": [
-			"1966 1966 9 30 7 0 0 1 D",
-			"1967 1967 1 28 7 0 0 0 S",
-			"1969 1973 9 0 8 0 0 0:30 HD",
-			"1970 1970 1 21 7 0 0 0 S",
-			"1971 1971 0 20 7 0 0 0 S",
-			"1972 1974 0 21 7 0 0 0 S"
-		],
-		"Denmark": [
-			"1916 1916 4 14 7 23 0 1 S",
-			"1916 1916 8 30 7 23 0 0",
-			"1940 1940 4 15 7 0 0 1 S",
-			"1945 1945 3 2 7 2 2 1 S",
-			"1945 1945 7 15 7 2 2 0",
-			"1946 1946 4 1 7 2 2 1 S",
-			"1946 1946 8 1 7 2 2 0",
-			"1947 1947 4 4 7 2 2 1 S",
-			"1947 1947 7 10 7 2 2 0",
-			"1948 1948 4 9 7 2 2 1 S",
-			"1948 1948 7 8 7 2 2 0"
-		],
-		"Denver": [
-			"1920 1921 2 0 8 2 0 1 D",
-			"1920 1920 9 0 8 2 0 0 S",
-			"1921 1921 4 22 7 2 0 0 S",
-			"1965 1966 3 0 8 2 0 1 D",
-			"1965 1966 9 0 8 2 0 0 S"
-		],
-		"Detroit": [
-			"1948 1948 3 0 8 2 0 1 D",
-			"1948 1948 8 0 8 2 0 0 S",
-			"1967 1967 5 14 7 2 0 1 D",
-			"1967 1967 9 0 8 2 0 0 S"
-		],
-		"Dhaka": [
-			"2009 2009 5 19 7 23 0 1 S",
-			"2009 2009 11 31 7 23:59 0 0"
-		],
-		"E-Eur": [
-			"1977 1980 3 1 0 0 0 1 S",
-			"1977 1977 8 0 8 0 0 0",
-			"1978 1978 9 1 7 0 0 0",
-			"1979 1995 8 0 8 0 0 0",
-			"1981 9999 2 0 8 0 0 1 S",
-			"1996 9999 9 0 8 0 0 0"
-		],
-		"E-EurAsia": [
-			"1981 9999 2 0 8 0 0 1 S",
-			"1979 1995 8 0 8 0 0 0",
-			"1996 9999 9 0 8 0 0 0"
-		],
-		"EU": [
-			"1977 1980 3 1 0 1 1 1 S",
-			"1977 1977 8 0 8 1 1 0",
-			"1978 1978 9 1 7 1 1 0",
-			"1979 1995 8 0 8 1 1 0",
-			"1981 9999 2 0 8 1 1 1 S",
-			"1996 9999 9 0 8 1 1 0"
-		],
-		"EUAsia": [
-			"1981 9999 2 0 8 1 1 1 S",
-			"1979 1995 8 0 8 1 1 0",
-			"1996 9999 9 0 8 1 1 0"
-		],
-		"Edm": [
-			"1918 1919 3 8 0 2 0 1 D",
-			"1918 1918 9 27 7 2 0 0 S",
-			"1919 1919 4 27 7 2 0 0 S",
-			"1920 1923 3 0 8 2 0 1 D",
-			"1920 1920 9 0 8 2 0 0 S",
-			"1921 1923 8 0 8 2 0 0 S",
-			"1942 1942 1 9 7 2 0 1 W",
-			"1945 1945 7 14 7 23 1 1 P",
-			"1945 1945 8 0 8 2 0 0 S",
-			"1947 1947 3 0 8 2 0 1 D",
-			"1947 1947 8 0 8 2 0 0 S",
-			"1967 1967 3 0 8 2 0 1 D",
-			"1967 1967 9 0 8 2 0 0 S",
-			"1969 1969 3 0 8 2 0 1 D",
-			"1969 1969 9 0 8 2 0 0 S",
-			"1972 1986 3 0 8 2 0 1 D",
-			"1972 2006 9 0 8 2 0 0 S"
-		],
-		"Egypt": [
-			"1940 1940 6 15 7 0 0 1 S",
-			"1940 1940 9 1 7 0 0 0",
-			"1941 1941 3 15 7 0 0 1 S",
-			"1941 1941 8 16 7 0 0 0",
-			"1942 1944 3 1 7 0 0 1 S",
-			"1942 1942 9 27 7 0 0 0",
-			"1943 1945 10 1 7 0 0 0",
-			"1945 1945 3 16 7 0 0 1 S",
-			"1957 1957 4 10 7 0 0 1 S",
-			"1957 1958 9 1 7 0 0 0",
-			"1958 1958 4 1 7 0 0 1 S",
-			"1959 1981 4 1 7 1 0 1 S",
-			"1959 1965 8 30 7 3 0 0",
-			"1966 1994 9 1 7 3 0 0",
-			"1982 1982 6 25 7 1 0 1 S",
-			"1983 1983 6 12 7 1 0 1 S",
-			"1984 1988 4 1 7 1 0 1 S",
-			"1989 1989 4 6 7 1 0 1 S",
-			"1990 1994 4 1 7 1 0 1 S",
-			"1995 2010 3 5 8 0 2 1 S",
-			"1995 2005 8 4 8 23 2 0",
-			"2006 2006 8 21 7 23 2 0",
-			"2007 2007 8 1 4 23 2 0",
-			"2008 2008 7 4 8 23 2 0",
-			"2009 2009 7 20 7 23 2 0",
-			"2010 2010 7 11 7 0 0 0",
-			"2010 2010 8 10 7 0 0 1 S",
-			"2010 2010 8 4 8 23 2 0"
-		],
-		"EgyptAsia": [
-			"1957 1957 4 10 7 0 0 1 S",
-			"1957 1958 9 1 7 0 0 0",
-			"1958 1958 4 1 7 0 0 1 S",
-			"1959 1967 4 1 7 1 0 1 S",
-			"1959 1965 8 30 7 3 0 0",
-			"1966 1966 9 1 7 3 0 0"
-		],
-		"Falk": [
-			"1937 1938 8 0 8 0 0 1 S",
-			"1938 1942 2 19 0 0 0 0",
-			"1939 1939 9 1 7 0 0 1 S",
-			"1940 1942 8 0 8 0 0 1 S",
-			"1943 1943 0 1 7 0 0 0",
-			"1983 1983 8 0 8 0 0 1 S",
-			"1984 1985 3 0 8 0 0 0",
-			"1984 1984 8 16 7 0 0 1 S",
-			"1985 2000 8 9 0 0 0 1 S",
-			"1986 2000 3 16 0 0 0 0",
-			"2001 2010 3 15 0 2 0 0",
-			"2001 2010 8 1 0 2 0 1 S"
-		],
-		"Fiji": [
-			"1998 1999 10 1 0 2 0 1 S",
-			"1999 2000 1 0 8 3 0 0",
-			"2009 2009 10 29 7 2 0 1 S",
-			"2010 2010 2 0 8 3 0 0",
-			"2010 9999 9 18 0 2 0 1 S",
-			"2011 2011 2 1 0 3 0 0",
-			"2012 9999 0 18 0 3 0 0"
-		],
-		"Finland": [
-			"1942 1942 3 3 7 0 0 1 S",
-			"1942 1942 9 3 7 0 0 0",
-			"1981 1982 2 0 8 2 0 1 S",
-			"1981 1982 8 0 8 3 0 0"
-		],
-		"France": [
-			"1916 1916 5 14 7 23 2 1 S",
-			"1916 1919 9 1 0 23 2 0",
-			"1917 1917 2 24 7 23 2 1 S",
-			"1918 1918 2 9 7 23 2 1 S",
-			"1919 1919 2 1 7 23 2 1 S",
-			"1920 1920 1 14 7 23 2 1 S",
-			"1920 1920 9 23 7 23 2 0",
-			"1921 1921 2 14 7 23 2 1 S",
-			"1921 1921 9 25 7 23 2 0",
-			"1922 1922 2 25 7 23 2 1 S",
-			"1922 1938 9 1 6 23 2 0",
-			"1923 1923 4 26 7 23 2 1 S",
-			"1924 1924 2 29 7 23 2 1 S",
-			"1925 1925 3 4 7 23 2 1 S",
-			"1926 1926 3 17 7 23 2 1 S",
-			"1927 1927 3 9 7 23 2 1 S",
-			"1928 1928 3 14 7 23 2 1 S",
-			"1929 1929 3 20 7 23 2 1 S",
-			"1930 1930 3 12 7 23 2 1 S",
-			"1931 1931 3 18 7 23 2 1 S",
-			"1932 1932 3 2 7 23 2 1 S",
-			"1933 1933 2 25 7 23 2 1 S",
-			"1934 1934 3 7 7 23 2 1 S",
-			"1935 1935 2 30 7 23 2 1 S",
-			"1936 1936 3 18 7 23 2 1 S",
-			"1937 1937 3 3 7 23 2 1 S",
-			"1938 1938 2 26 7 23 2 1 S",
-			"1939 1939 3 15 7 23 2 1 S",
-			"1939 1939 10 18 7 23 2 0",
-			"1940 1940 1 25 7 2 0 1 S",
-			"1941 1941 4 5 7 0 0 2 M",
-			"1941 1941 9 6 7 0 0 1 S",
-			"1942 1942 2 9 7 0 0 2 M",
-			"1942 1942 10 2 7 3 0 1 S",
-			"1943 1943 2 29 7 2 0 2 M",
-			"1943 1943 9 4 7 3 0 1 S",
-			"1944 1944 3 3 7 2 0 2 M",
-			"1944 1944 9 8 7 1 0 1 S",
-			"1945 1945 3 2 7 2 0 2 M",
-			"1945 1945 8 16 7 3 0 0",
-			"1976 1976 2 28 7 1 0 1 S",
-			"1976 1976 8 26 7 1 0 0"
-		],
-		"GB-Eire": [
-			"1916 1916 4 21 7 2 2 1 BST",
-			"1916 1916 9 1 7 2 2 0 GMT",
-			"1917 1917 3 8 7 2 2 1 BST",
-			"1917 1917 8 17 7 2 2 0 GMT",
-			"1918 1918 2 24 7 2 2 1 BST",
-			"1918 1918 8 30 7 2 2 0 GMT",
-			"1919 1919 2 30 7 2 2 1 BST",
-			"1919 1919 8 29 7 2 2 0 GMT",
-			"1920 1920 2 28 7 2 2 1 BST",
-			"1920 1920 9 25 7 2 2 0 GMT",
-			"1921 1921 3 3 7 2 2 1 BST",
-			"1921 1921 9 3 7 2 2 0 GMT",
-			"1922 1922 2 26 7 2 2 1 BST",
-			"1922 1922 9 8 7 2 2 0 GMT",
-			"1923 1923 3 16 0 2 2 1 BST",
-			"1923 1924 8 16 0 2 2 0 GMT",
-			"1924 1924 3 9 0 2 2 1 BST",
-			"1925 1926 3 16 0 2 2 1 BST",
-			"1925 1938 9 2 0 2 2 0 GMT",
-			"1927 1927 3 9 0 2 2 1 BST",
-			"1928 1929 3 16 0 2 2 1 BST",
-			"1930 1930 3 9 0 2 2 1 BST",
-			"1931 1932 3 16 0 2 2 1 BST",
-			"1933 1933 3 9 0 2 2 1 BST",
-			"1934 1934 3 16 0 2 2 1 BST",
-			"1935 1935 3 9 0 2 2 1 BST",
-			"1936 1937 3 16 0 2 2 1 BST",
-			"1938 1938 3 9 0 2 2 1 BST",
-			"1939 1939 3 16 0 2 2 1 BST",
-			"1939 1939 10 16 0 2 2 0 GMT",
-			"1940 1940 1 23 0 2 2 1 BST",
-			"1941 1941 4 2 0 1 2 2 BDST",
-			"1941 1943 7 9 0 1 2 1 BST",
-			"1942 1944 3 2 0 1 2 2 BDST",
-			"1944 1944 8 16 0 1 2 1 BST",
-			"1945 1945 3 2 1 1 2 2 BDST",
-			"1945 1945 6 9 0 1 2 1 BST",
-			"1945 1946 9 2 0 2 2 0 GMT",
-			"1946 1946 3 9 0 2 2 1 BST",
-			"1947 1947 2 16 7 2 2 1 BST",
-			"1947 1947 3 13 7 1 2 2 BDST",
-			"1947 1947 7 10 7 1 2 1 BST",
-			"1947 1947 10 2 7 2 2 0 GMT",
-			"1948 1948 2 14 7 2 2 1 BST",
-			"1948 1948 9 31 7 2 2 0 GMT",
-			"1949 1949 3 3 7 2 2 1 BST",
-			"1949 1949 9 30 7 2 2 0 GMT",
-			"1950 1952 3 14 0 2 2 1 BST",
-			"1950 1952 9 21 0 2 2 0 GMT",
-			"1953 1953 3 16 0 2 2 1 BST",
-			"1953 1960 9 2 0 2 2 0 GMT",
-			"1954 1954 3 9 0 2 2 1 BST",
-			"1955 1956 3 16 0 2 2 1 BST",
-			"1957 1957 3 9 0 2 2 1 BST",
-			"1958 1959 3 16 0 2 2 1 BST",
-			"1960 1960 3 9 0 2 2 1 BST",
-			"1961 1963 2 0 8 2 2 1 BST",
-			"1961 1968 9 23 0 2 2 0 GMT",
-			"1964 1967 2 19 0 2 2 1 BST",
-			"1968 1968 1 18 7 2 2 1 BST",
-			"1972 1980 2 16 0 2 2 1 BST",
-			"1972 1980 9 23 0 2 2 0 GMT",
-			"1981 1995 2 0 8 1 1 1 BST",
-			"1981 1989 9 23 0 1 1 0 GMT",
-			"1990 1995 9 22 0 1 1 0 GMT"
-		],
-		"Germany": [
-			"1946 1946 3 14 7 2 2 1 S",
-			"1946 1946 9 7 7 2 2 0",
-			"1947 1949 9 1 0 2 2 0",
-			"1947 1947 3 6 7 3 2 1 S",
-			"1947 1947 4 11 7 2 2 2 M",
-			"1947 1947 5 29 7 3 0 1 S",
-			"1948 1948 3 18 7 2 2 1 S",
-			"1949 1949 3 10 7 2 2 1 S"
-		],
-		"Ghana": [
-			"1936 1942 8 1 7 0 0 0:20 GHST",
-			"1936 1942 11 31 7 0 0 0 GMT"
-		],
-		"Greece": [
-			"1932 1932 6 7 7 0 0 1 S",
-			"1932 1932 8 1 7 0 0 0",
-			"1941 1941 3 7 7 0 0 1 S",
-			"1942 1942 10 2 7 3 0 0",
-			"1943 1943 2 30 7 0 0 1 S",
-			"1943 1943 9 4 7 0 0 0",
-			"1952 1952 6 1 7 0 0 1 S",
-			"1952 1952 10 2 7 0 0 0",
-			"1975 1975 3 12 7 0 2 1 S",
-			"1975 1975 10 26 7 0 2 0",
-			"1976 1976 3 11 7 2 2 1 S",
-			"1976 1976 9 10 7 2 2 0",
-			"1977 1978 3 1 0 2 2 1 S",
-			"1977 1977 8 26 7 2 2 0",
-			"1978 1978 8 24 7 4 0 0",
-			"1979 1979 3 1 7 9 0 1 S",
-			"1979 1979 8 29 7 2 0 0",
-			"1980 1980 3 1 7 0 0 1 S",
-			"1980 1980 8 28 7 0 0 0"
-		],
-		"Guat": [
-			"1973 1973 10 25 7 0 0 1 D",
-			"1974 1974 1 24 7 0 0 0 S",
-			"1983 1983 4 21 7 0 0 1 D",
-			"1983 1983 8 22 7 0 0 0 S",
-			"1991 1991 2 23 7 0 0 1 D",
-			"1991 1991 8 7 7 0 0 0 S",
-			"2006 2006 3 30 7 0 0 1 D",
-			"2006 2006 9 1 7 0 0 0 S"
-		],
-		"HK": [
-			"1941 1941 3 1 7 3:30 0 1 S",
-			"1941 1941 8 30 7 3:30 0 0",
-			"1946 1946 3 20 7 3:30 0 1 S",
-			"1946 1946 11 1 7 3:30 0 0",
-			"1947 1947 3 13 7 3:30 0 1 S",
-			"1947 1947 11 30 7 3:30 0 0",
-			"1948 1948 4 2 7 3:30 0 1 S",
-			"1948 1951 9 0 8 3:30 0 0",
-			"1952 1952 9 25 7 3:30 0 0",
-			"1949 1953 3 1 0 3:30 0 1 S",
-			"1953 1953 10 1 7 3:30 0 0",
-			"1954 1964 2 18 0 3:30 0 1 S",
-			"1954 1954 9 31 7 3:30 0 0",
-			"1955 1964 10 1 0 3:30 0 0",
-			"1965 1976 3 16 0 3:30 0 1 S",
-			"1965 1976 9 16 0 3:30 0 0",
-			"1973 1973 11 30 7 3:30 0 1 S",
-			"1979 1979 4 8 0 3:30 0 1 S",
-			"1979 1979 9 16 0 3:30 0 0"
-		],
-		"Haiti": [
-			"1983 1983 4 8 7 0 0 1 D",
-			"1984 1987 3 0 8 0 0 1 D",
-			"1983 1987 9 0 8 0 0 0 S",
-			"1988 1997 3 1 0 1 2 1 D",
-			"1988 1997 9 0 8 1 2 0 S",
-			"2005 2006 3 1 0 0 0 1 D",
-			"2005 2006 9 0 8 0 0 0 S",
-			"2012 9999 2 8 0 2 0 1 D",
-			"2012 9999 10 1 0 2 0 0 S"
-		],
-		"Halifax": [
-			"1916 1916 3 1 7 0 0 1 D",
-			"1916 1916 9 1 7 0 0 0 S",
-			"1920 1920 4 9 7 0 0 1 D",
-			"1920 1920 7 29 7 0 0 0 S",
-			"1921 1921 4 6 7 0 0 1 D",
-			"1921 1922 8 5 7 0 0 0 S",
-			"1922 1922 3 30 7 0 0 1 D",
-			"1923 1925 4 1 0 0 0 1 D",
-			"1923 1923 8 4 7 0 0 0 S",
-			"1924 1924 8 15 7 0 0 0 S",
-			"1925 1925 8 28 7 0 0 0 S",
-			"1926 1926 4 16 7 0 0 1 D",
-			"1926 1926 8 13 7 0 0 0 S",
-			"1927 1927 4 1 7 0 0 1 D",
-			"1927 1927 8 26 7 0 0 0 S",
-			"1928 1931 4 8 0 0 0 1 D",
-			"1928 1928 8 9 7 0 0 0 S",
-			"1929 1929 8 3 7 0 0 0 S",
-			"1930 1930 8 15 7 0 0 0 S",
-			"1931 1932 8 24 1 0 0 0 S",
-			"1932 1932 4 1 7 0 0 1 D",
-			"1933 1933 3 30 7 0 0 1 D",
-			"1933 1933 9 2 7 0 0 0 S",
-			"1934 1934 4 20 7 0 0 1 D",
-			"1934 1934 8 16 7 0 0 0 S",
-			"1935 1935 5 2 7 0 0 1 D",
-			"1935 1935 8 30 7 0 0 0 S",
-			"1936 1936 5 1 7 0 0 1 D",
-			"1936 1936 8 14 7 0 0 0 S",
-			"1937 1938 4 1 0 0 0 1 D",
-			"1937 1941 8 24 1 0 0 0 S",
-			"1939 1939 4 28 7 0 0 1 D",
-			"1940 1941 4 1 0 0 0 1 D",
-			"1946 1949 3 0 8 2 0 1 D",
-			"1946 1949 8 0 8 2 0 0 S",
-			"1951 1954 3 0 8 2 0 1 D",
-			"1951 1954 8 0 8 2 0 0 S",
-			"1956 1959 3 0 8 2 0 1 D",
-			"1956 1959 8 0 8 2 0 0 S",
-			"1962 1973 3 0 8 2 0 1 D",
-			"1962 1973 9 0 8 2 0 0 S"
-		],
-		"Holiday": [
-			"1992 1993 9 0 8 2 2 1",
-			"1993 1994 2 1 0 2 2 0"
-		],
-		"Hond": [
-			"1987 1988 4 1 0 0 0 1 D",
-			"1987 1988 8 0 8 0 0 0 S",
-			"2006 2006 4 1 0 0 0 1 D",
-			"2006 2006 7 1 1 0 0 0 S"
-		],
-		"Hungary": [
-			"1918 1918 3 1 7 3 0 1 S",
-			"1918 1918 8 29 7 3 0 0",
-			"1919 1919 3 15 7 3 0 1 S",
-			"1919 1919 8 15 7 3 0 0",
-			"1920 1920 3 5 7 3 0 1 S",
-			"1920 1920 8 30 7 3 0 0",
-			"1945 1945 4 1 7 23 0 1 S",
-			"1945 1945 10 3 7 0 0 0",
-			"1946 1946 2 31 7 2 2 1 S",
-			"1946 1949 9 1 0 2 2 0",
-			"1947 1949 3 4 0 2 2 1 S",
-			"1950 1950 3 17 7 2 2 1 S",
-			"1950 1950 9 23 7 2 2 0",
-			"1954 1955 4 23 7 0 0 1 S",
-			"1954 1955 9 3 7 0 0 0",
-			"1956 1956 5 1 0 0 0 1 S",
-			"1956 1956 8 0 8 0 0 0",
-			"1957 1957 5 1 0 1 0 1 S",
-			"1957 1957 8 0 8 3 0 0",
-			"1980 1980 3 6 7 1 0 1 S"
-		],
-		"Iceland": [
-			"1917 1918 1 19 7 23 0 1 S",
-			"1917 1917 9 21 7 1 0 0",
-			"1918 1918 10 16 7 1 0 0",
-			"1939 1939 3 29 7 23 0 1 S",
-			"1939 1939 10 29 7 2 0 0",
-			"1940 1940 1 25 7 2 0 1 S",
-			"1940 1940 10 3 7 2 0 0",
-			"1941 1941 2 2 7 1 2 1 S",
-			"1941 1941 10 2 7 1 2 0",
-			"1942 1942 2 8 7 1 2 1 S",
-			"1942 1942 9 25 7 1 2 0",
-			"1943 1946 2 1 0 1 2 1 S",
-			"1943 1948 9 22 0 1 2 0",
-			"1947 1967 3 1 0 1 2 1 S",
-			"1949 1949 9 30 7 1 2 0",
-			"1950 1966 9 22 0 1 2 0",
-			"1967 1967 9 29 7 1 2 0"
-		],
-		"Indianapolis": [
-			"1941 1941 5 22 7 2 0 1 D",
-			"1941 1954 8 0 8 2 0 0 S",
-			"1946 1954 3 0 8 2 0 1 D"
-		],
-		"Iran": [
-			"1978 1980 2 21 7 0 0 1 D",
-			"1978 1978 9 21 7 0 0 0 S",
-			"1979 1979 8 19 7 0 0 0 S",
-			"1980 1980 8 23 7 0 0 0 S",
-			"1991 1991 4 3 7 0 0 1 D",
-			"1992 1995 2 22 7 0 0 1 D",
-			"1991 1995 8 22 7 0 0 0 S",
-			"1996 1996 2 21 7 0 0 1 D",
-			"1996 1996 8 21 7 0 0 0 S",
-			"1997 1999 2 22 7 0 0 1 D",
-			"1997 1999 8 22 7 0 0 0 S",
-			"2000 2000 2 21 7 0 0 1 D",
-			"2000 2000 8 21 7 0 0 0 S",
-			"2001 2003 2 22 7 0 0 1 D",
-			"2001 2003 8 22 7 0 0 0 S",
-			"2004 2004 2 21 7 0 0 1 D",
-			"2004 2004 8 21 7 0 0 0 S",
-			"2005 2005 2 22 7 0 0 1 D",
-			"2005 2005 8 22 7 0 0 0 S",
-			"2008 2008 2 21 7 0 0 1 D",
-			"2008 2008 8 21 7 0 0 0 S",
-			"2009 2011 2 22 7 0 0 1 D",
-			"2009 2011 8 22 7 0 0 0 S",
-			"2012 2012 2 21 7 0 0 1 D",
-			"2012 2012 8 21 7 0 0 0 S",
-			"2013 2015 2 22 7 0 0 1 D",
-			"2013 2015 8 22 7 0 0 0 S",
-			"2016 2016 2 21 7 0 0 1 D",
-			"2016 2016 8 21 7 0 0 0 S",
-			"2017 2019 2 22 7 0 0 1 D",
-			"2017 2019 8 22 7 0 0 0 S",
-			"2020 2020 2 21 7 0 0 1 D",
-			"2020 2020 8 21 7 0 0 0 S",
-			"2021 2023 2 22 7 0 0 1 D",
-			"2021 2023 8 22 7 0 0 0 S",
-			"2024 2024 2 21 7 0 0 1 D",
-			"2024 2024 8 21 7 0 0 0 S",
-			"2025 2027 2 22 7 0 0 1 D",
-			"2025 2027 8 22 7 0 0 0 S",
-			"2028 2029 2 21 7 0 0 1 D",
-			"2028 2029 8 21 7 0 0 0 S",
-			"2030 2031 2 22 7 0 0 1 D",
-			"2030 2031 8 22 7 0 0 0 S",
-			"2032 2033 2 21 7 0 0 1 D",
-			"2032 2033 8 21 7 0 0 0 S",
-			"2034 2035 2 22 7 0 0 1 D",
-			"2034 2035 8 22 7 0 0 0 S",
-			"2036 2037 2 21 7 0 0 1 D",
-			"2036 2037 8 21 7 0 0 0 S"
-		],
-		"Iraq": [
-			"1982 1982 4 1 7 0 0 1 D",
-			"1982 1984 9 1 7 0 0 0 S",
-			"1983 1983 2 31 7 0 0 1 D",
-			"1984 1985 3 1 7 0 0 1 D",
-			"1985 1990 8 0 8 1 2 0 S",
-			"1986 1990 2 0 8 1 2 1 D",
-			"1991 2007 3 1 7 3 2 1 D",
-			"1991 2007 9 1 7 3 2 0 S"
-		],
-		"Italy": [
-			"1916 1916 5 3 7 0 2 1 S",
-			"1916 1916 9 1 7 0 2 0",
-			"1917 1917 3 1 7 0 2 1 S",
-			"1917 1917 8 30 7 0 2 0",
-			"1918 1918 2 10 7 0 2 1 S",
-			"1918 1919 9 1 0 0 2 0",
-			"1919 1919 2 2 7 0 2 1 S",
-			"1920 1920 2 21 7 0 2 1 S",
-			"1920 1920 8 19 7 0 2 0",
-			"1940 1940 5 15 7 0 2 1 S",
-			"1944 1944 8 17 7 0 2 0",
-			"1945 1945 3 2 7 2 0 1 S",
-			"1945 1945 8 15 7 0 2 0",
-			"1946 1946 2 17 7 2 2 1 S",
-			"1946 1946 9 6 7 2 2 0",
-			"1947 1947 2 16 7 0 2 1 S",
-			"1947 1947 9 5 7 0 2 0",
-			"1948 1948 1 29 7 2 2 1 S",
-			"1948 1948 9 3 7 2 2 0",
-			"1966 1968 4 22 0 0 0 1 S",
-			"1966 1969 8 22 0 0 0 0",
-			"1969 1969 5 1 7 0 0 1 S",
-			"1970 1970 4 31 7 0 0 1 S",
-			"1970 1970 8 0 8 0 0 0",
-			"1971 1972 4 22 0 0 0 1 S",
-			"1971 1971 8 0 8 1 0 0",
-			"1972 1972 9 1 7 0 0 0",
-			"1973 1973 5 3 7 0 0 1 S",
-			"1973 1974 8 0 8 0 0 0",
-			"1974 1974 4 26 7 0 0 1 S",
-			"1975 1975 5 1 7 0 2 1 S",
-			"1975 1977 8 0 8 0 2 0",
-			"1976 1976 4 30 7 0 2 1 S",
-			"1977 1979 4 22 0 0 2 1 S",
-			"1978 1978 9 1 7 0 2 0",
-			"1979 1979 8 30 7 0 2 0"
-		],
-		"Japan": [
-			"1948 1948 4 1 0 2 0 1 D",
-			"1948 1951 8 8 6 2 0 0 S",
-			"1949 1949 3 1 0 2 0 1 D",
-			"1950 1951 4 1 0 2 0 1 D"
-		],
-		"Jordan": [
-			"1973 1973 5 6 7 0 0 1 S",
-			"1973 1975 9 1 7 0 0 0",
-			"1974 1977 4 1 7 0 0 1 S",
-			"1976 1976 10 1 7 0 0 0",
-			"1977 1977 9 1 7 0 0 0",
-			"1978 1978 3 30 7 0 0 1 S",
-			"1978 1978 8 30 7 0 0 0",
-			"1985 1985 3 1 7 0 0 1 S",
-			"1985 1985 9 1 7 0 0 0",
-			"1986 1988 3 1 5 0 0 1 S",
-			"1986 1990 9 1 5 0 0 0",
-			"1989 1989 4 8 7 0 0 1 S",
-			"1990 1990 3 27 7 0 0 1 S",
-			"1991 1991 3 17 7 0 0 1 S",
-			"1991 1991 8 27 7 0 0 0",
-			"1992 1992 3 10 7 0 0 1 S",
-			"1992 1993 9 1 5 0 0 0",
-			"1993 1998 3 1 5 0 0 1 S",
-			"1994 1994 8 15 5 0 0 0",
-			"1995 1998 8 15 5 0 2 0",
-			"1999 1999 6 1 7 0 2 1 S",
-			"1999 2002 8 5 8 0 2 0",
-			"2000 2001 2 4 8 0 2 1 S",
-			"2002 9999 2 4 8 24 0 1 S",
-			"2003 2003 9 24 7 0 2 0",
-			"2004 2004 9 15 7 0 2 0",
-			"2005 2005 8 5 8 0 2 0",
-			"2006 2011 9 5 8 0 2 0",
-			"2013 9999 9 5 8 0 2 0"
-		],
-		"Kyrgyz": [
-			"1992 1996 3 7 0 0 2 1 S",
-			"1992 1996 8 0 8 0 0 0",
-			"1997 2005 2 0 8 2:30 0 1 S",
-			"1997 2004 9 0 8 2:30 0 0"
-		],
-		"LH": [
-			"1981 1984 9 0 8 2 0 1",
-			"1982 1985 2 1 0 2 0 0",
-			"1985 1985 9 0 8 2 0 0:30",
-			"1986 1989 2 15 0 2 0 0",
-			"1986 1986 9 19 7 2 0 0:30",
-			"1987 1999 9 0 8 2 0 0:30",
-			"1990 1995 2 1 0 2 0 0",
-			"1996 2005 2 0 8 2 0 0",
-			"2000 2000 7 0 8 2 0 0:30",
-			"2001 2007 9 0 8 2 0 0:30",
-			"2006 2006 3 1 0 2 0 0",
-			"2007 2007 2 0 8 2 0 0",
-			"2008 9999 3 1 0 2 0 0",
-			"2008 9999 9 1 0 2 0 0:30"
-		],
-		"Latvia": [
-			"1989 1996 2 0 8 2 2 1 S",
-			"1989 1996 8 0 8 2 2 0"
-		],
-		"Lebanon": [
-			"1920 1920 2 28 7 0 0 1 S",
-			"1920 1920 9 25 7 0 0 0",
-			"1921 1921 3 3 7 0 0 1 S",
-			"1921 1921 9 3 7 0 0 0",
-			"1922 1922 2 26 7 0 0 1 S",
-			"1922 1922 9 8 7 0 0 0",
-			"1923 1923 3 22 7 0 0 1 S",
-			"1923 1923 8 16 7 0 0 0",
-			"1957 1961 4 1 7 0 0 1 S",
-			"1957 1961 9 1 7 0 0 0",
-			"1972 1972 5 22 7 0 0 1 S",
-			"1972 1977 9 1 7 0 0 0",
-			"1973 1977 4 1 7 0 0 1 S",
-			"1978 1978 3 30 7 0 0 1 S",
-			"1978 1978 8 30 7 0 0 0",
-			"1984 1987 4 1 7 0 0 1 S",
-			"1984 1991 9 16 7 0 0 0",
-			"1988 1988 5 1 7 0 0 1 S",
-			"1989 1989 4 10 7 0 0 1 S",
-			"1990 1992 4 1 7 0 0 1 S",
-			"1992 1992 9 4 7 0 0 0",
-			"1993 9999 2 0 8 0 0 1 S",
-			"1993 1998 8 0 8 0 0 0",
-			"1999 9999 9 0 8 0 0 0"
-		],
-		"Libya": [
-			"1951 1951 9 14 7 2 0 1 S",
-			"1952 1952 0 1 7 0 0 0",
-			"1953 1953 9 9 7 2 0 1 S",
-			"1954 1954 0 1 7 0 0 0",
-			"1955 1955 8 30 7 0 0 1 S",
-			"1956 1956 0 1 7 0 0 0",
-			"1982 1984 3 1 7 0 0 1 S",
-			"1982 1985 9 1 7 0 0 0",
-			"1985 1985 3 6 7 0 0 1 S",
-			"1986 1986 3 4 7 0 0 1 S",
-			"1986 1986 9 3 7 0 0 0",
-			"1987 1989 3 1 7 0 0 1 S",
-			"1987 1989 9 1 7 0 0 0",
-			"1997 1997 3 4 7 0 0 1 S",
-			"1997 1997 9 4 7 0 0 0",
-			"2013 9999 2 5 8 1 0 1 S",
-			"2013 9999 9 5 8 2 0 0"
-		],
-		"Louisville": [
-			"1921 1921 4 1 7 2 0 1 D",
-			"1921 1921 8 1 7 2 0 0 S",
-			"1941 1961 3 0 8 2 0 1 D",
-			"1941 1941 8 0 8 2 0 0 S",
-			"1946 1946 5 2 7 2 0 0 S",
-			"1950 1955 8 0 8 2 0 0 S",
-			"1956 1960 9 0 8 2 0 0 S"
-		],
-		"Lux": [
-			"1916 1916 4 14 7 23 0 1 S",
-			"1916 1916 9 1 7 1 0 0",
-			"1917 1917 3 28 7 23 0 1 S",
-			"1917 1917 8 17 7 1 0 0",
-			"1918 1918 3 15 1 2 2 1 S",
-			"1918 1918 8 15 1 2 2 0",
-			"1919 1919 2 1 7 23 0 1 S",
-			"1919 1919 9 5 7 3 0 0",
-			"1920 1920 1 14 7 23 0 1 S",
-			"1920 1920 9 24 7 2 0 0",
-			"1921 1921 2 14 7 23 0 1 S",
-			"1921 1921 9 26 7 2 0 0",
-			"1922 1922 2 25 7 23 0 1 S",
-			"1922 1922 9 2 0 1 0 0",
-			"1923 1923 3 21 7 23 0 1 S",
-			"1923 1923 9 2 0 2 0 0",
-			"1924 1924 2 29 7 23 0 1 S",
-			"1924 1928 9 2 0 1 0 0",
-			"1925 1925 3 5 7 23 0 1 S",
-			"1926 1926 3 17 7 23 0 1 S",
-			"1927 1927 3 9 7 23 0 1 S",
-			"1928 1928 3 14 7 23 0 1 S",
-			"1929 1929 3 20 7 23 0 1 S"
-		],
-		"Macau": [
-			"1961 1962 2 16 0 3:30 0 1 S",
-			"1961 1964 10 1 0 3:30 0 0",
-			"1963 1963 2 16 0 0 0 1 S",
-			"1964 1964 2 16 0 3:30 0 1 S",
-			"1965 1965 2 16 0 0 0 1 S",
-			"1965 1965 9 31 7 0 0 0",
-			"1966 1971 3 16 0 3:30 0 1 S",
-			"1966 1971 9 16 0 3:30 0 0",
-			"1972 1974 3 15 0 0 0 1 S",
-			"1972 1973 9 15 0 0 0 0",
-			"1974 1977 9 15 0 3:30 0 0",
-			"1975 1977 3 15 0 3:30 0 1 S",
-			"1978 1980 3 15 0 0 0 1 S",
-			"1978 1980 9 15 0 0 0 0"
-		],
-		"Malta": [
-			"1973 1973 2 31 7 0 2 1 S",
-			"1973 1973 8 29 7 0 2 0",
-			"1974 1974 3 21 7 0 2 1 S",
-			"1974 1974 8 16 7 0 2 0",
-			"1975 1979 3 15 0 2 0 1 S",
-			"1975 1980 8 15 0 2 0 0",
-			"1980 1980 2 31 7 2 0 1 S"
-		],
-		"Marengo": [
-			"1951 1951 3 0 8 2 0 1 D",
-			"1951 1951 8 0 8 2 0 0 S",
-			"1954 1960 3 0 8 2 0 1 D",
-			"1954 1960 8 0 8 2 0 0 S"
-		],
-		"Mauritius": [
-			"1982 1982 9 10 7 0 0 1 S",
-			"1983 1983 2 21 7 0 0 0",
-			"2008 2008 9 0 8 2 0 1 S",
-			"2009 2009 2 0 8 2 0 0"
-		],
-		"Menominee": [
-			"1946 1946 3 0 8 2 0 1 D",
-			"1946 1946 8 0 8 2 0 0 S",
-			"1966 1966 3 0 8 2 0 1 D",
-			"1966 1966 9 0 8 2 0 0 S"
-		],
-		"Mexico": [
-			"1939 1939 1 5 7 0 0 1 D",
-			"1939 1939 5 25 7 0 0 0 S",
-			"1940 1940 11 9 7 0 0 1 D",
-			"1941 1941 3 1 7 0 0 0 S",
-			"1943 1943 11 16 7 0 0 1 W",
-			"1944 1944 4 1 7 0 0 0 S",
-			"1950 1950 1 12 7 0 0 1 D",
-			"1950 1950 6 30 7 0 0 0 S",
-			"1996 2000 3 1 0 2 0 1 D",
-			"1996 2000 9 0 8 2 0 0 S",
-			"2001 2001 4 1 0 2 0 1 D",
-			"2001 2001 8 0 8 2 0 0 S",
-			"2002 9999 3 1 0 2 0 1 D",
-			"2002 9999 9 0 8 2 0 0 S"
-		],
-		"Moncton": [
-			"1933 1935 5 8 0 1 0 1 D",
-			"1933 1935 8 8 0 1 0 0 S",
-			"1936 1938 5 1 0 1 0 1 D",
-			"1936 1938 8 1 0 1 0 0 S",
-			"1939 1939 4 27 7 1 0 1 D",
-			"1939 1941 8 21 6 1 0 0 S",
-			"1940 1940 4 19 7 1 0 1 D",
-			"1941 1941 4 4 7 1 0 1 D",
-			"1946 1972 3 0 8 2 0 1 D",
-			"1946 1956 8 0 8 2 0 0 S",
-			"1957 1972 9 0 8 2 0 0 S",
-			"1993 2006 3 1 0 0:1 0 1 D",
-			"1993 2006 9 0 8 0:1 0 0 S"
-		],
-		"Mongol": [
-			"1983 1984 3 1 7 0 0 1 S",
-			"1983 1983 9 1 7 0 0 0",
-			"1985 1998 2 0 8 0 0 1 S",
-			"1984 1998 8 0 8 0 0 0",
-			"2001 2001 3 6 8 2 0 1 S",
-			"2001 2006 8 6 8 2 0 0",
-			"2002 2006 2 6 8 2 0 1 S"
-		],
-		"Mont": [
-			"1917 1917 2 25 7 2 0 1 D",
-			"1917 1917 3 24 7 0 0 0 S",
-			"1919 1919 2 31 7 2:30 0 1 D",
-			"1919 1919 9 25 7 2:30 0 0 S",
-			"1920 1920 4 2 7 2:30 0 1 D",
-			"1920 1922 9 1 0 2:30 0 0 S",
-			"1921 1921 4 1 7 2 0 1 D",
-			"1922 1922 3 30 7 2 0 1 D",
-			"1924 1924 4 17 7 2 0 1 D",
-			"1924 1926 8 0 8 2:30 0 0 S",
-			"1925 1926 4 1 0 2 0 1 D",
-			"1927 1927 4 1 7 0 0 1 D",
-			"1927 1932 8 0 8 0 0 0 S",
-			"1928 1931 3 0 8 0 0 1 D",
-			"1932 1932 4 1 7 0 0 1 D",
-			"1933 1940 3 0 8 0 0 1 D",
-			"1933 1933 9 1 7 0 0 0 S",
-			"1934 1939 8 0 8 0 0 0 S",
-			"1946 1973 3 0 8 2 0 1 D",
-			"1945 1948 8 0 8 2 0 0 S",
-			"1949 1950 9 0 8 2 0 0 S",
-			"1951 1956 8 0 8 2 0 0 S",
-			"1957 1973 9 0 8 2 0 0 S"
-		],
-		"Morocco": [
-			"1939 1939 8 12 7 0 0 1 S",
-			"1939 1939 10 19 7 0 0 0",
-			"1940 1940 1 25 7 0 0 1 S",
-			"1945 1945 10 18 7 0 0 0",
-			"1950 1950 5 11 7 0 0 1 S",
-			"1950 1950 9 29 7 0 0 0",
-			"1967 1967 5 3 7 12 0 1 S",
-			"1967 1967 9 1 7 0 0 0",
-			"1974 1974 5 24 7 0 0 1 S",
-			"1974 1974 8 1 7 0 0 0",
-			"1976 1977 4 1 7 0 0 1 S",
-			"1976 1976 7 1 7 0 0 0",
-			"1977 1977 8 28 7 0 0 0",
-			"1978 1978 5 1 7 0 0 1 S",
-			"1978 1978 7 4 7 0 0 0",
-			"2008 2008 5 1 7 0 0 1 S",
-			"2008 2008 8 1 7 0 0 0",
-			"2009 2009 5 1 7 0 0 1 S",
-			"2009 2009 7 21 7 0 0 0",
-			"2010 2010 4 2 7 0 0 1 S",
-			"2010 2010 7 8 7 0 0 0",
-			"2011 2011 3 3 7 0 0 1 S",
-			"2011 2011 6 31 7 0 0 0",
-			"2012 2019 3 0 8 2 0 1 S",
-			"2012 9999 8 0 8 3 0 0",
-			"2012 2012 6 20 7 3 0 0",
-			"2012 2012 7 20 7 2 0 1 S",
-			"2013 2013 6 9 7 3 0 0",
-			"2013 2013 7 8 7 2 0 1 S",
-			"2014 2014 5 29 7 3 0 0",
-			"2014 2014 6 29 7 2 0 1 S",
-			"2015 2015 5 18 7 3 0 0",
-			"2015 2015 6 18 7 2 0 1 S",
-			"2016 2016 5 7 7 3 0 0",
-			"2016 2016 6 7 7 2 0 1 S",
-			"2017 2017 4 27 7 3 0 0",
-			"2017 2017 5 26 7 2 0 1 S",
-			"2018 2018 4 16 7 3 0 0",
-			"2018 2018 5 15 7 2 0 1 S",
-			"2019 2019 4 6 7 3 0 0",
-			"2019 2019 5 5 7 2 0 1 S",
-			"2020 2020 4 24 7 2 0 1 S",
-			"2021 2021 4 13 7 2 0 1 S",
-			"2022 2022 4 3 7 2 0 1 S",
-			"2023 9999 3 0 8 2 0 1 S"
-		],
-		"NBorneo": [
-			"1935 1941 8 14 7 0 0 0:20 TS",
-			"1935 1941 11 14 7 0 0 0"
-		],
-		"NC": [
-			"1977 1978 11 1 0 0 0 1 S",
-			"1978 1979 1 27 7 0 0 0",
-			"1996 1996 11 1 7 2 2 1 S",
-			"1997 1997 2 2 7 2 2 0"
-		],
-		"NT_YK": [
-			"1918 1918 3 14 7 2 0 1 D",
-			"1918 1918 9 27 7 2 0 0 S",
-			"1919 1919 4 25 7 2 0 1 D",
-			"1919 1919 10 1 7 0 0 0 S",
-			"1942 1942 1 9 7 2 0 1 W",
-			"1945 1945 7 14 7 23 1 1 P",
-			"1945 1945 8 30 7 2 0 0 S",
-			"1965 1965 3 0 8 0 0 2 DD",
-			"1965 1965 9 0 8 2 0 0 S",
-			"1980 1986 3 0 8 2 0 1 D",
-			"1980 2006 9 0 8 2 0 0 S",
-			"1987 2006 3 1 0 2 0 1 D"
-		],
-		"NYC": [
-			"1920 1920 2 0 8 2 0 1 D",
-			"1920 1920 9 0 8 2 0 0 S",
-			"1921 1966 3 0 8 2 0 1 D",
-			"1921 1954 8 0 8 2 0 0 S",
-			"1955 1966 9 0 8 2 0 0 S"
-		],
-		"NZ": [
-			"1927 1927 10 6 7 2 0 1 S",
-			"1928 1928 2 4 7 2 0 0 M",
-			"1928 1933 9 8 0 2 0 0:30 S",
-			"1929 1933 2 15 0 2 0 0 M",
-			"1934 1940 3 0 8 2 0 0 M",
-			"1934 1940 8 0 8 2 0 0:30 S",
-			"1946 1946 0 1 7 0 0 0 S",
-			"1974 1974 10 1 0 2 2 1 D",
-			"1975 1975 1 0 8 2 2 0 S",
-			"1975 1988 9 0 8 2 2 1 D",
-			"1976 1989 2 1 0 2 2 0 S",
-			"1989 1989 9 8 0 2 2 1 D",
-			"1990 2006 9 1 0 2 2 1 D",
-			"1990 2007 2 15 0 2 2 0 S",
-			"2007 9999 8 0 8 2 2 1 D",
-			"2008 9999 3 1 0 2 2 0 S"
-		],
-		"NZAQ": [
-			"1974 1974 10 3 7 2 2 1 D",
-			"1975 1988 9 0 8 2 2 1 D",
-			"1989 1989 9 8 7 2 2 1 D",
-			"1990 2006 9 1 0 2 2 1 D",
-			"1975 1975 1 23 7 2 2 0 S",
-			"1976 1989 2 1 0 2 2 0 S",
-			"1990 2007 2 15 0 2 2 0 S",
-			"2007 9999 8 0 8 2 2 1 D",
-			"2008 9999 3 1 0 2 2 0 S"
-		],
-		"Namibia": [
-			"1994 9999 8 1 0 2 0 1 S",
-			"1995 9999 3 1 0 2 0 0"
-		],
-		"Neth": [
-			"1916 1916 4 1 7 0 0 1 NST",
-			"1916 1916 9 1 7 0 0 0 AMT",
-			"1917 1917 3 16 7 2 2 1 NST",
-			"1917 1917 8 17 7 2 2 0 AMT",
-			"1918 1921 3 1 1 2 2 1 NST",
-			"1918 1921 8 1 8 2 2 0 AMT",
-			"1922 1922 2 0 8 2 2 1 NST",
-			"1922 1936 9 2 0 2 2 0 AMT",
-			"1923 1923 5 1 5 2 2 1 NST",
-			"1924 1924 2 0 8 2 2 1 NST",
-			"1925 1925 5 1 5 2 2 1 NST",
-			"1926 1931 4 15 7 2 2 1 NST",
-			"1932 1932 4 22 7 2 2 1 NST",
-			"1933 1936 4 15 7 2 2 1 NST",
-			"1937 1937 4 22 7 2 2 1 NST",
-			"1937 1937 6 1 7 0 0 1 S",
-			"1937 1939 9 2 0 2 2 0",
-			"1938 1939 4 15 7 2 2 1 S",
-			"1945 1945 3 2 7 2 2 1 S",
-			"1945 1945 8 16 7 2 2 0"
-		],
-		"Nic": [
-			"1979 1980 2 16 0 0 0 1 D",
-			"1979 1980 5 23 1 0 0 0 S",
-			"2005 2005 3 10 7 0 0 1 D",
-			"2005 2005 9 1 0 0 0 0 S",
-			"2006 2006 3 30 7 2 0 1 D",
-			"2006 2006 9 1 0 1 0 0 S"
-		],
-		"Norway": [
-			"1916 1916 4 22 7 1 0 1 S",
-			"1916 1916 8 30 7 0 0 0",
-			"1945 1945 3 2 7 2 2 1 S",
-			"1945 1945 9 1 7 2 2 0",
-			"1959 1964 2 15 0 2 2 1 S",
-			"1959 1965 8 15 0 2 2 0",
-			"1965 1965 3 25 7 2 2 1 S"
-		],
-		"PRC": [
-			"1986 1986 4 4 7 0 0 1 D",
-			"1986 1991 8 11 0 0 0 0 S",
-			"1987 1991 3 10 0 0 0 1 D"
-		],
-		"Pakistan": [
-			"2002 2002 3 2 0 0:1 0 1 S",
-			"2002 2002 9 2 0 0:1 0 0",
-			"2008 2008 5 1 7 0 0 1 S",
-			"2008 2008 10 1 7 0 0 0",
-			"2009 2009 3 15 7 0 0 1 S",
-			"2009 2009 10 1 7 0 0 0"
-		],
-		"Palestine": [
-			"1999 2005 3 15 5 0 0 1 S",
-			"1999 2003 9 15 5 0 0 0",
-			"2004 2004 9 1 7 1 0 0",
-			"2005 2005 9 4 7 2 0 0",
-			"2006 2007 3 1 7 0 0 1 S",
-			"2006 2006 8 22 7 0 0 0",
-			"2007 2007 8 8 4 2 0 0",
-			"2008 2009 2 5 8 0 0 1 S",
-			"2008 2008 8 1 7 0 0 0",
-			"2009 2009 8 1 5 1 0 0",
-			"2010 2010 2 26 7 0 0 1 S",
-			"2010 2010 7 11 7 0 0 0",
-			"2011 2011 3 1 7 0:1 0 1 S",
-			"2011 2011 7 1 7 0 0 0",
-			"2011 2011 7 30 7 0 0 1 S",
-			"2011 2011 8 30 7 0 0 0",
-			"2012 9999 2 4 8 24 0 1 S",
-			"2012 9999 8 21 5 1 0 0"
-		],
-		"Para": [
-			"1975 1988 9 1 7 0 0 1 S",
-			"1975 1978 2 1 7 0 0 0",
-			"1979 1991 3 1 7 0 0 0",
-			"1989 1989 9 22 7 0 0 1 S",
-			"1990 1990 9 1 7 0 0 1 S",
-			"1991 1991 9 6 7 0 0 1 S",
-			"1992 1992 2 1 7 0 0 0",
-			"1992 1992 9 5 7 0 0 1 S",
-			"1993 1993 2 31 7 0 0 0",
-			"1993 1995 9 1 7 0 0 1 S",
-			"1994 1995 1 0 8 0 0 0",
-			"1996 1996 2 1 7 0 0 0",
-			"1996 2001 9 1 0 0 0 1 S",
-			"1997 1997 1 0 8 0 0 0",
-			"1998 2001 2 1 0 0 0 0",
-			"2002 2004 3 1 0 0 0 0",
-			"2002 2003 8 1 0 0 0 1 S",
-			"2004 2009 9 15 0 0 0 1 S",
-			"2005 2009 2 8 0 0 0 0",
-			"2010 9999 9 1 0 0 0 1 S",
-			"2010 2012 3 8 0 0 0 0",
-			"2013 9999 2 22 0 0 0 0"
-		],
-		"Perry": [
-			"1946 1946 3 0 8 2 0 1 D",
-			"1946 1946 8 0 8 2 0 0 S",
-			"1953 1954 3 0 8 2 0 1 D",
-			"1953 1959 8 0 8 2 0 0 S",
-			"1955 1955 4 1 7 0 0 1 D",
-			"1956 1963 3 0 8 2 0 1 D",
-			"1960 1960 9 0 8 2 0 0 S",
-			"1961 1961 8 0 8 2 0 0 S",
-			"1962 1963 9 0 8 2 0 0 S"
-		],
-		"Peru": [
-			"1938 1938 0 1 7 0 0 1 S",
-			"1938 1938 3 1 7 0 0 0",
-			"1938 1939 8 0 8 0 0 1 S",
-			"1939 1940 2 24 0 0 0 0",
-			"1986 1987 0 1 7 0 0 1 S",
-			"1986 1987 3 1 7 0 0 0",
-			"1990 1990 0 1 7 0 0 1 S",
-			"1990 1990 3 1 7 0 0 0",
-			"1994 1994 0 1 7 0 0 1 S",
-			"1994 1994 3 1 7 0 0 0"
-		],
-		"Phil": [
-			"1936 1936 10 1 7 0 0 1 S",
-			"1937 1937 1 1 7 0 0 0",
-			"1954 1954 3 12 7 0 0 1 S",
-			"1954 1954 6 1 7 0 0 0",
-			"1978 1978 2 22 7 0 0 1 S",
-			"1978 1978 8 21 7 0 0 0"
-		],
-		"Pike": [
-			"1955 1955 4 1 7 0 0 1 D",
-			"1955 1960 8 0 8 2 0 0 S",
-			"1956 1964 3 0 8 2 0 1 D",
-			"1961 1964 9 0 8 2 0 0 S"
-		],
-		"Poland": [
-			"1918 1919 8 16 7 2 2 0",
-			"1919 1919 3 15 7 2 2 1 S",
-			"1944 1944 3 3 7 2 2 1 S",
-			"1944 1944 9 4 7 2 0 0",
-			"1945 1945 3 29 7 0 0 1 S",
-			"1945 1945 10 1 7 0 0 0",
-			"1946 1946 3 14 7 0 2 1 S",
-			"1946 1946 9 7 7 2 2 0",
-			"1947 1947 4 4 7 2 2 1 S",
-			"1947 1949 9 1 0 2 2 0",
-			"1948 1948 3 18 7 2 2 1 S",
-			"1949 1949 3 10 7 2 2 1 S",
-			"1957 1957 5 2 7 1 2 1 S",
-			"1957 1958 8 0 8 1 2 0",
-			"1958 1958 2 30 7 1 2 1 S",
-			"1959 1959 4 31 7 1 2 1 S",
-			"1959 1961 9 1 0 1 2 0",
-			"1960 1960 3 3 7 1 2 1 S",
-			"1961 1964 4 0 8 1 2 1 S",
-			"1962 1964 8 0 8 1 2 0"
-		],
-		"Port": [
-			"1916 1916 5 17 7 23 0 1 S",
-			"1916 1916 10 1 7 1 0 0",
-			"1917 1917 1 28 7 23 2 1 S",
-			"1917 1921 9 14 7 23 2 0",
-			"1918 1918 2 1 7 23 2 1 S",
-			"1919 1919 1 28 7 23 2 1 S",
-			"1920 1920 1 29 7 23 2 1 S",
-			"1921 1921 1 28 7 23 2 1 S",
-			"1924 1924 3 16 7 23 2 1 S",
-			"1924 1924 9 14 7 23 2 0",
-			"1926 1926 3 17 7 23 2 1 S",
-			"1926 1929 9 1 6 23 2 0",
-			"1927 1927 3 9 7 23 2 1 S",
-			"1928 1928 3 14 7 23 2 1 S",
-			"1929 1929 3 20 7 23 2 1 S",
-			"1931 1931 3 18 7 23 2 1 S",
-			"1931 1932 9 1 6 23 2 0",
-			"1932 1932 3 2 7 23 2 1 S",
-			"1934 1934 3 7 7 23 2 1 S",
-			"1934 1938 9 1 6 23 2 0",
-			"1935 1935 2 30 7 23 2 1 S",
-			"1936 1936 3 18 7 23 2 1 S",
-			"1937 1937 3 3 7 23 2 1 S",
-			"1938 1938 2 26 7 23 2 1 S",
-			"1939 1939 3 15 7 23 2 1 S",
-			"1939 1939 10 18 7 23 2 0",
-			"1940 1940 1 24 7 23 2 1 S",
-			"1940 1941 9 5 7 23 2 0",
-			"1941 1941 3 5 7 23 2 1 S",
-			"1942 1945 2 8 6 23 2 1 S",
-			"1942 1942 3 25 7 22 2 2 M",
-			"1942 1942 7 15 7 22 2 1 S",
-			"1942 1945 9 24 6 23 2 0",
-			"1943 1943 3 17 7 22 2 2 M",
-			"1943 1945 7 25 6 22 2 1 S",
-			"1944 1945 3 21 6 22 2 2 M",
-			"1946 1946 3 1 6 23 2 1 S",
-			"1946 1946 9 1 6 23 2 0",
-			"1947 1949 3 1 0 2 2 1 S",
-			"1947 1949 9 1 0 2 2 0",
-			"1951 1965 3 1 0 2 2 1 S",
-			"1951 1965 9 1 0 2 2 0",
-			"1977 1977 2 27 7 0 2 1 S",
-			"1977 1977 8 25 7 0 2 0",
-			"1978 1979 3 1 0 0 2 1 S",
-			"1978 1978 9 1 7 0 2 0",
-			"1979 1982 8 0 8 1 2 0",
-			"1980 1980 2 0 8 0 2 1 S",
-			"1981 1982 2 0 8 1 2 1 S",
-			"1983 1983 2 0 8 2 2 1 S"
-		],
-		"Pulaski": [
-			"1946 1960 3 0 8 2 0 1 D",
-			"1946 1954 8 0 8 2 0 0 S",
-			"1955 1956 9 0 8 2 0 0 S",
-			"1957 1960 8 0 8 2 0 0 S"
-		],
-		"ROK": [
-			"1960 1960 4 15 7 0 0 1 D",
-			"1960 1960 8 13 7 0 0 0 S",
-			"1987 1988 4 8 0 0 0 1 D",
-			"1987 1988 9 8 0 0 0 0 S"
-		],
-		"Regina": [
-			"1918 1918 3 14 7 2 0 1 D",
-			"1918 1918 9 27 7 2 0 0 S",
-			"1930 1934 4 1 0 0 0 1 D",
-			"1930 1934 9 1 0 0 0 0 S",
-			"1937 1941 3 8 0 0 0 1 D",
-			"1937 1937 9 8 0 0 0 0 S",
-			"1938 1938 9 1 0 0 0 0 S",
-			"1939 1941 9 8 0 0 0 0 S",
-			"1942 1942 1 9 7 2 0 1 W",
-			"1945 1945 7 14 7 23 1 1 P",
-			"1945 1945 8 0 8 2 0 0 S",
-			"1946 1946 3 8 0 2 0 1 D",
-			"1946 1946 9 8 0 2 0 0 S",
-			"1947 1957 3 0 8 2 0 1 D",
-			"1947 1957 8 0 8 2 0 0 S",
-			"1959 1959 3 0 8 2 0 1 D",
-			"1959 1959 9 0 8 2 0 0 S"
-		],
-		"Romania": [
-			"1932 1932 4 21 7 0 2 1 S",
-			"1932 1939 9 1 0 0 2 0",
-			"1933 1939 3 2 0 0 2 1 S",
-			"1979 1979 4 27 7 0 0 1 S",
-			"1979 1979 8 0 8 0 0 0",
-			"1980 1980 3 5 7 23 0 1 S",
-			"1980 1980 8 0 8 1 0 0",
-			"1991 1993 2 0 8 0 2 1 S",
-			"1991 1993 8 0 8 0 2 0"
-		],
-		"Russia": [
-			"1917 1917 6 1 7 23 0 1 MST",
-			"1917 1917 11 28 7 0 0 0 MMT",
-			"1918 1918 4 31 7 22 0 2 MDST",
-			"1918 1918 8 16 7 1 0 1 MST",
-			"1919 1919 4 31 7 23 0 2 MDST",
-			"1919 1919 6 1 7 2 0 1 S",
-			"1919 1919 7 16 7 0 0 0",
-			"1921 1921 1 14 7 23 0 1 S",
-			"1921 1921 2 20 7 23 0 2 M",
-			"1921 1921 8 1 7 0 0 1 S",
-			"1921 1921 9 1 7 0 0 0",
-			"1981 1984 3 1 7 0 0 1 S",
-			"1981 1983 9 1 7 0 0 0",
-			"1984 1991 8 0 8 2 2 0",
-			"1985 1991 2 0 8 2 2 1 S",
-			"1992 1992 2 6 8 23 0 1 S",
-			"1992 1992 8 6 8 23 0 0",
-			"1993 2010 2 0 8 2 2 1 S",
-			"1993 1995 8 0 8 2 2 0",
-			"1996 2010 9 0 8 2 2 0"
-		],
-		"RussiaAsia": [
-			"1981 1984 3 1 7 0 0 1 S",
-			"1981 1983 9 1 7 0 0 0",
-			"1984 1991 8 0 8 2 2 0",
-			"1985 1991 2 0 8 2 2 1 S",
-			"1992 1992 2 6 8 23 0 1 S",
-			"1992 1992 8 6 8 23 0 0",
-			"1993 9999 2 0 8 2 2 1 S",
-			"1993 1995 8 0 8 2 2 0",
-			"1996 9999 9 0 8 2 2 0"
-		],
-		"SA": [
-			"1942 1943 8 15 0 2 0 1",
-			"1943 1944 2 15 0 2 0 0"
-		],
-		"SL": [
-			"1935 1942 5 1 7 0 0 0:40 SLST",
-			"1935 1942 9 1 7 0 0 0 WAT",
-			"1957 1962 5 1 7 0 0 1 SLST",
-			"1957 1962 8 1 7 0 0 0 GMT"
-		],
-		"Salv": [
-			"1987 1988 4 1 0 0 0 1 D",
-			"1987 1988 8 0 8 0 0 0 S"
-		],
-		"SanLuis": [
-			"2008 2009 2 8 0 0 0 0",
-			"2007 2009 9 8 0 0 0 1 S"
-		],
-		"Shang": [
-			"1940 1940 5 3 7 0 0 1 D",
-			"1940 1941 9 1 7 0 0 0 S",
-			"1941 1941 2 16 7 0 0 1 D"
-		],
-		"SovietZone": [
-			"1945 1945 4 24 7 2 0 2 M",
-			"1945 1945 8 24 7 3 0 1 S",
-			"1945 1945 10 18 7 2 2 0"
-		],
-		"Spain": [
-			"1917 1917 4 5 7 23 2 1 S",
-			"1917 1919 9 6 7 23 2 0",
-			"1918 1918 3 15 7 23 2 1 S",
-			"1919 1919 3 5 7 23 2 1 S",
-			"1924 1924 3 16 7 23 2 1 S",
-			"1924 1924 9 4 7 23 2 0",
-			"1926 1926 3 17 7 23 2 1 S",
-			"1926 1929 9 1 6 23 2 0",
-			"1927 1927 3 9 7 23 2 1 S",
-			"1928 1928 3 14 7 23 2 1 S",
-			"1929 1929 3 20 7 23 2 1 S",
-			"1937 1937 4 22 7 23 2 1 S",
-			"1937 1939 9 1 6 23 2 0",
-			"1938 1938 2 22 7 23 2 1 S",
-			"1939 1939 3 15 7 23 2 1 S",
-			"1940 1940 2 16 7 23 2 1 S",
-			"1942 1942 4 2 7 22 2 2 M",
-			"1942 1942 8 1 7 22 2 1 S",
-			"1943 1946 3 13 6 22 2 2 M",
-			"1943 1943 9 3 7 22 2 1 S",
-			"1944 1944 9 10 7 22 2 1 S",
-			"1945 1945 8 30 7 1 0 1 S",
-			"1946 1946 8 30 7 0 0 0",
-			"1949 1949 3 30 7 23 0 1 S",
-			"1949 1949 8 30 7 1 0 0",
-			"1974 1975 3 13 6 23 0 1 S",
-			"1974 1975 9 1 0 1 0 0",
-			"1976 1976 2 27 7 23 0 1 S",
-			"1976 1977 8 0 8 1 0 0",
-			"1977 1978 3 2 7 23 0 1 S",
-			"1978 1978 9 1 7 1 0 0"
-		],
-		"SpainAfrica": [
-			"1967 1967 5 3 7 12 0 1 S",
-			"1967 1967 9 1 7 0 0 0",
-			"1974 1974 5 24 7 0 0 1 S",
-			"1974 1974 8 1 7 0 0 0",
-			"1976 1977 4 1 7 0 0 1 S",
-			"1976 1976 7 1 7 0 0 0",
-			"1977 1977 8 28 7 0 0 0",
-			"1978 1978 5 1 7 0 0 1 S",
-			"1978 1978 7 4 7 0 0 0"
-		],
-		"StJohns": [
-			"1917 1917 3 8 7 2 0 1 D",
-			"1917 1917 8 17 7 2 0 0 S",
-			"1919 1919 4 5 7 23 0 1 D",
-			"1919 1919 7 12 7 23 0 0 S",
-			"1920 1935 4 1 0 23 0 1 D",
-			"1920 1935 9 0 8 23 0 0 S",
-			"1936 1941 4 9 1 0 0 1 D",
-			"1936 1941 9 2 1 0 0 0 S",
-			"1946 1950 4 8 0 2 0 1 D",
-			"1946 1950 9 2 0 2 0 0 S",
-			"1951 1986 3 0 8 2 0 1 D",
-			"1951 1959 8 0 8 2 0 0 S",
-			"1960 1986 9 0 8 2 0 0 S",
-			"1987 1987 3 1 0 0:1 0 1 D",
-			"1987 2006 9 0 8 0:1 0 0 S",
-			"1988 1988 3 1 0 0:1 0 2 DD",
-			"1989 2006 3 1 0 0:1 0 1 D",
-			"2007 2011 2 8 0 0:1 0 1 D",
-			"2007 2010 10 1 0 0:1 0 0 S"
-		],
-		"Starke": [
-			"1947 1961 3 0 8 2 0 1 D",
-			"1947 1954 8 0 8 2 0 0 S",
-			"1955 1956 9 0 8 2 0 0 S",
-			"1957 1958 8 0 8 2 0 0 S",
-			"1959 1961 9 0 8 2 0 0 S"
-		],
-		"Sudan": [
-			"1970 1970 4 1 7 0 0 1 S",
-			"1970 1985 9 15 7 0 0 0",
-			"1971 1971 3 30 7 0 0 1 S",
-			"1972 1985 3 0 8 0 0 1 S"
-		],
-		"Swift": [
-			"1957 1957 3 0 8 2 0 1 D",
-			"1957 1957 9 0 8 2 0 0 S",
-			"1959 1961 3 0 8 2 0 1 D",
-			"1959 1959 9 0 8 2 0 0 S",
-			"1960 1961 8 0 8 2 0 0 S"
-		],
-		"Swiss": [
-			"1941 1942 4 1 1 1 0 1 S",
-			"1941 1942 9 1 1 2 0 0"
-		],
-		"Syria": [
-			"1920 1923 3 15 0 2 0 1 S",
-			"1920 1923 9 1 0 2 0 0",
-			"1962 1962 3 29 7 2 0 1 S",
-			"1962 1962 9 1 7 2 0 0",
-			"1963 1965 4 1 7 2 0 1 S",
-			"1963 1963 8 30 7 2 0 0",
-			"1964 1964 9 1 7 2 0 0",
-			"1965 1965 8 30 7 2 0 0",
-			"1966 1966 3 24 7 2 0 1 S",
-			"1966 1976 9 1 7 2 0 0",
-			"1967 1978 4 1 7 2 0 1 S",
-			"1977 1978 8 1 7 2 0 0",
-			"1983 1984 3 9 7 2 0 1 S",
-			"1983 1984 9 1 7 2 0 0",
-			"1986 1986 1 16 7 2 0 1 S",
-			"1986 1986 9 9 7 2 0 0",
-			"1987 1987 2 1 7 2 0 1 S",
-			"1987 1988 9 31 7 2 0 0",
-			"1988 1988 2 15 7 2 0 1 S",
-			"1989 1989 2 31 7 2 0 1 S",
-			"1989 1989 9 1 7 2 0 0",
-			"1990 1990 3 1 7 2 0 1 S",
-			"1990 1990 8 30 7 2 0 0",
-			"1991 1991 3 1 7 0 0 1 S",
-			"1991 1992 9 1 7 0 0 0",
-			"1992 1992 3 8 7 0 0 1 S",
-			"1993 1993 2 26 7 0 0 1 S",
-			"1993 1993 8 25 7 0 0 0",
-			"1994 1996 3 1 7 0 0 1 S",
-			"1994 2005 9 1 7 0 0 0",
-			"1997 1998 2 1 8 0 0 1 S",
-			"1999 2006 3 1 7 0 0 1 S",
-			"2006 2006 8 22 7 0 0 0",
-			"2007 2007 2 5 8 0 0 1 S",
-			"2007 2007 10 1 5 0 0 0",
-			"2008 2008 3 1 5 0 0 1 S",
-			"2008 2008 10 1 7 0 0 0",
-			"2009 2009 2 5 8 0 0 1 S",
-			"2010 2011 3 1 5 0 0 1 S",
-			"2012 9999 2 5 8 0 0 1 S",
-			"2009 9999 9 5 8 0 0 0"
-		],
-		"TC": [
-			"1979 1986 3 0 8 2 0 1 D",
-			"1979 2006 9 0 8 2 0 0 S",
-			"1987 2006 3 1 0 2 0 1 D",
-			"2007 9999 2 8 0 2 0 1 D",
-			"2007 9999 10 1 0 2 0 0 S"
-		],
-		"Taiwan": [
-			"1945 1951 4 1 7 0 0 1 D",
-			"1945 1951 9 1 7 0 0 0 S",
-			"1952 1952 2 1 7 0 0 1 D",
-			"1952 1954 10 1 7 0 0 0 S",
-			"1953 1959 3 1 7 0 0 1 D",
-			"1955 1961 9 1 7 0 0 0 S",
-			"1960 1961 5 1 7 0 0 1 D",
-			"1974 1975 3 1 7 0 0 1 D",
-			"1974 1975 9 1 7 0 0 0 S",
-			"1979 1979 5 30 7 0 0 1 D",
-			"1979 1979 8 30 7 0 0 0 S"
-		],
-		"Thule": [
-			"1991 1992 2 0 8 2 0 1 D",
-			"1991 1992 8 0 8 2 0 0 S",
-			"1993 2006 3 1 0 2 0 1 D",
-			"1993 2006 9 0 8 2 0 0 S",
-			"2007 9999 2 8 0 2 0 1 D",
-			"2007 9999 10 1 0 2 0 0 S"
-		],
-		"Tonga": [
-			"1999 1999 9 7 7 2 2 1 S",
-			"2000 2000 2 19 7 2 2 0",
-			"2000 2001 10 1 0 2 0 1 S",
-			"2001 2002 0 0 8 2 0 0"
-		],
-		"Toronto": [
-			"1919 1919 2 30 7 23:30 0 1 D",
-			"1919 1919 9 26 7 0 0 0 S",
-			"1920 1920 4 2 7 2 0 1 D",
-			"1920 1920 8 26 7 0 0 0 S",
-			"1921 1921 4 15 7 2 0 1 D",
-			"1921 1921 8 15 7 2 0 0 S",
-			"1922 1923 4 8 0 2 0 1 D",
-			"1922 1926 8 15 0 2 0 0 S",
-			"1924 1927 4 1 0 2 0 1 D",
-			"1927 1932 8 0 8 2 0 0 S",
-			"1928 1931 3 0 8 2 0 1 D",
-			"1932 1932 4 1 7 2 0 1 D",
-			"1933 1940 3 0 8 2 0 1 D",
-			"1933 1933 9 1 7 2 0 0 S",
-			"1934 1939 8 0 8 2 0 0 S",
-			"1945 1946 8 0 8 2 0 0 S",
-			"1946 1946 3 0 8 2 0 1 D",
-			"1947 1949 3 0 8 0 0 1 D",
-			"1947 1948 8 0 8 0 0 0 S",
-			"1949 1949 10 0 8 0 0 0 S",
-			"1950 1973 3 0 8 2 0 1 D",
-			"1950 1950 10 0 8 2 0 0 S",
-			"1951 1956 8 0 8 2 0 0 S",
-			"1957 1973 9 0 8 2 0 0 S"
-		],
-		"Tunisia": [
-			"1939 1939 3 15 7 23 2 1 S",
-			"1939 1939 10 18 7 23 2 0",
-			"1940 1940 1 25 7 23 2 1 S",
-			"1941 1941 9 6 7 0 0 0",
-			"1942 1942 2 9 7 0 0 1 S",
-			"1942 1942 10 2 7 3 0 0",
-			"1943 1943 2 29 7 2 0 1 S",
-			"1943 1943 3 17 7 2 0 0",
-			"1943 1943 3 25 7 2 0 1 S",
-			"1943 1943 9 4 7 2 0 0",
-			"1944 1945 3 1 1 2 0 1 S",
-			"1944 1944 9 8 7 0 0 0",
-			"1945 1945 8 16 7 0 0 0",
-			"1977 1977 3 30 7 0 2 1 S",
-			"1977 1977 8 24 7 0 2 0",
-			"1978 1978 4 1 7 0 2 1 S",
-			"1978 1978 9 1 7 0 2 0",
-			"1988 1988 5 1 7 0 2 1 S",
-			"1988 1990 8 0 8 0 2 0",
-			"1989 1989 2 26 7 0 2 1 S",
-			"1990 1990 4 1 7 0 2 1 S",
-			"2005 2005 4 1 7 0 2 1 S",
-			"2005 2005 8 30 7 1 2 0",
-			"2006 2008 2 0 8 2 2 1 S",
-			"2006 2008 9 0 8 2 2 0"
-		],
-		"Turkey": [
-			"1916 1916 4 1 7 0 0 1 S",
-			"1916 1916 9 1 7 0 0 0",
-			"1920 1920 2 28 7 0 0 1 S",
-			"1920 1920 9 25 7 0 0 0",
-			"1921 1921 3 3 7 0 0 1 S",
-			"1921 1921 9 3 7 0 0 0",
-			"1922 1922 2 26 7 0 0 1 S",
-			"1922 1922 9 8 7 0 0 0",
-			"1924 1924 4 13 7 0 0 1 S",
-			"1924 1925 9 1 7 0 0 0",
-			"1925 1925 4 1 7 0 0 1 S",
-			"1940 1940 5 30 7 0 0 1 S",
-			"1940 1940 9 5 7 0 0 0",
-			"1940 1940 11 1 7 0 0 1 S",
-			"1941 1941 8 21 7 0 0 0",
-			"1942 1942 3 1 7 0 0 1 S",
-			"1942 1942 10 1 7 0 0 0",
-			"1945 1945 3 2 7 0 0 1 S",
-			"1945 1945 9 8 7 0 0 0",
-			"1946 1946 5 1 7 0 0 1 S",
-			"1946 1946 9 1 7 0 0 0",
-			"1947 1948 3 16 0 0 0 1 S",
-			"1947 1950 9 2 0 0 0 0",
-			"1949 1949 3 10 7 0 0 1 S",
-			"1950 1950 3 19 7 0 0 1 S",
-			"1951 1951 3 22 7 0 0 1 S",
-			"1951 1951 9 8 7 0 0 0",
-			"1962 1962 6 15 7 0 0 1 S",
-			"1962 1962 9 8 7 0 0 0",
-			"1964 1964 4 15 7 0 0 1 S",
-			"1964 1964 9 1 7 0 0 0",
-			"1970 1972 4 2 0 0 0 1 S",
-			"1970 1972 9 2 0 0 0 0",
-			"1973 1973 5 3 7 1 0 1 S",
-			"1973 1973 10 4 7 3 0 0",
-			"1974 1974 2 31 7 2 0 1 S",
-			"1974 1974 10 3 7 5 0 0",
-			"1975 1975 2 30 7 0 0 1 S",
-			"1975 1976 9 0 8 0 0 0",
-			"1976 1976 5 1 7 0 0 1 S",
-			"1977 1978 3 1 0 0 0 1 S",
-			"1977 1977 9 16 7 0 0 0",
-			"1979 1980 3 1 0 3 0 1 S",
-			"1979 1982 9 11 1 0 0 0",
-			"1981 1982 2 0 8 3 0 1 S",
-			"1983 1983 6 31 7 0 0 1 S",
-			"1983 1983 9 2 7 0 0 0",
-			"1985 1985 3 20 7 0 0 1 S",
-			"1985 1985 8 28 7 0 0 0",
-			"1986 1990 2 0 8 2 2 1 S",
-			"1986 1990 8 0 8 2 2 0",
-			"1991 2006 2 0 8 1 2 1 S",
-			"1991 1995 8 0 8 1 2 0",
-			"1996 2006 9 0 8 1 2 0"
-		],
-		"US": [
-			"1918 1919 2 0 8 2 0 1 D",
-			"1918 1919 9 0 8 2 0 0 S",
-			"1942 1942 1 9 7 2 0 1 W",
-			"1945 1945 7 14 7 23 1 1 P",
-			"1945 1945 8 30 7 2 0 0 S",
-			"1967 2006 9 0 8 2 0 0 S",
-			"1967 1973 3 0 8 2 0 1 D",
-			"1974 1974 0 6 7 2 0 1 D",
-			"1975 1975 1 23 7 2 0 1 D",
-			"1976 1986 3 0 8 2 0 1 D",
-			"1987 2006 3 1 0 2 0 1 D",
-			"2007 9999 2 8 0 2 0 1 D",
-			"2007 9999 10 1 0 2 0 0 S"
-		],
-		"Uruguay": [
-			"1923 1923 9 2 7 0 0 0:30 HS",
-			"1924 1926 3 1 7 0 0 0",
-			"1924 1925 9 1 7 0 0 0:30 HS",
-			"1933 1935 9 0 8 0 0 0:30 HS",
-			"1934 1936 2 25 6 23:30 2 0",
-			"1936 1936 10 1 7 0 0 0:30 HS",
-			"1937 1941 2 0 8 0 0 0",
-			"1937 1940 9 0 8 0 0 0:30 HS",
-			"1941 1941 7 1 7 0 0 0:30 HS",
-			"1942 1942 0 1 7 0 0 0",
-			"1942 1942 11 14 7 0 0 1 S",
-			"1943 1943 2 14 7 0 0 0",
-			"1959 1959 4 24 7 0 0 1 S",
-			"1959 1959 10 15 7 0 0 0",
-			"1960 1960 0 17 7 0 0 1 S",
-			"1960 1960 2 6 7 0 0 0",
-			"1965 1967 3 1 0 0 0 1 S",
-			"1965 1965 8 26 7 0 0 0",
-			"1966 1967 9 31 7 0 0 0",
-			"1968 1970 4 27 7 0 0 0:30 HS",
-			"1968 1970 11 2 7 0 0 0",
-			"1972 1972 3 24 7 0 0 1 S",
-			"1972 1972 7 15 7 0 0 0",
-			"1974 1974 2 10 7 0 0 0:30 HS",
-			"1974 1974 11 22 7 0 0 1 S",
-			"1976 1976 9 1 7 0 0 0",
-			"1977 1977 11 4 7 0 0 1 S",
-			"1978 1978 3 1 7 0 0 0",
-			"1979 1979 9 1 7 0 0 1 S",
-			"1980 1980 4 1 7 0 0 0",
-			"1987 1987 11 14 7 0 0 1 S",
-			"1988 1988 2 14 7 0 0 0",
-			"1988 1988 11 11 7 0 0 1 S",
-			"1989 1989 2 12 7 0 0 0",
-			"1989 1989 9 29 7 0 0 1 S",
-			"1990 1992 2 1 0 0 0 0",
-			"1990 1991 9 21 0 0 0 1 S",
-			"1992 1992 9 18 7 0 0 1 S",
-			"1993 1993 1 28 7 0 0 0",
-			"2004 2004 8 19 7 0 0 1 S",
-			"2005 2005 2 27 7 2 0 0",
-			"2005 2005 9 9 7 2 0 1 S",
-			"2006 2006 2 12 7 2 0 0",
-			"2006 9999 9 1 0 2 0 1 S",
-			"2007 9999 2 8 0 2 0 0"
-		],
-		"Vanc": [
-			"1918 1918 3 14 7 2 0 1 D",
-			"1918 1918 9 27 7 2 0 0 S",
-			"1942 1942 1 9 7 2 0 1 W",
-			"1945 1945 7 14 7 23 1 1 P",
-			"1945 1945 8 30 7 2 0 0 S",
-			"1946 1986 3 0 8 2 0 1 D",
-			"1946 1946 9 13 7 2 0 0 S",
-			"1947 1961 8 0 8 2 0 0 S",
-			"1962 2006 9 0 8 2 0 0 S"
-		],
-		"Vanuatu": [
-			"1983 1983 8 25 7 0 0 1 S",
-			"1984 1991 2 23 0 0 0 0",
-			"1984 1984 9 23 7 0 0 1 S",
-			"1985 1991 8 23 0 0 0 1 S",
-			"1992 1993 0 23 0 0 0 0",
-			"1992 1992 9 23 0 0 0 1 S"
-		],
-		"Vincennes": [
-			"1946 1946 3 0 8 2 0 1 D",
-			"1946 1946 8 0 8 2 0 0 S",
-			"1953 1954 3 0 8 2 0 1 D",
-			"1953 1959 8 0 8 2 0 0 S",
-			"1955 1955 4 1 7 0 0 1 D",
-			"1956 1963 3 0 8 2 0 1 D",
-			"1960 1960 9 0 8 2 0 0 S",
-			"1961 1961 8 0 8 2 0 0 S",
-			"1962 1963 9 0 8 2 0 0 S"
-		],
-		"W-Eur": [
-			"1977 1980 3 1 0 1 2 1 S",
-			"1977 1977 8 0 8 1 2 0",
-			"1978 1978 9 1 7 1 2 0",
-			"1979 1995 8 0 8 1 2 0",
-			"1981 9999 2 0 8 1 2 1 S",
-			"1996 9999 9 0 8 1 2 0"
-		],
-		"WS": [
-			"2012 9999 8 0 8 3 0 1 D",
-			"2012 9999 3 1 0 4 0 0"
-		],
-		"Winn": [
-			"1916 1916 3 23 7 0 0 1 D",
-			"1916 1916 8 17 7 0 0 0 S",
-			"1918 1918 3 14 7 2 0 1 D",
-			"1918 1918 9 27 7 2 0 0 S",
-			"1937 1937 4 16 7 2 0 1 D",
-			"1937 1937 8 26 7 2 0 0 S",
-			"1942 1942 1 9 7 2 0 1 W",
-			"1945 1945 7 14 7 23 1 1 P",
-			"1945 1945 8 0 8 2 0 0 S",
-			"1946 1946 4 12 7 2 0 1 D",
-			"1946 1946 9 13 7 2 0 0 S",
-			"1947 1949 3 0 8 2 0 1 D",
-			"1947 1949 8 0 8 2 0 0 S",
-			"1950 1950 4 1 7 2 0 1 D",
-			"1950 1950 8 30 7 2 0 0 S",
-			"1951 1960 3 0 8 2 0 1 D",
-			"1951 1958 8 0 8 2 0 0 S",
-			"1959 1959 9 0 8 2 0 0 S",
-			"1960 1960 8 0 8 2 0 0 S",
-			"1963 1963 3 0 8 2 0 1 D",
-			"1963 1963 8 22 7 2 0 0 S",
-			"1966 1986 3 0 8 2 2 1 D",
-			"1966 2005 9 0 8 2 2 0 S",
-			"1987 2005 3 1 0 2 2 1 D"
-		],
-		"Zion": [
-			"1940 1940 5 1 7 0 0 1 D",
-			"1942 1944 10 1 7 0 0 0 S",
-			"1943 1943 3 1 7 2 0 1 D",
-			"1944 1944 3 1 7 0 0 1 D",
-			"1945 1945 3 16 7 0 0 1 D",
-			"1945 1945 10 1 7 2 0 0 S",
-			"1946 1946 3 16 7 2 0 1 D",
-			"1946 1946 10 1 7 0 0 0 S",
-			"1948 1948 4 23 7 0 0 2 DD",
-			"1948 1948 8 1 7 0 0 1 D",
-			"1948 1949 10 1 7 2 0 0 S",
-			"1949 1949 4 1 7 0 0 1 D",
-			"1950 1950 3 16 7 0 0 1 D",
-			"1950 1950 8 15 7 3 0 0 S",
-			"1951 1951 3 1 7 0 0 1 D",
-			"1951 1951 10 11 7 3 0 0 S",
-			"1952 1952 3 20 7 2 0 1 D",
-			"1952 1952 9 19 7 3 0 0 S",
-			"1953 1953 3 12 7 2 0 1 D",
-			"1953 1953 8 13 7 3 0 0 S",
-			"1954 1954 5 13 7 0 0 1 D",
-			"1954 1954 8 12 7 0 0 0 S",
-			"1955 1955 5 11 7 2 0 1 D",
-			"1955 1955 8 11 7 0 0 0 S",
-			"1956 1956 5 3 7 0 0 1 D",
-			"1956 1956 8 30 7 3 0 0 S",
-			"1957 1957 3 29 7 2 0 1 D",
-			"1957 1957 8 22 7 0 0 0 S",
-			"1974 1974 6 7 7 0 0 1 D",
-			"1974 1974 9 13 7 0 0 0 S",
-			"1975 1975 3 20 7 0 0 1 D",
-			"1975 1975 7 31 7 0 0 0 S",
-			"1985 1985 3 14 7 0 0 1 D",
-			"1985 1985 8 15 7 0 0 0 S",
-			"1986 1986 4 18 7 0 0 1 D",
-			"1986 1986 8 7 7 0 0 0 S",
-			"1987 1987 3 15 7 0 0 1 D",
-			"1987 1987 8 13 7 0 0 0 S",
-			"1988 1988 3 9 7 0 0 1 D",
-			"1988 1988 8 3 7 0 0 0 S",
-			"1989 1989 3 30 7 0 0 1 D",
-			"1989 1989 8 3 7 0 0 0 S",
-			"1990 1990 2 25 7 0 0 1 D",
-			"1990 1990 7 26 7 0 0 0 S",
-			"1991 1991 2 24 7 0 0 1 D",
-			"1991 1991 8 1 7 0 0 0 S",
-			"1992 1992 2 29 7 0 0 1 D",
-			"1992 1992 8 6 7 0 0 0 S",
-			"1993 1993 3 2 7 0 0 1 D",
-			"1993 1993 8 5 7 0 0 0 S",
-			"1994 1994 3 1 7 0 0 1 D",
-			"1994 1994 7 28 7 0 0 0 S",
-			"1995 1995 2 31 7 0 0 1 D",
-			"1995 1995 8 3 7 0 0 0 S",
-			"1996 1996 2 15 7 0 0 1 D",
-			"1996 1996 8 16 7 0 0 0 S",
-			"1997 1997 2 21 7 0 0 1 D",
-			"1997 1997 8 14 7 0 0 0 S",
-			"1998 1998 2 20 7 0 0 1 D",
-			"1998 1998 8 6 7 0 0 0 S",
-			"1999 1999 3 2 7 2 0 1 D",
-			"1999 1999 8 3 7 2 0 0 S",
-			"2000 2000 3 14 7 2 0 1 D",
-			"2000 2000 9 6 7 1 0 0 S",
-			"2001 2001 3 9 7 1 0 1 D",
-			"2001 2001 8 24 7 1 0 0 S",
-			"2002 2002 2 29 7 1 0 1 D",
-			"2002 2002 9 7 7 1 0 0 S",
-			"2003 2003 2 28 7 1 0 1 D",
-			"2003 2003 9 3 7 1 0 0 S",
-			"2004 2004 3 7 7 1 0 1 D",
-			"2004 2004 8 22 7 1 0 0 S",
-			"2005 2005 3 1 7 2 0 1 D",
-			"2005 2005 9 9 7 2 0 0 S",
-			"2006 2010 2 26 5 2 0 1 D",
-			"2006 2006 9 1 7 2 0 0 S",
-			"2007 2007 8 16 7 2 0 0 S",
-			"2008 2008 9 5 7 2 0 0 S",
-			"2009 2009 8 27 7 2 0 0 S",
-			"2010 2010 8 12 7 2 0 0 S",
-			"2011 2011 3 1 7 2 0 1 D",
-			"2011 2011 9 2 7 2 0 0 S",
-			"2012 2012 2 26 5 2 0 1 D",
-			"2012 2012 8 23 7 2 0 0 S",
-			"2013 9999 2 23 5 2 0 1 D",
-			"2013 2026 9 2 0 2 0 0 S",
-			"2027 2027 9 3 1 2 0 0 S",
-			"2028 9999 9 2 0 2 0 0 S"
-		]
-	},
-	"zones": {
-		"Africa/Abidjan": [
-			"-0:16:8 - LMT 1912 -0:16:8",
-			"0 - GMT"
-		],
-		"Africa/Accra": [
-			"-0:0:52 - LMT 1918 -0:0:52",
-			"0 Ghana %s"
-		],
-		"Africa/Addis_Ababa": [
-			"2:34:48 - LMT 1870 2:34:48",
-			"2:35:20 - ADMT 1936_4_5 2:35:20",
-			"3 - EAT"
-		],
-		"Africa/Algiers": [
-			"0:12:12 - LMT 1891_2_15_0_1 0:12:12",
-			"0:9:21 - PMT 1911_2_11 0:9:21",
-			"0 Algeria WE%sT 1940_1_25_2",
-			"1 Algeria CE%sT 1946_9_7 1",
-			"0 - WET 1956_0_29",
-			"1 - CET 1963_3_14 1",
-			"0 Algeria WE%sT 1977_9_21 1",
-			"1 Algeria CE%sT 1979_9_26 1",
-			"0 Algeria WE%sT 1981_4",
-			"1 - CET"
-		],
-		"Africa/Asmara": [
-			"2:35:32 - LMT 1870 2:35:32",
-			"2:35:32 - AMT 1890 2:35:32",
-			"2:35:20 - ADMT 1936_4_5 2:35:20",
-			"3 - EAT"
-		],
-		"Africa/Bamako": [
-			"-0:32 - LMT 1912 -0:32",
-			"0 - GMT 1934_1_26",
-			"-1 - WAT 1960_5_20 -1",
-			"0 - GMT"
-		],
-		"Africa/Bangui": [
-			"1:14:20 - LMT 1912 1:14:20",
-			"1 - WAT"
-		],
-		"Africa/Banjul": [
-			"-1:6:36 - LMT 1912 -1:6:36",
-			"-1:6:36 - BMT 1935 -1:6:36",
-			"-1 - WAT 1964 -1",
-			"0 - GMT"
-		],
-		"Africa/Bissau": [
-			"-1:2:20 - LMT 1911_4_26 -1:2:20",
-			"-1 - WAT 1975 -1",
-			"0 - GMT"
-		],
-		"Africa/Blantyre": [
-			"2:20 - LMT 1903_2 2:20",
-			"2 - CAT"
-		],
-		"Africa/Brazzaville": [
-			"1:1:8 - LMT 1912 1:1:8",
-			"1 - WAT"
-		],
-		"Africa/Bujumbura": [
-			"1:57:28 - LMT 1890 1:57:28",
-			"2 - CAT"
-		],
-		"Africa/Cairo": [
-			"2:5:9 - LMT 1900_9 2:5:9",
-			"2 Egypt EE%sT"
-		],
-		"Africa/Casablanca": [
-			"-0:30:20 - LMT 1913_9_26 -0:30:20",
-			"0 Morocco WE%sT 1984_2_16",
-			"1 - CET 1986 1",
-			"0 Morocco WE%sT"
-		],
-		"Africa/Ceuta": [
-			"-0:21:16 - LMT 1901 -0:21:16",
-			"0 - WET 1918_4_6_23",
-			"1 - WEST 1918_9_7_23 1",
-			"0 - WET 1924",
-			"0 Spain WE%sT 1929",
-			"0 SpainAfrica WE%sT 1984_2_16",
-			"1 - CET 1986 1",
-			"1 EU CE%sT"
-		],
-		"Africa/Conakry": [
-			"-0:54:52 - LMT 1912 -0:54:52",
-			"0 - GMT 1934_1_26",
-			"-1 - WAT 1960 -1",
-			"0 - GMT"
-		],
-		"Africa/Dakar": [
-			"-1:9:44 - LMT 1912 -1:9:44",
-			"-1 - WAT 1941_5 -1",
-			"0 - GMT"
-		],
-		"Africa/Dar_es_Salaam": [
-			"2:37:8 - LMT 1931 2:37:8",
-			"3 - EAT 1948 3",
-			"2:45 - BEAUT 1961 2:45",
-			"3 - EAT"
-		],
-		"Africa/Djibouti": [
-			"2:52:36 - LMT 1911_6 2:52:36",
-			"3 - EAT"
-		],
-		"Africa/Douala": [
-			"0:38:48 - LMT 1912 0:38:48",
-			"1 - WAT"
-		],
-		"Africa/El_Aaiun": [
-			"-0:52:48 - LMT 1934_0 -0:52:48",
-			"-1 - WAT 1976_3_14 -1",
-			"0 - WET"
-		],
-		"Africa/Freetown": [
-			"-0:53 - LMT 1882 -0:53",
-			"-0:53 - FMT 1913_5 -0:53",
-			"-1 SL %s 1957 -1",
-			"0 SL %s"
-		],
-		"Africa/Gaborone": [
-			"1:43:40 - LMT 1885 1:43:40",
-			"1:30 - SAST 1903_2 1:30",
-			"2 - CAT 1943_8_19_2 2",
-			"3 - CAST 1944_2_19_2 3",
-			"2 - CAT"
-		],
-		"Africa/Harare": [
-			"2:4:12 - LMT 1903_2 2:4:12",
-			"2 - CAT"
-		],
-		"Africa/Johannesburg": [
-			"1:52 - LMT 1892_1_8 1:52",
-			"1:30 - SAST 1903_2 1:30",
-			"2 SA SAST"
-		],
-		"Africa/Juba": [
-			"2:6:24 - LMT 1931 2:6:24",
-			"2 Sudan CA%sT 2000_0_15_12 2",
-			"3 - EAT"
-		],
-		"Africa/Kampala": [
-			"2:9:40 - LMT 1928_6 2:9:40",
-			"3 - EAT 1930 3",
-			"2:30 - BEAT 1948 2:30",
-			"2:45 - BEAUT 1957 2:45",
-			"3 - EAT"
-		],
-		"Africa/Khartoum": [
-			"2:10:8 - LMT 1931 2:10:8",
-			"2 Sudan CA%sT 2000_0_15_12 2",
-			"3 - EAT"
-		],
-		"Africa/Kigali": [
-			"2:0:16 - LMT 1935_5 2:0:16",
-			"2 - CAT"
-		],
-		"Africa/Kinshasa": [
-			"1:1:12 - LMT 1897_10_9 1:1:12",
-			"1 - WAT"
-		],
-		"Africa/Lagos": [
-			"0:13:36 - LMT 1919_8 0:13:36",
-			"1 - WAT"
-		],
-		"Africa/Libreville": [
-			"0:37:48 - LMT 1912 0:37:48",
-			"1 - WAT"
-		],
-		"Africa/Lome": [
-			"0:4:52 - LMT 1893 0:4:52",
-			"0 - GMT"
-		],
-		"Africa/Luanda": [
-			"0:52:56 - LMT 1892 0:52:56",
-			"0:52:4 - AOT 1911_4_26 0:52:4",
-			"1 - WAT"
-		],
-		"Africa/Lubumbashi": [
-			"1:49:52 - LMT 1897_10_9 1:49:52",
-			"2 - CAT"
-		],
-		"Africa/Lusaka": [
-			"1:53:8 - LMT 1903_2 1:53:8",
-			"2 - CAT"
-		],
-		"Africa/Malabo": [
-			"0:35:8 - LMT 1912 0:35:8",
-			"0 - GMT 1963_11_15",
-			"1 - WAT"
-		],
-		"Africa/Maputo": [
-			"2:10:20 - LMT 1903_2 2:10:20",
-			"2 - CAT"
-		],
-		"Africa/Maseru": [
-			"1:50 - LMT 1903_2 1:50",
-			"2 - SAST 1943_8_19_2 2",
-			"3 - SAST 1944_2_19_2 3",
-			"2 - SAST"
-		],
-		"Africa/Mbabane": [
-			"2:4:24 - LMT 1903_2 2:4:24",
-			"2 - SAST"
-		],
-		"Africa/Mogadishu": [
-			"3:1:28 - LMT 1893_10 3:1:28",
-			"3 - EAT 1931 3",
-			"2:30 - BEAT 1957 2:30",
-			"3 - EAT"
-		],
-		"Africa/Monrovia": [
-			"-0:43:8 - LMT 1882 -0:43:8",
-			"-0:43:8 - MMT 1919_2 -0:43:8",
-			"-0:44:30 - LRT 1972_4 -0:44:30",
-			"0 - GMT"
-		],
-		"Africa/Nairobi": [
-			"2:27:16 - LMT 1928_6 2:27:16",
-			"3 - EAT 1930 3",
-			"2:30 - BEAT 1940 2:30",
-			"2:45 - BEAUT 1960 2:45",
-			"3 - EAT"
-		],
-		"Africa/Ndjamena": [
-			"1:0:12 - LMT 1912 1:0:12",
-			"1 - WAT 1979_9_14 1",
-			"2 - WAST 1980_2_8 2",
-			"1 - WAT"
-		],
-		"Africa/Niamey": [
-			"0:8:28 - LMT 1912 0:8:28",
-			"-1 - WAT 1934_1_26 -1",
-			"0 - GMT 1960",
-			"1 - WAT"
-		],
-		"Africa/Nouakchott": [
-			"-1:3:48 - LMT 1912 -1:3:48",
-			"0 - GMT 1934_1_26",
-			"-1 - WAT 1960_10_28 -1",
-			"0 - GMT"
-		],
-		"Africa/Ouagadougou": [
-			"-0:6:4 - LMT 1912 -0:6:4",
-			"0 - GMT"
-		],
-		"Africa/Porto-Novo": [
-			"0:10:28 - LMT 1912 0:10:28",
-			"0 - GMT 1934_1_26",
-			"1 - WAT"
-		],
-		"Africa/Sao_Tome": [
-			"0:26:56 - LMT 1884 0:26:56",
-			"-0:36:32 - LMT 1912 -0:36:32",
-			"0 - GMT"
-		],
-		"Africa/Tripoli": [
-			"0:52:44 - LMT 1920 0:52:44",
-			"1 Libya CE%sT 1959 1",
-			"2 - EET 1982 2",
-			"1 Libya CE%sT 1990_4_4 1",
-			"2 - EET 1996_8_30 2",
-			"1 Libya CE%sT 1997_9_4 2",
-			"2 - EET 2012_10_10_2 2",
-			"1 Libya CE%sT"
-		],
-		"Africa/Tunis": [
-			"0:40:44 - LMT 1881_4_12 0:40:44",
-			"0:9:21 - PMT 1911_2_11 0:9:21",
-			"1 Tunisia CE%sT"
-		],
-		"Africa/Windhoek": [
-			"1:8:24 - LMT 1892_1_8 1:8:24",
-			"1:30 - SWAT 1903_2 1:30",
-			"2 - SAST 1942_8_20_2 2",
-			"3 - SAST 1943_2_21_2 3",
-			"2 - SAST 1990_2_21 2",
-			"2 - CAT 1994_3_3 2",
-			"1 Namibia WA%sT"
-		],
-		"America/Adak": [
-			"12:13:21 - LMT 1867_9_18 12:13:21",
-			"-11:46:38 - LMT 1900_7_20_12 -11:46:38",
-			"-11 - NST 1942 -11",
-			"-11 US N%sT 1946 -11",
-			"-11 - NST 1967_3 -11",
-			"-11 - BST 1969 -11",
-			"-11 US B%sT 1983_9_30_2 -10",
-			"-10 US AH%sT 1983_10_30 -10",
-			"-10 US HA%sT"
-		],
-		"America/Anchorage": [
-			"14:0:24 - LMT 1867_9_18 14:0:24",
-			"-9:59:36 - LMT 1900_7_20_12 -9:59:36",
-			"-10 - CAT 1942 -10",
-			"-10 US CAT/CAWT 1945_7_14_23",
-			"-10 US CAT/CAPT 1946 -10",
-			"-10 - CAT 1967_3 -10",
-			"-10 - AHST 1969 -10",
-			"-10 US AH%sT 1983_9_30_2 -9",
-			"-9 US Y%sT 1983_10_30 -9",
-			"-9 US AK%sT"
-		],
-		"America/Anguilla": [
-			"-4:12:16 - LMT 1912_2_2 -4:12:16",
-			"-4 - AST"
-		],
-		"America/Antigua": [
-			"-4:7:12 - LMT 1912_2_2 -4:7:12",
-			"-5 - EST 1951 -5",
-			"-4 - AST"
-		],
-		"America/Araguaina": [
-			"-3:12:48 - LMT 1914 -3:12:48",
-			"-3 Brazil BR%sT 1990_8_17 -3",
-			"-3 - BRT 1995_8_14 -3",
-			"-3 Brazil BR%sT 2003_8_24 -3",
-			"-3 - BRT 2012_9_21 -3",
-			"-3 Brazil BR%sT"
-		],
-		"America/Argentina/Buenos_Aires": [
-			"-3:53:48 - LMT 1894_9_31 -3:53:48",
-			"-4:16:48 - CMT 1920_4 -4:16:48",
-			"-4 - ART 1930_11 -4",
-			"-4 Arg AR%sT 1969_9_5 -4",
-			"-3 Arg AR%sT 1999_9_3 -3",
-			"-4 Arg AR%sT 2000_2_3 -3",
-			"-3 Arg AR%sT"
-		],
-		"America/Argentina/Catamarca": [
-			"-4:23:8 - LMT 1894_9_31 -4:23:8",
-			"-4:16:48 - CMT 1920_4 -4:16:48",
-			"-4 - ART 1930_11 -4",
-			"-4 Arg AR%sT 1969_9_5 -4",
-			"-3 Arg AR%sT 1991_2_3 -2",
-			"-4 - WART 1991_9_20 -4",
-			"-3 Arg AR%sT 1999_9_3 -3",
-			"-4 Arg AR%sT 2000_2_3 -3",
-			"-3 - ART 2004_5_1 -3",
-			"-4 - WART 2004_5_20 -4",
-			"-3 Arg AR%sT 2008_9_18 -3",
-			"-3 - ART"
-		],
-		"America/Argentina/Cordoba": [
-			"-4:16:48 - LMT 1894_9_31 -4:16:48",
-			"-4:16:48 - CMT 1920_4 -4:16:48",
-			"-4 - ART 1930_11 -4",
-			"-4 Arg AR%sT 1969_9_5 -4",
-			"-3 Arg AR%sT 1991_2_3 -2",
-			"-4 - WART 1991_9_20 -4",
-			"-3 Arg AR%sT 1999_9_3 -3",
-			"-4 Arg AR%sT 2000_2_3 -3",
-			"-3 Arg AR%sT"
-		],
-		"America/Argentina/Jujuy": [
-			"-4:21:12 - LMT 1894_9_31 -4:21:12",
-			"-4:16:48 - CMT 1920_4 -4:16:48",
-			"-4 - ART 1930_11 -4",
-			"-4 Arg AR%sT 1969_9_5 -4",
-			"-3 Arg AR%sT 1990_2_4 -2",
-			"-4 - WART 1990_9_28 -4",
-			"-3 - WARST 1991_2_17 -3",
-			"-4 - WART 1991_9_6 -4",
-			"-2 - ARST 1992 -2",
-			"-3 Arg AR%sT 1999_9_3 -3",
-			"-4 Arg AR%sT 2000_2_3 -3",
-			"-3 Arg AR%sT 2008_9_18 -3",
-			"-3 - ART"
-		],
-		"America/Argentina/La_Rioja": [
-			"-4:27:24 - LMT 1894_9_31 -4:27:24",
-			"-4:16:48 - CMT 1920_4 -4:16:48",
-			"-4 - ART 1930_11 -4",
-			"-4 Arg AR%sT 1969_9_5 -4",
-			"-3 Arg AR%sT 1991_2_1 -2",
-			"-4 - WART 1991_4_7 -4",
-			"-3 Arg AR%sT 1999_9_3 -3",
-			"-4 Arg AR%sT 2000_2_3 -3",
-			"-3 - ART 2004_5_1 -3",
-			"-4 - WART 2004_5_20 -4",
-			"-3 Arg AR%sT 2008_9_18 -3",
-			"-3 - ART"
-		],
-		"America/Argentina/Mendoza": [
-			"-4:35:16 - LMT 1894_9_31 -4:35:16",
-			"-4:16:48 - CMT 1920_4 -4:16:48",
-			"-4 - ART 1930_11 -4",
-			"-4 Arg AR%sT 1969_9_5 -4",
-			"-3 Arg AR%sT 1990_2_4 -2",
-			"-4 - WART 1990_9_15 -4",
-			"-3 - WARST 1991_2_1 -3",
-			"-4 - WART 1991_9_15 -4",
-			"-3 - WARST 1992_2_1 -3",
-			"-4 - WART 1992_9_18 -4",
-			"-3 Arg AR%sT 1999_9_3 -3",
-			"-4 Arg AR%sT 2000_2_3 -3",
-			"-3 - ART 2004_4_23 -3",
-			"-4 - WART 2004_8_26 -4",
-			"-3 Arg AR%sT 2008_9_18 -3",
-			"-3 - ART"
-		],
-		"America/Argentina/Rio_Gallegos": [
-			"-4:36:52 - LMT 1894_9_31 -4:36:52",
-			"-4:16:48 - CMT 1920_4 -4:16:48",
-			"-4 - ART 1930_11 -4",
-			"-4 Arg AR%sT 1969_9_5 -4",
-			"-3 Arg AR%sT 1999_9_3 -3",
-			"-4 Arg AR%sT 2000_2_3 -3",
-			"-3 - ART 2004_5_1 -3",
-			"-4 - WART 2004_5_20 -4",
-			"-3 Arg AR%sT 2008_9_18 -3",
-			"-3 - ART"
-		],
-		"America/Argentina/Salta": [
-			"-4:21:40 - LMT 1894_9_31 -4:21:40",
-			"-4:16:48 - CMT 1920_4 -4:16:48",
-			"-4 - ART 1930_11 -4",
-			"-4 Arg AR%sT 1969_9_5 -4",
-			"-3 Arg AR%sT 1991_2_3 -2",
-			"-4 - WART 1991_9_20 -4",
-			"-3 Arg AR%sT 1999_9_3 -3",
-			"-4 Arg AR%sT 2000_2_3 -3",
-			"-3 Arg AR%sT 2008_9_18 -3",
-			"-3 - ART"
-		],
-		"America/Argentina/San_Juan": [
-			"-4:34:4 - LMT 1894_9_31 -4:34:4",
-			"-4:16:48 - CMT 1920_4 -4:16:48",
-			"-4 - ART 1930_11 -4",
-			"-4 Arg AR%sT 1969_9_5 -4",
-			"-3 Arg AR%sT 1991_2_1 -2",
-			"-4 - WART 1991_4_7 -4",
-			"-3 Arg AR%sT 1999_9_3 -3",
-			"-4 Arg AR%sT 2000_2_3 -3",
-			"-3 - ART 2004_4_31 -3",
-			"-4 - WART 2004_6_25 -4",
-			"-3 Arg AR%sT 2008_9_18 -3",
-			"-3 - ART"
-		],
-		"America/Argentina/San_Luis": [
-			"-4:25:24 - LMT 1894_9_31 -4:25:24",
-			"-4:16:48 - CMT 1920_4 -4:16:48",
-			"-4 - ART 1930_11 -4",
-			"-4 Arg AR%sT 1969_9_5 -4",
-			"-3 Arg AR%sT 1990 -2",
-			"-2 - ARST 1990_2_14 -2",
-			"-4 - WART 1990_9_15 -4",
-			"-3 - WARST 1991_2_1 -3",
-			"-4 - WART 1991_5_1 -4",
-			"-3 - ART 1999_9_3 -3",
-			"-3 - WARST 2000_2_3 -3",
-			"-3 - ART 2004_4_31 -3",
-			"-4 - WART 2004_6_25 -4",
-			"-3 Arg AR%sT 2008_0_21 -2",
-			"-4 SanLuis WAR%sT"
-		],
-		"America/Argentina/Tucuman": [
-			"-4:20:52 - LMT 1894_9_31 -4:20:52",
-			"-4:16:48 - CMT 1920_4 -4:16:48",
-			"-4 - ART 1930_11 -4",
-			"-4 Arg AR%sT 1969_9_5 -4",
-			"-3 Arg AR%sT 1991_2_3 -2",
-			"-4 - WART 1991_9_20 -4",
-			"-3 Arg AR%sT 1999_9_3 -3",
-			"-4 Arg AR%sT 2000_2_3 -3",
-			"-3 - ART 2004_5_1 -3",
-			"-4 - WART 2004_5_13 -4",
-			"-3 Arg AR%sT"
-		],
-		"America/Argentina/Ushuaia": [
-			"-4:33:12 - LMT 1894_9_31 -4:33:12",
-			"-4:16:48 - CMT 1920_4 -4:16:48",
-			"-4 - ART 1930_11 -4",
-			"-4 Arg AR%sT 1969_9_5 -4",
-			"-3 Arg AR%sT 1999_9_3 -3",
-			"-4 Arg AR%sT 2000_2_3 -3",
-			"-3 - ART 2004_4_30 -3",
-			"-4 - WART 2004_5_20 -4",
-			"-3 Arg AR%sT 2008_9_18 -3",
-			"-3 - ART"
-		],
-		"America/Aruba": [
-			"-4:40:24 - LMT 1912_1_12 -4:40:24",
-			"-4:30 - ANT 1965 -4:30",
-			"-4 - AST"
-		],
-		"America/Asuncion": [
-			"-3:50:40 - LMT 1890 -3:50:40",
-			"-3:50:40 - AMT 1931_9_10 -3:50:40",
-			"-4 - PYT 1972_9 -4",
-			"-3 - PYT 1974_3 -3",
-			"-4 Para PY%sT"
-		],
-		"America/Atikokan": [
-			"-6:6:28 - LMT 1895 -6:6:28",
-			"-6 Canada C%sT 1940_8_29 -6",
-			"-5 - CDT 1942_1_9_2 -6",
-			"-6 Canada C%sT 1945_8_30_2 -5",
-			"-5 - EST"
-		],
-		"America/Bahia": [
-			"-2:34:4 - LMT 1914 -2:34:4",
-			"-3 Brazil BR%sT 2003_8_24 -3",
-			"-3 - BRT 2011_9_16 -3",
-			"-3 Brazil BR%sT 2012_9_21 -3",
-			"-3 - BRT"
-		],
-		"America/Bahia_Banderas": [
-			"-7:1 - LMT 1921_11_31_23_59 -7:1",
-			"-7 - MST 1927_5_10_23 -7",
-			"-6 - CST 1930_10_15 -6",
-			"-7 - MST 1931_4_1_23 -7",
-			"-6 - CST 1931_9 -6",
-			"-7 - MST 1932_3_1 -7",
-			"-6 - CST 1942_3_24 -6",
-			"-7 - MST 1949_0_14 -7",
-			"-8 - PST 1970 -8",
-			"-7 Mexico M%sT 2010_3_4_2 -7",
-			"-6 Mexico C%sT"
-		],
-		"America/Barbados": [
-			"-3:58:29 - LMT 1924 -3:58:29",
-			"-3:58:29 - BMT 1932 -3:58:29",
-			"-4 Barb A%sT"
-		],
-		"America/Belem": [
-			"-3:13:56 - LMT 1914 -3:13:56",
-			"-3 Brazil BR%sT 1988_8_12 -3",
-			"-3 - BRT"
-		],
-		"America/Belize": [
-			"-5:52:48 - LMT 1912_3 -5:52:48",
-			"-6 Belize C%sT"
-		],
-		"America/Blanc-Sablon": [
-			"-3:48:28 - LMT 1884 -3:48:28",
-			"-4 Canada A%sT 1970 -4",
-			"-4 - AST"
-		],
-		"America/Boa_Vista": [
-			"-4:2:40 - LMT 1914 -4:2:40",
-			"-4 Brazil AM%sT 1988_8_12 -4",
-			"-4 - AMT 1999_8_30 -4",
-			"-4 Brazil AM%sT 2000_9_15 -3",
-			"-4 - AMT"
-		],
-		"America/Bogota": [
-			"-4:56:16 - LMT 1884_2_13 -4:56:16",
-			"-4:56:16 - BMT 1914_10_23 -4:56:16",
-			"-5 CO CO%sT"
-		],
-		"America/Boise": [
-			"-7:44:49 - LMT 1883_10_18_12_15_11 -7:44:49",
-			"-8 US P%sT 1923_4_13_2 -8",
-			"-7 US M%sT 1974 -7",
-			"-7 - MST 1974_1_3_2 -7",
-			"-7 US M%sT"
-		],
-		"America/Cambridge_Bay": [
-			"0 - zzz 1920",
-			"-7 NT_YK M%sT 1999_9_31_2 -6",
-			"-6 Canada C%sT 2000_9_29_2 -5",
-			"-5 - EST 2000_10_5_0 -5",
-			"-6 - CST 2001_3_1_3 -6",
-			"-7 Canada M%sT"
-		],
-		"America/Campo_Grande": [
-			"-3:38:28 - LMT 1914 -3:38:28",
-			"-4 Brazil AM%sT"
-		],
-		"America/Cancun": [
-			"-5:47:4 - LMT 1922_0_1_0_12_56 -5:47:4",
-			"-6 - CST 1981_11_23 -6",
-			"-5 Mexico E%sT 1998_7_2_2 -4",
-			"-6 Mexico C%sT"
-		],
-		"America/Caracas": [
-			"-4:27:44 - LMT 1890 -4:27:44",
-			"-4:27:40 - CMT 1912_1_12 -4:27:40",
-			"-4:30 - VET 1965 -4:30",
-			"-4 - VET 2007_11_9_03 -4",
-			"-4:30 - VET"
-		],
-		"America/Cayenne": [
-			"-3:29:20 - LMT 1911_6 -3:29:20",
-			"-4 - GFT 1967_9 -4",
-			"-3 - GFT"
-		],
-		"America/Cayman": [
-			"-5:25:32 - LMT 1890 -5:25:32",
-			"-5:7:12 - KMT 1912_1 -5:7:12",
-			"-5 - EST"
-		],
-		"America/Chicago": [
-			"-5:50:36 - LMT 1883_10_18_12_9_24 -5:50:36",
-			"-6 US C%sT 1920 -6",
-			"-6 Chicago C%sT 1936_2_1_2 -6",
-			"-5 - EST 1936_10_15_2 -5",
-			"-6 Chicago C%sT 1942 -6",
-			"-6 US C%sT 1946 -6",
-			"-6 Chicago C%sT 1967 -6",
-			"-6 US C%sT"
-		],
-		"America/Chihuahua": [
-			"-7:4:20 - LMT 1921_11_31_23_55_40 -7:4:20",
-			"-7 - MST 1927_5_10_23 -7",
-			"-6 - CST 1930_10_15 -6",
-			"-7 - MST 1931_4_1_23 -7",
-			"-6 - CST 1931_9 -6",
-			"-7 - MST 1932_3_1 -7",
-			"-6 - CST 1996 -6",
-			"-6 Mexico C%sT 1998 -6",
-			"-6 - CST 1998_3_5_3 -6",
-			"-7 Mexico M%sT"
-		],
-		"America/Costa_Rica": [
-			"-5:36:13 - LMT 1890 -5:36:13",
-			"-5:36:13 - SJMT 1921_0_15 -5:36:13",
-			"-6 CR C%sT"
-		],
-		"America/Creston": [
-			"-7:46:4 - LMT 1884 -7:46:4",
-			"-7 - MST 1916_9_1 -7",
-			"-8 - PST 1918_5_2 -8",
-			"-7 - MST"
-		],
-		"America/Cuiaba": [
-			"-3:44:20 - LMT 1914 -3:44:20",
-			"-4 Brazil AM%sT 2003_8_24 -4",
-			"-4 - AMT 2004_9_1 -4",
-			"-4 Brazil AM%sT"
-		],
-		"America/Curacao": [
-			"-4:35:47 - LMT 1912_1_12 -4:35:47",
-			"-4:30 - ANT 1965 -4:30",
-			"-4 - AST"
-		],
-		"America/Danmarkshavn": [
-			"-1:14:40 - LMT 1916_6_28 -1:14:40",
-			"-3 - WGT 1980_3_6_2 -3",
-			"-3 EU WG%sT 1996 -3",
-			"0 - GMT"
-		],
-		"America/Dawson": [
-			"-9:17:40 - LMT 1900_7_20 -9:17:40",
-			"-9 NT_YK Y%sT 1973_9_28_0 -9",
-			"-8 NT_YK P%sT 1980 -8",
-			"-8 Canada P%sT"
-		],
-		"America/Dawson_Creek": [
-			"-8:0:56 - LMT 1884 -8:0:56",
-			"-8 Canada P%sT 1947 -8",
-			"-8 Vanc P%sT 1972_7_30_2 -7",
-			"-7 - MST"
-		],
-		"America/Denver": [
-			"-6:59:56 - LMT 1883_10_18_12_0_4 -6:59:56",
-			"-7 US M%sT 1920 -7",
-			"-7 Denver M%sT 1942 -7",
-			"-7 US M%sT 1946 -7",
-			"-7 Denver M%sT 1967 -7",
-			"-7 US M%sT"
-		],
-		"America/Detroit": [
-			"-5:32:11 - LMT 1905 -5:32:11",
-			"-6 - CST 1915_4_15_2 -6",
-			"-5 - EST 1942 -5",
-			"-5 US E%sT 1946 -5",
-			"-5 Detroit E%sT 1973 -5",
-			"-5 US E%sT 1975 -5",
-			"-5 - EST 1975_3_27_2 -5",
-			"-5 US E%sT"
-		],
-		"America/Dominica": [
-			"-4:5:36 - LMT 1911_6_1_0_1 -4:5:36",
-			"-4 - AST"
-		],
-		"America/Edmonton": [
-			"-7:33:52 - LMT 1906_8 -7:33:52",
-			"-7 Edm M%sT 1987 -7",
-			"-7 Canada M%sT"
-		],
-		"America/Eirunepe": [
-			"-4:39:28 - LMT 1914 -4:39:28",
-			"-5 Brazil AC%sT 1988_8_12 -5",
-			"-5 - ACT 1993_8_28 -5",
-			"-5 Brazil AC%sT 1994_8_22 -5",
-			"-5 - ACT 2008_5_24_00 -5",
-			"-4 - AMT"
-		],
-		"America/El_Salvador": [
-			"-5:56:48 - LMT 1921 -5:56:48",
-			"-6 Salv C%sT"
-		],
-		"America/Fortaleza": [
-			"-2:34 - LMT 1914 -2:34",
-			"-3 Brazil BR%sT 1990_8_17 -3",
-			"-3 - BRT 1999_8_30 -3",
-			"-3 Brazil BR%sT 2000_9_22 -2",
-			"-3 - BRT 2001_8_13 -3",
-			"-3 Brazil BR%sT 2002_9_1 -3",
-			"-3 - BRT"
-		],
-		"America/Glace_Bay": [
-			"-3:59:48 - LMT 1902_5_15 -3:59:48",
-			"-4 Canada A%sT 1953 -4",
-			"-4 Halifax A%sT 1954 -4",
-			"-4 - AST 1972 -4",
-			"-4 Halifax A%sT 1974 -4",
-			"-4 Canada A%sT"
-		],
-		"America/Godthab": [
-			"-3:26:56 - LMT 1916_6_28 -3:26:56",
-			"-3 - WGT 1980_3_6_2 -3",
-			"-3 EU WG%sT"
-		],
-		"America/Goose_Bay": [
-			"-4:1:40 - LMT 1884 -4:1:40",
-			"-3:30:52 - NST 1918 -3:30:52",
-			"-3:30:52 Canada N%sT 1919 -3:30:52",
-			"-3:30:52 - NST 1935_2_30 -3:30:52",
-			"-3:30 - NST 1936 -3:30",
-			"-3:30 StJohns N%sT 1942_4_11 -3:30",
-			"-3:30 Canada N%sT 1946 -3:30",
-			"-3:30 StJohns N%sT 1966_2_15_2 -3:30",
-			"-4 StJohns A%sT 2011_10 -3",
-			"-4 Canada A%sT"
-		],
-		"America/Grand_Turk": [
-			"-4:44:32 - LMT 1890 -4:44:32",
-			"-5:7:12 - KMT 1912_1 -5:7:12",
-			"-5 TC E%sT"
-		],
-		"America/Grenada": [
-			"-4:7 - LMT 1911_6 -4:7",
-			"-4 - AST"
-		],
-		"America/Guadeloupe": [
-			"-4:6:8 - LMT 1911_5_8 -4:6:8",
-			"-4 - AST"
-		],
-		"America/Guatemala": [
-			"-6:2:4 - LMT 1918_9_5 -6:2:4",
-			"-6 Guat C%sT"
-		],
-		"America/Guayaquil": [
-			"-5:19:20 - LMT 1890 -5:19:20",
-			"-5:14 - QMT 1931 -5:14",
-			"-5 - ECT"
-		],
-		"America/Guyana": [
-			"-3:52:40 - LMT 1915_2 -3:52:40",
-			"-3:45 - GBGT 1966_4_26 -3:45",
-			"-3:45 - GYT 1975_6_31 -3:45",
-			"-3 - GYT 1991 -3",
-			"-4 - GYT"
-		],
-		"America/Halifax": [
-			"-4:14:24 - LMT 1902_5_15 -4:14:24",
-			"-4 Halifax A%sT 1918 -4",
-			"-4 Canada A%sT 1919 -4",
-			"-4 Halifax A%sT 1942_1_9_2 -4",
-			"-4 Canada A%sT 1946 -4",
-			"-4 Halifax A%sT 1974 -4",
-			"-4 Canada A%sT"
-		],
-		"America/Havana": [
-			"-5:29:28 - LMT 1890 -5:29:28",
-			"-5:29:36 - HMT 1925_6_19_12 -5:29:36",
-			"-5 Cuba C%sT"
-		],
-		"America/Hermosillo": [
-			"-7:23:52 - LMT 1921_11_31_23_36_8 -7:23:52",
-			"-7 - MST 1927_5_10_23 -7",
-			"-6 - CST 1930_10_15 -6",
-			"-7 - MST 1931_4_1_23 -7",
-			"-6 - CST 1931_9 -6",
-			"-7 - MST 1932_3_1 -7",
-			"-6 - CST 1942_3_24 -6",
-			"-7 - MST 1949_0_14 -7",
-			"-8 - PST 1970 -8",
-			"-7 Mexico M%sT 1999 -7",
-			"-7 - MST"
-		],
-		"America/Indiana/Indianapolis": [
-			"-5:44:38 - LMT 1883_10_18_12_15_22 -5:44:38",
-			"-6 US C%sT 1920 -6",
-			"-6 Indianapolis C%sT 1942 -6",
-			"-6 US C%sT 1946 -6",
-			"-6 Indianapolis C%sT 1955_3_24_2 -6",
-			"-5 - EST 1957_8_29_2 -5",
-			"-6 - CST 1958_3_27_2 -6",
-			"-5 - EST 1969 -5",
-			"-5 US E%sT 1971 -5",
-			"-5 - EST 2006 -5",
-			"-5 US E%sT"
-		],
-		"America/Indiana/Knox": [
-			"-5:46:30 - LMT 1883_10_18_12_13_30 -5:46:30",
-			"-6 US C%sT 1947 -6",
-			"-6 Starke C%sT 1962_3_29_2 -6",
-			"-5 - EST 1963_9_27_2 -5",
-			"-6 US C%sT 1991_9_27_2 -5",
-			"-5 - EST 2006_3_2_2 -5",
-			"-6 US C%sT"
-		],
-		"America/Indiana/Marengo": [
-			"-5:45:23 - LMT 1883_10_18_12_14_37 -5:45:23",
-			"-6 US C%sT 1951 -6",
-			"-6 Marengo C%sT 1961_3_30_2 -6",
-			"-5 - EST 1969 -5",
-			"-5 US E%sT 1974_0_6_2 -5",
-			"-5 - CDT 1974_9_27_2 -5",
-			"-5 US E%sT 1976 -5",
-			"-5 - EST 2006 -5",
-			"-5 US E%sT"
-		],
-		"America/Indiana/Petersburg": [
-			"-5:49:7 - LMT 1883_10_18_12_10_53 -5:49:7",
-			"-6 US C%sT 1955 -6",
-			"-6 Pike C%sT 1965_3_25_2 -6",
-			"-5 - EST 1966_9_30_2 -5",
-			"-6 US C%sT 1977_9_30_2 -5",
-			"-5 - EST 2006_3_2_2 -5",
-			"-6 US C%sT 2007_10_4_2 -5",
-			"-5 US E%sT"
-		],
-		"America/Indiana/Tell_City": [
-			"-5:47:3 - LMT 1883_10_18_12_12_57 -5:47:3",
-			"-6 US C%sT 1946 -6",
-			"-6 Perry C%sT 1964_3_26_2 -6",
-			"-5 - EST 1969 -5",
-			"-5 US E%sT 1971 -5",
-			"-5 - EST 2006_3_2_2 -5",
-			"-6 US C%sT"
-		],
-		"America/Indiana/Vevay": [
-			"-5:40:16 - LMT 1883_10_18_12_19_44 -5:40:16",
-			"-6 US C%sT 1954_3_25_2 -6",
-			"-5 - EST 1969 -5",
-			"-5 US E%sT 1973 -5",
-			"-5 - EST 2006 -5",
-			"-5 US E%sT"
-		],
-		"America/Indiana/Vincennes": [
-			"-5:50:7 - LMT 1883_10_18_12_9_53 -5:50:7",
-			"-6 US C%sT 1946 -6",
-			"-6 Vincennes C%sT 1964_3_26_2 -6",
-			"-5 - EST 1969 -5",
-			"-5 US E%sT 1971 -5",
-			"-5 - EST 2006_3_2_2 -5",
-			"-6 US C%sT 2007_10_4_2 -5",
-			"-5 US E%sT"
-		],
-		"America/Indiana/Winamac": [
-			"-5:46:25 - LMT 1883_10_18_12_13_35 -5:46:25",
-			"-6 US C%sT 1946 -6",
-			"-6 Pulaski C%sT 1961_3_30_2 -6",
-			"-5 - EST 1969 -5",
-			"-5 US E%sT 1971 -5",
-			"-5 - EST 2006_3_2_2 -5",
-			"-6 US C%sT 2007_2_11_2 -6",
-			"-5 US E%sT"
-		],
-		"America/Inuvik": [
-			"0 - zzz 1953",
-			"-8 NT_YK P%sT 1979_3_29_2 -8",
-			"-7 NT_YK M%sT 1980 -7",
-			"-7 Canada M%sT"
-		],
-		"America/Iqaluit": [
-			"0 - zzz 1942_7",
-			"-5 NT_YK E%sT 1999_9_31_2 -4",
-			"-6 Canada C%sT 2000_9_29_2 -5",
-			"-5 Canada E%sT"
-		],
-		"America/Jamaica": [
-			"-5:7:12 - LMT 1890 -5:7:12",
-			"-5:7:12 - KMT 1912_1 -5:7:12",
-			"-5 - EST 1974_3_28_2 -5",
-			"-5 US E%sT 1984 -5",
-			"-5 - EST"
-		],
-		"America/Juneau": [
-			"15:2:19 - LMT 1867_9_18 15:2:19",
-			"-8:57:41 - LMT 1900_7_20_12 -8:57:41",
-			"-8 - PST 1942 -8",
-			"-8 US P%sT 1946 -8",
-			"-8 - PST 1969 -8",
-			"-8 US P%sT 1980_3_27_2 -8",
-			"-9 US Y%sT 1980_9_26_2 -8",
-			"-8 US P%sT 1983_9_30_2 -7",
-			"-9 US Y%sT 1983_10_30 -9",
-			"-9 US AK%sT"
-		],
-		"America/Kentucky/Louisville": [
-			"-5:43:2 - LMT 1883_10_18_12_16_58 -5:43:2",
-			"-6 US C%sT 1921 -6",
-			"-6 Louisville C%sT 1942 -6",
-			"-6 US C%sT 1946 -6",
-			"-6 Louisville C%sT 1961_6_23_2 -5",
-			"-5 - EST 1968 -5",
-			"-5 US E%sT 1974_0_6_2 -5",
-			"-5 - CDT 1974_9_27_2 -5",
-			"-5 US E%sT"
-		],
-		"America/Kentucky/Monticello": [
-			"-5:39:24 - LMT 1883_10_18_12_20_36 -5:39:24",
-			"-6 US C%sT 1946 -6",
-			"-6 - CST 1968 -6",
-			"-6 US C%sT 2000_9_29_2 -5",
-			"-5 US E%sT"
-		],
-		"America/La_Paz": [
-			"-4:32:36 - LMT 1890 -4:32:36",
-			"-4:32:36 - CMT 1931_9_15 -4:32:36",
-			"-3:32:36 - BOST 1932_2_21 -3:32:36",
-			"-4 - BOT"
-		],
-		"America/Lima": [
-			"-5:8:12 - LMT 1890 -5:8:12",
-			"-5:8:36 - LMT 1908_6_28 -5:8:36",
-			"-5 Peru PE%sT"
-		],
-		"America/Los_Angeles": [
-			"-7:52:58 - LMT 1883_10_18_12_7_2 -7:52:58",
-			"-8 US P%sT 1946 -8",
-			"-8 CA P%sT 1967 -8",
-			"-8 US P%sT"
-		],
-		"America/Maceio": [
-			"-2:22:52 - LMT 1914 -2:22:52",
-			"-3 Brazil BR%sT 1990_8_17 -3",
-			"-3 - BRT 1995_9_13 -3",
-			"-3 Brazil BR%sT 1996_8_4 -3",
-			"-3 - BRT 1999_8_30 -3",
-			"-3 Brazil BR%sT 2000_9_22 -2",
-			"-3 - BRT 2001_8_13 -3",
-			"-3 Brazil BR%sT 2002_9_1 -3",
-			"-3 - BRT"
-		],
-		"America/Managua": [
-			"-5:45:8 - LMT 1890 -5:45:8",
-			"-5:45:12 - MMT 1934_5_23 -5:45:12",
-			"-6 - CST 1973_4 -6",
-			"-5 - EST 1975_1_16 -5",
-			"-6 Nic C%sT 1992_0_1_4 -6",
-			"-5 - EST 1992_8_24 -5",
-			"-6 - CST 1993 -6",
-			"-5 - EST 1997 -5",
-			"-6 Nic C%sT"
-		],
-		"America/Manaus": [
-			"-4:0:4 - LMT 1914 -4:0:4",
-			"-4 Brazil AM%sT 1988_8_12 -4",
-			"-4 - AMT 1993_8_28 -4",
-			"-4 Brazil AM%sT 1994_8_22 -4",
-			"-4 - AMT"
-		],
-		"America/Martinique": [
-			"-4:4:20 - LMT 1890 -4:4:20",
-			"-4:4:20 - FFMT 1911_4 -4:4:20",
-			"-4 - AST 1980_3_6 -4",
-			"-3 - ADT 1980_8_28 -3",
-			"-4 - AST"
-		],
-		"America/Matamoros": [
-			"-6:40 - LMT 1921_11_31_23_20 -6:40",
-			"-6 - CST 1988 -6",
-			"-6 US C%sT 1989 -6",
-			"-6 Mexico C%sT 2010 -6",
-			"-6 US C%sT"
-		],
-		"America/Mazatlan": [
-			"-7:5:40 - LMT 1921_11_31_23_54_20 -7:5:40",
-			"-7 - MST 1927_5_10_23 -7",
-			"-6 - CST 1930_10_15 -6",
-			"-7 - MST 1931_4_1_23 -7",
-			"-6 - CST 1931_9 -6",
-			"-7 - MST 1932_3_1 -7",
-			"-6 - CST 1942_3_24 -6",
-			"-7 - MST 1949_0_14 -7",
-			"-8 - PST 1970 -8",
-			"-7 Mexico M%sT"
-		],
-		"America/Menominee": [
-			"-5:50:27 - LMT 1885_8_18_12 -5:50:27",
-			"-6 US C%sT 1946 -6",
-			"-6 Menominee C%sT 1969_3_27_2 -6",
-			"-5 - EST 1973_3_29_2 -5",
-			"-6 US C%sT"
-		],
-		"America/Merida": [
-			"-5:58:28 - LMT 1922_0_1_0_1_32 -5:58:28",
-			"-6 - CST 1981_11_23 -6",
-			"-5 - EST 1982_11_2 -5",
-			"-6 Mexico C%sT"
-		],
-		"America/Metlakatla": [
-			"15:13:42 - LMT 1867_9_18 15:13:42",
-			"-8:46:18 - LMT 1900_7_20_12 -8:46:18",
-			"-8 - PST 1942 -8",
-			"-8 US P%sT 1946 -8",
-			"-8 - PST 1969 -8",
-			"-8 US P%sT 1983_9_30_2 -7",
-			"-8 - MeST"
-		],
-		"America/Mexico_City": [
-			"-6:36:36 - LMT 1922_0_1_0_23_24 -6:36:36",
-			"-7 - MST 1927_5_10_23 -7",
-			"-6 - CST 1930_10_15 -6",
-			"-7 - MST 1931_4_1_23 -7",
-			"-6 - CST 1931_9 -6",
-			"-7 - MST 1932_3_1 -7",
-			"-6 Mexico C%sT 2001_8_30_02 -5",
-			"-6 - CST 2002_1_20 -6",
-			"-6 Mexico C%sT"
-		],
-		"America/Miquelon": [
-			"-3:44:40 - LMT 1911_4_15 -3:44:40",
-			"-4 - AST 1980_4 -4",
-			"-3 - PMST 1987 -3",
-			"-3 Canada PM%sT"
-		],
-		"America/Moncton": [
-			"-4:19:8 - LMT 1883_11_9 -4:19:8",
-			"-5 - EST 1902_5_15 -5",
-			"-4 Canada A%sT 1933 -4",
-			"-4 Moncton A%sT 1942 -4",
-			"-4 Canada A%sT 1946 -4",
-			"-4 Moncton A%sT 1973 -4",
-			"-4 Canada A%sT 1993 -4",
-			"-4 Moncton A%sT 2007 -4",
-			"-4 Canada A%sT"
-		],
-		"America/Monterrey": [
-			"-6:41:16 - LMT 1921_11_31_23_18_44 -6:41:16",
-			"-6 - CST 1988 -6",
-			"-6 US C%sT 1989 -6",
-			"-6 Mexico C%sT"
-		],
-		"America/Montevideo": [
-			"-3:44:44 - LMT 1898_5_28 -3:44:44",
-			"-3:44:44 - MMT 1920_4_1 -3:44:44",
-			"-3:30 Uruguay UY%sT 1942_11_14 -3:30",
-			"-3 Uruguay UY%sT"
-		],
-		"America/Montreal": [
-			"-4:54:16 - LMT 1884 -4:54:16",
-			"-5 Mont E%sT 1918 -5",
-			"-5 Canada E%sT 1919 -5",
-			"-5 Mont E%sT 1942_1_9_2 -5",
-			"-5 Canada E%sT 1946 -5",
-			"-5 Mont E%sT 1974 -5",
-			"-5 Canada E%sT"
-		],
-		"America/Montserrat": [
-			"-4:8:52 - LMT 1911_6_1_0_1 -4:8:52",
-			"-4 - AST"
-		],
-		"America/Nassau": [
-			"-5:9:30 - LMT 1912_2_2 -5:9:30",
-			"-5 Bahamas E%sT 1976 -5",
-			"-5 US E%sT"
-		],
-		"America/New_York": [
-			"-4:56:2 - LMT 1883_10_18_12_3_58 -4:56:2",
-			"-5 US E%sT 1920 -5",
-			"-5 NYC E%sT 1942 -5",
-			"-5 US E%sT 1946 -5",
-			"-5 NYC E%sT 1967 -5",
-			"-5 US E%sT"
-		],
-		"America/Nipigon": [
-			"-5:53:4 - LMT 1895 -5:53:4",
-			"-5 Canada E%sT 1940_8_29 -5",
-			"-4 - EDT 1942_1_9_2 -5",
-			"-5 Canada E%sT"
-		],
-		"America/Nome": [
-			"12:58:21 - LMT 1867_9_18 12:58:21",
-			"-11:1:38 - LMT 1900_7_20_12 -11:1:38",
-			"-11 - NST 1942 -11",
-			"-11 US N%sT 1946 -11",
-			"-11 - NST 1967_3 -11",
-			"-11 - BST 1969 -11",
-			"-11 US B%sT 1983_9_30_2 -10",
-			"-9 US Y%sT 1983_10_30 -9",
-			"-9 US AK%sT"
-		],
-		"America/Noronha": [
-			"-2:9:40 - LMT 1914 -2:9:40",
-			"-2 Brazil FN%sT 1990_8_17 -2",
-			"-2 - FNT 1999_8_30 -2",
-			"-2 Brazil FN%sT 2000_9_15 -1",
-			"-2 - FNT 2001_8_13 -2",
-			"-2 Brazil FN%sT 2002_9_1 -2",
-			"-2 - FNT"
-		],
-		"America/North_Dakota/Beulah": [
-			"-6:47:7 - LMT 1883_10_18_12_12_53 -6:47:7",
-			"-7 US M%sT 2010_10_7_2 -6",
-			"-6 US C%sT"
-		],
-		"America/North_Dakota/Center": [
-			"-6:45:12 - LMT 1883_10_18_12_14_48 -6:45:12",
-			"-7 US M%sT 1992_9_25_02 -6",
-			"-6 US C%sT"
-		],
-		"America/North_Dakota/New_Salem": [
-			"-6:45:39 - LMT 1883_10_18_12_14_21 -6:45:39",
-			"-7 US M%sT 2003_9_26_02 -6",
-			"-6 US C%sT"
-		],
-		"America/Ojinaga": [
-			"-6:57:40 - LMT 1922_0_1_0_2_20 -6:57:40",
-			"-7 - MST 1927_5_10_23 -7",
-			"-6 - CST 1930_10_15 -6",
-			"-7 - MST 1931_4_1_23 -7",
-			"-6 - CST 1931_9 -6",
-			"-7 - MST 1932_3_1 -7",
-			"-6 - CST 1996 -6",
-			"-6 Mexico C%sT 1998 -6",
-			"-6 - CST 1998_3_5_3 -6",
-			"-7 Mexico M%sT 2010 -7",
-			"-7 US M%sT"
-		],
-		"America/Panama": [
-			"-5:18:8 - LMT 1890 -5:18:8",
-			"-5:19:36 - CMT 1908_3_22 -5:19:36",
-			"-5 - EST"
-		],
-		"America/Pangnirtung": [
-			"0 - zzz 1921",
-			"-4 NT_YK A%sT 1995_3_2_2 -4",
-			"-5 Canada E%sT 1999_9_31_2 -4",
-			"-6 Canada C%sT 2000_9_29_2 -5",
-			"-5 Canada E%sT"
-		],
-		"America/Paramaribo": [
-			"-3:40:40 - LMT 1911 -3:40:40",
-			"-3:40:52 - PMT 1935 -3:40:52",
-			"-3:40:36 - PMT 1945_9 -3:40:36",
-			"-3:30 - NEGT 1975_10_20 -3:30",
-			"-3:30 - SRT 1984_9 -3:30",
-			"-3 - SRT"
-		],
-		"America/Phoenix": [
-			"-7:28:18 - LMT 1883_10_18_11_31_42 -7:28:18",
-			"-7 US M%sT 1944_0_1_00_1 -6",
-			"-7 - MST 1944_3_1_00_1 -7",
-			"-7 US M%sT 1944_9_1_00_1 -6",
-			"-7 - MST 1967 -7",
-			"-7 US M%sT 1968_2_21 -7",
-			"-7 - MST"
-		],
-		"America/Port-au-Prince": [
-			"-4:49:20 - LMT 1890 -4:49:20",
-			"-4:49 - PPMT 1917_0_24_12 -4:49",
-			"-5 Haiti E%sT"
-		],
-		"America/Port_of_Spain": [
-			"-4:6:4 - LMT 1912_2_2 -4:6:4",
-			"-4 - AST"
-		],
-		"America/Porto_Velho": [
-			"-4:15:36 - LMT 1914 -4:15:36",
-			"-4 Brazil AM%sT 1988_8_12 -4",
-			"-4 - AMT"
-		],
-		"America/Puerto_Rico": [
-			"-4:24:25 - LMT 1899_2_28_12 -4:24:25",
-			"-4 - AST 1942_4_3 -4",
-			"-4 US A%sT 1946 -4",
-			"-4 - AST"
-		],
-		"America/Rainy_River": [
-			"-6:18:16 - LMT 1895 -6:18:16",
-			"-6 Canada C%sT 1940_8_29 -6",
-			"-5 - CDT 1942_1_9_2 -6",
-			"-6 Canada C%sT"
-		],
-		"America/Rankin_Inlet": [
-			"0 - zzz 1957",
-			"-6 NT_YK C%sT 2000_9_29_2 -5",
-			"-5 - EST 2001_3_1_3 -5",
-			"-6 Canada C%sT"
-		],
-		"America/Recife": [
-			"-2:19:36 - LMT 1914 -2:19:36",
-			"-3 Brazil BR%sT 1990_8_17 -3",
-			"-3 - BRT 1999_8_30 -3",
-			"-3 Brazil BR%sT 2000_9_15 -2",
-			"-3 - BRT 2001_8_13 -3",
-			"-3 Brazil BR%sT 2002_9_1 -3",
-			"-3 - BRT"
-		],
-		"America/Regina": [
-			"-6:58:36 - LMT 1905_8 -6:58:36",
-			"-7 Regina M%sT 1960_3_24_2 -7",
-			"-6 - CST"
-		],
-		"America/Resolute": [
-			"0 - zzz 1947_7_31",
-			"-6 NT_YK C%sT 2000_9_29_2 -5",
-			"-5 - EST 2001_3_1_3 -5",
-			"-6 Canada C%sT 2006_9_29_2 -5",
-			"-5 - EST 2007_2_11_3 -5",
-			"-6 Canada C%sT"
-		],
-		"America/Rio_Branco": [
-			"-4:31:12 - LMT 1914 -4:31:12",
-			"-5 Brazil AC%sT 1988_8_12 -5",
-			"-5 - ACT 2008_5_24_00 -5",
-			"-4 - AMT"
-		],
-		"America/Santa_Isabel": [
-			"-7:39:28 - LMT 1922_0_1_0_20_32 -7:39:28",
-			"-7 - MST 1924 -7",
-			"-8 - PST 1927_5_10_23 -8",
-			"-7 - MST 1930_10_15 -7",
-			"-8 - PST 1931_3_1 -8",
-			"-7 - PDT 1931_8_30 -7",
-			"-8 - PST 1942_3_24 -8",
-			"-7 - PWT 1945_7_14_23",
-			"-7 - PPT 1945_10_12 -7",
-			"-8 - PST 1948_3_5 -8",
-			"-7 - PDT 1949_0_14 -7",
-			"-8 - PST 1954 -8",
-			"-8 CA P%sT 1961 -8",
-			"-8 - PST 1976 -8",
-			"-8 US P%sT 1996 -8",
-			"-8 Mexico P%sT 2001 -8",
-			"-8 US P%sT 2002_1_20 -8",
-			"-8 Mexico P%sT"
-		],
-		"America/Santarem": [
-			"-3:38:48 - LMT 1914 -3:38:48",
-			"-4 Brazil AM%sT 1988_8_12 -4",
-			"-4 - AMT 2008_5_24_00 -4",
-			"-3 - BRT"
-		],
-		"America/Santiago": [
-			"-4:42:46 - LMT 1890 -4:42:46",
-			"-4:42:46 - SMT 1910 -4:42:46",
-			"-5 - CLT 1916_6_1 -5",
-			"-4:42:46 - SMT 1918_8_1 -4:42:46",
-			"-4 - CLT 1919_6_1 -4",
-			"-4:42:46 - SMT 1927_8_1 -4:42:46",
-			"-5 Chile CL%sT 1947_4_22 -5",
-			"-4 Chile CL%sT"
-		],
-		"America/Santo_Domingo": [
-			"-4:39:36 - LMT 1890 -4:39:36",
-			"-4:40 - SDMT 1933_3_1_12 -4:40",
-			"-5 DR E%sT 1974_9_27 -5",
-			"-4 - AST 2000_9_29_02 -4",
-			"-5 US E%sT 2000_11_3_01 -5",
-			"-4 - AST"
-		],
-		"America/Sao_Paulo": [
-			"-3:6:28 - LMT 1914 -3:6:28",
-			"-3 Brazil BR%sT 1963_9_23_00 -3",
-			"-2 - BRST 1964 -2",
-			"-3 Brazil BR%sT"
-		],
-		"America/Scoresbysund": [
-			"-1:27:52 - LMT 1916_6_28 -1:27:52",
-			"-2 - CGT 1980_3_6_2 -2",
-			"-2 C-Eur CG%sT 1981_2_29 -2",
-			"-1 EU EG%sT"
-		],
-		"America/Sitka": [
-			"14:58:47 - LMT 1867_9_18 14:58:47",
-			"-9:1:13 - LMT 1900_7_20_12 -9:1:13",
-			"-8 - PST 1942 -8",
-			"-8 US P%sT 1946 -8",
-			"-8 - PST 1969 -8",
-			"-8 US P%sT 1983_9_30_2 -7",
-			"-9 US Y%sT 1983_10_30 -9",
-			"-9 US AK%sT"
-		],
-		"America/St_Johns": [
-			"-3:30:52 - LMT 1884 -3:30:52",
-			"-3:30:52 StJohns N%sT 1918 -3:30:52",
-			"-3:30:52 Canada N%sT 1919 -3:30:52",
-			"-3:30:52 StJohns N%sT 1935_2_30 -3:30:52",
-			"-3:30 StJohns N%sT 1942_4_11 -3:30",
-			"-3:30 Canada N%sT 1946 -3:30",
-			"-3:30 StJohns N%sT 2011_10 -2:30",
-			"-3:30 Canada N%sT"
-		],
-		"America/St_Kitts": [
-			"-4:10:52 - LMT 1912_2_2 -4:10:52",
-			"-4 - AST"
-		],
-		"America/St_Lucia": [
-			"-4:4 - LMT 1890 -4:4",
-			"-4:4 - CMT 1912 -4:4",
-			"-4 - AST"
-		],
-		"America/St_Thomas": [
-			"-4:19:44 - LMT 1911_6 -4:19:44",
-			"-4 - AST"
-		],
-		"America/St_Vincent": [
-			"-4:4:56 - LMT 1890 -4:4:56",
-			"-4:4:56 - KMT 1912 -4:4:56",
-			"-4 - AST"
-		],
-		"America/Swift_Current": [
-			"-7:11:20 - LMT 1905_8 -7:11:20",
-			"-7 Canada M%sT 1946_3_28_2 -7",
-			"-7 Regina M%sT 1950 -7",
-			"-7 Swift M%sT 1972_3_30_2 -7",
-			"-6 - CST"
-		],
-		"America/Tegucigalpa": [
-			"-5:48:52 - LMT 1921_3 -5:48:52",
-			"-6 Hond C%sT"
-		],
-		"America/Thule": [
-			"-4:35:8 - LMT 1916_6_28 -4:35:8",
-			"-4 Thule A%sT"
-		],
-		"America/Thunder_Bay": [
-			"-5:57 - LMT 1895 -5:57",
-			"-6 - CST 1910 -6",
-			"-5 - EST 1942 -5",
-			"-5 Canada E%sT 1970 -5",
-			"-5 Mont E%sT 1973 -5",
-			"-5 - EST 1974 -5",
-			"-5 Canada E%sT"
-		],
-		"America/Tijuana": [
-			"-7:48:4 - LMT 1922_0_1_0_11_56 -7:48:4",
-			"-7 - MST 1924 -7",
-			"-8 - PST 1927_5_10_23 -8",
-			"-7 - MST 1930_10_15 -7",
-			"-8 - PST 1931_3_1 -8",
-			"-7 - PDT 1931_8_30 -7",
-			"-8 - PST 1942_3_24 -8",
-			"-7 - PWT 1945_7_14_23",
-			"-7 - PPT 1945_10_12 -7",
-			"-8 - PST 1948_3_5 -8",
-			"-7 - PDT 1949_0_14 -7",
-			"-8 - PST 1954 -8",
-			"-8 CA P%sT 1961 -8",
-			"-8 - PST 1976 -8",
-			"-8 US P%sT 1996 -8",
-			"-8 Mexico P%sT 2001 -8",
-			"-8 US P%sT 2002_1_20 -8",
-			"-8 Mexico P%sT 2010 -8",
-			"-8 US P%sT"
-		],
-		"America/Toronto": [
-			"-5:17:32 - LMT 1895 -5:17:32",
-			"-5 Canada E%sT 1919 -5",
-			"-5 Toronto E%sT 1942_1_9_2 -5",
-			"-5 Canada E%sT 1946 -5",
-			"-5 Toronto E%sT 1974 -5",
-			"-5 Canada E%sT"
-		],
-		"America/Tortola": [
-			"-4:18:28 - LMT 1911_6 -4:18:28",
-			"-4 - AST"
-		],
-		"America/Vancouver": [
-			"-8:12:28 - LMT 1884 -8:12:28",
-			"-8 Vanc P%sT 1987 -8",
-			"-8 Canada P%sT"
-		],
-		"America/Whitehorse": [
-			"-9:0:12 - LMT 1900_7_20 -9:0:12",
-			"-9 NT_YK Y%sT 1966_6_1_2 -9",
-			"-8 NT_YK P%sT 1980 -8",
-			"-8 Canada P%sT"
-		],
-		"America/Winnipeg": [
-			"-6:28:36 - LMT 1887_6_16 -6:28:36",
-			"-6 Winn C%sT 2006 -6",
-			"-6 Canada C%sT"
-		],
-		"America/Yakutat": [
-			"14:41:5 - LMT 1867_9_18 14:41:5",
-			"-9:18:55 - LMT 1900_7_20_12 -9:18:55",
-			"-9 - YST 1942 -9",
-			"-9 US Y%sT 1946 -9",
-			"-9 - YST 1969 -9",
-			"-9 US Y%sT 1983_10_30 -9",
-			"-9 US AK%sT"
-		],
-		"America/Yellowknife": [
-			"0 - zzz 1935",
-			"-7 NT_YK M%sT 1980 -7",
-			"-7 Canada M%sT"
-		],
-		"Antarctica/Casey": [
-			"0 - zzz 1969",
-			"8 - WST 2009_9_18_2 8",
-			"11 - CAST 2010_2_5_2 11",
-			"8 - WST 2011_9_28_2 8",
-			"11 - CAST 2012_1_21_17",
-			"8 - WST"
-		],
-		"Antarctica/Davis": [
-			"0 - zzz 1957_0_13",
-			"7 - DAVT 1964_10 7",
-			"0 - zzz 1969_1",
-			"7 - DAVT 2009_9_18_2 7",
-			"5 - DAVT 2010_2_10_20",
-			"7 - DAVT 2011_9_28_2 7",
-			"5 - DAVT 2012_1_21_20",
-			"7 - DAVT"
-		],
-		"Antarctica/DumontDUrville": [
-			"0 - zzz 1947",
-			"10 - PMT 1952_0_14 10",
-			"0 - zzz 1956_10",
-			"10 - DDUT"
-		],
-		"Antarctica/Macquarie": [
-			"0 - zzz 1899_10",
-			"10 - EST 1916_9_1_2 10",
-			"11 - EST 1917_1 11",
-			"10 Aus EST 1919_3 10",
-			"0 - zzz 1948_2_25",
-			"10 Aus EST 1967 10",
-			"10 AT EST 2010_3_4_3 11",
-			"11 - MIST"
-		],
-		"Antarctica/Mawson": [
-			"0 - zzz 1954_1_13",
-			"6 - MAWT 2009_9_18_2 6",
-			"5 - MAWT"
-		],
-		"Antarctica/McMurdo": [
-			"0 - zzz 1956",
-			"12 NZAQ NZ%sT"
-		],
-		"Antarctica/Palmer": [
-			"0 - zzz 1965",
-			"-4 ArgAQ AR%sT 1969_9_5 -4",
-			"-3 ArgAQ AR%sT 1982_4 -3",
-			"-4 ChileAQ CL%sT"
-		],
-		"Antarctica/Rothera": [
-			"0 - zzz 1976_11_1",
-			"-3 - ROTT"
-		],
-		"Antarctica/Syowa": [
-			"0 - zzz 1957_0_29",
-			"3 - SYOT"
-		],
-		"Antarctica/Vostok": [
-			"0 - zzz 1957_11_16",
-			"6 - VOST"
-		],
-		"Asia/Aden": [
-			"2:59:54 - LMT 1950 2:59:54",
-			"3 - AST"
-		],
-		"Asia/Almaty": [
-			"5:7:48 - LMT 1924_4_2 5:7:48",
-			"5 - ALMT 1930_5_21 5",
-			"6 RussiaAsia ALM%sT 1991 6",
-			"6 - ALMT 1992 6",
-			"6 RussiaAsia ALM%sT 2005_2_15 6",
-			"6 - ALMT"
-		],
-		"Asia/Amman": [
-			"2:23:44 - LMT 1931 2:23:44",
-			"2 Jordan EE%sT"
-		],
-		"Asia/Anadyr": [
-			"11:49:56 - LMT 1924_4_2 11:49:56",
-			"12 - ANAT 1930_5_21 12",
-			"13 Russia ANA%sT 1982_3_1_0 13",
-			"12 Russia ANA%sT 1991_2_31_2 12",
-			"11 Russia ANA%sT 1992_0_19_2 11",
-			"12 Russia ANA%sT 2010_2_28_2 12",
-			"11 Russia ANA%sT 2011_2_27_2 11",
-			"12 - ANAT"
-		],
-		"Asia/Aqtau": [
-			"3:21:4 - LMT 1924_4_2 3:21:4",
-			"4 - FORT 1930_5_21 4",
-			"5 - FORT 1963 5",
-			"5 - SHET 1981_9_1 5",
-			"6 - SHET 1982_3_1 6",
-			"5 RussiaAsia SHE%sT 1991 5",
-			"5 - SHET 1991_11_16 5",
-			"5 RussiaAsia AQT%sT 1995_2_26_2 5",
-			"4 RussiaAsia AQT%sT 2005_2_15 4",
-			"5 - AQTT"
-		],
-		"Asia/Aqtobe": [
-			"3:48:40 - LMT 1924_4_2 3:48:40",
-			"4 - AKTT 1930_5_21 4",
-			"5 - AKTT 1981_3_1 5",
-			"6 - AKTST 1981_9_1 6",
-			"6 - AKTT 1982_3_1 6",
-			"5 RussiaAsia AKT%sT 1991 5",
-			"5 - AKTT 1991_11_16 5",
-			"5 RussiaAsia AQT%sT 2005_2_15 5",
-			"5 - AQTT"
-		],
-		"Asia/Ashgabat": [
-			"3:53:32 - LMT 1924_4_2 3:53:32",
-			"4 - ASHT 1930_5_21 4",
-			"5 RussiaAsia ASH%sT 1991_2_31_2 5",
-			"4 RussiaAsia ASH%sT 1991_9_27 4",
-			"4 RussiaAsia TM%sT 1992_0_19_2 4",
-			"5 - TMT"
-		],
-		"Asia/Baghdad": [
-			"2:57:40 - LMT 1890 2:57:40",
-			"2:57:36 - BMT 1918 2:57:36",
-			"3 - AST 1982_4 3",
-			"3 Iraq A%sT"
-		],
-		"Asia/Bahrain": [
-			"3:22:20 - LMT 1920 3:22:20",
-			"4 - GST 1972_5 4",
-			"3 - AST"
-		],
-		"Asia/Baku": [
-			"3:19:24 - LMT 1924_4_2 3:19:24",
-			"3 - BAKT 1957_2 3",
-			"4 RussiaAsia BAK%sT 1991_2_31_2 4",
-			"4 - BAKST 1991_7_30 4",
-			"3 RussiaAsia AZ%sT 1992_8_26_23 4",
-			"4 - AZT 1996 4",
-			"4 EUAsia AZ%sT 1997 4",
-			"4 Azer AZ%sT"
-		],
-		"Asia/Bangkok": [
-			"6:42:4 - LMT 1880 6:42:4",
-			"6:42:4 - BMT 1920_3 6:42:4",
-			"7 - ICT"
-		],
-		"Asia/Beirut": [
-			"2:22 - LMT 1880 2:22",
-			"2 Lebanon EE%sT"
-		],
-		"Asia/Bishkek": [
-			"4:58:24 - LMT 1924_4_2 4:58:24",
-			"5 - FRUT 1930_5_21 5",
-			"6 RussiaAsia FRU%sT 1991_2_31_2 6",
-			"6 - FRUST 1991_7_31_2 6",
-			"5 Kyrgyz KG%sT 2005_7_12 6",
-			"6 - KGT"
-		],
-		"Asia/Brunei": [
-			"7:39:40 - LMT 1926_2 7:39:40",
-			"7:30 - BNT 1933 7:30",
-			"8 - BNT"
-		],
-		"Asia/Choibalsan": [
-			"7:38 - LMT 1905_7 7:38",
-			"7 - ULAT 1978 7",
-			"8 - ULAT 1983_3 8",
-			"9 Mongol CHO%sT 2008_2_31 9",
-			"8 Mongol CHO%sT"
-		],
-		"Asia/Chongqing": [
-			"7:6:20 - LMT 1928 7:6:20",
-			"7 - LONT 1980_4 7",
-			"8 PRC C%sT"
-		],
-		"Asia/Colombo": [
-			"5:19:24 - LMT 1880 5:19:24",
-			"5:19:32 - MMT 1906 5:19:32",
-			"5:30 - IST 1942_0_5 5:30",
-			"6 - IHST 1942_8 6",
-			"6:30 - IST 1945_9_16_2 6:30",
-			"5:30 - IST 1996_4_25_0 5:30",
-			"6:30 - LKT 1996_9_26_0_30 6:30",
-			"6 - LKT 2006_3_15_0_30 6",
-			"5:30 - IST"
-		],
-		"Asia/Damascus": [
-			"2:25:12 - LMT 1920 2:25:12",
-			"2 Syria EE%sT"
-		],
-		"Asia/Dhaka": [
-			"6:1:40 - LMT 1890 6:1:40",
-			"5:53:20 - HMT 1941_9 5:53:20",
-			"6:30 - BURT 1942_4_15 6:30",
-			"5:30 - IST 1942_8 5:30",
-			"6:30 - BURT 1951_8_30 6:30",
-			"6 - DACT 1971_2_26 6",
-			"6 - BDT 2009 6",
-			"6 Dhaka BD%sT"
-		],
-		"Asia/Dili": [
-			"8:22:20 - LMT 1912 8:22:20",
-			"8 - TLT 1942_1_21_23 8",
-			"9 - JST 1945_8_23 9",
-			"9 - TLT 1976_4_3 9",
-			"8 - CIT 2000_8_17_00 8",
-			"9 - TLT"
-		],
-		"Asia/Dubai": [
-			"3:41:12 - LMT 1920 3:41:12",
-			"4 - GST"
-		],
-		"Asia/Dushanbe": [
-			"4:35:12 - LMT 1924_4_2 4:35:12",
-			"5 - DUST 1930_5_21 5",
-			"6 RussiaAsia DUS%sT 1991_2_31_2 6",
-			"6 - DUSST 1991_8_9_2 5",
-			"5 - TJT"
-		],
-		"Asia/Gaza": [
-			"2:17:52 - LMT 1900_9 2:17:52",
-			"2 Zion EET 1948_4_15 2",
-			"2 EgyptAsia EE%sT 1967_5_5 3",
-			"2 Zion I%sT 1996 2",
-			"2 Jordan EE%sT 1999 2",
-			"2 Palestine EE%sT 2008_7_29_0 3",
-			"2 - EET 2008_8 2",
-			"2 Palestine EE%sT 2010 2",
-			"2 - EET 2010_2_27_0_1 2",
-			"2 Palestine EE%sT 2011_7_1 3",
-			"2 - EET 2012 2",
-			"2 Palestine EE%sT"
-		],
-		"Asia/Harbin": [
-			"8:26:44 - LMT 1928 8:26:44",
-			"8:30 - CHAT 1932_2 8:30",
-			"8 - CST 1940 8",
-			"9 - CHAT 1966_4 9",
-			"8:30 - CHAT 1980_4 8:30",
-			"8 PRC C%sT"
-		],
-		"Asia/Hebron": [
-			"2:20:23 - LMT 1900_9 2:20:23",
-			"2 Zion EET 1948_4_15 2",
-			"2 EgyptAsia EE%sT 1967_5_5 3",
-			"2 Zion I%sT 1996 2",
-			"2 Jordan EE%sT 1999 2",
-			"2 Palestine EE%sT"
-		],
-		"Asia/Ho_Chi_Minh": [
-			"7:6:40 - LMT 1906_5_9 7:6:40",
-			"7:6:20 - SMT 1911_2_11_0_1 7:6:20",
-			"7 - ICT 1912_4 7",
-			"8 - ICT 1931_4 8",
-			"7 - ICT"
-		],
-		"Asia/Hong_Kong": [
-			"7:36:42 - LMT 1904_9_30 7:36:42",
-			"8 HK HK%sT 1941_11_25 8",
-			"9 - JST 1945_8_15 9",
-			"8 HK HK%sT"
-		],
-		"Asia/Hovd": [
-			"6:6:36 - LMT 1905_7 6:6:36",
-			"6 - HOVT 1978 6",
-			"7 Mongol HOV%sT"
-		],
-		"Asia/Irkutsk": [
-			"6:57:20 - LMT 1880 6:57:20",
-			"6:57:20 - IMT 1920_0_25 6:57:20",
-			"7 - IRKT 1930_5_21 7",
-			"8 Russia IRK%sT 1991_2_31_2 8",
-			"7 Russia IRK%sT 1992_0_19_2 7",
-			"8 Russia IRK%sT 2011_2_27_2 8",
-			"9 - IRKT"
-		],
-		"Asia/Jakarta": [
-			"7:7:12 - LMT 1867_7_10 7:7:12",
-			"7:7:12 - JMT 1923_11_31_23_47_12 7:7:12",
-			"7:20 - JAVT 1932_10 7:20",
-			"7:30 - WIT 1942_2_23 7:30",
-			"9 - JST 1945_8_23 9",
-			"7:30 - WIT 1948_4 7:30",
-			"8 - WIT 1950_4 8",
-			"7:30 - WIT 1964 7:30",
-			"7 - WIT"
-		],
-		"Asia/Jayapura": [
-			"9:22:48 - LMT 1932_10 9:22:48",
-			"9 - EIT 1944_8_1 9",
-			"9:30 - CST 1964 9:30",
-			"9 - EIT"
-		],
-		"Asia/Jerusalem": [
-			"2:20:56 - LMT 1880 2:20:56",
-			"2:20:40 - JMT 1918 2:20:40",
-			"2 Zion I%sT"
-		],
-		"Asia/Kabul": [
-			"4:36:48 - LMT 1890 4:36:48",
-			"4 - AFT 1945 4",
-			"4:30 - AFT"
-		],
-		"Asia/Kamchatka": [
-			"10:34:36 - LMT 1922_10_10 10:34:36",
-			"11 - PETT 1930_5_21 11",
-			"12 Russia PET%sT 1991_2_31_2 12",
-			"11 Russia PET%sT 1992_0_19_2 11",
-			"12 Russia PET%sT 2010_2_28_2 12",
-			"11 Russia PET%sT 2011_2_27_2 11",
-			"12 - PETT"
-		],
-		"Asia/Karachi": [
-			"4:28:12 - LMT 1907 4:28:12",
-			"5:30 - IST 1942_8 5:30",
-			"6:30 - IST 1945_9_15 6:30",
-			"5:30 - IST 1951_8_30 5:30",
-			"5 - KART 1971_2_26 5",
-			"5 Pakistan PK%sT"
-		],
-		"Asia/Kashgar": [
-			"5:3:56 - LMT 1928 5:3:56",
-			"5:30 - KAST 1940 5:30",
-			"5 - KAST 1980_4 5",
-			"8 PRC C%sT"
-		],
-		"Asia/Kathmandu": [
-			"5:41:16 - LMT 1920 5:41:16",
-			"5:30 - IST 1986 5:30",
-			"5:45 - NPT"
-		],
-		"Asia/Khandyga": [
-			"9:2:13 - LMT 1919_11_15 9:2:13",
-			"8 - YAKT 1930_5_21 8",
-			"9 Russia YAK%sT 1991_2_31_2 9",
-			"8 Russia YAK%sT 1992_0_19_2 8",
-			"9 Russia YAK%sT 2004 9",
-			"10 Russia VLA%sT 2011_2_27_2 10",
-			"11 - VLAT 2011_8_13_0 11",
-			"10 - YAKT"
-		],
-		"Asia/Kolkata": [
-			"5:53:28 - LMT 1880 5:53:28",
-			"5:53:20 - HMT 1941_9 5:53:20",
-			"6:30 - BURT 1942_4_15 6:30",
-			"5:30 - IST 1942_8 5:30",
-			"6:30 - IST 1945_9_15 6:30",
-			"5:30 - IST"
-		],
-		"Asia/Krasnoyarsk": [
-			"6:11:20 - LMT 1920_0_6 6:11:20",
-			"6 - KRAT 1930_5_21 6",
-			"7 Russia KRA%sT 1991_2_31_2 7",
-			"6 Russia KRA%sT 1992_0_19_2 6",
-			"7 Russia KRA%sT 2011_2_27_2 7",
-			"8 - KRAT"
-		],
-		"Asia/Kuala_Lumpur": [
-			"6:46:46 - LMT 1901_0_1 6:46:46",
-			"6:55:25 - SMT 1905_5_1 6:55:25",
-			"7 - MALT 1933_0_1 7",
-			"7:20 - MALST 1936_0_1 7:20",
-			"7:20 - MALT 1941_8_1 7:20",
-			"7:30 - MALT 1942_1_16 7:30",
-			"9 - JST 1945_8_12 9",
-			"7:30 - MALT 1982_0_1 7:30",
-			"8 - MYT"
-		],
-		"Asia/Kuching": [
-			"7:21:20 - LMT 1926_2 7:21:20",
-			"7:30 - BORT 1933 7:30",
-			"8 NBorneo BOR%sT 1942_1_16 8",
-			"9 - JST 1945_8_12 9",
-			"8 - BORT 1982_0_1 8",
-			"8 - MYT"
-		],
-		"Asia/Kuwait": [
-			"3:11:56 - LMT 1950 3:11:56",
-			"3 - AST"
-		],
-		"Asia/Macau": [
-			"7:34:20 - LMT 1912 7:34:20",
-			"8 Macau MO%sT 1999_11_20 8",
-			"8 PRC C%sT"
-		],
-		"Asia/Magadan": [
-			"10:3:12 - LMT 1924_4_2 10:3:12",
-			"10 - MAGT 1930_5_21 10",
-			"11 Russia MAG%sT 1991_2_31_2 11",
-			"10 Russia MAG%sT 1992_0_19_2 10",
-			"11 Russia MAG%sT 2011_2_27_2 11",
-			"12 - MAGT"
-		],
-		"Asia/Makassar": [
-			"7:57:36 - LMT 1920 7:57:36",
-			"7:57:36 - MMT 1932_10 7:57:36",
-			"8 - CIT 1942_1_9 8",
-			"9 - JST 1945_8_23 9",
-			"8 - CIT"
-		],
-		"Asia/Manila": [
-			"-15:56 - LMT 1844_11_31 -15:56",
-			"8:4 - LMT 1899_4_11 8:4",
-			"8 Phil PH%sT 1942_4 8",
-			"9 - JST 1944_10 9",
-			"8 Phil PH%sT"
-		],
-		"Asia/Muscat": [
-			"3:54:24 - LMT 1920 3:54:24",
-			"4 - GST"
-		],
-		"Asia/Nicosia": [
-			"2:13:28 - LMT 1921_10_14 2:13:28",
-			"2 Cyprus EE%sT 1998_8 3",
-			"2 EUAsia EE%sT"
-		],
-		"Asia/Novokuznetsk": [
-			"5:48:48 - NMT 1920_0_6 5:48:48",
-			"6 - KRAT 1930_5_21 6",
-			"7 Russia KRA%sT 1991_2_31_2 7",
-			"6 Russia KRA%sT 1992_0_19_2 6",
-			"7 Russia KRA%sT 2010_2_28_2 7",
-			"6 Russia NOV%sT 2011_2_27_2 6",
-			"7 - NOVT"
-		],
-		"Asia/Novosibirsk": [
-			"5:31:40 - LMT 1919_11_14_6 5:31:40",
-			"6 - NOVT 1930_5_21 6",
-			"7 Russia NOV%sT 1991_2_31_2 7",
-			"6 Russia NOV%sT 1992_0_19_2 6",
-			"7 Russia NOV%sT 1993_4_23 8",
-			"6 Russia NOV%sT 2011_2_27_2 6",
-			"7 - NOVT"
-		],
-		"Asia/Omsk": [
-			"4:53:36 - LMT 1919_10_14 4:53:36",
-			"5 - OMST 1930_5_21 5",
-			"6 Russia OMS%sT 1991_2_31_2 6",
-			"5 Russia OMS%sT 1992_0_19_2 5",
-			"6 Russia OMS%sT 2011_2_27_2 6",
-			"7 - OMST"
-		],
-		"Asia/Oral": [
-			"3:25:24 - LMT 1924_4_2 3:25:24",
-			"4 - URAT 1930_5_21 4",
-			"5 - URAT 1981_3_1 5",
-			"6 - URAST 1981_9_1 6",
-			"6 - URAT 1982_3_1 6",
-			"5 RussiaAsia URA%sT 1989_2_26_2 5",
-			"4 RussiaAsia URA%sT 1991 4",
-			"4 - URAT 1991_11_16 4",
-			"4 RussiaAsia ORA%sT 2005_2_15 4",
-			"5 - ORAT"
-		],
-		"Asia/Phnom_Penh": [
-			"6:59:40 - LMT 1906_5_9 6:59:40",
-			"7:6:20 - SMT 1911_2_11_0_1 7:6:20",
-			"7 - ICT 1912_4 7",
-			"8 - ICT 1931_4 8",
-			"7 - ICT"
-		],
-		"Asia/Pontianak": [
-			"7:17:20 - LMT 1908_4 7:17:20",
-			"7:17:20 - PMT 1932_10 7:17:20",
-			"7:30 - WIT 1942_0_29 7:30",
-			"9 - JST 1945_8_23 9",
-			"7:30 - WIT 1948_4 7:30",
-			"8 - WIT 1950_4 8",
-			"7:30 - WIT 1964 7:30",
-			"8 - CIT 1988_0_1 8",
-			"7 - WIT"
-		],
-		"Asia/Pyongyang": [
-			"8:23 - LMT 1890 8:23",
-			"8:30 - KST 1904_11 8:30",
-			"9 - KST 1928 9",
-			"8:30 - KST 1932 8:30",
-			"9 - KST 1954_2_21 9",
-			"8 - KST 1961_7_10 8",
-			"9 - KST"
-		],
-		"Asia/Qatar": [
-			"3:26:8 - LMT 1920 3:26:8",
-			"4 - GST 1972_5 4",
-			"3 - AST"
-		],
-		"Asia/Qyzylorda": [
-			"4:21:52 - LMT 1924_4_2 4:21:52",
-			"4 - KIZT 1930_5_21 4",
-			"5 - KIZT 1981_3_1 5",
-			"6 - KIZST 1981_9_1 6",
-			"6 - KIZT 1982_3_1 6",
-			"5 RussiaAsia KIZ%sT 1991 5",
-			"5 - KIZT 1991_11_16 5",
-			"5 - QYZT 1992_0_19_2 5",
-			"6 RussiaAsia QYZ%sT 2005_2_15 6",
-			"6 - QYZT"
-		],
-		"Asia/Rangoon": [
-			"6:24:40 - LMT 1880 6:24:40",
-			"6:24:40 - RMT 1920 6:24:40",
-			"6:30 - BURT 1942_4 6:30",
-			"9 - JST 1945_4_3 9",
-			"6:30 - MMT"
-		],
-		"Asia/Riyadh": [
-			"3:6:52 - LMT 1950 3:6:52",
-			"3 - AST"
-		],
-		"Asia/Sakhalin": [
-			"9:30:48 - LMT 1905_7_23 9:30:48",
-			"9 - CJT 1938 9",
-			"9 - JST 1945_7_25 9",
-			"11 Russia SAK%sT 1991_2_31_2 11",
-			"10 Russia SAK%sT 1992_0_19_2 10",
-			"11 Russia SAK%sT 1997_2_30_2 11",
-			"10 Russia SAK%sT 2011_2_27_2 10",
-			"11 - SAKT"
-		],
-		"Asia/Samarkand": [
-			"4:27:12 - LMT 1924_4_2 4:27:12",
-			"4 - SAMT 1930_5_21 4",
-			"5 - SAMT 1981_3_1 5",
-			"6 - SAMST 1981_9_1 6",
-			"6 - TAST 1982_3_1 6",
-			"5 RussiaAsia SAM%sT 1991_8_1 6",
-			"5 RussiaAsia UZ%sT 1992 5",
-			"5 - UZT"
-		],
-		"Asia/Seoul": [
-			"8:27:52 - LMT 1890 8:27:52",
-			"8:30 - KST 1904_11 8:30",
-			"9 - KST 1928 9",
-			"8:30 - KST 1932 8:30",
-			"9 - KST 1954_2_21 9",
-			"8 ROK K%sT 1961_7_10 8",
-			"8:30 - KST 1968_9 8:30",
-			"9 ROK K%sT"
-		],
-		"Asia/Shanghai": [
-			"8:5:57 - LMT 1928 8:5:57",
-			"8 Shang C%sT 1949 8",
-			"8 PRC C%sT"
-		],
-		"Asia/Singapore": [
-			"6:55:25 - LMT 1901_0_1 6:55:25",
-			"6:55:25 - SMT 1905_5_1 6:55:25",
-			"7 - MALT 1933_0_1 7",
-			"7:20 - MALST 1936_0_1 7:20",
-			"7:20 - MALT 1941_8_1 7:20",
-			"7:30 - MALT 1942_1_16 7:30",
-			"9 - JST 1945_8_12 9",
-			"7:30 - MALT 1965_7_9 7:30",
-			"7:30 - SGT 1982_0_1 7:30",
-			"8 - SGT"
-		],
-		"Asia/Taipei": [
-			"8:6 - LMT 1896 8:6",
-			"8 Taiwan C%sT"
-		],
-		"Asia/Tashkent": [
-			"4:37:12 - LMT 1924_4_2 4:37:12",
-			"5 - TAST 1930_5_21 5",
-			"6 RussiaAsia TAS%sT 1991_2_31_2 6",
-			"5 RussiaAsia TAS%sT 1991_8_1 6",
-			"5 RussiaAsia UZ%sT 1992 5",
-			"5 - UZT"
-		],
-		"Asia/Tbilisi": [
-			"2:59:16 - LMT 1880 2:59:16",
-			"2:59:16 - TBMT 1924_4_2 2:59:16",
-			"3 - TBIT 1957_2 3",
-			"4 RussiaAsia TBI%sT 1991_2_31_2 4",
-			"4 - TBIST 1991_3_9 4",
-			"3 RussiaAsia GE%sT 1992 3",
-			"3 E-EurAsia GE%sT 1994_8_25 4",
-			"4 E-EurAsia GE%sT 1996_9_27 5",
-			"5 - GEST 1997_2_30 5",
-			"4 E-EurAsia GE%sT 2004_5_27 5",
-			"3 RussiaAsia GE%sT 2005_2_27_2 3",
-			"4 - GET"
-		],
-		"Asia/Tehran": [
-			"3:25:44 - LMT 1916 3:25:44",
-			"3:25:44 - TMT 1946 3:25:44",
-			"3:30 - IRST 1977_10 3:30",
-			"4 Iran IR%sT 1979 4",
-			"3:30 Iran IR%sT"
-		],
-		"Asia/Thimphu": [
-			"5:58:36 - LMT 1947_7_15 5:58:36",
-			"5:30 - IST 1987_9 5:30",
-			"6 - BTT"
-		],
-		"Asia/Tokyo": [
-			"9:18:59 - LMT 1887_11_31_15",
-			"9 - JST 1896 9",
-			"9 - CJT 1938 9",
-			"9 Japan J%sT"
-		],
-		"Asia/Ulaanbaatar": [
-			"7:7:32 - LMT 1905_7 7:7:32",
-			"7 - ULAT 1978 7",
-			"8 Mongol ULA%sT"
-		],
-		"Asia/Urumqi": [
-			"5:50:20 - LMT 1928 5:50:20",
-			"6 - URUT 1980_4 6",
-			"8 PRC C%sT"
-		],
-		"Asia/Ust-Nera": [
-			"9:32:54 - LMT 1919_11_15 9:32:54",
-			"8 - YAKT 1930_5_21 8",
-			"9 Russia YAKT 1981_3_1 9",
-			"11 Russia MAG%sT 1991_2_31_2 11",
-			"10 Russia MAG%sT 1992_0_19_2 10",
-			"11 Russia MAG%sT 2011_2_27_2 11",
-			"12 - MAGT 2011_8_13_0 12",
-			"11 - VLAT"
-		],
-		"Asia/Vientiane": [
-			"6:50:24 - LMT 1906_5_9 6:50:24",
-			"7:6:20 - SMT 1911_2_11_0_1 7:6:20",
-			"7 - ICT 1912_4 7",
-			"8 - ICT 1931_4 8",
-			"7 - ICT"
-		],
-		"Asia/Vladivostok": [
-			"8:47:44 - LMT 1922_10_15 8:47:44",
-			"9 - VLAT 1930_5_21 9",
-			"10 Russia VLA%sT 1991_2_31_2 10",
-			"9 Russia VLA%sST 1992_0_19_2 9",
-			"10 Russia VLA%sT 2011_2_27_2 10",
-			"11 - VLAT"
-		],
-		"Asia/Yakutsk": [
-			"8:38:40 - LMT 1919_11_15 8:38:40",
-			"8 - YAKT 1930_5_21 8",
-			"9 Russia YAK%sT 1991_2_31_2 9",
-			"8 Russia YAK%sT 1992_0_19_2 8",
-			"9 Russia YAK%sT 2011_2_27_2 9",
-			"10 - YAKT"
-		],
-		"Asia/Yekaterinburg": [
-			"4:2:24 - LMT 1919_6_15_4 4:2:24",
-			"4 - SVET 1930_5_21 4",
-			"5 Russia SVE%sT 1991_2_31_2 5",
-			"4 Russia SVE%sT 1992_0_19_2 4",
-			"5 Russia YEK%sT 2011_2_27_2 5",
-			"6 - YEKT"
-		],
-		"Asia/Yerevan": [
-			"2:58 - LMT 1924_4_2 2:58",
-			"3 - YERT 1957_2 3",
-			"4 RussiaAsia YER%sT 1991_2_31_2 4",
-			"4 - YERST 1991_8_23 4",
-			"3 RussiaAsia AM%sT 1995_8_24_2 3",
-			"4 - AMT 1997 4",
-			"4 RussiaAsia AM%sT 2012_2_25_2 4",
-			"4 - AMT"
-		],
-		"Atlantic/Azores": [
-			"-1:42:40 - LMT 1884 -1:42:40",
-			"-1:54:32 - HMT 1911_4_24 -1:54:32",
-			"-2 Port AZO%sT 1966_3_3_2 -2",
-			"-1 Port AZO%sT 1983_8_25_1 -1",
-			"-1 W-Eur AZO%sT 1992_8_27_1 -1",
-			"0 EU WE%sT 1993_2_28_1",
-			"-1 EU AZO%sT"
-		],
-		"Atlantic/Bermuda": [
-			"-4:19:18 - LMT 1930_0_1_2 -4:19:18",
-			"-4 - AST 1974_3_28_2 -4",
-			"-4 Bahamas A%sT 1976 -4",
-			"-4 US A%sT"
-		],
-		"Atlantic/Canary": [
-			"-1:1:36 - LMT 1922_2 -1:1:36",
-			"-1 - CANT 1946_8_30_1 -1",
-			"0 - WET 1980_3_6_0",
-			"1 - WEST 1980_8_28_0",
-			"0 EU WE%sT"
-		],
-		"Atlantic/Cape_Verde": [
-			"-1:34:4 - LMT 1907 -1:34:4",
-			"-2 - CVT 1942_8 -2",
-			"-1 - CVST 1945_9_15 -1",
-			"-2 - CVT 1975_10_25_2 -2",
-			"-1 - CVT"
-		],
-		"Atlantic/Faroe": [
-			"-0:27:4 - LMT 1908_0_11 -0:27:4",
-			"0 - WET 1981",
-			"0 EU WE%sT"
-		],
-		"Atlantic/Madeira": [
-			"-1:7:36 - LMT 1884 -1:7:36",
-			"-1:7:36 - FMT 1911_4_24 -1:7:36",
-			"-1 Port MAD%sT 1966_3_3_2 -1",
-			"0 Port WE%sT 1983_8_25_1",
-			"0 EU WE%sT"
-		],
-		"Atlantic/Reykjavik": [
-			"-1:27:24 - LMT 1837 -1:27:24",
-			"-1:27:48 - RMT 1908 -1:27:48",
-			"-1 Iceland IS%sT 1968_3_7_1 -1",
-			"0 - GMT"
-		],
-		"Atlantic/South_Georgia": [
-			"-2:26:8 - LMT 1890 -2:26:8",
-			"-2 - GST"
-		],
-		"Atlantic/St_Helena": [
-			"-0:22:48 - LMT 1890 -0:22:48",
-			"-0:22:48 - JMT 1951 -0:22:48",
-			"0 - GMT"
-		],
-		"Atlantic/Stanley": [
-			"-3:51:24 - LMT 1890 -3:51:24",
-			"-3:51:24 - SMT 1912_2_12 -3:51:24",
-			"-4 Falk FK%sT 1983_4 -4",
-			"-3 Falk FK%sT 1985_8_15 -3",
-			"-4 Falk FK%sT 2010_8_5_02 -4",
-			"-3 - FKST"
-		],
-		"Australia/Adelaide": [
-			"9:14:20 - LMT 1895_1 9:14:20",
-			"9 - CST 1899_4 9",
-			"9:30 Aus CST 1971 9:30",
-			"9:30 AS CST"
-		],
-		"Australia/Brisbane": [
-			"10:12:8 - LMT 1895 10:12:8",
-			"10 Aus EST 1971 10",
-			"10 AQ EST"
-		],
-		"Australia/Broken_Hill": [
-			"9:25:48 - LMT 1895_1 9:25:48",
-			"10 - EST 1896_7_23 10",
-			"9 - CST 1899_4 9",
-			"9:30 Aus CST 1971 9:30",
-			"9:30 AN CST 2000 10:30",
-			"9:30 AS CST"
-		],
-		"Australia/Currie": [
-			"9:35:28 - LMT 1895_8 9:35:28",
-			"10 - EST 1916_9_1_2 10",
-			"11 - EST 1917_1 11",
-			"10 Aus EST 1971_6 10",
-			"10 AT EST"
-		],
-		"Australia/Darwin": [
-			"8:43:20 - LMT 1895_1 8:43:20",
-			"9 - CST 1899_4 9",
-			"9:30 Aus CST"
-		],
-		"Australia/Eucla": [
-			"8:35:28 - LMT 1895_11 8:35:28",
-			"8:45 Aus CWST 1943_6 8:45",
-			"8:45 AW CWST"
-		],
-		"Australia/Hobart": [
-			"9:49:16 - LMT 1895_8 9:49:16",
-			"10 - EST 1916_9_1_2 10",
-			"11 - EST 1917_1 11",
-			"10 Aus EST 1967 10",
-			"10 AT EST"
-		],
-		"Australia/Lindeman": [
-			"9:55:56 - LMT 1895 9:55:56",
-			"10 Aus EST 1971 10",
-			"10 AQ EST 1992_6 10",
-			"10 Holiday EST"
-		],
-		"Australia/Lord_Howe": [
-			"10:36:20 - LMT 1895_1 10:36:20",
-			"10 - EST 1981_2 10",
-			"10:30 LH LHST"
-		],
-		"Australia/Melbourne": [
-			"9:39:52 - LMT 1895_1 9:39:52",
-			"10 Aus EST 1971 10",
-			"10 AV EST"
-		],
-		"Australia/Perth": [
-			"7:43:24 - LMT 1895_11 7:43:24",
-			"8 Aus WST 1943_6 8",
-			"8 AW WST"
-		],
-		"Australia/Sydney": [
-			"10:4:52 - LMT 1895_1 10:4:52",
-			"10 Aus EST 1971 10",
-			"10 AN EST"
-		],
-		"CET": [
-			"1 C-Eur CE%sT"
-		],
-		"CST6CDT": [
-			"-6 US C%sT"
-		],
-		"EET": [
-			"2 EU EE%sT"
-		],
-		"EST": [
-			"-5 - EST"
-		],
-		"EST5EDT": [
-			"-5 US E%sT"
-		],
-		"Etc/GMT": [
-			"0 - GMT"
-		],
-		"Etc/GMT+1": [
-			"-1 - GMT+1"
-		],
-		"Etc/GMT+10": [
-			"-10 - GMT+10"
-		],
-		"Etc/GMT+11": [
-			"-11 - GMT+11"
-		],
-		"Etc/GMT+12": [
-			"-12 - GMT+12"
-		],
-		"Etc/GMT+2": [
-			"-2 - GMT+2"
-		],
-		"Etc/GMT+3": [
-			"-3 - GMT+3"
-		],
-		"Etc/GMT+4": [
-			"-4 - GMT+4"
-		],
-		"Etc/GMT+5": [
-			"-5 - GMT+5"
-		],
-		"Etc/GMT+6": [
-			"-6 - GMT+6"
-		],
-		"Etc/GMT+7": [
-			"-7 - GMT+7"
-		],
-		"Etc/GMT+8": [
-			"-8 - GMT+8"
-		],
-		"Etc/GMT+9": [
-			"-9 - GMT+9"
-		],
-		"Etc/GMT-1": [
-			"1 - GMT-1"
-		],
-		"Etc/GMT-10": [
-			"10 - GMT-10"
-		],
-		"Etc/GMT-11": [
-			"11 - GMT-11"
-		],
-		"Etc/GMT-12": [
-			"12 - GMT-12"
-		],
-		"Etc/GMT-13": [
-			"13 - GMT-13"
-		],
-		"Etc/GMT-14": [
-			"14 - GMT-14"
-		],
-		"Etc/GMT-2": [
-			"2 - GMT-2"
-		],
-		"Etc/GMT-3": [
-			"3 - GMT-3"
-		],
-		"Etc/GMT-4": [
-			"4 - GMT-4"
-		],
-		"Etc/GMT-5": [
-			"5 - GMT-5"
-		],
-		"Etc/GMT-6": [
-			"6 - GMT-6"
-		],
-		"Etc/GMT-7": [
-			"7 - GMT-7"
-		],
-		"Etc/GMT-8": [
-			"8 - GMT-8"
-		],
-		"Etc/GMT-9": [
-			"9 - GMT-9"
-		],
-		"Etc/UCT": [
-			"0 - UCT"
-		],
-		"Etc/UTC": [
-			"0 - UTC"
-		],
-		"Europe/Amsterdam": [
-			"0:19:32 - LMT 1835 0:19:32",
-			"0:19:32 Neth %s 1937_6_1 1:19:32",
-			"0:20 Neth NE%sT 1940_4_16_0 0:20",
-			"1 C-Eur CE%sT 1945_3_2_2 1",
-			"1 Neth CE%sT 1977 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Andorra": [
-			"0:6:4 - LMT 1901 0:6:4",
-			"0 - WET 1946_8_30",
-			"1 - CET 1985_2_31_2 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Athens": [
-			"1:34:52 - LMT 1895_8_14 1:34:52",
-			"1:34:52 - AMT 1916_6_28_0_1 1:34:52",
-			"2 Greece EE%sT 1941_3_30 3",
-			"1 Greece CE%sT 1944_3_4 1",
-			"2 Greece EE%sT 1981 2",
-			"2 EU EE%sT"
-		],
-		"Europe/Belgrade": [
-			"1:22 - LMT 1884 1:22",
-			"1 - CET 1941_3_18_23 1",
-			"1 C-Eur CE%sT 1945 1",
-			"1 - CET 1945_4_8_2 1",
-			"2 - CEST 1945_8_16_2 1",
-			"1 - CET 1982_10_27 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Berlin": [
-			"0:53:28 - LMT 1893_3 0:53:28",
-			"1 C-Eur CE%sT 1945_4_24_2 2",
-			"1 SovietZone CE%sT 1946 1",
-			"1 Germany CE%sT 1980 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Brussels": [
-			"0:17:30 - LMT 1880 0:17:30",
-			"0:17:30 - BMT 1892_4_1_12 0:17:30",
-			"0 - WET 1914_10_8",
-			"1 - CET 1916_4_1_0 1",
-			"1 C-Eur CE%sT 1918_10_11_11",
-			"0 Belgium WE%sT 1940_4_20_2",
-			"1 C-Eur CE%sT 1944_8_3 2",
-			"1 Belgium CE%sT 1977 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Bucharest": [
-			"1:44:24 - LMT 1891_9 1:44:24",
-			"1:44:24 - BMT 1931_6_24 1:44:24",
-			"2 Romania EE%sT 1981_2_29_2 2",
-			"2 C-Eur EE%sT 1991 2",
-			"2 Romania EE%sT 1994 2",
-			"2 E-Eur EE%sT 1997 2",
-			"2 EU EE%sT"
-		],
-		"Europe/Budapest": [
-			"1:16:20 - LMT 1890_9 1:16:20",
-			"1 C-Eur CE%sT 1918 1",
-			"1 Hungary CE%sT 1941_3_6_2 1",
-			"1 C-Eur CE%sT 1945 1",
-			"1 Hungary CE%sT 1980_8_28_2 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Chisinau": [
-			"1:55:20 - LMT 1880 1:55:20",
-			"1:55 - CMT 1918_1_15 1:55",
-			"1:44:24 - BMT 1931_6_24 1:44:24",
-			"2 Romania EE%sT 1940_7_15 2",
-			"3 - EEST 1941_6_17 3",
-			"1 C-Eur CE%sT 1944_7_24 2",
-			"3 Russia MSK/MSD 1990 3",
-			"3 - MSK 1990_4_6 3",
-			"2 - EET 1991 2",
-			"2 Russia EE%sT 1992 2",
-			"2 E-Eur EE%sT 1997 2",
-			"2 EU EE%sT"
-		],
-		"Europe/Copenhagen": [
-			"0:50:20 - LMT 1890 0:50:20",
-			"0:50:20 - CMT 1894_0_1 0:50:20",
-			"1 Denmark CE%sT 1942_10_2_2 1",
-			"1 C-Eur CE%sT 1945_3_2_2 1",
-			"1 Denmark CE%sT 1980 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Dublin": [
-			"-0:25 - LMT 1880_7_2 -0:25",
-			"-0:25:21 - DMT 1916_4_21_2 -0:25:21",
-			"0:34:39 - IST 1916_9_1_2 -0:25:21",
-			"0 GB-Eire %s 1921_11_6",
-			"0 GB-Eire GMT/IST 1940_1_25_2",
-			"1 - IST 1946_9_6_2 1",
-			"0 - GMT 1947_2_16_2",
-			"1 - IST 1947_10_2_2 1",
-			"0 - GMT 1948_3_18_2",
-			"0 GB-Eire GMT/IST 1968_9_27 1",
-			"1 - IST 1971_9_31_2",
-			"0 GB-Eire GMT/IST 1996",
-			"0 EU GMT/IST"
-		],
-		"Europe/Gibraltar": [
-			"-0:21:24 - LMT 1880_7_2_0 -0:21:24",
-			"0 GB-Eire %s 1957_3_14_2",
-			"1 - CET 1982 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Helsinki": [
-			"1:39:52 - LMT 1878_4_31 1:39:52",
-			"1:39:52 - HMT 1921_4 1:39:52",
-			"2 Finland EE%sT 1983 2",
-			"2 EU EE%sT"
-		],
-		"Europe/Istanbul": [
-			"1:55:52 - LMT 1880 1:55:52",
-			"1:56:56 - IMT 1910_9 1:56:56",
-			"2 Turkey EE%sT 1978_9_15 3",
-			"3 Turkey TR%sT 1985_3_20 3",
-			"2 Turkey EE%sT 2007 2",
-			"2 EU EE%sT 2011_2_27_1",
-			"2 - EET 2011_2_28_1",
-			"2 EU EE%sT"
-		],
-		"Europe/Kaliningrad": [
-			"1:22 - LMT 1893_3 1:22",
-			"1 C-Eur CE%sT 1945 1",
-			"2 Poland CE%sT 1946 2",
-			"3 Russia MSK/MSD 1991_2_31_2 3",
-			"2 Russia EE%sT 2011_2_27_2 2",
-			"3 - FET"
-		],
-		"Europe/Kiev": [
-			"2:2:4 - LMT 1880 2:2:4",
-			"2:2:4 - KMT 1924_4_2 2:2:4",
-			"2 - EET 1930_5_21 2",
-			"3 - MSK 1941_8_20 3",
-			"1 C-Eur CE%sT 1943_10_6 1",
-			"3 Russia MSK/MSD 1990 3",
-			"3 - MSK 1990_6_1_2 3",
-			"2 - EET 1992 2",
-			"2 E-Eur EE%sT 1995 2",
-			"2 EU EE%sT"
-		],
-		"Europe/Lisbon": [
-			"-0:36:32 - LMT 1884 -0:36:32",
-			"-0:36:32 - LMT 1912_0_1 -0:36:32",
-			"0 Port WE%sT 1966_3_3_2",
-			"1 - CET 1976_8_26_1 1",
-			"0 Port WE%sT 1983_8_25_1",
-			"0 W-Eur WE%sT 1992_8_27_1",
-			"1 EU CE%sT 1996_2_31_1",
-			"0 EU WE%sT"
-		],
-		"Europe/London": [
-			"-0:1:15 - LMT 1847_11_1_0 -0:1:15",
-			"0 GB-Eire %s 1968_9_27 1",
-			"1 - BST 1971_9_31_2",
-			"0 GB-Eire %s 1996",
-			"0 EU GMT/BST"
-		],
-		"Europe/Luxembourg": [
-			"0:24:36 - LMT 1904_5 0:24:36",
-			"1 Lux CE%sT 1918_10_25 1",
-			"0 Lux WE%sT 1929_9_6_2",
-			"0 Belgium WE%sT 1940_4_14_3 1",
-			"1 C-Eur WE%sT 1944_8_18_3 2",
-			"1 Belgium CE%sT 1977 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Madrid": [
-			"-0:14:44 - LMT 1901_0_1_0 -0:14:44",
-			"0 Spain WE%sT 1946_8_30 2",
-			"1 Spain CE%sT 1979 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Malta": [
-			"0:58:4 - LMT 1893_10_2_0 0:58:4",
-			"1 Italy CE%sT 1942_10_2_2 1",
-			"1 C-Eur CE%sT 1945_3_2_2 1",
-			"1 Italy CE%sT 1973_2_31 1",
-			"1 Malta CE%sT 1981 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Minsk": [
-			"1:50:16 - LMT 1880 1:50:16",
-			"1:50 - MMT 1924_4_2 1:50",
-			"2 - EET 1930_5_21 2",
-			"3 - MSK 1941_5_28 3",
-			"1 C-Eur CE%sT 1944_6_3 2",
-			"3 Russia MSK/MSD 1990 3",
-			"3 - MSK 1991_2_31_2 3",
-			"3 - EEST 1991_8_29_2 2",
-			"2 - EET 1992_2_29_0 2",
-			"3 - EEST 1992_8_27_0 2",
-			"2 Russia EE%sT 2011_2_27_2 2",
-			"3 - FET"
-		],
-		"Europe/Monaco": [
-			"0:29:32 - LMT 1891_2_15 0:29:32",
-			"0:9:21 - PMT 1911_2_11 0:9:21",
-			"0 France WE%sT 1945_8_16_3 2",
-			"1 France CE%sT 1977 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Moscow": [
-			"2:30:20 - LMT 1880 2:30:20",
-			"2:30 - MMT 1916_6_3 2:30",
-			"2:30:48 Russia %s 1919_6_1_2 4:30:48",
-			"3 Russia MSK/MSD 1922_9 3",
-			"2 - EET 1930_5_21 2",
-			"3 Russia MSK/MSD 1991_2_31_2 3",
-			"2 Russia EE%sT 1992_0_19_2 2",
-			"3 Russia MSK/MSD 2011_2_27_2 3",
-			"4 - MSK"
-		],
-		"Europe/Oslo": [
-			"0:43 - LMT 1895_0_1 0:43",
-			"1 Norway CE%sT 1940_7_10_23 1",
-			"1 C-Eur CE%sT 1945_3_2_2 1",
-			"1 Norway CE%sT 1980 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Paris": [
-			"0:9:21 - LMT 1891_2_15_0_1 0:9:21",
-			"0:9:21 - PMT 1911_2_11_0_1 0:9:21",
-			"0 France WE%sT 1940_5_14_23 1",
-			"1 C-Eur CE%sT 1944_7_25 2",
-			"0 France WE%sT 1945_8_16_3 2",
-			"1 France CE%sT 1977 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Prague": [
-			"0:57:44 - LMT 1850 0:57:44",
-			"0:57:44 - PMT 1891_9 0:57:44",
-			"1 C-Eur CE%sT 1944_8_17_2 1",
-			"1 Czech CE%sT 1979 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Riga": [
-			"1:36:24 - LMT 1880 1:36:24",
-			"1:36:24 - RMT 1918_3_15_2 1:36:24",
-			"2:36:24 - LST 1918_8_16_3 2:36:24",
-			"1:36:24 - RMT 1919_3_1_2 1:36:24",
-			"2:36:24 - LST 1919_4_22_3 2:36:24",
-			"1:36:24 - RMT 1926_4_11 1:36:24",
-			"2 - EET 1940_7_5 2",
-			"3 - MSK 1941_6 3",
-			"1 C-Eur CE%sT 1944_9_13 1",
-			"3 Russia MSK/MSD 1989_2_26_2 3",
-			"3 - EEST 1989_8_24_2 2",
-			"2 Latvia EE%sT 1997_0_21 2",
-			"2 EU EE%sT 2000_1_29 2",
-			"2 - EET 2001_0_2 2",
-			"2 EU EE%sT"
-		],
-		"Europe/Rome": [
-			"0:49:56 - LMT 1866_8_22 0:49:56",
-			"0:49:56 - RMT 1893_10_1_0 0:49:56",
-			"1 Italy CE%sT 1942_10_2_2 1",
-			"1 C-Eur CE%sT 1944_6 2",
-			"1 Italy CE%sT 1980 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Samara": [
-			"3:20:36 - LMT 1919_6_1_2 3:20:36",
-			"3 - SAMT 1930_5_21 3",
-			"4 - SAMT 1935_0_27 4",
-			"4 Russia KUY%sT 1989_2_26_2 4",
-			"3 Russia KUY%sT 1991_2_31_2 3",
-			"2 Russia KUY%sT 1991_8_29_2 2",
-			"3 - KUYT 1991_9_20_3 3",
-			"4 Russia SAM%sT 2010_2_28_2 4",
-			"3 Russia SAM%sT 2011_2_27_2 3",
-			"4 - SAMT"
-		],
-		"Europe/Simferopol": [
-			"2:16:24 - LMT 1880 2:16:24",
-			"2:16 - SMT 1924_4_2 2:16",
-			"2 - EET 1930_5_21 2",
-			"3 - MSK 1941_10 3",
-			"1 C-Eur CE%sT 1944_3_13 2",
-			"3 Russia MSK/MSD 1990 3",
-			"3 - MSK 1990_6_1_2 3",
-			"2 - EET 1992 2",
-			"2 E-Eur EE%sT 1994_4 3",
-			"3 E-Eur MSK/MSD 1996_2_31_3 3",
-			"4 - MSD 1996_9_27_3 3",
-			"3 Russia MSK/MSD 1997 3",
-			"3 - MSK 1997_2_30_1",
-			"2 EU EE%sT"
-		],
-		"Europe/Sofia": [
-			"1:33:16 - LMT 1880 1:33:16",
-			"1:56:56 - IMT 1894_10_30 1:56:56",
-			"2 - EET 1942_10_2_3 2",
-			"1 C-Eur CE%sT 1945 1",
-			"1 - CET 1945_3_2_3 1",
-			"2 - EET 1979_2_31_23 2",
-			"2 Bulg EE%sT 1982_8_26_2 3",
-			"2 C-Eur EE%sT 1991 2",
-			"2 E-Eur EE%sT 1997 2",
-			"2 EU EE%sT"
-		],
-		"Europe/Stockholm": [
-			"1:12:12 - LMT 1879_0_1 1:12:12",
-			"1:0:14 - SET 1900_0_1 1:0:14",
-			"1 - CET 1916_4_14_23 1",
-			"2 - CEST 1916_9_1_01 2",
-			"1 - CET 1980 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Tallinn": [
-			"1:39 - LMT 1880 1:39",
-			"1:39 - TMT 1918_1 1:39",
-			"1 C-Eur CE%sT 1919_6 1",
-			"1:39 - TMT 1921_4 1:39",
-			"2 - EET 1940_7_6 2",
-			"3 - MSK 1941_8_15 3",
-			"1 C-Eur CE%sT 1944_8_22 2",
-			"3 Russia MSK/MSD 1989_2_26_2 3",
-			"3 - EEST 1989_8_24_2 2",
-			"2 C-Eur EE%sT 1998_8_22 3",
-			"2 EU EE%sT 1999_10_1 3",
-			"2 - EET 2002_1_21 2",
-			"2 EU EE%sT"
-		],
-		"Europe/Tirane": [
-			"1:19:20 - LMT 1914 1:19:20",
-			"1 - CET 1940_5_16 1",
-			"1 Albania CE%sT 1984_6 2",
-			"1 EU CE%sT"
-		],
-		"Europe/Uzhgorod": [
-			"1:29:12 - LMT 1890_9 1:29:12",
-			"1 - CET 1940 1",
-			"1 C-Eur CE%sT 1944_9 2",
-			"2 - CEST 1944_9_26 2",
-			"1 - CET 1945_5_29 1",
-			"3 Russia MSK/MSD 1990 3",
-			"3 - MSK 1990_6_1_2 3",
-			"1 - CET 1991_2_31_3 1",
-			"2 - EET 1992 2",
-			"2 E-Eur EE%sT 1995 2",
-			"2 EU EE%sT"
-		],
-		"Europe/Vaduz": [
-			"0:38:4 - LMT 1894_5 0:38:4",
-			"1 - CET 1981 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Vienna": [
-			"1:5:21 - LMT 1893_3 1:5:21",
-			"1 C-Eur CE%sT 1920 1",
-			"1 Austria CE%sT 1940_3_1_2 1",
-			"1 C-Eur CE%sT 1945_3_2_2 1",
-			"2 - CEST 1945_3_12_2 1",
-			"1 - CET 1946 1",
-			"1 Austria CE%sT 1981 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Vilnius": [
-			"1:41:16 - LMT 1880 1:41:16",
-			"1:24 - WMT 1917 1:24",
-			"1:35:36 - KMT 1919_9_10 1:35:36",
-			"1 - CET 1920_6_12 1",
-			"2 - EET 1920_9_9 2",
-			"1 - CET 1940_7_3 1",
-			"3 - MSK 1941_5_24 3",
-			"1 C-Eur CE%sT 1944_7 2",
-			"3 Russia MSK/MSD 1991_2_31_2 3",
-			"3 - EEST 1991_8_29_2 2",
-			"2 C-Eur EE%sT 1998 2",
-			"2 - EET 1998_2_29_1",
-			"1 EU CE%sT 1999_9_31_1",
-			"2 - EET 2003_0_1 2",
-			"2 EU EE%sT"
-		],
-		"Europe/Volgograd": [
-			"2:57:40 - LMT 1920_0_3 2:57:40",
-			"3 - TSAT 1925_3_6 3",
-			"3 - STAT 1930_5_21 3",
-			"4 - STAT 1961_10_11 4",
-			"4 Russia VOL%sT 1989_2_26_2 4",
-			"3 Russia VOL%sT 1991_2_31_2 3",
-			"4 - VOLT 1992_2_29_2 4",
-			"3 Russia VOL%sT 2011_2_27_2 3",
-			"4 - VOLT"
-		],
-		"Europe/Warsaw": [
-			"1:24 - LMT 1880 1:24",
-			"1:24 - WMT 1915_7_5 1:24",
-			"1 C-Eur CE%sT 1918_8_16_3 2",
-			"2 Poland EE%sT 1922_5 2",
-			"1 Poland CE%sT 1940_5_23_2 1",
-			"1 C-Eur CE%sT 1944_9 2",
-			"1 Poland CE%sT 1977 1",
-			"1 W-Eur CE%sT 1988 1",
-			"1 EU CE%sT"
-		],
-		"Europe/Zaporozhye": [
-			"2:20:40 - LMT 1880 2:20:40",
-			"2:20 - CUT 1924_4_2 2:20",
-			"2 - EET 1930_5_21 2",
-			"3 - MSK 1941_7_25 3",
-			"1 C-Eur CE%sT 1943_9_25 1",
-			"3 Russia MSK/MSD 1991_2_31_2 3",
-			"2 E-Eur EE%sT 1995 2",
-			"2 EU EE%sT"
-		],
-		"Europe/Zurich": [
-			"0:34:8 - LMT 1848_8_12 0:34:8",
-			"0:29:44 - BMT 1894_5 0:29:44",
-			"1 Swiss CE%sT 1981 1",
-			"1 EU CE%sT"
-		],
-		"HST": [
-			"-10 - HST"
-		],
-		"Indian/Antananarivo": [
-			"3:10:4 - LMT 1911_6 3:10:4",
-			"3 - EAT 1954_1_27_23 3",
-			"4 - EAST 1954_4_29_23 3",
-			"3 - EAT"
-		],
-		"Indian/Chagos": [
-			"4:49:40 - LMT 1907 4:49:40",
-			"5 - IOT 1996 5",
-			"6 - IOT"
-		],
-		"Indian/Christmas": [
-			"7:2:52 - LMT 1895_1 7:2:52",
-			"7 - CXT"
-		],
-		"Indian/Cocos": [
-			"6:27:40 - LMT 1900 6:27:40",
-			"6:30 - CCT"
-		],
-		"Indian/Comoro": [
-			"2:53:4 - LMT 1911_6 2:53:4",
-			"3 - EAT"
-		],
-		"Indian/Kerguelen": [
-			"0 - zzz 1950",
-			"5 - TFT"
-		],
-		"Indian/Mahe": [
-			"3:41:48 - LMT 1906_5 3:41:48",
-			"4 - SCT"
-		],
-		"Indian/Maldives": [
-			"4:54 - LMT 1880 4:54",
-			"4:54 - MMT 1960 4:54",
-			"5 - MVT"
-		],
-		"Indian/Mauritius": [
-			"3:50 - LMT 1907 3:50",
-			"4 Mauritius MU%sT"
-		],
-		"Indian/Mayotte": [
-			"3:0:56 - LMT 1911_6 3:0:56",
-			"3 - EAT"
-		],
-		"Indian/Reunion": [
-			"3:41:52 - LMT 1911_5 3:41:52",
-			"4 - RET"
-		],
-		"MET": [
-			"1 C-Eur ME%sT"
-		],
-		"MST": [
-			"-7 - MST"
-		],
-		"MST7MDT": [
-			"-7 US M%sT"
-		],
-		"PST8PDT": [
-			"-8 US P%sT"
-		],
-		"Pacific/Apia": [
-			"12:33:4 - LMT 1879_6_5 12:33:4",
-			"-11:26:56 - LMT 1911 -11:26:56",
-			"-11:30 - SAMT 1950 -11:30",
-			"-11 - WST 2010_8_26 -11",
-			"-10 - WSDT 2011_3_2_4 -10",
-			"-11 - WST 2011_8_24_3 -11",
-			"-10 - WSDT 2011_11_30 -10",
-			"14 - WSDT 2012_3_1_4 14",
-			"13 WS WS%sT"
-		],
-		"Pacific/Auckland": [
-			"11:39:4 - LMT 1868_10_2 11:39:4",
-			"11:30 NZ NZ%sT 1946_0_1 12",
-			"12 NZ NZ%sT"
-		],
-		"Pacific/Chatham": [
-			"12:13:48 - LMT 1957_0_1 12:13:48",
-			"12:45 Chatham CHA%sT"
-		],
-		"Pacific/Chuuk": [
-			"10:7:8 - LMT 1901 10:7:8",
-			"10 - CHUT"
-		],
-		"Pacific/Easter": [
-			"-7:17:44 - LMT 1890 -7:17:44",
-			"-7:17:28 - EMT 1932_8 -7:17:28",
-			"-7 Chile EAS%sT 1982_2_13_21 -6",
-			"-6 Chile EAS%sT"
-		],
-		"Pacific/Efate": [
-			"11:13:16 - LMT 1912_0_13 11:13:16",
-			"11 Vanuatu VU%sT"
-		],
-		"Pacific/Enderbury": [
-			"-11:24:20 - LMT 1901 -11:24:20",
-			"-12 - PHOT 1979_9 -12",
-			"-11 - PHOT 1995 -11",
-			"13 - PHOT"
-		],
-		"Pacific/Fakaofo": [
-			"-11:24:56 - LMT 1901 -11:24:56",
-			"-11 - TKT 2011_11_30 -11",
-			"13 - TKT"
-		],
-		"Pacific/Fiji": [
-			"11:55:44 - LMT 1915_9_26 11:55:44",
-			"12 Fiji FJ%sT"
-		],
-		"Pacific/Funafuti": [
-			"11:56:52 - LMT 1901 11:56:52",
-			"12 - TVT"
-		],
-		"Pacific/Galapagos": [
-			"-5:58:24 - LMT 1931 -5:58:24",
-			"-5 - ECT 1986 -5",
-			"-6 - GALT"
-		],
-		"Pacific/Gambier": [
-			"-8:59:48 - LMT 1912_9 -8:59:48",
-			"-9 - GAMT"
-		],
-		"Pacific/Guadalcanal": [
-			"10:39:48 - LMT 1912_9 10:39:48",
-			"11 - SBT"
-		],
-		"Pacific/Guam": [
-			"-14:21 - LMT 1844_11_31 -14:21",
-			"9:39 - LMT 1901 9:39",
-			"10 - GST 2000_11_23 10",
-			"10 - ChST"
-		],
-		"Pacific/Honolulu": [
-			"-10:31:26 - LMT 1896_0_13_12 -10:31:26",
-			"-10:30 - HST 1933_3_30_2 -10:30",
-			"-9:30 - HDT 1933_4_21_12 -9:30",
-			"-10:30 - HST 1942_1_09_2 -10:30",
-			"-9:30 - HDT 1945_8_30_2 -9:30",
-			"-10:30 - HST 1947_5_8_2 -10:30",
-			"-10 - HST"
-		],
-		"Pacific/Johnston": [
-			"-10 - HST"
-		],
-		"Pacific/Kiritimati": [
-			"-10:29:20 - LMT 1901 -10:29:20",
-			"-10:40 - LINT 1979_9 -10:40",
-			"-10 - LINT 1995 -10",
-			"14 - LINT"
-		],
-		"Pacific/Kosrae": [
-			"10:51:56 - LMT 1901 10:51:56",
-			"11 - KOST 1969_9 11",
-			"12 - KOST 1999 12",
-			"11 - KOST"
-		],
-		"Pacific/Kwajalein": [
-			"11:9:20 - LMT 1901 11:9:20",
-			"11 - MHT 1969_9 11",
-			"-12 - KWAT 1993_7_20 -12",
-			"12 - MHT"
-		],
-		"Pacific/Majuro": [
-			"11:24:48 - LMT 1901 11:24:48",
-			"11 - MHT 1969_9 11",
-			"12 - MHT"
-		],
-		"Pacific/Marquesas": [
-			"-9:18 - LMT 1912_9 -9:18",
-			"-9:30 - MART"
-		],
-		"Pacific/Midway": [
-			"-11:49:28 - LMT 1901 -11:49:28",
-			"-11 - NST 1956_5_3 -11",
-			"-10 - NDT 1956_8_2 -10",
-			"-11 - NST 1967_3 -11",
-			"-11 - BST 1983_10_30 -11",
-			"-11 - SST"
-		],
-		"Pacific/Nauru": [
-			"11:7:40 - LMT 1921_0_15 11:7:40",
-			"11:30 - NRT 1942_2_15 11:30",
-			"9 - JST 1944_7_15 9",
-			"11:30 - NRT 1979_4 11:30",
-			"12 - NRT"
-		],
-		"Pacific/Niue": [
-			"-11:19:40 - LMT 1901 -11:19:40",
-			"-11:20 - NUT 1951 -11:20",
-			"-11:30 - NUT 1978_9_1 -11:30",
-			"-11 - NUT"
-		],
-		"Pacific/Norfolk": [
-			"11:11:52 - LMT 1901 11:11:52",
-			"11:12 - NMT 1951 11:12",
-			"11:30 - NFT"
-		],
-		"Pacific/Noumea": [
-			"11:5:48 - LMT 1912_0_13 11:5:48",
-			"11 NC NC%sT"
-		],
-		"Pacific/Pago_Pago": [
-			"12:37:12 - LMT 1879_6_5 12:37:12",
-			"-11:22:48 - LMT 1911 -11:22:48",
-			"-11:30 - SAMT 1950 -11:30",
-			"-11 - NST 1967_3 -11",
-			"-11 - BST 1983_10_30 -11",
-			"-11 - SST"
-		],
-		"Pacific/Palau": [
-			"8:57:56 - LMT 1901 8:57:56",
-			"9 - PWT"
-		],
-		"Pacific/Pitcairn": [
-			"-8:40:20 - LMT 1901 -8:40:20",
-			"-8:30 - PNT 1998_3_27_00 -8:30",
-			"-8 - PST"
-		],
-		"Pacific/Pohnpei": [
-			"10:32:52 - LMT 1901 10:32:52",
-			"11 - PONT"
-		],
-		"Pacific/Port_Moresby": [
-			"9:48:40 - LMT 1880 9:48:40",
-			"9:48:32 - PMMT 1895 9:48:32",
-			"10 - PGT"
-		],
-		"Pacific/Rarotonga": [
-			"-10:39:4 - LMT 1901 -10:39:4",
-			"-10:30 - CKT 1978_10_12 -10:30",
-			"-10 Cook CK%sT"
-		],
-		"Pacific/Saipan": [
-			"-14:17 - LMT 1844_11_31 -14:17",
-			"9:43 - LMT 1901 9:43",
-			"9 - MPT 1969_9 9",
-			"10 - MPT 2000_11_23 10",
-			"10 - ChST"
-		],
-		"Pacific/Tahiti": [
-			"-9:58:16 - LMT 1912_9 -9:58:16",
-			"-10 - TAHT"
-		],
-		"Pacific/Tarawa": [
-			"11:32:4 - LMT 1901 11:32:4",
-			"12 - GILT"
-		],
-		"Pacific/Tongatapu": [
-			"12:19:20 - LMT 1901 12:19:20",
-			"12:20 - TOT 1941 12:20",
-			"13 - TOT 1999 13",
-			"13 Tonga TO%sT"
-		],
-		"Pacific/Wake": [
-			"11:6:28 - LMT 1901 11:6:28",
-			"12 - WAKT"
-		],
-		"Pacific/Wallis": [
-			"12:15:20 - LMT 1901 12:15:20",
-			"12 - WFT"
-		],
-		"WET": [
-			"0 EU WE%sT"
-		]
-	}
+},{"./timezone.jsx":4,"react":155}],6:[function(require,module,exports){
+module.exports={
+	"version": "2014j",
+	"zones": [
+		"Africa/Abidjan|LMT GMT|g.8 0|01|-2ldXH.Q",
+		"Africa/Accra|LMT GMT GHST|.Q 0 -k|012121212121212121212121212121212121212121212121|-26BbX.8 6tzX.8 MnE 1BAk MnE 1BAk MnE 1BAk MnE 1C0k MnE 1BAk MnE 1BAk MnE 1BAk MnE 1C0k MnE 1BAk MnE 1BAk MnE 1BAk MnE 1C0k MnE 1BAk MnE 1BAk MnE 1BAk MnE 1C0k MnE 1BAk MnE 1BAk MnE 1BAk MnE 1C0k MnE 1BAk MnE 1BAk MnE",
+		"Africa/Addis_Ababa|LMT EAT BEAT BEAUT|-2r.g -30 -2u -2J|01231|-1F3Cr.g 3Dzr.g okMu MFXJ",
+		"Africa/Algiers|PMT WET WEST CET CEST|-9.l 0 -10 -10 -20|0121212121212121343431312123431213|-2nco9.l cNb9.l HA0 19A0 1iM0 11c0 1oo0 Wo0 1rc0 QM0 1EM0 UM0 DA0 Imo0 rd0 De0 9Xz0 1fb0 1ap0 16K0 2yo0 mEp0 hwL0 jxA0 11A0 dDd0 17b0 11B0 1cN0 2Dy0 1cN0 1fB0 1cL0",
+		"Africa/Bangui|LMT WAT|-d.A -10|01|-22y0d.A",
+		"Africa/Bissau|LMT WAT GMT|12.k 10 0|012|-2ldWV.E 2xonV.E",
+		"Africa/Blantyre|LMT CAT|-2a.k -20|01|-2GJea.k",
+		"Africa/Cairo|EET EEST|-20 -30|010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-1bIO0 vb0 1ip0 11z0 1iN0 1nz0 12p0 1pz0 10N0 1pz0 16p0 1jz0 s3d0 Vz0 1oN0 11b0 1oO0 10N0 1pz0 10N0 1pb0 10N0 1pb0 10N0 1pb0 10N0 1pz0 10N0 1pb0 10N0 1pb0 11d0 1oL0 11d0 1pb0 11d0 1oL0 11d0 1oL0 11d0 1oL0 11d0 1pb0 11d0 1oL0 11d0 1oL0 11d0 1oL0 11d0 1pb0 11d0 1oL0 11d0 1oL0 11d0 1oL0 11d0 1pb0 11d0 1oL0 11d0 1WL0 rd0 1Rz0 wp0 1pb0 11d0 1oL0 11d0 1oL0 11d0 1oL0 11d0 1pb0 11d0 1qL0 Xd0 1oL0 11d0 1oL0 11d0 1pb0 11d0 1oL0 11d0 1oL0 11d0 1ny0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 WL0 1qN0 Rb0 1wp0 On0 1zd0 Lz0 1EN0 Fb0 c10 8n0 8Nd0 gL0 e10 mn0 1o10 jz0 gN0 pb0 1qN0 dX0 e10 xz0 1o10 bb0 e10 An0 1o10 5z0 e10 FX0 1o10 2L0 e10 IL0 1C10 Lz0 1wp0 TX0 1qN0 WL0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0",
+		"Africa/Casablanca|LMT WET WEST CET|u.k 0 -10 -10|012121212121212121312121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2gMnt.E 130Lt.E rb0 Dd0 dVb0 b6p0 TX0 EoB0 LL0 gnd0 rz0 43d0 AL0 1Nd0 XX0 1Cp0 pz0 dEp0 4mn0 SyN0 AL0 1Nd0 wn0 1FB0 Db0 1zd0 Lz0 1Nf0 wM0 co0 go0 1o00 s00 dA0 vc0 11A0 A00 e00 y00 11A0 uo0 e00 DA0 11A0 rA0 e00 Jc0 WM0 m00 gM0 M00 WM0 jc0 e00 RA0 11A0 dA0 e00 Uo0 11A0 800 gM0 Xc0 11A0 5c0 e00 17A0 WM0 2o0 e00 1ao0 19A0 1g00 16M0 1iM0 1400 1lA0 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qo0 1200 1kM0 14M0 1i00",
+		"Africa/Ceuta|WET WEST CET CEST|0 -10 -10 -20|010101010101010101010232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232|-25KN0 11z0 drd0 18o0 3I00 17c0 1fA0 1a00 1io0 1a00 1y7p0 LL0 gnd0 rz0 43d0 AL0 1Nd0 XX0 1Cp0 pz0 dEp0 4VB0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Africa/El_Aaiun|LMT WAT WET WEST|Q.M 10 0 -10|0123232323232323232323232323232323232323232323232323232323232323232323232323232323232323232|-1rDz7.c 1GVA7.c 6L0 AL0 1Nd0 XX0 1Cp0 pz0 1cBB0 AL0 1Nd0 wn0 1FB0 Db0 1zd0 Lz0 1Nf0 wM0 co0 go0 1o00 s00 dA0 vc0 11A0 A00 e00 y00 11A0 uo0 e00 DA0 11A0 rA0 e00 Jc0 WM0 m00 gM0 M00 WM0 jc0 e00 RA0 11A0 dA0 e00 Uo0 11A0 800 gM0 Xc0 11A0 5c0 e00 17A0 WM0 2o0 e00 1ao0 19A0 1g00 16M0 1iM0 1400 1lA0 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qo0 1200 1kM0 14M0 1i00",
+		"Africa/Johannesburg|SAST SAST SAST|-1u -20 -30|012121|-2GJdu 1Ajdu 1cL0 1cN0 1cL0",
+		"Africa/Juba|LMT CAT CAST EAT|-2a.8 -20 -30 -30|01212121212121212121212121212121213|-1yW2a.8 1zK0a.8 16L0 1iN0 17b0 1jd0 17b0 1ip0 17z0 1i10 17X0 1hB0 18n0 1hd0 19b0 1gp0 19z0 1iN0 17b0 1ip0 17z0 1i10 18n0 1hd0 18L0 1gN0 19b0 1gp0 19z0 1iN0 17z0 1i10 17X0 yGd0",
+		"Africa/Monrovia|MMT LRT GMT|H.8 I.u 0|012|-23Lzg.Q 29s01.m",
+		"Africa/Ndjamena|LMT WAT WAST|-10.c -10 -20|0121|-2le10.c 2J3c0.c Wn0",
+		"Africa/Tripoli|LMT CET CEST EET|-Q.I -10 -20 -20|012121213121212121212121213123123|-21JcQ.I 1hnBQ.I vx0 4iP0 xx0 4eN0 Bb0 7ip0 U0n0 A10 1db0 1cN0 1db0 1dd0 1db0 1eN0 1bb0 1e10 1cL0 1c10 1db0 1dd0 1db0 1cN0 1db0 1q10 fAn0 1ep0 1db0 AKq0 TA0 1o00",
+		"Africa/Tunis|PMT CET CEST|-9.l -10 -20|0121212121212121212121212121212121|-2nco9.l 18pa9.l 1qM0 DA0 3Tc0 11B0 1ze0 WM0 7z0 3d0 14L0 1cN0 1f90 1ar0 16J0 1gXB0 WM0 1rA0 11c0 nwo0 Ko0 1cM0 1cM0 1rA0 10M0 zuM0 10N0 1aN0 1qM0 WM0 1qM0 11A0 1o00",
+		"Africa/Windhoek|SWAT SAST SAST CAT WAT WAST|-1u -20 -30 -20 -10 -20|012134545454545454545454545454545454545454545454545454545454545454545454545454545454545454545|-2GJdu 1Ajdu 1cL0 1SqL0 9NA0 11D0 1nX0 11B0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1qL0 11B0 1nX0 11B0",
+		"America/Adak|NST NWT NPT BST BDT AHST HAST HADT|b0 a0 a0 b0 a0 a0 a0 90|012034343434343434343434343434343456767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676|-17SX0 8wW0 iB0 Qlb0 52O0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 cm0 10q0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Anchorage|CAT CAWT CAPT AHST AHDT YST AKST AKDT|a0 90 90 a0 90 90 90 80|012034343434343434343434343434343456767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676|-17T00 8wX0 iA0 Qlb0 52O0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 cm0 10q0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Anguilla|LMT AST|46.4 40|01|-2kNvR.U",
+		"America/Antigua|LMT EST AST|47.c 50 40|012|-2kNvQ.M 1yxAQ.M",
+		"America/Araguaina|LMT BRT BRST|3c.M 30 20|0121212121212121212121212121212121212121212121212121|-2glwL.c HdKL.c 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 1EN0 FX0 1HB0 Lz0 dMN0 Lz0 1zd0 Rb0 1wN0 Wn0 1tB0 Rb0 1tB0 WL0 1tB0 Rb0 1zd0 On0 1HB0 FX0 ny10 Lz0",
+		"America/Argentina/Buenos_Aires|CMT ART ARST ART ARST|4g.M 40 30 30 20|0121212121212121212121212121212121212121213434343434343234343|-20UHH.c pKnH.c Mn0 1iN0 Tb0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 MN0 2jz0 MN0 4lX0 u10 5Lb0 1pB0 Fnz0 u10 uL0 1vd0 SL0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 zvd0 Bz0 1tB0 TX0 1wp0 Rb0 1wp0 Rb0 1wp0 TX0 g0p0 10M0 j3c0 uL0 1qN0 WL0",
+		"America/Argentina/Catamarca|CMT ART ARST ART ARST WART|4g.M 40 30 30 20 40|0121212121212121212121212121212121212121213434343454343235343|-20UHH.c pKnH.c Mn0 1iN0 Tb0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 MN0 2jz0 MN0 4lX0 u10 5Lb0 1pB0 Fnz0 u10 uL0 1vd0 SL0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 zvd0 Bz0 1tB0 TX0 1wp0 Rb0 1wq0 Ra0 1wp0 TX0 g0p0 10M0 ako0 7B0 8zb0 uL0",
+		"America/Argentina/Cordoba|CMT ART ARST ART ARST WART|4g.M 40 30 30 20 40|0121212121212121212121212121212121212121213434343454343234343|-20UHH.c pKnH.c Mn0 1iN0 Tb0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 MN0 2jz0 MN0 4lX0 u10 5Lb0 1pB0 Fnz0 u10 uL0 1vd0 SL0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 zvd0 Bz0 1tB0 TX0 1wp0 Rb0 1wq0 Ra0 1wp0 TX0 g0p0 10M0 j3c0 uL0 1qN0 WL0",
+		"America/Argentina/Jujuy|CMT ART ARST ART ARST WART WARST|4g.M 40 30 30 20 40 30|01212121212121212121212121212121212121212134343456543432343|-20UHH.c pKnH.c Mn0 1iN0 Tb0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 MN0 2jz0 MN0 4lX0 u10 5Lb0 1pB0 Fnz0 u10 uL0 1vd0 SL0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 zvd0 Bz0 1tB0 TX0 1ze0 TX0 1ld0 WK0 1wp0 TX0 g0p0 10M0 j3c0 uL0",
+		"America/Argentina/La_Rioja|CMT ART ARST ART ARST WART|4g.M 40 30 30 20 40|01212121212121212121212121212121212121212134343434534343235343|-20UHH.c pKnH.c Mn0 1iN0 Tb0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 MN0 2jz0 MN0 4lX0 u10 5Lb0 1pB0 Fnz0 u10 uL0 1vd0 SL0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 zvd0 Bz0 1tB0 TX0 1wp0 Qn0 qO0 16n0 Rb0 1wp0 TX0 g0p0 10M0 ako0 7B0 8zb0 uL0",
+		"America/Argentina/Mendoza|CMT ART ARST ART ARST WART WARST|4g.M 40 30 30 20 40 30|0121212121212121212121212121212121212121213434345656543235343|-20UHH.c pKnH.c Mn0 1iN0 Tb0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 MN0 2jz0 MN0 4lX0 u10 5Lb0 1pB0 Fnz0 u10 uL0 1vd0 SL0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 zvd0 Bz0 1tB0 TX0 1u20 SL0 1vd0 Tb0 1wp0 TW0 g0p0 10M0 agM0 Op0 7TX0 uL0",
+		"America/Argentina/Rio_Gallegos|CMT ART ARST ART ARST WART|4g.M 40 30 30 20 40|0121212121212121212121212121212121212121213434343434343235343|-20UHH.c pKnH.c Mn0 1iN0 Tb0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 MN0 2jz0 MN0 4lX0 u10 5Lb0 1pB0 Fnz0 u10 uL0 1vd0 SL0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 zvd0 Bz0 1tB0 TX0 1wp0 Rb0 1wp0 Rb0 1wp0 TX0 g0p0 10M0 ako0 7B0 8zb0 uL0",
+		"America/Argentina/Salta|CMT ART ARST ART ARST WART|4g.M 40 30 30 20 40|01212121212121212121212121212121212121212134343434543432343|-20UHH.c pKnH.c Mn0 1iN0 Tb0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 MN0 2jz0 MN0 4lX0 u10 5Lb0 1pB0 Fnz0 u10 uL0 1vd0 SL0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 zvd0 Bz0 1tB0 TX0 1wp0 Rb0 1wq0 Ra0 1wp0 TX0 g0p0 10M0 j3c0 uL0",
+		"America/Argentina/San_Juan|CMT ART ARST ART ARST WART|4g.M 40 30 30 20 40|01212121212121212121212121212121212121212134343434534343235343|-20UHH.c pKnH.c Mn0 1iN0 Tb0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 MN0 2jz0 MN0 4lX0 u10 5Lb0 1pB0 Fnz0 u10 uL0 1vd0 SL0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 zvd0 Bz0 1tB0 TX0 1wp0 Qn0 qO0 16n0 Rb0 1wp0 TX0 g0p0 10M0 ak00 m10 8lb0 uL0",
+		"America/Argentina/San_Luis|CMT ART ARST ART ARST WART WARST|4g.M 40 30 30 20 40 30|01212121212121212121212121212121212121212134343456536353465653|-20UHH.c pKnH.c Mn0 1iN0 Tb0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 MN0 2jz0 MN0 4lX0 u10 5Lb0 1pB0 Fnz0 u10 uL0 1vd0 SL0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 zvd0 Bz0 1tB0 XX0 1q20 SL0 AN0 kin0 10M0 ak00 m10 8lb0 8L0 jd0 1qN0 WL0 1qN0",
+		"America/Argentina/Tucuman|CMT ART ARST ART ARST WART|4g.M 40 30 30 20 40|012121212121212121212121212121212121212121343434345434323534343|-20UHH.c pKnH.c Mn0 1iN0 Tb0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 MN0 2jz0 MN0 4lX0 u10 5Lb0 1pB0 Fnz0 u10 uL0 1vd0 SL0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 zvd0 Bz0 1tB0 TX0 1wp0 Rb0 1wq0 Ra0 1wp0 TX0 g0p0 10M0 ako0 4N0 8BX0 uL0 1qN0 WL0",
+		"America/Argentina/Ushuaia|CMT ART ARST ART ARST WART|4g.M 40 30 30 20 40|0121212121212121212121212121212121212121213434343434343235343|-20UHH.c pKnH.c Mn0 1iN0 Tb0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 1C10 LX0 1C10 LX0 1C10 LX0 1C10 Mn0 MN0 2jz0 MN0 4lX0 u10 5Lb0 1pB0 Fnz0 u10 uL0 1vd0 SL0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 zvd0 Bz0 1tB0 TX0 1wp0 Rb0 1wp0 Rb0 1wp0 TX0 g0p0 10M0 ajA0 8p0 8zb0 uL0",
+		"America/Aruba|LMT ANT AST|4z.L 4u 40|012|-2kV7o.d 28KLS.d",
+		"America/Asuncion|AMT PYT PYT PYST|3O.E 40 30 30|012131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313|-1x589.k 1DKM9.k 3CL0 3Dd0 10L0 1pB0 10n0 1pB0 10n0 1pB0 1cL0 1dd0 1db0 1dd0 1cL0 1dd0 1cL0 1dd0 1cL0 1dd0 1db0 1dd0 1cL0 1dd0 1cL0 1dd0 1cL0 1dd0 1db0 1dd0 1cL0 1lB0 14n0 1dd0 1cL0 1fd0 WL0 1rd0 1aL0 1dB0 Xz0 1qp0 Xb0 1qN0 10L0 1rB0 TX0 1tB0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1qN0 1cL0 WN0 1qL0 11B0 1nX0 1ip0 WL0 1qN0 WL0 1qN0 WL0 1tB0 TX0 1tB0 TX0 1tB0 19X0 1a10 1fz0 1a10 1fz0 1cN0 17b0 1ip0 17b0 1ip0 17b0 1ip0 19X0 1fB0 19X0 1fB0 19X0 1ip0 17b0 1ip0 17b0 1ip0 19X0 1fB0 19X0 1fB0 19X0 1fB0 19X0 1ip0 17b0 1ip0 17b0 1ip0 19X0 1fB0 19X0 1fB0 19X0 1ip0 17b0 1ip0 17b0 1ip0 19X0 1fB0 19X0 1fB0 19X0 1fB0 19X0 1ip0 17b0 1ip0 17b0 1ip0",
+		"America/Atikokan|CST CDT CWT CPT EST|60 50 50 50 50|0101234|-25TQ0 1in0 Rnb0 3je0 8x30 iw0",
+		"America/Bahia|LMT BRT BRST|2y.4 30 20|01212121212121212121212121212121212121212121212121212121212121|-2glxp.U HdLp.U 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 1EN0 FX0 1HB0 Lz0 1EN0 Lz0 1C10 IL0 1HB0 Db0 1HB0 On0 1zd0 On0 1zd0 Lz0 1zd0 Rb0 1wN0 Wn0 1tB0 Rb0 1tB0 WL0 1tB0 Rb0 1zd0 On0 1HB0 FX0 l5B0 Rb0",
+		"America/Bahia_Banderas|LMT MST CST PST MDT CDT|71 70 60 80 60 50|0121212131414141414141414141414141414152525252525252525252525252525252525252525252525252525252|-1UQF0 deL0 8lc0 17c0 10M0 1dd0 otX0 gmN0 P2N0 13Vd0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 1fB0 WL0 1fB0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nW0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0",
+		"America/Barbados|LMT BMT AST ADT|3W.t 3W.t 40 30|01232323232|-1Q0I1.v jsM0 1ODC1.v IL0 1ip0 17b0 1ip0 17b0 1ld0 13b0",
+		"America/Belem|LMT BRT BRST|3d.U 30 20|012121212121212121212121212121|-2glwK.4 HdKK.4 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0",
+		"America/Belize|LMT CST CHDT CDT|5Q.M 60 5u 50|01212121212121212121212121212121212121212121212121213131|-2kBu7.c fPA7.c Onu 1zcu Rbu 1wou Rbu 1wou Rbu 1zcu Onu 1zcu Onu 1zcu Rbu 1wou Rbu 1wou Rbu 1wou Rbu 1zcu Onu 1zcu Onu 1zcu Rbu 1wou Rbu 1wou Rbu 1zcu Onu 1zcu Onu 1zcu Onu 1zcu Rbu 1wou Rbu 1wou Rbu 1zcu Onu 1zcu Onu 1zcu Rbu 1wou Rbu 1f0Mu qn0 lxB0 mn0",
+		"America/Blanc-Sablon|AST ADT AWT APT|40 30 30 30|010230|-25TS0 1in0 UGp0 8x50 iu0",
+		"America/Boa_Vista|LMT AMT AMST|42.E 40 30|0121212121212121212121212121212121|-2glvV.k HdKV.k 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 smp0 WL0 1tB0 2L0",
+		"America/Bogota|BMT COT COST|4U.g 50 40|0121|-2eb73.I 38yo3.I 2en0",
+		"America/Boise|PST PDT MST MWT MPT MDT|80 70 70 60 60 60|0101023425252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252|-261q0 1nX0 11B0 1nX0 8C10 JCL0 8x20 ix0 QwN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 Dd0 1Kn0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Cambridge_Bay|zzz MST MWT MPT MDDT MDT CST CDT EST|0 70 60 60 50 60 60 50 50|0123141515151515151515151515151515151515151515678651515151515151515151515151515151515151515151515151515151515151515151515151|-21Jc0 RO90 8x20 ix0 LCL0 1fA0 zgO0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11A0 1nX0 2K0 WQ0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Campo_Grande|LMT AMT AMST|3C.s 40 30|012121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212|-2glwl.w HdLl.w 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 1EN0 FX0 1HB0 Lz0 1EN0 Lz0 1C10 IL0 1HB0 Db0 1HB0 On0 1zd0 On0 1zd0 Lz0 1zd0 Rb0 1wN0 Wn0 1tB0 Rb0 1tB0 WL0 1tB0 Rb0 1zd0 On0 1HB0 FX0 1C10 Lz0 1Ip0 HX0 1zd0 On0 1HB0 IL0 1wp0 On0 1C10 Lz0 1C10 On0 1zd0 On0 1zd0 Rb0 1zd0 Lz0 1C10 Lz0 1C10 On0 1zd0 On0 1zd0 On0 1zd0 On0 1C10 Lz0 1C10 Lz0 1C10 On0 1zd0 On0 1zd0 Rb0 1wp0 On0 1C10 Lz0 1C10 On0 1zd0 On0 1zd0 On0 1zd0 On0 1C10 Lz0 1C10 Lz0 1C10 Lz0 1C10 On0 1zd0 Rb0 1wp0 On0 1C10 Lz0 1C10 On0 1zd0",
+		"America/Cancun|LMT CST EST EDT CDT|5L.4 60 50 40 50|0123232341414141414141414141414141414141414141414141414141414141414141414141414141414141|-1UQG0 2q2o0 yLB0 1lb0 14p0 1lb0 14p0 Lz0 xB0 14p0 1nX0 11B0 1nX0 1fB0 WL0 1fB0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0",
+		"America/Caracas|CMT VET VET|4r.E 4u 40|0121|-2kV7w.k 28KM2.k 1IwOu",
+		"America/Cayenne|LMT GFT GFT|3t.k 40 30|012|-2mrwu.E 2gWou.E",
+		"America/Cayman|KMT EST|57.b 50|01|-2l1uQ.N",
+		"America/Chicago|CST CDT EST CWT CPT|60 50 50 50 50|01010101010101010101010101010101010102010101010103401010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-261s0 1nX0 11B0 1nX0 1wp0 TX0 WN0 1qL0 1cN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 11B0 1Hz0 14p0 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 RB0 8x30 iw0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Chihuahua|LMT MST CST CDT MDT|74.k 70 60 50 60|0121212323241414141414141414141414141414141414141414141414141414141414141414141414141414141|-1UQF0 deL0 8lc0 17c0 10M0 1dd0 2zQN0 1lb0 14p0 1lb0 14q0 1lb0 14p0 1nX0 11B0 1nX0 1fB0 WL0 1fB0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0",
+		"America/Costa_Rica|SJMT CST CDT|5A.d 60 50|0121212121|-1Xd6n.L 2lu0n.L Db0 1Kp0 Db0 pRB0 15b0 1kp0 mL0",
+		"America/Creston|MST PST|70 80|010|-29DR0 43B0",
+		"America/Cuiaba|LMT AMT AMST|3I.k 40 30|0121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212|-2glwf.E HdLf.E 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 1EN0 FX0 1HB0 Lz0 1EN0 Lz0 1C10 IL0 1HB0 Db0 1HB0 On0 1zd0 On0 1zd0 Lz0 1zd0 Rb0 1wN0 Wn0 1tB0 Rb0 1tB0 WL0 1tB0 Rb0 1zd0 On0 1HB0 FX0 4a10 HX0 1zd0 On0 1HB0 IL0 1wp0 On0 1C10 Lz0 1C10 On0 1zd0 On0 1zd0 Rb0 1zd0 Lz0 1C10 Lz0 1C10 On0 1zd0 On0 1zd0 On0 1zd0 On0 1C10 Lz0 1C10 Lz0 1C10 On0 1zd0 On0 1zd0 Rb0 1wp0 On0 1C10 Lz0 1C10 On0 1zd0 On0 1zd0 On0 1zd0 On0 1C10 Lz0 1C10 Lz0 1C10 Lz0 1C10 On0 1zd0 Rb0 1wp0 On0 1C10 Lz0 1C10 On0 1zd0",
+		"America/Danmarkshavn|LMT WGT WGST GMT|1e.E 30 20 0|01212121212121212121212121212121213|-2a5WJ.k 2z5fJ.k 19U0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 DC0",
+		"America/Dawson|YST YDT YWT YPT YDDT PST PDT|90 80 80 80 70 80 70|0101023040565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565|-25TN0 1in0 1o10 13V0 Ser0 8x00 iz0 LCL0 1fA0 jrA0 fNd0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Dawson_Creek|PST PDT PWT PPT MST|80 70 70 70 70|0102301010101010101010101010101010101010101010101010101014|-25TO0 1in0 UGp0 8x10 iy0 3NB0 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 ML0",
+		"America/Denver|MST MDT MWT MPT|70 60 60 60|01010101023010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-261r0 1nX0 11B0 1nX0 11B0 1qL0 WN0 mn0 Ord0 8x20 ix0 LCN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Detroit|LMT CST EST EWT EPT EDT|5w.b 60 50 40 40 40|01234252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252|-2Cgir.N peqr.N 156L0 8x40 iv0 6fd0 11z0 Jy10 SL0 dnB0 1cL0 s10 1Vz0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Edmonton|LMT MST MDT MWT MPT|7x.Q 70 60 60 60|01212121212121341212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2yd4q.8 shdq.8 1in0 17d0 hz0 2dB0 1fz0 1a10 11z0 1qN0 WL0 1qN0 11z0 IGN0 8x20 ix0 3NB0 11z0 LFB0 1cL0 3Cp0 1cL0 66N0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Eirunepe|LMT ACT ACST AMT|4D.s 50 40 40|0121212121212121212121212121212131|-2glvk.w HdLk.w 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 dPB0 On0 yTd0 d5X0",
+		"America/El_Salvador|LMT CST CDT|5U.M 60 50|012121|-1XiG3.c 2Fvc3.c WL0 1qN0 WL0",
+		"America/Ensenada|LMT MST PST PDT PWT PPT|7M.4 70 80 70 70 70|012123245232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232|-1UQE0 4PX0 8mM0 8lc0 SN0 1cL0 pHB0 83r0 zI0 5O10 1Rz0 cOP0 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 BUp0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 U10 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Fort_Wayne|CST CDT CWT CPT EST EDT|60 50 50 50 50 40|010101023010101010101010101040454545454545454545454545454545454545454545454545454545454545454545454|-261s0 1nX0 11B0 1nX0 QI10 Db0 RB0 8x30 iw0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 5Tz0 1o10 qLb0 1cL0 1cN0 1cL0 1qhd0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Fortaleza|LMT BRT BRST|2y 30 20|0121212121212121212121212121212121212121|-2glxq HdLq 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 1EN0 FX0 1HB0 Lz0 nsp0 WL0 1tB0 5z0 2mN0 On0",
+		"America/Glace_Bay|LMT AST ADT AWT APT|3X.M 40 30 30 30|012134121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2IsI0.c CwO0.c 1in0 UGp0 8x50 iu0 iq10 11z0 Jg10 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Godthab|LMT WGT WGST|3q.U 30 20|0121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2a5Ux.4 2z5dx.4 19U0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"America/Goose_Bay|NST NDT NST NDT NWT NPT AST ADT ADDT|3u.Q 2u.Q 3u 2u 2u 2u 40 30 20|010232323232323245232323232323232323232323232323232323232326767676767676767676767676767676767676767676768676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676|-25TSt.8 1in0 DXb0 2HbX.8 WL0 1qN0 WL0 1qN0 WL0 1tB0 TX0 1tB0 WL0 1qN0 WL0 1qN0 7UHu itu 1tB0 WL0 1qN0 WL0 1qN0 WL0 1qN0 WL0 1tB0 WL0 1ld0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 S10 g0u 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14n1 1lb0 14p0 1nW0 11C0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zcX Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Grand_Turk|KMT EST EDT AST|57.b 50 40 40|0121212121212121212121212121212121212121212121212121212121212121212121212123|-2l1uQ.N 2HHBQ.N 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Guatemala|LMT CST CDT|62.4 60 50|0121212121|-24KhV.U 2efXV.U An0 mtd0 Nz0 ifB0 17b0 zDB0 11z0",
+		"America/Guayaquil|QMT ECT|5e 50|01|-1yVSK",
+		"America/Guyana|LMT GBGT GYT GYT GYT|3Q.E 3J 3J 30 40|01234|-2dvU7.k 24JzQ.k mlc0 Bxbf",
+		"America/Halifax|LMT AST ADT AWT APT|4e.o 40 30 30 30|0121212121212121212121212121212121212121212121212134121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2IsHJ.A xzzJ.A 1db0 3I30 1in0 3HX0 IL0 1E10 ML0 1yN0 Pb0 1Bd0 Mn0 1Bd0 Rz0 1w10 Xb0 1w10 LX0 1w10 Xb0 1w10 Lz0 1C10 Jz0 1E10 OL0 1yN0 Un0 1qp0 Xb0 1qp0 11X0 1w10 Lz0 1HB0 LX0 1C10 FX0 1w10 Xb0 1qp0 Xb0 1BB0 LX0 1td0 Xb0 1qp0 Xb0 Rf0 8x50 iu0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 3Qp0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 3Qp0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 6i10 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Havana|HMT CST CDT|5t.A 50 40|012121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-1Meuu.o 72zu.o ML0 sld0 An0 1Nd0 Db0 1Nd0 An0 6Ep0 An0 1Nd0 An0 JDd0 Mn0 1Ap0 On0 1fd0 11X0 1qN0 WL0 1wp0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 14n0 1ld0 14L0 1kN0 15b0 1kp0 1cL0 1cN0 1fz0 1a10 1fz0 1fB0 11z0 14p0 1nX0 11B0 1nX0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 14n0 1ld0 14n0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 1a10 1in0 1a10 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1cM0 1cM0 1fA0 17c0 1o00 11A0 1qM0 11A0 1o00 11A0 1o00 14o0 1lc0 14o0 1lc0 11A0 6i00 Rc0 1wo0 U00 1tA0 Rc0 1wo0 U00 1wo0 U00 1zc0 U00 1qM0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0",
+		"America/Hermosillo|LMT MST CST PST MDT|7n.Q 70 60 80 60|0121212131414141|-1UQF0 deL0 8lc0 17c0 10M0 1dd0 otX0 gmN0 P2N0 13Vd0 1lb0 14p0 1lb0 14p0 1lb0",
+		"America/Indiana/Knox|CST CDT CWT CPT EST|60 50 50 50 50|0101023010101010101010101010101010101040101010101010101010101010101010101010101010101010141010101010101010101010101010101010101010101010101010101010101010|-261s0 1nX0 11B0 1nX0 SgN0 8x30 iw0 3NB0 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 1fz0 1cN0 1cL0 1cN0 11z0 1o10 11z0 1o10 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 3Cn0 8wp0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 z8o0 1o00 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Indiana/Marengo|CST CDT CWT CPT EST EDT|60 50 50 50 50 40|0101023010101010101010104545454545414545454545454545454545454545454545454545454545454545454545454545454|-261s0 1nX0 11B0 1nX0 SgN0 8x30 iw0 dyN0 11z0 6fd0 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 jrz0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1VA0 LA0 1BX0 1e6p0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Indiana/Petersburg|CST CDT CWT CPT EST EDT|60 50 50 50 50 40|01010230101010101010101010104010101010101010101010141014545454545454545454545454545454545454545454545454545454545454|-261s0 1nX0 11B0 1nX0 SgN0 8x30 iw0 njX0 WN0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 3Fb0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 19co0 1o00 Rd0 1zb0 Oo0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Indiana/Tell_City|CST CDT CWT CPT EST EDT|60 50 50 50 50 40|01010230101010101010101010101010454541010101010101010101010101010101010101010101010101010101010101010|-261s0 1nX0 11B0 1nX0 SgN0 8x30 iw0 1o10 11z0 g0p0 11z0 1o10 11z0 1qL0 WN0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 1fz0 1cN0 WL0 1qN0 1cL0 1cN0 1cL0 1cN0 caL0 1cL0 1cN0 1cL0 1qhd0 1o00 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Indiana/Vevay|CST CDT CWT CPT EST EDT|60 50 50 50 50 40|010102304545454545454545454545454545454545454545454545454545454545454545454545454|-261s0 1nX0 11B0 1nX0 SgN0 8x30 iw0 kPB0 Awn0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1lnd0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Indiana/Vincennes|CST CDT CWT CPT EST EDT|60 50 50 50 50 40|01010230101010101010101010101010454541014545454545454545454545454545454545454545454545454545454545454|-261s0 1nX0 11B0 1nX0 SgN0 8x30 iw0 1o10 11z0 g0p0 11z0 1o10 11z0 1qL0 WN0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 1fz0 1cN0 WL0 1qN0 1cL0 1cN0 1cL0 1cN0 caL0 1cL0 1cN0 1cL0 1qhd0 1o00 Rd0 1zb0 Oo0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Indiana/Winamac|CST CDT CWT CPT EST EDT|60 50 50 50 50 40|01010230101010101010101010101010101010454541054545454545454545454545454545454545454545454545454545454545454|-261s0 1nX0 11B0 1nX0 SgN0 8x30 iw0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 1fz0 1cN0 1cL0 1cN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 jrz0 1cL0 1cN0 1cL0 1qhd0 1o00 Rd0 1za0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Inuvik|zzz PST PDDT MST MDT|0 80 60 70 60|0121343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343|-FnA0 tWU0 1fA0 wPe0 2pz0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Iqaluit|zzz EWT EPT EST EDDT EDT CST CDT|0 40 40 50 30 40 60 50|01234353535353535353535353535353535353535353567353535353535353535353535353535353535353535353535353535353535353535353535353|-16K00 7nX0 iv0 LCL0 1fA0 zgO0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11C0 1nX0 11A0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Jamaica|KMT EST EDT|57.b 50 40|0121212121212121212121|-2l1uQ.N 2uM1Q.N 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0",
+		"America/Juneau|PST PWT PPT PDT YDT YST AKST AKDT|80 70 70 70 80 90 90 80|01203030303030303030303030403030356767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676|-17T20 8x10 iy0 Vo10 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cM0 1cM0 1cL0 1cN0 1fz0 1a10 1fz0 co0 10q0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Kentucky/Louisville|CST CDT CWT CPT EST EDT|60 50 50 50 50 40|0101010102301010101010101010101010101454545454545414545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454|-261s0 1nX0 11B0 1nX0 3Fd0 Nb0 LPd0 11z0 RB0 8x30 iw0 Bb0 10N0 2bB0 8in0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 xz0 gso0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1VA0 LA0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Kentucky/Monticello|CST CDT CWT CPT EST EDT|60 50 50 50 50 40|0101023010101010101010101010101010101010101010101010101010101010101010101454545454545454545454545454545454545454545454545454545454545454545454545454|-261s0 1nX0 11B0 1nX0 SgN0 8x30 iw0 SWp0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11A0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/La_Paz|CMT BOST BOT|4w.A 3w.A 40|012|-1x37r.o 13b0",
+		"America/Lima|LMT PET PEST|58.A 50 40|0121212121212121|-2tyGP.o 1bDzP.o zX0 1aN0 1cL0 1cN0 1cL0 1PrB0 zX0 1O10 zX0 6Gp0 zX0 98p0 zX0",
+		"America/Los_Angeles|PST PDT PWT PPT|80 70 70 70|010102301010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-261q0 1nX0 11B0 1nX0 SgN0 8x10 iy0 5Wp0 1Vb0 3dB0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Maceio|LMT BRT BRST|2m.Q 30 20|012121212121212121212121212121212121212121|-2glxB.8 HdLB.8 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 1EN0 FX0 1HB0 Lz0 dMN0 Lz0 8Q10 WL0 1tB0 5z0 2mN0 On0",
+		"America/Managua|MMT CST EST CDT|5J.c 60 50 50|0121313121213131|-1quie.M 1yAMe.M 4mn0 9Up0 Dz0 1K10 Dz0 s3F0 1KH0 DB0 9In0 k8p0 19X0 1o30 11y0",
+		"America/Manaus|LMT AMT AMST|40.4 40 30|01212121212121212121212121212121|-2glvX.U HdKX.U 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 dPB0 On0",
+		"America/Martinique|FFMT AST ADT|44.k 40 30|0121|-2mPTT.E 2LPbT.E 19X0",
+		"America/Matamoros|LMT CST CDT|6E 60 50|0121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-1UQG0 2FjC0 1nX0 i6p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 1fB0 WL0 1fB0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 U10 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Mazatlan|LMT MST CST PST MDT|75.E 70 60 80 60|0121212131414141414141414141414141414141414141414141414141414141414141414141414141414141414141|-1UQF0 deL0 8lc0 17c0 10M0 1dd0 otX0 gmN0 P2N0 13Vd0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 1fB0 WL0 1fB0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0",
+		"America/Menominee|CST CDT CWT CPT EST|60 50 50 50 50|01010230101041010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-261s0 1nX0 11B0 1nX0 SgN0 8x30 iw0 1o10 11z0 LCN0 1fz0 6410 9Jb0 1cM0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Merida|LMT CST EST CDT|5W.s 60 50 50|0121313131313131313131313131313131313131313131313131313131313131313131313131313131313131|-1UQG0 2q2o0 2hz0 wu30 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 1fB0 WL0 1fB0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0",
+		"America/Metlakatla|PST PWT PPT PDT|80 70 70 70|0120303030303030303030303030303030|-17T20 8x10 iy0 Vo10 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0",
+		"America/Mexico_City|LMT MST CST CDT CWT|6A.A 70 60 50 50|012121232324232323232323232323232323232323232323232323232323232323232323232323232323232323232323232|-1UQF0 deL0 8lc0 17c0 10M0 1dd0 gEn0 TX0 3xd0 Jb0 6zB0 SL0 e5d0 17b0 1Pff0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 1fB0 WL0 1fB0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0",
+		"America/Miquelon|LMT AST PMST PMDT|3I.E 40 30 20|012323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232|-2mKkf.k 2LTAf.k gQ10 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Moncton|EST AST ADT AWT APT|50 40 30 30 30|012121212121212121212134121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2IsH0 CwN0 1in0 zAo0 An0 1Nd0 An0 1Nd0 An0 1Nd0 An0 1Nd0 An0 1Nd0 An0 1K10 Lz0 1zB0 NX0 1u10 Wn0 S20 8x50 iu0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 3Cp0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14n1 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 ReX 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Monterrey|LMT CST CDT|6F.g 60 50|0121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-1UQG0 2FjC0 1nX0 i6p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 1fB0 WL0 1fB0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0",
+		"America/Montevideo|MMT UYT UYHST UYST UYT UYHST|3I.I 3u 30 20 30 2u|012121212121212121212121213434343434345454543453434343434343434343434343434343434343434343434343434343434343434343434343434343434343|-20UIf.g 8jzJ.g 1cLu 1dcu 1cLu 1dcu 1cLu ircu 11zu 1o0u 11zu 1o0u 11zu 1qMu WLu 1qMu WLu 1qMu WLu 1qMu 11zu 1o0u 11zu NAu 11bu 2iMu zWu Dq10 19X0 pd0 jz0 cm10 19X0 1fB0 1on0 11d0 1oL0 1nB0 1fzu 1aou 1fzu 1aou 1fzu 3nAu Jb0 3MN0 1SLu 4jzu 2PB0 Lb0 3Dd0 1pb0 ixd0 An0 1MN0 An0 1wp0 On0 1wp0 Rb0 1zd0 On0 1wp0 Rb0 s8p0 1fB0 1ip0 11z0 1ld0 14n0 1o10 11z0 1o10 11z0 1o10 14n0 1ld0 14n0 1ld0 14n0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 14n0 1ld0 14n0 1ld0 14n0 1o10 11z0 1o10 11z0 1o10 14n0 1ld0 14n0 1ld0 14n0 1ld0 14n0 1o10 11z0 1o10 11z0 1o10 14n0 1ld0 14n0 1ld0 14n0 1o10 11z0 1o10 11z0 1o10 14n0 1ld0 14n0 1ld0 14n0 1ld0 14n0 1o10 11z0 1o10 11z0 1o10",
+		"America/Montreal|EST EDT EWT EPT|50 40 40 40|01010101010101010101010101010101010101010101012301010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-28tR0 bV0 2m30 1in0 121u 1nb0 1g10 11z0 1o0u 11zu 1o0u 11zu 3VAu Rzu 1qMu WLu 1qMu WLu 1qKu WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 4kO0 8x40 iv0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 1fz0 1cN0 1cL0 1cN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Nassau|LMT EST EDT|59.u 50 40|012121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2kNuO.u 26XdO.u 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/New_York|EST EDT EWT EPT|50 40 40 40|01010101010101010101010101010101010101010101010102301010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-261t0 1nX0 11B0 1nX0 11B0 1qL0 1a10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 RB0 8x40 iv0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Nipigon|EST EDT EWT EPT|50 40 40 40|010123010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-25TR0 1in0 Rnb0 3je0 8x40 iv0 19yN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Nome|NST NWT NPT BST BDT YST AKST AKDT|b0 a0 a0 b0 a0 90 90 80|012034343434343434343434343434343456767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676|-17SX0 8wW0 iB0 Qlb0 52O0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 cl0 10q0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Noronha|LMT FNT FNST|29.E 20 10|0121212121212121212121212121212121212121|-2glxO.k HdKO.k 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 1EN0 FX0 1HB0 Lz0 nsp0 WL0 1tB0 2L0 2pB0 On0",
+		"America/North_Dakota/Beulah|MST MDT MWT MPT CST CDT|70 60 60 60 60 50|010102301010101010101010101010101010101010101010101010101010101010101010101010101010101010101014545454545454545454545454545454545454545454545454545454|-261r0 1nX0 11B0 1nX0 SgN0 8x20 ix0 QwN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Oo0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/North_Dakota/Center|MST MDT MWT MPT CST CDT|70 60 60 60 60 50|010102301010101010101010101010101010101010101010101010101014545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454|-261r0 1nX0 11B0 1nX0 SgN0 8x20 ix0 QwN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14o0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/North_Dakota/New_Salem|MST MDT MWT MPT CST CDT|70 60 60 60 60 50|010102301010101010101010101010101010101010101010101010101010101010101010101010101454545454545454545454545454545454545454545454545454545454545454545454|-261r0 1nX0 11B0 1nX0 SgN0 8x20 ix0 QwN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14o0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Ojinaga|LMT MST CST CDT MDT|6V.E 70 60 50 60|0121212323241414141414141414141414141414141414141414141414141414141414141414141414141414141|-1UQF0 deL0 8lc0 17c0 10M0 1dd0 2zQN0 1lb0 14p0 1lb0 14q0 1lb0 14p0 1nX0 11B0 1nX0 1fB0 WL0 1fB0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 U10 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Panama|CMT EST|5j.A 50|01|-2uduE.o",
+		"America/Pangnirtung|zzz AST AWT APT ADDT ADT EDT EST CST CDT|0 40 30 30 20 30 40 50 60 50|012314151515151515151515151515151515167676767689767676767676767676767676767676767676767676767676767676767676767676767676767|-1XiM0 PnG0 8x50 iu0 LCL0 1fA0 zgO0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1o00 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11C0 1nX0 11A0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Paramaribo|LMT PMT PMT NEGT SRT SRT|3E.E 3E.Q 3E.A 3u 3u 30|012345|-2nDUj.k Wqo0.c qanX.I 1dmLN.o lzc0",
+		"America/Phoenix|MST MDT MWT|70 60 60|01010202010|-261r0 1nX0 11B0 1nX0 SgN0 4Al1 Ap0 1db0 SWqX 1cL0",
+		"America/Port-au-Prince|PPMT EST EDT|4N 50 40|0121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-28RHb 2FnMb 19X0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14q0 1o00 11A0 1o00 11A0 1o00 14o0 1lc0 14o0 1lc0 14o0 1o00 11A0 1o00 11A0 1o00 14o0 1lc0 14o0 1lc0 i6n0 1nX0 11B0 1nX0 d430 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Porto_Acre|LMT ACT ACST AMT|4v.c 50 40 40|01212121212121212121212121212131|-2glvs.M HdLs.M 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 NBd0 d5X0",
+		"America/Porto_Velho|LMT AMT AMST|4f.A 40 30|012121212121212121212121212121|-2glvI.o HdKI.o 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0",
+		"America/Puerto_Rico|AST AWT APT|40 30 30|0120|-17lU0 7XT0 iu0",
+		"America/Rainy_River|CST CDT CWT CPT|60 50 50 50|010123010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-25TQ0 1in0 Rnb0 3je0 8x30 iw0 19yN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Rankin_Inlet|zzz CST CDDT CDT EST|0 60 40 50 50|012131313131313131313131313131313131313131313431313131313131313131313131313131313131313131313131313131313131313131313131|-vDc0 keu0 1fA0 zgO0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Recife|LMT BRT BRST|2j.A 30 20|0121212121212121212121212121212121212121|-2glxE.o HdLE.o 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 1EN0 FX0 1HB0 Lz0 nsp0 WL0 1tB0 2L0 2pB0 On0",
+		"America/Regina|LMT MST MDT MWT MPT CST|6W.A 70 60 60 60 60|012121212121212121212121341212121212121212121212121215|-2AD51.o uHe1.o 1in0 s2L0 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 66N0 1cL0 1cN0 19X0 1fB0 1cL0 1fB0 1cL0 1cN0 1cL0 M30 8x20 ix0 1ip0 1cL0 1ip0 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 3NB0 1cL0 1cN0",
+		"America/Resolute|zzz CST CDDT CDT EST|0 60 40 50 50|012131313131313131313131313131313131313131313431313131313431313131313131313131313131313131313131313131313131313131313131|-SnA0 GWS0 1fA0 zgO0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Santa_Isabel|LMT MST PST PDT PWT PPT|7D.s 70 80 70 70 70|012123245232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232|-1UQE0 4PX0 8mM0 8lc0 SN0 1cL0 pHB0 83r0 zI0 5O10 1Rz0 cOP0 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 BUp0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0",
+		"America/Santarem|LMT AMT AMST BRT|3C.M 40 30 30|0121212121212121212121212121213|-2glwl.c HdLl.c 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 qe10 xb0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 NBd0",
+		"America/Santiago|SMT CLT CLT CLST CLST|4G.K 50 40 40 30|010203131313131313124242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424|-2q5Th.e fNch.e 5gLG.K 21bh.e jRAG.K 1pbh.e 11d0 1oL0 11d0 1oL0 11d0 1oL0 11d0 1pb0 11d0 nHX0 op0 9UK0 1Je0 Qen0 WL0 1zd0 On0 1ip0 11z0 1o10 11z0 1qN0 WL0 1ld0 14n0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 WL0 1qN0 1cL0 1cN0 11z0 1ld0 14n0 1qN0 11z0 1cN0 19X0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 17b0 1ip0 11z0 1ip0 1fz0 1fB0 11z0 1qN0 WL0 1qN0 WL0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 17b0 1ip0 11z0 1o10 19X0 1fB0 1nX0 G10 1EL0 Op0 1zb0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1zb0 Op0 1zb0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1zb0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1zb0 Op0 1zb0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1zb0 Op0 1zb0 Rd0 1wn0 Rd0",
+		"America/Santo_Domingo|SDMT EST EDT EHDT AST|4E 50 40 4u 40|01213131313131414|-1ttjk 1lJMk Mn0 6sp0 Lbu 1Cou yLu 1RAu wLu 1QMu xzu 1Q0u xXu 1PAu 13jB0 e00",
+		"America/Sao_Paulo|LMT BRT BRST|36.s 30 20|012121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212|-2glwR.w HdKR.w 1cc0 1e10 1bX0 Ezd0 So0 1vA0 Mn0 1BB0 ML0 1BB0 zX0 pTd0 PX0 2ep0 nz0 1C10 zX0 1C10 LX0 1C10 Mn0 H210 Rb0 1tB0 IL0 1Fd0 FX0 1EN0 FX0 1HB0 Lz0 1EN0 Lz0 1C10 IL0 1HB0 Db0 1HB0 On0 1zd0 On0 1zd0 Lz0 1zd0 Rb0 1wN0 Wn0 1tB0 Rb0 1tB0 WL0 1tB0 Rb0 1zd0 On0 1HB0 FX0 1C10 Lz0 1Ip0 HX0 1zd0 On0 1HB0 IL0 1wp0 On0 1C10 Lz0 1C10 On0 1zd0 On0 1zd0 Rb0 1zd0 Lz0 1C10 Lz0 1C10 On0 1zd0 On0 1zd0 On0 1zd0 On0 1C10 Lz0 1C10 Lz0 1C10 On0 1zd0 On0 1zd0 Rb0 1wp0 On0 1C10 Lz0 1C10 On0 1zd0 On0 1zd0 On0 1zd0 On0 1C10 Lz0 1C10 Lz0 1C10 Lz0 1C10 On0 1zd0 Rb0 1wp0 On0 1C10 Lz0 1C10 On0 1zd0",
+		"America/Scoresbysund|LMT CGT CGST EGST EGT|1r.Q 20 10 0 10|0121343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434|-2a5Ww.8 2z5ew.8 1a00 1cK0 1cL0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"America/Sitka|PST PWT PPT PDT YST AKST AKDT|80 70 70 70 90 90 80|01203030303030303030303030303030345656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565|-17T20 8x10 iy0 Vo10 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 co0 10q0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/St_Johns|NST NDT NST NDT NWT NPT NDDT|3u.Q 2u.Q 3u 2u 2u 2u 1u|01010101010101010101010101010101010102323232323232324523232323232323232323232323232323232323232323232323232323232323232323232323232323232326232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232|-28oit.8 14L0 1nB0 1in0 1gm0 Dz0 1JB0 1cL0 1cN0 1cL0 1fB0 19X0 1fB0 19X0 1fB0 19X0 1fB0 19X0 1fB0 1cL0 1cN0 1cL0 1fB0 19X0 1fB0 19X0 1fB0 19X0 1fB0 19X0 1fB0 1cL0 1fB0 19X0 1fB0 19X0 10O0 eKX.8 19X0 1iq0 WL0 1qN0 WL0 1qN0 WL0 1tB0 TX0 1tB0 WL0 1qN0 WL0 1qN0 7UHu itu 1tB0 WL0 1qN0 WL0 1qN0 WL0 1qN0 WL0 1tB0 WL0 1ld0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14n1 1lb0 14p0 1nW0 11C0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zcX Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Swift_Current|LMT MST MDT MWT MPT CST|7b.k 70 60 60 60 60|012134121212121212121215|-2AD4M.E uHdM.E 1in0 UGp0 8x20 ix0 1o10 17b0 1ip0 11z0 1o10 11z0 1o10 11z0 isN0 1cL0 3Cp0 1cL0 1cN0 11z0 1qN0 WL0 pMp0",
+		"America/Tegucigalpa|LMT CST CDT|5M.Q 60 50|01212121|-1WGGb.8 2ETcb.8 WL0 1qN0 WL0 GRd0 AL0",
+		"America/Thule|LMT AST ADT|4z.8 40 30|012121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2a5To.Q 31NBo.Q 1cL0 1cN0 1cL0 1fB0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Thunder_Bay|CST EST EWT EPT EDT|60 50 40 40 40|0123141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141|-2q5S0 1iaN0 8x40 iv0 XNB0 1cL0 1cN0 1fz0 1cN0 1cL0 3Cp0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Toronto|EST EDT EWT EPT|50 40 40 40|01010101010101010101010101010101010101010101012301010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-25TR0 1in0 11Wu 1nzu 1fD0 WJ0 1wr0 Nb0 1Ap0 On0 1zd0 On0 1wp0 TX0 1tB0 TX0 1tB0 TX0 1tB0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 4kM0 8x40 iv0 1o10 11z0 1nX0 11z0 1o10 11z0 1o10 1qL0 11D0 1nX0 11B0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Vancouver|PST PDT PWT PPT|80 70 70 70|0102301010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-25TO0 1in0 UGp0 8x10 iy0 1o10 17b0 1ip0 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Whitehorse|YST YDT YWT YPT YDDT PST PDT|90 80 80 80 70 80 70|0101023040565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565|-25TN0 1in0 1o10 13V0 Ser0 8x00 iz0 LCL0 1fA0 1Be0 xDz0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Winnipeg|CST CDT CWT CPT|60 50 50 50|010101023010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2aIi0 WL0 3ND0 1in0 Jap0 Rb0 aCN0 8x30 iw0 1tB0 11z0 1ip0 11z0 1o10 11z0 1o10 11z0 1rd0 10L0 1op0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 1cL0 1cN0 11z0 6i10 WL0 6i10 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1a00 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1a00 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 14o0 1lc0 14o0 1o00 11A0 1o00 11A0 1o00 14o0 1lc0 14o0 1lc0 14o0 1o00 11A0 1o00 11A0 1o00 14o0 1lc0 14o0 1lc0 14o0 1lc0 14o0 1o00 11A0 1o00 11A0 1o00 14o0 1lc0 14o0 1lc0 14o0 1o00 11A0 1o00 11A0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Yakutat|YST YWT YPT YDT AKST AKDT|90 80 80 80 90 80|01203030303030303030303030303030304545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454|-17T10 8x00 iz0 Vo10 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 cn0 10q0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"America/Yellowknife|zzz MST MWT MPT MDDT MDT|0 70 60 60 50 60|012314151515151515151515151515151515151515151515151515151515151515151515151515151515151515151515151515151515151515151515151|-1pdA0 hix0 8x20 ix0 LCL0 1fA0 zgO0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"Antarctica/Casey|zzz AWST CAST|0 -80 -b0|012121|-2q00 1DjS0 T90 40P0 KL0",
+		"Antarctica/Davis|zzz DAVT DAVT|0 -70 -50|01012121|-vyo0 iXt0 alj0 1D7v0 VB0 3Wn0 KN0",
+		"Antarctica/DumontDUrville|zzz PMT DDUT|0 -a0 -a0|0102|-U0o0 cfq0 bFm0",
+		"Antarctica/Macquarie|AEST AEDT zzz MIST|-a0 -b0 0 -b0|0102010101010101010101010101010101010101010101010101010101010101010101010101010101010101013|-29E80 19X0 4SL0 1ayy0 Lvs0 1cM0 1o00 Rc0 1wo0 Rc0 1wo0 U00 1wo0 LA0 1C00 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 11A0 1qM0 WM0 1qM0 Oo0 1zc0 Oo0 1zc0 Oo0 1wo0 WM0 1tA0 WM0 1tA0 U00 1tA0 U00 1tA0 11A0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 11A0 1o00 1io0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1cM0 1a00 1io0 1cM0 1cM0 1cM0 1cM0 1cM0",
+		"Antarctica/Mawson|zzz MAWT MAWT|0 -60 -50|012|-CEo0 2fyk0",
+		"Antarctica/McMurdo|NZMT NZST NZST NZDT|-bu -cu -c0 -d0|01020202020202020202020202023232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323|-1GCVu Lz0 1tB0 11zu 1o0u 11zu 1o0u 11zu 1o0u 14nu 1lcu 14nu 1lcu 1lbu 11Au 1nXu 11Au 1nXu 11Au 1nXu 11Au 1nXu 11Au 1qLu WMu 1qLu 11Au 1n1bu IM0 1C00 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1qM0 14o0 1lc0 14o0 1lc0 14o0 1lc0 17c0 1io0 17c0 1io0 17c0 1io0 17c0 1lc0 14o0 1lc0 14o0 1lc0 17c0 1io0 17c0 1io0 17c0 1lc0 14o0 1lc0 14o0 1lc0 17c0 1io0 17c0 1io0 17c0 1io0 17c0 1io0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1io0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00",
+		"Antarctica/Palmer|zzz ARST ART ART ARST CLT CLST|0 30 40 30 20 40 30|012121212123435656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656565656|-cao0 nD0 1vd0 SL0 1vd0 17z0 1cN0 1fz0 1cN0 1cL0 1cN0 asn0 Db0 jsN0 14N0 11z0 1o10 11z0 1qN0 WL0 1qN0 WL0 1qN0 1cL0 1cN0 11z0 1ld0 14n0 1qN0 11z0 1cN0 19X0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 17b0 1ip0 11z0 1ip0 1fz0 1fB0 11z0 1qN0 WL0 1qN0 WL0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 17b0 1ip0 11z0 1o10 19X0 1fB0 1nX0 G10 1EL0 Op0 1zb0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1zb0 Op0 1zb0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1zb0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1zb0 Op0 1zb0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1zb0 Op0 1zb0 Rd0 1wn0 Rd0",
+		"Antarctica/Rothera|zzz ROTT|0 30|01|gOo0",
+		"Antarctica/Syowa|zzz SYOT|0 -30|01|-vs00",
+		"Antarctica/Troll|zzz UTC CEST|0 0 -20|01212121212121212121212121212121212121212121212121212121212121212121|1puo0 hd0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Antarctica/Vostok|zzz VOST|0 -60|01|-tjA0",
+		"Arctic/Longyearbyen|CET CEST|-10 -20|010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2awM0 Qm0 W6o0 5pf0 WM0 1fA0 1cM0 1cM0 1cM0 1cM0 wJc0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1qM0 WM0 zpc0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Asia/Aden|LMT AST|-2X.S -30|01|-MG2X.S",
+		"Asia/Almaty|LMT ALMT ALMT ALMST|-57.M -50 -60 -70|0123232323232323232323232323232323232323232323232|-1Pc57.M eUo7.M 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 3Cl0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0",
+		"Asia/Amman|LMT EET EEST|-2n.I -20 -30|0121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-1yW2n.I 1HiMn.I KL0 1oN0 11b0 1oN0 11b0 1pd0 1dz0 1cp0 11b0 1op0 11b0 fO10 1db0 1e10 1cL0 1cN0 1cL0 1cN0 1fz0 1pd0 10n0 1ld0 14n0 1hB0 15b0 1ip0 19X0 1cN0 1cL0 1cN0 17b0 1ld0 14o0 1lc0 17c0 1io0 17c0 1io0 17c0 1So0 y00 1fc0 1dc0 1co0 1dc0 1cM0 1cM0 1cM0 1o00 11A0 1lc0 17c0 1cM0 1cM0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 4bX0 Dd0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0",
+		"Asia/Anadyr|LMT ANAT ANAT ANAST ANAST ANAST ANAT|-bN.U -c0 -d0 -e0 -d0 -c0 -b0|01232414141414141414141561414141414141414141414141414141414141561|-1PcbN.U eUnN.U 23CL0 1db0 1cN0 1dc0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qN0 WM0",
+		"Asia/Aqtau|LMT FORT FORT SHET SHET SHEST AQTT AQTST AQTST AQTT|-3l.4 -40 -50 -50 -60 -60 -50 -60 -50 -40|012345353535353535353536767676898989898989898989896|-1Pc3l.4 eUnl.4 1jcL0 JDc0 1cL0 1dc0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 2UK0 Fz0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cN0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 RW0",
+		"Asia/Aqtobe|LMT AKTT AKTT AKTST AKTT AQTT AQTST|-3M.E -40 -50 -60 -60 -50 -60|01234323232323232323232565656565656565656565656565|-1Pc3M.E eUnM.E 23CL0 1db0 1cM0 1dc0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 2UK0 Fz0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0",
+		"Asia/Ashgabat|LMT ASHT ASHT ASHST ASHST TMT TMT|-3R.w -40 -50 -60 -50 -40 -50|012323232323232323232324156|-1Pc3R.w eUnR.w 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 ba0 xC0",
+		"Asia/Baghdad|BMT AST ADT|-2V.A -30 -40|012121212121212121212121212121212121212121212121212121|-26BeV.A 2ACnV.A 11b0 1cp0 1dz0 1dd0 1db0 1cN0 1cp0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1de0 1dc0 1dc0 1dc0 1cM0 1dc0 1cM0 1dc0 1cM0 1dc0 1dc0 1dc0 1cM0 1dc0 1cM0 1dc0 1cM0 1dc0 1dc0 1dc0 1cM0 1dc0 1cM0 1dc0 1cM0 1dc0 1dc0 1dc0 1cM0 1dc0 1cM0 1dc0 1cM0 1dc0",
+		"Asia/Bahrain|LMT GST AST|-3m.k -40 -30|012|-21Jfm.k 27BXm.k",
+		"Asia/Baku|LMT BAKT BAKT BAKST BAKST AZST AZT AZT AZST|-3j.o -30 -40 -50 -40 -40 -30 -40 -50|0123232323232323232323245657878787878787878787878787878787878787878787878787878787878787878787878787878787878787|-1Pc3j.o 1jUoj.o WCL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 10K0 c30 1cJ0 1cL0 8wu0 1o00 11z0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Asia/Bangkok|BMT ICT|-6G.4 -70|01|-218SG.4",
+		"Asia/Beirut|EET EEST|-20 -30|010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-21aq0 1on0 1410 1db0 19B0 1in0 1ip0 WL0 1lQp0 11b0 1oN0 11b0 1oN0 11b0 1pd0 11b0 1oN0 11b0 q6N0 En0 1oN0 11b0 1oN0 11b0 1oN0 11b0 1pd0 11b0 1oN0 11b0 1op0 11b0 dA10 17b0 1iN0 17b0 1iN0 17b0 1iN0 17b0 1vB0 SL0 1mp0 13z0 1iN0 17b0 1iN0 17b0 1jd0 12n0 1a10 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0",
+		"Asia/Bishkek|LMT FRUT FRUT FRUST FRUST KGT KGST KGT|-4W.o -50 -60 -70 -60 -50 -60 -60|01232323232323232323232456565656565656565656565656567|-1Pc4W.o eUnW.o 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 11c0 1tX0 17b0 1ip0 17b0 1ip0 17b0 1ip0 17b0 1ip0 19X0 1cPu 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 T8u",
+		"Asia/Brunei|LMT BNT BNT|-7D.E -7u -80|012|-1KITD.E gDc9.E",
+		"Asia/Calcutta|HMT BURT IST IST|-5R.k -6u -5u -6u|01232|-18LFR.k 1unn.k HB0 7zX0",
+		"Asia/Chita|LMT YAKT YAKT YAKST YAKST YAKT IRKT|-7x.Q -80 -90 -a0 -90 -a0 -80|012323232323232323232324123232323232323232323232323232323232323256|-21Q7x.Q pAnx.Q 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Asia/Choibalsan|LMT ULAT ULAT CHOST CHOT CHOT|-7C -70 -80 -a0 -90 -80|012343434343434343434343434343434343434343434345|-2APHC 2UkoC cKn0 1da0 1dd0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 6hD0 11z0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 3Db0",
+		"Asia/Chongqing|CST CDT|-80 -90|01010101010101010|-1c1I0 LX0 16p0 1jz0 1Myp0 Rb0 1o10 11z0 1o10 11z0 1qN0 11z0 1o10 11z0 1o10 11z0",
+		"Asia/Colombo|MMT IST IHST IST LKT LKT|-5j.w -5u -60 -6u -6u -60|01231451|-2zOtj.w 1rFbN.w 1zzu 7Apu 23dz0 11zu n3cu",
+		"Asia/Dacca|HMT BURT IST DACT BDT BDST|-5R.k -6u -5u -60 -60 -70|01213454|-18LFR.k 1unn.k HB0 m6n0 LqMu 1x6n0 1i00",
+		"Asia/Damascus|LMT EET EEST|-2p.c -20 -30|01212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-21Jep.c Hep.c 17b0 1ip0 17b0 1ip0 17b0 1ip0 19X0 1xRB0 11X0 1oN0 10L0 1pB0 11b0 1oN0 10L0 1mp0 13X0 1oN0 11b0 1pd0 11b0 1oN0 11b0 1oN0 11b0 1oN0 11b0 1pd0 11b0 1oN0 11b0 1oN0 11b0 1oN0 11b0 1pd0 11b0 1oN0 Nb0 1AN0 Nb0 bcp0 19X0 1gp0 19X0 3ld0 1xX0 Vd0 1Bz0 Sp0 1vX0 10p0 1dz0 1cN0 1cL0 1db0 1db0 1g10 1an0 1ap0 1db0 1fd0 1db0 1cN0 1db0 1dd0 1db0 1cp0 1dz0 1c10 1dX0 1cN0 1db0 1dd0 1db0 1cN0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1db0 1cN0 1db0 1cN0 19z0 1fB0 1qL0 11B0 1on0 Wp0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 1qL0 WN0 1qL0",
+		"Asia/Dili|LMT TLT JST TLT WITA|-8m.k -80 -90 -90 -80|012343|-2le8m.k 1dnXm.k 8HA0 1ew00 Xld0",
+		"Asia/Dubai|LMT GST|-3F.c -40|01|-21JfF.c",
+		"Asia/Dushanbe|LMT DUST DUST DUSST DUSST TJT|-4z.c -50 -60 -70 -60 -50|0123232323232323232323245|-1Pc4z.c eUnz.c 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 14N0",
+		"Asia/Gaza|EET EET EEST IST IDT|-20 -30 -30 -20 -30|010101010102020202020202020202023434343434343434343434343430202020202020202020202020202020202020202020202020202020202020202020202020202020202020|-1c2q0 5Rb0 10r0 1px0 10N0 1pz0 16p0 1jB0 16p0 1jx0 pBd0 Vz0 1oN0 11b0 1oO0 10N0 1pz0 10N0 1pb0 10N0 1pb0 10N0 1pb0 10N0 1pz0 10N0 1pb0 10N0 1pb0 11d0 1oL0 dW0 hfB0 Db0 1fB0 Rb0 npB0 11z0 1C10 IL0 1s10 10n0 1o10 WL0 1zd0 On0 1ld0 11z0 1o10 14n0 1o10 14n0 1nd0 12n0 1nd0 Xz0 1q10 12n0 M10 C00 17c0 1io0 17c0 1io0 17c0 1o00 1cL0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 17c0 1io0 18N0 1bz0 19z0 1gp0 1610 1iL0 11z0 1o10 14o0 1lA1 SKX 1xd1 MKX 1AN0 1a00 1fA0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 19X0 1fB0 19X0 1fB0 19X0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 19X0 1fB0 19X0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 19X0 1fB0 19X0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 19X0 1fB0 19X0 1fB0 19X0 1fB0 1cL0 1cN0 1cL0",
+		"Asia/Hebron|EET EET EEST IST IDT|-20 -30 -30 -20 -30|01010101010202020202020202020202343434343434343434343434343020202020202020202020202020202020202020202020202020202020202020202020202020202020202020|-1c2q0 5Rb0 10r0 1px0 10N0 1pz0 16p0 1jB0 16p0 1jx0 pBd0 Vz0 1oN0 11b0 1oO0 10N0 1pz0 10N0 1pb0 10N0 1pb0 10N0 1pb0 10N0 1pz0 10N0 1pb0 10N0 1pb0 11d0 1oL0 dW0 hfB0 Db0 1fB0 Rb0 npB0 11z0 1C10 IL0 1s10 10n0 1o10 WL0 1zd0 On0 1ld0 11z0 1o10 14n0 1o10 14n0 1nd0 12n0 1nd0 Xz0 1q10 12n0 M10 C00 17c0 1io0 17c0 1io0 17c0 1o00 1cL0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 17c0 1io0 18N0 1bz0 19z0 1gp0 1610 1iL0 12L0 1mN0 14o0 1lc0 Tb0 1xd1 MKX bB0 cn0 1cN0 1a00 1fA0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 19X0 1fB0 19X0 1fB0 19X0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 19X0 1fB0 19X0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 19X0 1fB0 19X0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 19X0 1fB0 19X0 1fB0 19X0 1fB0 1cL0 1cN0 1cL0",
+		"Asia/Ho_Chi_Minh|LMT PLMT ICT IDT JST|-76.E -76.u -70 -80 -90|0123423232|-2yC76.E bK00.a 1h7b6.u 5lz0 18o0 3Oq0 k5b0 aW00 BAM0",
+		"Asia/Hong_Kong|LMT HKT HKST JST|-7A.G -80 -90 -90|0121312121212121212121212121212121212121212121212121212121212121212121|-2CFHA.G 1sEP6.G 1cL0 ylu 93X0 1qQu 1tX0 Rd0 1In0 NB0 1cL0 11B0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1kL0 14N0 1nX0 U10 1tz0 U10 1wn0 Rd0 1wn0 U10 1tz0 U10 1tz0 U10 1tz0 U10 1wn0 Rd0 1wn0 Rd0 1wn0 U10 1tz0 U10 1tz0 17d0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 s10 1Vz0 1cN0 1cL0 1cN0 1cL0 6fd0 14n0",
+		"Asia/Hovd|LMT HOVT HOVT HOVST|-66.A -60 -70 -80|01232323232323232323232323232323232323232323232|-2APG6.A 2Uko6.A cKn0 1db0 1dd0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 6hD0 11z0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0",
+		"Asia/Irkutsk|IMT IRKT IRKT IRKST IRKST IRKT|-6V.5 -70 -80 -90 -80 -90|012323232323232323232324123232323232323232323232323232323232323252|-21zGV.5 pjXV.5 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Asia/Istanbul|IMT EET EEST TRST TRT|-1U.U -20 -30 -40 -30|012121212121212121212121212121212121212121212121212121234343434342121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2ogNU.U dzzU.U 11b0 8tB0 1on0 1410 1db0 19B0 1in0 3Rd0 Un0 1oN0 11b0 zSp0 CL0 mN0 1Vz0 1gN0 1pz0 5Rd0 1fz0 1yp0 ML0 1kp0 17b0 1ip0 17b0 1fB0 19X0 1jB0 18L0 1ip0 17z0 qdd0 xX0 3S10 Tz0 dA10 11z0 1o10 11z0 1qN0 11z0 1ze0 11B0 WM0 1qO0 WI0 1nX0 1rB0 10L0 11B0 1in0 17d0 1in0 2pX0 19E0 1fU0 16Q0 1iI0 16Q0 1iI0 1Vd0 pb0 3Kp0 14o0 1df0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cL0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WO0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 Xc0 1qo0 WM0 1qM0 11A0 1o00 1200 1nA0 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Asia/Jakarta|BMT JAVT WIB JST WIB WIB|-77.c -7k -7u -90 -80 -70|01232425|-1Q0Tk luM0 mPzO 8vWu 6kpu 4PXu xhcu",
+		"Asia/Jayapura|LMT WIT ACST|-9m.M -90 -9u|0121|-1uu9m.M sMMm.M L4nu",
+		"Asia/Jerusalem|JMT IST IDT IDDT|-2k.E -20 -30 -40|01212121212132121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-26Bek.E SyMk.E 5Rb0 10r0 1px0 10N0 1pz0 16p0 1jB0 16p0 1jx0 3LB0 Em0 or0 1cn0 1dB0 16n0 10O0 1ja0 1tC0 14o0 1cM0 1a00 11A0 1Na0 An0 1MP0 AJ0 1Kp0 LC0 1oo0 Wl0 EQN0 Db0 1fB0 Rb0 npB0 11z0 1C10 IL0 1s10 10n0 1o10 WL0 1zd0 On0 1ld0 11z0 1o10 14n0 1o10 14n0 1nd0 12n0 1nd0 Xz0 1q10 12n0 1hB0 1dX0 1ep0 1aL0 1eN0 17X0 1nf0 11z0 1tB0 19W0 1e10 17b0 1ep0 1gL0 18N0 1fz0 1eN0 17b0 1gq0 1gn0 19d0 1dz0 1c10 17X0 1hB0 1gn0 19d0 1dz0 1c10 17X0 1kp0 1dz0 1c10 1aL0 1eN0 1oL0 10N0 1oL0 10N0 1oL0 10N0 1rz0 W10 1rz0 W10 1rz0 10N0 1oL0 10N0 1oL0 10N0 1rz0 W10 1rz0 W10 1rz0 10N0 1oL0 10N0 1oL0 10N0 1oL0 10N0 1rz0 W10 1rz0 W10 1rz0 10N0 1oL0 10N0 1oL0 10N0 1rz0 W10 1rz0 W10 1rz0 W10 1rz0 10N0 1oL0 10N0 1oL0",
+		"Asia/Kabul|AFT AFT|-40 -4u|01|-10Qs0",
+		"Asia/Kamchatka|LMT PETT PETT PETST PETST|-ay.A -b0 -c0 -d0 -c0|01232323232323232323232412323232323232323232323232323232323232412|-1SLKy.A ivXy.A 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qN0 WM0",
+		"Asia/Karachi|LMT IST IST KART PKT PKST|-4s.c -5u -6u -50 -50 -60|012134545454|-2xoss.c 1qOKW.c 7zX0 eup0 LqMu 1fy01 1cL0 dK0X 11b0 1610 1jX0",
+		"Asia/Kashgar|LMT XJT|-5O.k -60|01|-1GgtO.k",
+		"Asia/Kathmandu|LMT IST NPT|-5F.g -5u -5J|012|-21JhF.g 2EGMb.g",
+		"Asia/Khandyga|LMT YAKT YAKT YAKST YAKST VLAT VLAST VLAT YAKT|-92.d -80 -90 -a0 -90 -a0 -b0 -b0 -a0|01232323232323232323232412323232323232323232323232565656565656565782|-21Q92.d pAp2.d 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 qK0 yN0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 17V0 7zD0",
+		"Asia/Krasnoyarsk|LMT KRAT KRAT KRAST KRAST KRAT|-6b.q -60 -70 -80 -70 -80|012323232323232323232324123232323232323232323232323232323232323252|-21Hib.q prAb.q 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Asia/Kuala_Lumpur|SMT MALT MALST MALT MALT JST MYT|-6T.p -70 -7k -7k -7u -90 -80|01234546|-2Bg6T.p 17anT.p 7hXE dM00 17bO 8Fyu 1so1u",
+		"Asia/Kuching|LMT BORT BORT BORTST JST MYT|-7l.k -7u -80 -8k -90 -80|01232323232323232425|-1KITl.k gDbP.k 6ynu AnE 1O0k AnE 1NAk AnE 1NAk AnE 1NAk AnE 1O0k AnE 1NAk AnE pAk 8Fz0 1so10",
+		"Asia/Kuwait|LMT AST|-3b.U -30|01|-MG3b.U",
+		"Asia/Macao|LMT MOT MOST CST|-7y.k -80 -90 -80|0121212121212121212121212121212121212121213|-2le7y.k 1XO34.k 1wn0 Rd0 1wn0 R9u 1wqu U10 1tz0 TVu 1tz0 17gu 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cJu 1cL0 1cN0 1fz0 1cN0 1cOu 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cJu 1cL0 1cN0 1fz0 1cN0 1cL0 KEp0",
+		"Asia/Magadan|LMT MAGT MAGT MAGST MAGST MAGT|-a3.c -a0 -b0 -c0 -b0 -c0|012323232323232323232324123232323232323232323232323232323232323251|-1Pca3.c eUo3.c 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Asia/Makassar|LMT MMT WITA JST|-7V.A -7V.A -80 -90|01232|-21JjV.A vfc0 myLV.A 8ML0",
+		"Asia/Manila|PHT PHST JST|-80 -90 -90|010201010|-1kJI0 AL0 cK10 65X0 mXB0 vX0 VK10 1db0",
+		"Asia/Muscat|LMT GST|-3S.o -40|01|-21JfS.o",
+		"Asia/Nicosia|LMT EET EEST|-2d.s -20 -30|01212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-1Vc2d.s 2a3cd.s 1cL0 1qp0 Xz0 19B0 19X0 1fB0 1db0 1cp0 1cL0 1fB0 19X0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 1cL0 1cN0 1cL0 1cN0 1o30 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Asia/Novokuznetsk|LMT KRAT KRAT KRAST KRAST NOVST NOVT NOVT|-5M.M -60 -70 -80 -70 -70 -60 -70|012323232323232323232324123232323232323232323232323232323232325672|-1PctM.M eULM.M 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qN0 WM0 8Hz0",
+		"Asia/Novosibirsk|LMT NOVT NOVT NOVST NOVST|-5v.E -60 -70 -80 -70|0123232323232323232323241232341414141414141414141414141414141414121|-21Qnv.E pAFv.E 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 ml0 Os0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Asia/Omsk|LMT OMST OMST OMSST OMSST OMST|-4R.u -50 -60 -70 -60 -70|012323232323232323232324123232323232323232323232323232323232323252|-224sR.u pMLR.u 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Asia/Oral|LMT URAT URAT URAST URAT URAST ORAT ORAST ORAT|-3p.o -40 -50 -60 -60 -50 -40 -50 -50|012343232323232323251516767676767676767676767676768|-1Pc3p.o eUnp.o 23CL0 1db0 1cM0 1dc0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cN0 1cM0 1fA0 2UK0 Fz0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 RW0",
+		"Asia/Pontianak|LMT PMT WIB JST WIB WITA WIB|-7h.k -7h.k -7u -90 -80 -80 -70|012324256|-2ua7h.k XE00 munL.k 8Rau 6kpu 4PXu xhcu Wqnu",
+		"Asia/Pyongyang|LMT KST JCST JST KST|-8n -8u -90 -90 -90|01234|-2um8n 97XR 12FXu jdA0",
+		"Asia/Qatar|LMT GST AST|-3q.8 -40 -30|012|-21Jfq.8 27BXq.8",
+		"Asia/Qyzylorda|LMT KIZT KIZT KIZST KIZT QYZT QYZT QYZST|-4l.Q -40 -50 -60 -60 -50 -60 -70|012343232323232323232325676767676767676767676767676|-1Pc4l.Q eUol.Q 23CL0 1db0 1cM0 1dc0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 2UK0 dC0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0",
+		"Asia/Rangoon|RMT BURT JST MMT|-6o.E -6u -90 -6u|0123|-21Jio.E SmnS.E 7j9u",
+		"Asia/Riyadh|LMT AST|-36.Q -30|01|-TvD6.Q",
+		"Asia/Sakhalin|LMT JCST JST SAKT SAKST SAKST SAKT|-9u.M -90 -90 -b0 -c0 -b0 -a0|0123434343434343434343435634343434343565656565656565656565656565636|-2AGVu.M 1iaMu.M je00 1qFa0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o10 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Asia/Samarkand|LMT SAMT SAMT SAMST TAST UZST UZT|-4r.R -40 -50 -60 -60 -60 -50|01234323232323232323232356|-1Pc4r.R eUor.R 23CL0 1db0 1cM0 1dc0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 11x0 bf0",
+		"Asia/Seoul|LMT KST JCST JST KST KDT KDT|-8r.Q -8u -90 -90 -90 -9u -a0|01234151515151515146464|-2um8r.Q 97XV.Q 12FXu jjA0 kKo0 2I0u OL0 1FB0 Rb0 1qN0 TX0 1tB0 TX0 1tB0 TX0 1tB0 TX0 2ap0 12FBu 11A0 1o00 11A0",
+		"Asia/Singapore|SMT MALT MALST MALT MALT JST SGT SGT|-6T.p -70 -7k -7k -7u -90 -7u -80|012345467|-2Bg6T.p 17anT.p 7hXE dM00 17bO 8Fyu Mspu DTA0",
+		"Asia/Srednekolymsk|LMT MAGT MAGT MAGST MAGST MAGT SRET|-ae.Q -a0 -b0 -c0 -b0 -c0 -b0|012323232323232323232324123232323232323232323232323232323232323256|-1Pcae.Q eUoe.Q 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Asia/Taipei|JWST JST CST CDT|-80 -90 -80 -90|01232323232323232323232323232323232323232|-1iw80 joM0 1yo0 Tz0 1ip0 1jX0 1cN0 11b0 1oN0 11b0 1oN0 11b0 1oN0 11b0 10N0 1BX0 10p0 1pz0 10p0 1pz0 10p0 1db0 1dd0 1db0 1cN0 1db0 1cN0 1db0 1cN0 1db0 1BB0 ML0 1Bd0 ML0 uq10 1db0 1cN0 1db0 97B0 AL0",
+		"Asia/Tashkent|LMT TAST TAST TASST TASST UZST UZT|-4B.b -50 -60 -70 -60 -60 -50|01232323232323232323232456|-1Pc4B.b eUnB.b 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 11y0 bf0",
+		"Asia/Tbilisi|TBMT TBIT TBIT TBIST TBIST GEST GET GET GEST|-2X.b -30 -40 -50 -40 -40 -30 -40 -50|0123232323232323232323245656565787878787878787878567|-1Pc2X.b 1jUnX.b WCL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 3y0 19f0 1cK0 1cL0 1cN0 1cL0 1cN0 1cL0 1cM0 1cL0 1fB0 3Nz0 11B0 1nX0 11B0 1qL0 WN0 1qL0 WN0 1qL0 11B0 1nX0 11B0 1nX0 11B0 An0 Os0 WM0",
+		"Asia/Tehran|LMT TMT IRST IRST IRDT IRDT|-3p.I -3p.I -3u -40 -50 -4u|01234325252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252|-2btDp.I 1d3c0 1huLT.I TXu 1pz0 sN0 vAu 1cL0 1dB0 1en0 pNB0 UL0 1cN0 1dz0 1cp0 1dz0 1cp0 1dz0 1cp0 1dz0 1cp0 1dz0 1cN0 1dz0 1cp0 1dz0 1cp0 1dz0 1cp0 1dz0 1cN0 1dz0 1cp0 1dz0 1cp0 1dz0 1cp0 1dz0 1cN0 1dz0 64p0 1dz0 1cN0 1dz0 1cp0 1dz0 1cp0 1dz0 1cp0 1dz0 1cN0 1dz0 1cp0 1dz0 1cp0 1dz0 1cp0 1dz0 1cN0 1dz0 1cp0 1dz0 1cp0 1dz0 1cp0 1dz0 1cN0 1dz0 1cp0 1dz0 1cp0 1dz0 1cp0 1dz0 1cN0 1dz0 1cp0 1dz0 1cp0 1dz0 1cp0 1dz0 1cp0 1dz0 1cN0 1dz0 1cp0 1dz0 1cp0 1dz0 1cp0 1dz0 1cN0 1dz0 1cp0 1dz0 1cp0 1dz0 1cp0 1dz0",
+		"Asia/Thimbu|LMT IST BTT|-5W.A -5u -60|012|-Su5W.A 1BGMs.A",
+		"Asia/Tokyo|JCST JST JDT|-90 -90 -a0|0121212121|-1iw90 pKq0 QL0 1lB0 13X0 1zB0 NX0 1zB0 NX0",
+		"Asia/Ulaanbaatar|LMT ULAT ULAT ULAST|-77.w -70 -80 -90|01232323232323232323232323232323232323232323232|-2APH7.w 2Uko7.w cKn0 1db0 1dd0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 6hD0 11z0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0",
+		"Asia/Ust-Nera|LMT YAKT YAKT MAGST MAGT MAGST MAGT MAGT VLAT VLAT|-9w.S -80 -90 -c0 -b0 -b0 -a0 -c0 -b0 -a0|0123434343434343434343456434343434343434343434343434343434343434789|-21Q9w.S pApw.S 23CL0 1d90 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 17V0 7zD0",
+		"Asia/Vladivostok|LMT VLAT VLAT VLAST VLAST VLAT|-8L.v -90 -a0 -b0 -a0 -b0|012323232323232323232324123232323232323232323232323232323232323252|-1SJIL.v itXL.v 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Asia/Yakutsk|LMT YAKT YAKT YAKST YAKST YAKT|-8C.W -80 -90 -a0 -90 -a0|012323232323232323232324123232323232323232323232323232323232323252|-21Q8C.W pAoC.W 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Asia/Yekaterinburg|LMT PMT SVET SVET SVEST SVEST YEKT YEKST YEKT|-42.x -3J.5 -40 -50 -60 -50 -50 -60 -60|0123434343434343434343435267676767676767676767676767676767676767686|-2ag42.x 7mQh.s qBvJ.5 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Asia/Yerevan|LMT YERT YERT YERST YERST AMST AMT AMT AMST|-2W -30 -40 -50 -40 -40 -30 -40 -50|0123232323232323232323245656565657878787878787878787878787878787|-1Pc2W 1jUnW WCL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1am0 2r0 1cJ0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 3Fb0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0",
+		"Atlantic/Azores|HMT AZOT AZOST AZOMT AZOT AZOST WET|1S.w 20 10 0 10 0 0|01212121212121212121212121212121212121212121232123212321232121212121212121212121212121212121212121454545454545454545454545454545456545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454|-2ldW5.s aPX5.s Sp0 LX0 1vc0 Tc0 1uM0 SM0 1vc0 Tc0 1vc0 SM0 1vc0 6600 1co0 3E00 17c0 1fA0 1a00 1io0 1a00 1io0 17c0 3I00 17c0 1cM0 1cM0 3Fc0 1cM0 1a00 1fA0 1io0 17c0 1cM0 1cM0 1a00 1fA0 1io0 1qM0 Dc0 1tA0 1cM0 1dc0 1400 gL0 IM0 s10 U00 dX0 Rc0 pd0 Rc0 gL0 Oo0 pd0 Rc0 gL0 Oo0 pd0 14o0 1cM0 1cP0 1cM0 1cM0 1cM0 1cM0 1cM0 3Co0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 qIl0 1cM0 1fA0 1cM0 1cM0 1cN0 1cL0 1cN0 1cM0 1cM0 1cM0 1cM0 1cN0 1cL0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cL0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Atlantic/Bermuda|LMT AST ADT|4j.i 40 30|0121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-1BnRE.G 1LTbE.G 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"Atlantic/Canary|LMT CANT WET WEST|11.A 10 0 -10|01232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232|-1UtaW.o XPAW.o 1lAK0 1a10 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Atlantic/Cape_Verde|LMT CVT CVST CVT|1y.4 20 10 10|01213|-2xomp.U 1qOMp.U 7zX0 1djf0",
+		"Atlantic/Faeroe|LMT WET WEST|r.4 0 -10|01212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2uSnw.U 2Wgow.U 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Atlantic/Madeira|FMT MADT MADST MADMT WET WEST|17.A 10 0 -10 0 -10|01212121212121212121212121212121212121212121232123212321232121212121212121212121212121212121212121454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454|-2ldWQ.o aPWQ.o Sp0 LX0 1vc0 Tc0 1uM0 SM0 1vc0 Tc0 1vc0 SM0 1vc0 6600 1co0 3E00 17c0 1fA0 1a00 1io0 1a00 1io0 17c0 3I00 17c0 1cM0 1cM0 3Fc0 1cM0 1a00 1fA0 1io0 17c0 1cM0 1cM0 1a00 1fA0 1io0 1qM0 Dc0 1tA0 1cM0 1dc0 1400 gL0 IM0 s10 U00 dX0 Rc0 pd0 Rc0 gL0 Oo0 pd0 Rc0 gL0 Oo0 pd0 14o0 1cM0 1cP0 1cM0 1cM0 1cM0 1cM0 1cM0 3Co0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 qIl0 1cM0 1fA0 1cM0 1cM0 1cN0 1cL0 1cN0 1cM0 1cM0 1cM0 1cM0 1cN0 1cL0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Atlantic/Reykjavik|RMT IST ISST GMT|1r.M 10 0 0|01212121212121212121212121212121212121212121212121212121212121213|-2uWmw.c mfaw.c 1Bd0 ML0 1LB0 NLX0 1pe0 zd0 1EL0 LA0 1C00 Oo0 1wo0 Rc0 1wo0 Rc0 1wo0 Rc0 1zc0 Oo0 1zc0 14o0 1lc0 14o0 1lc0 14o0 1o00 11A0 1lc0 14o0 1o00 14o0 1lc0 14o0 1lc0 14o0 1lc0 14o0 1lc0 14o0 1o00 14o0 1lc0 14o0 1lc0 14o0 1lc0 14o0 1lc0 14o0 1lc0 14o0 1o00 14o0 1lc0 14o0 1lc0 14o0 1lc0 14o0 1lc0 14o0 1o00 14o0",
+		"Atlantic/South_Georgia|GST|20|0|",
+		"Atlantic/Stanley|SMT FKT FKST FKT FKST|3P.o 40 30 30 20|0121212121212134343212121212121212121212121212121212121212121212121212|-2kJw8.A 12bA8.A 19X0 1fB0 19X0 1ip0 19X0 1fB0 19X0 1fB0 19X0 1fB0 Cn0 1Cc10 WL0 1qL0 U10 1tz0 U10 1qM0 WN0 1qL0 WN0 1qL0 WN0 1qL0 WN0 1tz0 U10 1tz0 WN0 1qL0 WN0 1qL0 WN0 1qL0 WN0 1qL0 WN0 1tz0 WN0 1qL0 WN0 1qL0 WN0 1qL0 WN0 1qL0 WN0 1qN0 U10 1wn0 Rd0 1wn0 U10 1tz0 U10 1tz0 U10 1tz0 U10 1tz0 U10 1wn0 U10 1tz0 U10 1tz0 U10",
+		"Australia/ACT|AEST AEDT|-a0 -b0|0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101|-293lX xcX 10jd0 yL0 1cN0 1cL0 1fB0 19X0 17c10 LA0 1C00 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 14o0 1o00 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 U00 1qM0 WM0 1tA0 WM0 1tA0 U00 1tA0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 11A0 1o00 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 11A0 1o00 WM0 1qM0 14o0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0",
+		"Australia/Adelaide|ACST ACDT|-9u -au|0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101|-293lt xcX 10jd0 yL0 1cN0 1cL0 1fB0 19X0 17c10 LA0 1C00 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 U00 1qM0 WM0 1tA0 WM0 1tA0 U00 1tA0 U00 1tA0 Oo0 1zc0 WM0 1qM0 Rc0 1zc0 U00 1tA0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 11A0 1o00 WM0 1qM0 14o0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0",
+		"Australia/Brisbane|AEST AEDT|-a0 -b0|01010101010101010|-293lX xcX 10jd0 yL0 1cN0 1cL0 1fB0 19X0 17c10 LA0 H1A0 Oo0 1zc0 Oo0 1zc0 Oo0",
+		"Australia/Broken_Hill|ACST ACDT|-9u -au|0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101|-293lt xcX 10jd0 yL0 1cN0 1cL0 1fB0 19X0 17c10 LA0 1C00 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 14o0 1o00 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 U00 1qM0 WM0 1tA0 WM0 1tA0 U00 1tA0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 11A0 1o00 WM0 1qM0 14o0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0",
+		"Australia/Currie|AEST AEDT|-a0 -b0|0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101|-29E80 19X0 10jd0 yL0 1cN0 1cL0 1fB0 19X0 17c10 LA0 1C00 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 11A0 1qM0 WM0 1qM0 Oo0 1zc0 Oo0 1zc0 Oo0 1wo0 WM0 1tA0 WM0 1tA0 U00 1tA0 U00 1tA0 11A0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 11A0 1o00 1io0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1cM0 1a00 1io0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0",
+		"Australia/Darwin|ACST ACDT|-9u -au|010101010|-293lt xcX 10jd0 yL0 1cN0 1cL0 1fB0 19X0",
+		"Australia/Eucla|ACWST ACWDT|-8J -9J|0101010101010101010|-293kI xcX 10jd0 yL0 1cN0 1cL0 1gSp0 Oo0 l5A0 Oo0 iJA0 G00 zU00 IM0 1qM0 11A0 1o00 11A0",
+		"Australia/Hobart|AEST AEDT|-a0 -b0|010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101|-29E80 19X0 10jd0 yL0 1cN0 1cL0 1fB0 19X0 VfB0 1cM0 1o00 Rc0 1wo0 Rc0 1wo0 U00 1wo0 LA0 1C00 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 11A0 1qM0 WM0 1qM0 Oo0 1zc0 Oo0 1zc0 Oo0 1wo0 WM0 1tA0 WM0 1tA0 U00 1tA0 U00 1tA0 11A0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 11A0 1o00 1io0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1cM0 1a00 1io0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0",
+		"Australia/LHI|AEST LHST LHDT LHDT|-a0 -au -bu -b0|0121212121313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313|raC0 1zdu Rb0 1zd0 On0 1zd0 On0 1zd0 On0 1zd0 TXu 1qMu WLu 1tAu WLu 1tAu TXu 1tAu Onu 1zcu Onu 1zcu Onu 1zcu Rbu 1zcu Onu 1zcu Onu 1zcu 11zu 1o0u 11zu 1o0u 11zu 1o0u 11zu 1qMu WLu 11Au 1nXu 1qMu 11zu 1o0u 11zu 1o0u 11zu 1qMu WLu 1qMu 11zu 1o0u WLu 1qMu 14nu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1fAu 1cLu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1fAu 1cLu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1cMu 1fzu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1fAu 1cLu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1cMu 1cLu 1fAu 1cLu 1cMu 1cLu 1cMu",
+		"Australia/Lindeman|AEST AEDT|-a0 -b0|010101010101010101010|-293lX xcX 10jd0 yL0 1cN0 1cL0 1fB0 19X0 17c10 LA0 H1A0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0",
+		"Australia/Melbourne|AEST AEDT|-a0 -b0|0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101|-293lX xcX 10jd0 yL0 1cN0 1cL0 1fB0 19X0 17c10 LA0 1C00 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 U00 1qM0 WM0 1qM0 11A0 1tA0 U00 1tA0 U00 1tA0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 11A0 1o00 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 11A0 1o00 WM0 1qM0 14o0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0",
+		"Australia/Perth|AWST AWDT|-80 -90|0101010101010101010|-293jX xcX 10jd0 yL0 1cN0 1cL0 1gSp0 Oo0 l5A0 Oo0 iJA0 G00 zU00 IM0 1qM0 11A0 1o00 11A0",
+		"CET|CET CEST|-10 -20|01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2aFe0 11d0 1iO0 11A0 1o00 11A0 Qrc0 6i00 WM0 1fA0 1cM0 1cM0 1cM0 16M0 1gMM0 1a00 1fA0 1cM0 1cM0 1cM0 1fA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"CST6CDT|CST CDT CWT CPT|60 50 50 50|010102301010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-261s0 1nX0 11B0 1nX0 SgN0 8x30 iw0 QwN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"Chile/EasterIsland|EMT EASST EAST EAST EASST|7h.s 60 70 60 50|012121212121212121212121212121213434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434|-1uSgG.w nHUG.w op0 9UK0 RXB0 WL0 1zd0 On0 1ip0 11z0 1o10 11z0 1qN0 WL0 1ld0 14n0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 WL0 1qN0 1cL0 1cN0 11z0 1ld0 14n0 1qN0 11z0 1cN0 19X0 1qN0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 17b0 1ip0 11z0 1ip0 1fz0 1fB0 11z0 1qN0 WL0 1qN0 WL0 1qN0 WL0 1qN0 11z0 1o10 11z0 1o10 11z0 1qN0 WL0 1qN0 17b0 1ip0 11z0 1o10 19X0 1fB0 1nX0 G10 1EL0 Op0 1zb0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1zb0 Op0 1zb0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1zb0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1zb0 Op0 1zb0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1wn0 Rd0 1zb0 Op0 1zb0 Rd0 1wn0 Rd0",
+		"EET|EET EEST|-20 -30|010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|hDB0 1a00 1fA0 1cM0 1cM0 1cM0 1fA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"EST|EST|50|0|",
+		"EST5EDT|EST EDT EWT EPT|50 40 40 40|010102301010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-261t0 1nX0 11B0 1nX0 SgN0 8x40 iv0 QwN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"Eire|DMT IST GMT BST IST|p.l -y.D 0 -10 -10|01232323232324242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242424242|-2ax9y.D Rc0 1fzy.D 14M0 1fc0 1g00 1co0 1dc0 1co0 1oo0 1400 1dc0 19A0 1io0 1io0 WM0 1o00 14o0 1o00 17c0 1io0 17c0 1fA0 1a00 1lc0 17c0 1io0 17c0 1fA0 1a00 1io0 17c0 1io0 17c0 1fA0 1cM0 1io0 17c0 1fA0 1a00 1io0 17c0 1io0 17c0 1fA0 1a00 1io0 1qM0 Dc0 g5X0 14p0 1wn0 17d0 1io0 11A0 1o00 17c0 1fA0 1a00 1fA0 1cM0 1fA0 1a00 17c0 1fA0 1a00 1io0 17c0 1lc0 17c0 1fA0 1a00 1io0 17c0 1io0 17c0 1fA0 1a00 1a00 1qM0 WM0 1qM0 11A0 1o00 WM0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1tA0 IM0 90o0 U00 1tA0 U00 1tA0 U00 1tA0 U00 1tA0 WM0 1qM0 WM0 1qM0 WM0 1tA0 U00 1tA0 U00 1tA0 11z0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1o00 14o0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Etc/GMT+0|GMT|0|0|",
+		"Etc/GMT+1|GMT+1|10|0|",
+		"Etc/GMT+10|GMT+10|a0|0|",
+		"Etc/GMT+11|GMT+11|b0|0|",
+		"Etc/GMT+12|GMT+12|c0|0|",
+		"Etc/GMT+2|GMT+2|20|0|",
+		"Etc/GMT+3|GMT+3|30|0|",
+		"Etc/GMT+4|GMT+4|40|0|",
+		"Etc/GMT+5|GMT+5|50|0|",
+		"Etc/GMT+6|GMT+6|60|0|",
+		"Etc/GMT+7|GMT+7|70|0|",
+		"Etc/GMT+8|GMT+8|80|0|",
+		"Etc/GMT+9|GMT+9|90|0|",
+		"Etc/GMT-1|GMT-1|-10|0|",
+		"Etc/GMT-10|GMT-10|-a0|0|",
+		"Etc/GMT-11|GMT-11|-b0|0|",
+		"Etc/GMT-12|GMT-12|-c0|0|",
+		"Etc/GMT-13|GMT-13|-d0|0|",
+		"Etc/GMT-14|GMT-14|-e0|0|",
+		"Etc/GMT-2|GMT-2|-20|0|",
+		"Etc/GMT-3|GMT-3|-30|0|",
+		"Etc/GMT-4|GMT-4|-40|0|",
+		"Etc/GMT-5|GMT-5|-50|0|",
+		"Etc/GMT-6|GMT-6|-60|0|",
+		"Etc/GMT-7|GMT-7|-70|0|",
+		"Etc/GMT-8|GMT-8|-80|0|",
+		"Etc/GMT-9|GMT-9|-90|0|",
+		"Etc/UCT|UCT|0|0|",
+		"Etc/UTC|UTC|0|0|",
+		"Europe/Amsterdam|AMT NST NEST NET CEST CET|-j.w -1j.w -1k -k -20 -10|010101010101010101010101010101010101010101012323234545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545|-2aFcj.w 11b0 1iP0 11A0 1io0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1co0 1io0 1yo0 Pc0 1a00 1fA0 1Bc0 Mo0 1tc0 Uo0 1tA0 U00 1uo0 W00 1s00 VA0 1so0 Vc0 1sM0 UM0 1wo0 Rc0 1u00 Wo0 1rA0 W00 1s00 VA0 1sM0 UM0 1w00 fV0 BCX.w 1tA0 U00 1u00 Wo0 1sm0 601k WM0 1fA0 1cM0 1cM0 1cM0 16M0 1gMM0 1a00 1fA0 1cM0 1cM0 1cM0 1fA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Andorra|WET CET CEST|0 -10 -20|012121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-UBA0 1xIN0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Athens|AMT EET EEST CEST CET|-1y.Q -20 -30 -20 -10|012123434121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2a61x.Q CNbx.Q mn0 kU10 9b0 3Es0 Xa0 1fb0 1dd0 k3X0 Nz0 SCp0 1vc0 SO0 1cM0 1a00 1ao0 1fc0 1a10 1fG0 1cg0 1dX0 1bX0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Belfast|GMT BST BDST|0 -10 -20|0101010101010101010101010101010101010101010101010121212121210101210101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2axa0 Rc0 1fA0 14M0 1fc0 1g00 1co0 1dc0 1co0 1oo0 1400 1dc0 19A0 1io0 1io0 WM0 1o00 14o0 1o00 17c0 1io0 17c0 1fA0 1a00 1lc0 17c0 1io0 17c0 1fA0 1a00 1io0 17c0 1io0 17c0 1fA0 1cM0 1io0 17c0 1fA0 1a00 1io0 17c0 1io0 17c0 1fA0 1a00 1io0 1qM0 Dc0 2Rz0 Dc0 1zc0 Oo0 1zc0 Rc0 1wo0 17c0 1iM0 FA0 xB0 1fA0 1a00 14o0 bb0 LA0 xB0 Rc0 1wo0 11A0 1o00 17c0 1fA0 1a00 1fA0 1cM0 1fA0 1a00 17c0 1fA0 1a00 1io0 17c0 1lc0 17c0 1fA0 1a00 1io0 17c0 1io0 17c0 1fA0 1a00 1a00 1qM0 WM0 1qM0 11A0 1o00 WM0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1tA0 IM0 90o0 U00 1tA0 U00 1tA0 U00 1tA0 U00 1tA0 WM0 1qM0 WM0 1qM0 WM0 1tA0 U00 1tA0 U00 1tA0 11z0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1o00 14o0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Belgrade|CET CEST|-10 -20|01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-19RC0 3IP0 WM0 1fA0 1cM0 1cM0 1rc0 Qo0 1vmo0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Berlin|CET CEST CEMT|-10 -20 -30|01010101010101210101210101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2aFe0 11d0 1iO0 11A0 1o00 11A0 Qrc0 6i00 WM0 1fA0 1cM0 1cM0 1cM0 kL0 Nc0 m10 WM0 1ao0 1cp0 dX0 jz0 Dd0 1io0 17c0 1fA0 1a00 1ehA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Bratislava|CET CEST|-10 -20|010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2aFe0 11d0 1iO0 11A0 1o00 11A0 Qrc0 6i00 WM0 1fA0 1cM0 16M0 1lc0 1tA0 17A0 11c0 1io0 17c0 1io0 17c0 1fc0 1ao0 1bNc0 1cM0 1fA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Brussels|WET CET CEST WEST|0 -10 -20 -10|0121212103030303030303030303030303030303030303030303212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2ehc0 3zX0 11c0 1iO0 11A0 1o00 11A0 my0 Ic0 1qM0 Rc0 1EM0 UM0 1u00 10o0 1io0 1io0 17c0 1a00 1fA0 1cM0 1cM0 1io0 17c0 1fA0 1a00 1io0 1a30 1io0 17c0 1fA0 1a00 1io0 17c0 1cM0 1cM0 1a00 1io0 1cM0 1cM0 1a00 1fA0 1io0 17c0 1cM0 1cM0 1a00 1fA0 1io0 1qM0 Dc0 y00 5Wn0 WM0 1fA0 1cM0 16M0 1iM0 16M0 1C00 Uo0 1eeo0 1a00 1fA0 1cM0 1cM0 1cM0 1fA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Bucharest|BMT EET EEST|-1I.o -20 -30|0121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-1xApI.o 20LI.o RA0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1Axc0 On0 1fA0 1a10 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cK0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cL0 1cN0 1cL0 1fB0 1nX0 11E0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Budapest|CET CEST|-10 -20|0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2aFe0 11d0 1iO0 11A0 1ip0 17b0 1op0 1tb0 Q2m0 3Ne0 WM0 1fA0 1cM0 1cM0 1oJ0 1dc0 1030 1fA0 1cM0 1cM0 1cM0 1cM0 1fA0 1a00 1iM0 1fA0 8Ha0 Rb0 1wN0 Rb0 1BB0 Lz0 1C20 LB0 SNX0 1a10 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Busingen|CET CEST|-10 -20|01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-19Lc0 11A0 1o00 11A0 1xG10 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Chisinau|CMT BMT EET EEST CEST CET MSK MSD|-1T -1I.o -20 -30 -20 -10 -30 -40|0123232323232323232345454676767676767676767623232323232323232323232323232323232323232323232323232323232323232323232323232323232323232323232|-26jdT wGMa.A 20LI.o RA0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 27A0 2en0 39g0 WM0 1fA0 1cM0 V90 1t7z0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1ty0 2bD0 1cM0 1cK0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 1nX0 11E0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Copenhagen|CET CEST|-10 -20|0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2azC0 Tz0 VuO0 60q0 WM0 1fA0 1cM0 1cM0 1cM0 S00 1HA0 Nc0 1C00 Dc0 1Nc0 Ao0 1h5A0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Gibraltar|GMT BST BDST CET CEST|0 -10 -20 -10 -20|010101010101010101010101010101010101010101010101012121212121010121010101010101010101034343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343|-2axa0 Rc0 1fA0 14M0 1fc0 1g00 1co0 1dc0 1co0 1oo0 1400 1dc0 19A0 1io0 1io0 WM0 1o00 14o0 1o00 17c0 1io0 17c0 1fA0 1a00 1lc0 17c0 1io0 17c0 1fA0 1a00 1io0 17c0 1io0 17c0 1fA0 1cM0 1io0 17c0 1fA0 1a00 1io0 17c0 1io0 17c0 1fA0 1a00 1io0 1qM0 Dc0 2Rz0 Dc0 1zc0 Oo0 1zc0 Rc0 1wo0 17c0 1iM0 FA0 xB0 1fA0 1a00 14o0 bb0 LA0 xB0 Rc0 1wo0 11A0 1o00 17c0 1fA0 1a00 1fA0 1cM0 1fA0 1a00 17c0 1fA0 1a00 1io0 17c0 1lc0 17c0 1fA0 10Jz0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Helsinki|HMT EET EEST|-1D.N -20 -30|0121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-1WuND.N OULD.N 1dA0 1xGq0 1cM0 1cM0 1cM0 1cN0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Kaliningrad|CET CEST CET CEST MSK MSD EEST EET FET|-10 -20 -20 -30 -30 -40 -30 -20 -30|0101010101010232454545454545454545454676767676767676767676767676767676767676787|-2aFe0 11d0 1iO0 11A0 1o00 11A0 Qrc0 6i00 WM0 1fA0 1cM0 1cM0 Am0 Lb0 1en0 op0 1pNz0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 1cJ0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Europe/Kiev|KMT EET MSK CEST CET MSD EEST|-22.4 -20 -30 -20 -10 -40 -30|0123434252525252525252525256161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161|-1Pc22.4 eUo2.4 rnz0 2Hg0 WM0 1fA0 da0 1v4m0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 Db0 3220 1cK0 1cL0 1cN0 1cL0 1cN0 1cL0 1cQ0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Lisbon|LMT WET WEST WEMT CET CEST|A.J 0 -10 -20 -10 -20|012121212121212121212121212121212121212121212321232123212321212121212121212121212121212121212121214121212121212121212121212121212124545454212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2ldXn.f aPWn.f Sp0 LX0 1vc0 Tc0 1uM0 SM0 1vc0 Tc0 1vc0 SM0 1vc0 6600 1co0 3E00 17c0 1fA0 1a00 1io0 1a00 1io0 17c0 3I00 17c0 1cM0 1cM0 3Fc0 1cM0 1a00 1fA0 1io0 17c0 1cM0 1cM0 1a00 1fA0 1io0 1qM0 Dc0 1tA0 1cM0 1dc0 1400 gL0 IM0 s10 U00 dX0 Rc0 pd0 Rc0 gL0 Oo0 pd0 Rc0 gL0 Oo0 pd0 14o0 1cM0 1cP0 1cM0 1cM0 1cM0 1cM0 1cM0 3Co0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 pvy0 1cM0 1cM0 1fA0 1cM0 1cM0 1cN0 1cL0 1cN0 1cM0 1cM0 1cM0 1cM0 1cN0 1cL0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Luxembourg|LMT CET CEST WET WEST WEST WET|-o.A -10 -20 0 -10 -20 -10|0121212134343434343434343434343434343434343434343434565651212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2DG0o.A t6mo.A TB0 1nX0 Up0 1o20 11A0 rW0 CM0 1qP0 R90 1EO0 UK0 1u20 10m0 1ip0 1in0 17e0 19W0 1fB0 1db0 1cp0 1in0 17d0 1fz0 1a10 1in0 1a10 1in0 17f0 1fA0 1a00 1io0 17c0 1cM0 1cM0 1a00 1io0 1cM0 1cM0 1a00 1fA0 1io0 17c0 1cM0 1cM0 1a00 1fA0 1io0 1qM0 Dc0 vA0 60L0 WM0 1fA0 1cM0 17c0 1io0 16M0 1C00 Uo0 1eeo0 1a00 1fA0 1cM0 1cM0 1cM0 1fA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Madrid|WET WEST WEMT CET CEST|0 -10 -20 -10 -20|01010101010101010101010121212121234343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343|-28dd0 11A0 1go0 19A0 1co0 1dA0 b1A0 18o0 3I00 17c0 1fA0 1a00 1io0 1a00 1io0 17c0 iyo0 Rc0 18o0 1hc0 1io0 1a00 14o0 5aL0 MM0 1vc0 17A0 1i00 1bc0 1eo0 17d0 1in0 17A0 6hA0 10N0 XIL0 1a10 1in0 17d0 19X0 1cN0 1fz0 1a10 1fX0 1cp0 1cO0 1cM0 1fA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Malta|CET CEST|-10 -20|0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2as10 M00 1cM0 1cM0 14o0 1o00 WM0 1qM0 17c0 1cM0 M3A0 5M20 WM0 1fA0 1cM0 1cM0 1cM0 16m0 1de0 1lc0 14m0 1lc0 WO0 1qM0 GTW0 On0 1C10 Lz0 1C10 Lz0 1EN0 Lz0 1C10 Lz0 1zd0 Oo0 1C00 On0 1cp0 1cM0 1lA0 Xc0 1qq0 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1o10 11z0 1iN0 19z0 1fB0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Minsk|MMT EET MSK CEST CET MSD EEST FET|-1O -20 -30 -20 -10 -40 -30 -30|012343432525252525252525252616161616161616161616161616161616161616172|-1Pc1O eUnO qNX0 3gQ0 WM0 1fA0 1cM0 Al0 1tsn0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 3Fc0 1cN0 1cK0 1cM0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hy0",
+		"Europe/Monaco|PMT WET WEST WEMT CET CEST|-9.l 0 -10 -20 -10 -20|01212121212121212121212121212121212121212121212121232323232345454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454|-2nco9.l cNb9.l HA0 19A0 1iM0 11c0 1oo0 Wo0 1rc0 QM0 1EM0 UM0 1u00 10o0 1io0 1wo0 Rc0 1a00 1fA0 1cM0 1cM0 1io0 17c0 1fA0 1a00 1io0 1a00 1io0 17c0 1fA0 1a00 1io0 17c0 1cM0 1cM0 1a00 1io0 1cM0 1cM0 1a00 1fA0 1io0 17c0 1cM0 1cM0 1a00 1fA0 1io0 1qM0 Df0 2RV0 11z0 11B0 1ze0 WM0 1fA0 1cM0 1fa0 1aq0 16M0 1ekn0 1cL0 1fC0 1a00 1fA0 1cM0 1cM0 1cM0 1fA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Moscow|MMT MMT MST MDST MSD MSK MSM EET EEST MSK|-2u.h -2v.j -3v.j -4v.j -40 -30 -50 -20 -30 -40|012132345464575454545454545454545458754545454545454545454545454545454545454595|-2ag2u.h 2pyW.W 1bA0 11X0 GN0 1Hb0 c20 imv.j 3DA0 dz0 15A0 c10 2q10 iM10 23CL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 IM0 rU0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Europe/Paris|PMT WET WEST CEST CET WEMT|-9.l 0 -10 -20 -10 -20|0121212121212121212121212121212121212121212121212123434352543434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434343434|-2nco8.l cNb8.l HA0 19A0 1iM0 11c0 1oo0 Wo0 1rc0 QM0 1EM0 UM0 1u00 10o0 1io0 1wo0 Rc0 1a00 1fA0 1cM0 1cM0 1io0 17c0 1fA0 1a00 1io0 1a00 1io0 17c0 1fA0 1a00 1io0 17c0 1cM0 1cM0 1a00 1io0 1cM0 1cM0 1a00 1fA0 1io0 17c0 1cM0 1cM0 1a00 1fA0 1io0 1qM0 Df0 Ik0 5M30 WM0 1fA0 1cM0 Vx0 hB0 1aq0 16M0 1ekn0 1cL0 1fC0 1a00 1fA0 1cM0 1cM0 1cM0 1fA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Riga|RMT LST EET MSK CEST CET MSD EEST|-1A.y -2A.y -20 -30 -20 -10 -40 -30|010102345454536363636363636363727272727272727272727272727272727272727272727272727272727272727272727272727272727272727272727272|-25TzA.y 11A0 1iM0 ko0 gWm0 yDXA.y 2bX0 3fE0 WM0 1fA0 1cM0 1cM0 4m0 1sLy0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cN0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 1o00 11A0 1o00 11A0 1qM0 3oo0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Rome|CET CEST|-10 -20|0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2as10 M00 1cM0 1cM0 14o0 1o00 WM0 1qM0 17c0 1cM0 M3A0 5M20 WM0 1fA0 1cM0 16K0 1iO0 16m0 1de0 1lc0 14m0 1lc0 WO0 1qM0 GTW0 On0 1C10 Lz0 1C10 Lz0 1EN0 Lz0 1C10 Lz0 1zd0 Oo0 1C00 On0 1C10 Lz0 1zd0 On0 1C10 LA0 1C00 LA0 1zc0 Oo0 1C00 Oo0 1zc0 Oo0 1fC0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Samara|LMT SAMT SAMT KUYT KUYST MSD MSK EEST KUYT SAMST SAMST|-3k.k -30 -40 -40 -50 -40 -30 -30 -30 -50 -40|012343434343434343435656782929292929292929292929292929292929292a12|-22WNk.k qHak.k bcn0 1Qqo0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cN0 1cM0 1fA0 1cM0 1cN0 8o0 14j0 1cL0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qN0 WM0",
+		"Europe/Simferopol|SMT EET MSK CEST CET MSD EEST MSK|-2g -20 -30 -20 -10 -40 -30 -40|012343432525252525252525252161616525252616161616161616161616161616161616172|-1Pc2g eUog rEn0 2qs0 WM0 1fA0 1cM0 3V0 1u0L0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1Q00 4eL0 1cL0 1cN0 1cL0 1cN0 dX0 WL0 1cN0 1cL0 1fB0 1o30 11B0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11z0 1nW0",
+		"Europe/Sofia|EET CET CEST EEST|-20 -10 -20 -30|01212103030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030|-168L0 WM0 1fA0 1cM0 1cM0 1cN0 1mKH0 1dd0 1fb0 1ap0 1fb0 1a20 1fy0 1a30 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cK0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 1nX0 11E0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Stockholm|CET CEST|-10 -20|01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2azC0 TB0 2yDe0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Tallinn|TMT CET CEST EET MSK MSD EEST|-1D -10 -20 -20 -30 -40 -30|012103421212454545454545454546363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363|-26oND teD 11A0 1Ta0 4rXl KSLD 2FX0 2Jg0 WM0 1fA0 1cM0 18J0 1sTX0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cN0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o10 11A0 1qM0 5QM0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Tirane|LMT CET CEST|-1j.k -10 -20|01212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2glBj.k 14pcj.k 5LC0 WM0 4M0 1fCK0 10n0 1op0 11z0 1pd0 11z0 1qN0 WL0 1qp0 Xb0 1qp0 Xb0 1qp0 11z0 1lB0 11z0 1qN0 11z0 1iN0 16n0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Uzhgorod|CET CEST MSK MSD EET EEST|-10 -20 -30 -40 -20 -30|010101023232323232323232320454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454|-1cqL0 6i00 WM0 1fA0 1cM0 1ml0 1Cp0 1r3W0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1Q00 1Nf0 2pw0 1cL0 1cN0 1cL0 1cN0 1cL0 1cQ0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Vienna|CET CEST|-10 -20|0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2aFe0 11d0 1iO0 11A0 1o00 11A0 3KM0 14o0 LA00 6i00 WM0 1fA0 1cM0 1cM0 1cM0 400 2qM0 1a00 1cM0 1cM0 1io0 17c0 1gHa0 19X0 1cP0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Vilnius|WMT KMT CET EET MSK CEST MSD EEST|-1o -1z.A -10 -20 -30 -20 -40 -30|012324525254646464646464646464647373737373737352537373737373737373737373737373737373737373737373737373737373737373737373|-293do 6ILM.o 1Ooz.A zz0 Mfd0 29W0 3is0 WM0 1fA0 1cM0 LV0 1tgL0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cN0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11B0 1o00 11A0 1qM0 8io0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Volgograd|LMT TSAT STAT STAT VOLT VOLST VOLST VOLT MSK MSK|-2V.E -30 -30 -40 -40 -50 -40 -30 -40 -30|012345454545454545454676748989898989898989898989898989898989898989|-21IqV.E cLXV.E cEM0 1gqn0 Lco0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cN0 1cM0 1fA0 1cM0 2pz0 1cJ0 1cQ0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 8Hz0",
+		"Europe/Warsaw|WMT CET CEST EET EEST|-1o -10 -20 -20 -30|012121234312121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121|-2ctdo 1LXo 11d0 1iO0 11A0 1o00 11A0 1on0 11A0 6zy0 HWP0 5IM0 WM0 1fA0 1cM0 1dz0 1mL0 1en0 15B0 1aq0 1nA0 11A0 1io0 17c0 1fA0 1a00 iDX0 LA0 1cM0 1cM0 1C00 Oo0 1cM0 1cM0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1C00 LA0 uso0 1a00 1fA0 1cM0 1cM0 1cM0 1fA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cN0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"Europe/Zaporozhye|CUT EET MSK CEST CET MSD EEST|-2k -20 -30 -20 -10 -40 -30|01234342525252525252525252526161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161|-1Pc2k eUok rdb0 2RE0 WM0 1fA0 8m0 1v9a0 1db0 1cN0 1db0 1cN0 1db0 1dd0 1cO0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cK0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cQ0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"HST|HST|a0|0|",
+		"Indian/Chagos|LMT IOT IOT|-4N.E -50 -60|012|-2xosN.E 3AGLN.E",
+		"Indian/Christmas|CXT|-70|0|",
+		"Indian/Cocos|CCT|-6u|0|",
+		"Indian/Kerguelen|zzz TFT|0 -50|01|-MG00",
+		"Indian/Mahe|LMT SCT|-3F.M -40|01|-2yO3F.M",
+		"Indian/Maldives|MMT MVT|-4S -50|01|-olgS",
+		"Indian/Mauritius|LMT MUT MUST|-3O -40 -50|012121|-2xorO 34unO 14L0 12kr0 11z0",
+		"Indian/Reunion|LMT RET|-3F.Q -40|01|-2mDDF.Q",
+		"Kwajalein|MHT KWAT MHT|-b0 c0 -c0|012|-AX0 W9X0",
+		"MET|MET MEST|-10 -20|01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2aFe0 11d0 1iO0 11A0 1o00 11A0 Qrc0 6i00 WM0 1fA0 1cM0 1cM0 1cM0 16M0 1gMM0 1a00 1fA0 1cM0 1cM0 1cM0 1fA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00",
+		"MST|MST|70|0|",
+		"MST7MDT|MST MDT MWT MPT|70 60 60 60|010102301010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-261r0 1nX0 11B0 1nX0 SgN0 8x20 ix0 QwN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"NZ-CHAT|CHAST CHAST CHADT|-cf -cJ -dJ|012121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212|-WqAf 1adef IM0 1C00 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Oo0 1zc0 Rc0 1zc0 Oo0 1qM0 14o0 1lc0 14o0 1lc0 14o0 1lc0 17c0 1io0 17c0 1io0 17c0 1io0 17c0 1lc0 14o0 1lc0 14o0 1lc0 17c0 1io0 17c0 1io0 17c0 1lc0 14o0 1lc0 14o0 1lc0 17c0 1io0 17c0 1io0 17c0 1io0 17c0 1io0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1io0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00",
+		"PST8PDT|PST PDT PWT PPT|80 70 70 70|010102301010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-261q0 1nX0 11B0 1nX0 SgN0 8x10 iy0 QwN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1cN0 1cL0 1cN0 1cL0 s10 1Vz0 LB0 1BX0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1fz0 1a10 1fz0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 14p0 1lb0 14p0 1lb0 14p0 1nX0 11B0 1nX0 11B0 1nX0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0 Op0 1zb0",
+		"Pacific/Apia|LMT WSST SST SDT WSDT WSST|bq.U bu b0 a0 -e0 -d0|01232345454545454545454545454545454545454545454545454545454|-2nDMx.4 1yW03.4 2rRbu 1ff0 1a00 CI0 AQ0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1io0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1a00 1fA0 1cM0 1fA0 1a00 1fA0 1a00",
+		"Pacific/Bougainville|PGT JST BST|-a0 -90 -b0|0102|-16Wy0 7CN0 2MQp0",
+		"Pacific/Chuuk|CHUT|-a0|0|",
+		"Pacific/Efate|LMT VUT VUST|-bd.g -b0 -c0|0121212121212121212121|-2l9nd.g 2Szcd.g 1cL0 1oN0 10L0 1fB0 19X0 1fB0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1cN0 1cL0 1fB0 Lz0 1Nd0 An0",
+		"Pacific/Enderbury|PHOT PHOT PHOT|c0 b0 -d0|012|nIc0 B8n0",
+		"Pacific/Fakaofo|TKT TKT|b0 -d0|01|1Gfn0",
+		"Pacific/Fiji|LMT FJT FJST|-bT.I -c0 -d0|012121212121212121212121212121212121212121212121212121212121212|-2bUzT.I 3m8NT.I LA0 1EM0 IM0 nJc0 LA0 1o00 Rc0 1wo0 Ao0 1Nc0 Ao0 1Q00 xz0 1SN0 uM0 1SM0 xA0 1SM0 uM0 1SM0 uM0 1SM0 uM0 1SM0 uM0 1SM0 xA0 1SM0 uM0 1SM0 uM0 1SM0 uM0 1SM0 uM0 1SM0 uM0 1SM0 xA0 1SM0 uM0 1SM0 uM0 1SM0 uM0 1SM0 uM0 1SM0 uM0 1VA0 uM0 1SM0 uM0 1SM0 uM0 1SM0 uM0 1SM0 uM0 1SM0",
+		"Pacific/Funafuti|TVT|-c0|0|",
+		"Pacific/Galapagos|LMT ECT GALT|5W.o 50 60|012|-1yVS1.A 2dTz1.A",
+		"Pacific/Gambier|LMT GAMT|8X.M 90|01|-2jof0.c",
+		"Pacific/Guadalcanal|LMT SBT|-aD.M -b0|01|-2joyD.M",
+		"Pacific/Guam|GST ChST|-a0 -a0|01|1fpq0",
+		"Pacific/Honolulu|HST HDT HST|au 9u a0|010102|-1thLu 8x0 lef0 8Pz0 46p0",
+		"Pacific/Kiritimati|LINT LINT LINT|aE a0 -e0|012|nIaE B8nk",
+		"Pacific/Kosrae|KOST KOST|-b0 -c0|010|-AX0 1bdz0",
+		"Pacific/Majuro|MHT MHT|-b0 -c0|01|-AX0",
+		"Pacific/Marquesas|LMT MART|9i 9u|01|-2joeG",
+		"Pacific/Midway|NST NDT BST SST|b0 a0 b0 b0|01023|-x3N0 An0 pJd0 EyM0",
+		"Pacific/Nauru|LMT NRT JST NRT|-b7.E -bu -90 -c0|01213|-1Xdn7.E PvzB.E 5RCu 1ouJu",
+		"Pacific/Niue|NUT NUT NUT|bk bu b0|012|-KfME 17y0a",
+		"Pacific/Norfolk|NMT NFT|-bc -bu|01|-Kgbc",
+		"Pacific/Noumea|LMT NCT NCST|-b5.M -b0 -c0|01212121|-2l9n5.M 2EqM5.M xX0 1PB0 yn0 HeP0 Ao0",
+		"Pacific/Pago_Pago|LMT NST BST SST|bm.M b0 b0 b0|0123|-2nDMB.c 2gVzB.c EyM0",
+		"Pacific/Palau|PWT|-90|0|",
+		"Pacific/Pitcairn|PNT PST|8u 80|01|18Vku",
+		"Pacific/Pohnpei|PONT|-b0|0|",
+		"Pacific/Port_Moresby|PGT|-a0|0|",
+		"Pacific/Rarotonga|CKT CKHST CKT|au 9u a0|012121212121212121212121212|lyWu IL0 1zcu Onu 1zcu Onu 1zcu Rbu 1zcu Onu 1zcu Onu 1zcu Onu 1zcu Onu 1zcu Onu 1zcu Rbu 1zcu Onu 1zcu Onu 1zcu Onu",
+		"Pacific/Saipan|MPT MPT ChST|-90 -a0 -a0|012|-AV0 1g2n0",
+		"Pacific/Tahiti|LMT TAHT|9W.g a0|01|-2joe1.I",
+		"Pacific/Tarawa|GILT|-c0|0|",
+		"Pacific/Tongatapu|TOT TOT TOST|-ck -d0 -e0|01212121|-1aB0k 2n5dk 15A0 1wo0 xz0 1Q10 xz0",
+		"Pacific/Wake|WAKT|-c0|0|",
+		"Pacific/Wallis|WFT|-c0|0|",
+		"WET|WET WEST|0 -10|010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|hDB0 1a00 1fA0 1cM0 1cM0 1cM0 1fA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00"
+	],
+	"links": [
+		"Africa/Abidjan|Africa/Bamako",
+		"Africa/Abidjan|Africa/Banjul",
+		"Africa/Abidjan|Africa/Conakry",
+		"Africa/Abidjan|Africa/Dakar",
+		"Africa/Abidjan|Africa/Freetown",
+		"Africa/Abidjan|Africa/Lome",
+		"Africa/Abidjan|Africa/Nouakchott",
+		"Africa/Abidjan|Africa/Ouagadougou",
+		"Africa/Abidjan|Africa/Sao_Tome",
+		"Africa/Abidjan|Africa/Timbuktu",
+		"Africa/Abidjan|Atlantic/St_Helena",
+		"Africa/Addis_Ababa|Africa/Asmara",
+		"Africa/Addis_Ababa|Africa/Asmera",
+		"Africa/Addis_Ababa|Africa/Dar_es_Salaam",
+		"Africa/Addis_Ababa|Africa/Djibouti",
+		"Africa/Addis_Ababa|Africa/Kampala",
+		"Africa/Addis_Ababa|Africa/Mogadishu",
+		"Africa/Addis_Ababa|Africa/Nairobi",
+		"Africa/Addis_Ababa|Indian/Antananarivo",
+		"Africa/Addis_Ababa|Indian/Comoro",
+		"Africa/Addis_Ababa|Indian/Mayotte",
+		"Africa/Bangui|Africa/Brazzaville",
+		"Africa/Bangui|Africa/Douala",
+		"Africa/Bangui|Africa/Kinshasa",
+		"Africa/Bangui|Africa/Lagos",
+		"Africa/Bangui|Africa/Libreville",
+		"Africa/Bangui|Africa/Luanda",
+		"Africa/Bangui|Africa/Malabo",
+		"Africa/Bangui|Africa/Niamey",
+		"Africa/Bangui|Africa/Porto-Novo",
+		"Africa/Blantyre|Africa/Bujumbura",
+		"Africa/Blantyre|Africa/Gaborone",
+		"Africa/Blantyre|Africa/Harare",
+		"Africa/Blantyre|Africa/Kigali",
+		"Africa/Blantyre|Africa/Lubumbashi",
+		"Africa/Blantyre|Africa/Lusaka",
+		"Africa/Blantyre|Africa/Maputo",
+		"Africa/Cairo|Egypt",
+		"Africa/Johannesburg|Africa/Maseru",
+		"Africa/Johannesburg|Africa/Mbabane",
+		"Africa/Juba|Africa/Khartoum",
+		"Africa/Tripoli|Libya",
+		"America/Adak|America/Atka",
+		"America/Adak|US/Aleutian",
+		"America/Anchorage|US/Alaska",
+		"America/Anguilla|America/Dominica",
+		"America/Anguilla|America/Grenada",
+		"America/Anguilla|America/Guadeloupe",
+		"America/Anguilla|America/Marigot",
+		"America/Anguilla|America/Montserrat",
+		"America/Anguilla|America/Port_of_Spain",
+		"America/Anguilla|America/St_Barthelemy",
+		"America/Anguilla|America/St_Kitts",
+		"America/Anguilla|America/St_Lucia",
+		"America/Anguilla|America/St_Thomas",
+		"America/Anguilla|America/St_Vincent",
+		"America/Anguilla|America/Tortola",
+		"America/Anguilla|America/Virgin",
+		"America/Argentina/Buenos_Aires|America/Buenos_Aires",
+		"America/Argentina/Catamarca|America/Argentina/ComodRivadavia",
+		"America/Argentina/Catamarca|America/Catamarca",
+		"America/Argentina/Cordoba|America/Cordoba",
+		"America/Argentina/Cordoba|America/Rosario",
+		"America/Argentina/Jujuy|America/Jujuy",
+		"America/Argentina/Mendoza|America/Mendoza",
+		"America/Aruba|America/Curacao",
+		"America/Aruba|America/Kralendijk",
+		"America/Aruba|America/Lower_Princes",
+		"America/Atikokan|America/Coral_Harbour",
+		"America/Chicago|US/Central",
+		"America/Denver|America/Shiprock",
+		"America/Denver|Navajo",
+		"America/Denver|US/Mountain",
+		"America/Detroit|US/Michigan",
+		"America/Edmonton|Canada/Mountain",
+		"America/Ensenada|America/Tijuana",
+		"America/Ensenada|Mexico/BajaNorte",
+		"America/Fort_Wayne|America/Indiana/Indianapolis",
+		"America/Fort_Wayne|America/Indianapolis",
+		"America/Fort_Wayne|US/East-Indiana",
+		"America/Halifax|Canada/Atlantic",
+		"America/Havana|Cuba",
+		"America/Indiana/Knox|America/Knox_IN",
+		"America/Indiana/Knox|US/Indiana-Starke",
+		"America/Jamaica|Jamaica",
+		"America/Kentucky/Louisville|America/Louisville",
+		"America/Los_Angeles|US/Pacific",
+		"America/Los_Angeles|US/Pacific-New",
+		"America/Manaus|Brazil/West",
+		"America/Mazatlan|Mexico/BajaSur",
+		"America/Mexico_City|Mexico/General",
+		"America/New_York|US/Eastern",
+		"America/Noronha|Brazil/DeNoronha",
+		"America/Phoenix|US/Arizona",
+		"America/Porto_Acre|America/Rio_Branco",
+		"America/Porto_Acre|Brazil/Acre",
+		"America/Regina|Canada/East-Saskatchewan",
+		"America/Regina|Canada/Saskatchewan",
+		"America/Santiago|Chile/Continental",
+		"America/Sao_Paulo|Brazil/East",
+		"America/St_Johns|Canada/Newfoundland",
+		"America/Toronto|Canada/Eastern",
+		"America/Vancouver|Canada/Pacific",
+		"America/Whitehorse|Canada/Yukon",
+		"America/Winnipeg|Canada/Central",
+		"Antarctica/McMurdo|Antarctica/South_Pole",
+		"Antarctica/McMurdo|NZ",
+		"Antarctica/McMurdo|Pacific/Auckland",
+		"Arctic/Longyearbyen|Atlantic/Jan_Mayen",
+		"Arctic/Longyearbyen|Europe/Oslo",
+		"Asia/Ashgabat|Asia/Ashkhabad",
+		"Asia/Bangkok|Asia/Phnom_Penh",
+		"Asia/Bangkok|Asia/Vientiane",
+		"Asia/Calcutta|Asia/Kolkata",
+		"Asia/Chongqing|Asia/Chungking",
+		"Asia/Chongqing|Asia/Harbin",
+		"Asia/Chongqing|Asia/Shanghai",
+		"Asia/Chongqing|PRC",
+		"Asia/Dacca|Asia/Dhaka",
+		"Asia/Ho_Chi_Minh|Asia/Saigon",
+		"Asia/Hong_Kong|Hongkong",
+		"Asia/Istanbul|Europe/Istanbul",
+		"Asia/Istanbul|Turkey",
+		"Asia/Jerusalem|Asia/Tel_Aviv",
+		"Asia/Jerusalem|Israel",
+		"Asia/Kashgar|Asia/Urumqi",
+		"Asia/Kathmandu|Asia/Katmandu",
+		"Asia/Macao|Asia/Macau",
+		"Asia/Makassar|Asia/Ujung_Pandang",
+		"Asia/Nicosia|Europe/Nicosia",
+		"Asia/Seoul|ROK",
+		"Asia/Singapore|Singapore",
+		"Asia/Taipei|ROC",
+		"Asia/Tehran|Iran",
+		"Asia/Thimbu|Asia/Thimphu",
+		"Asia/Tokyo|Japan",
+		"Asia/Ulaanbaatar|Asia/Ulan_Bator",
+		"Atlantic/Faeroe|Atlantic/Faroe",
+		"Atlantic/Reykjavik|Iceland",
+		"Australia/ACT|Australia/Canberra",
+		"Australia/ACT|Australia/NSW",
+		"Australia/ACT|Australia/Sydney",
+		"Australia/Adelaide|Australia/South",
+		"Australia/Brisbane|Australia/Queensland",
+		"Australia/Broken_Hill|Australia/Yancowinna",
+		"Australia/Darwin|Australia/North",
+		"Australia/Hobart|Australia/Tasmania",
+		"Australia/LHI|Australia/Lord_Howe",
+		"Australia/Melbourne|Australia/Victoria",
+		"Australia/Perth|Australia/West",
+		"Chile/EasterIsland|Pacific/Easter",
+		"Eire|Europe/Dublin",
+		"Etc/GMT+0|Etc/GMT",
+		"Etc/GMT+0|Etc/GMT-0",
+		"Etc/GMT+0|Etc/GMT0",
+		"Etc/GMT+0|Etc/Greenwich",
+		"Etc/GMT+0|GMT",
+		"Etc/GMT+0|GMT+0",
+		"Etc/GMT+0|GMT-0",
+		"Etc/GMT+0|GMT0",
+		"Etc/GMT+0|Greenwich",
+		"Etc/UCT|UCT",
+		"Etc/UTC|Etc/Universal",
+		"Etc/UTC|Etc/Zulu",
+		"Etc/UTC|UTC",
+		"Etc/UTC|Universal",
+		"Etc/UTC|Zulu",
+		"Europe/Belfast|Europe/Guernsey",
+		"Europe/Belfast|Europe/Isle_of_Man",
+		"Europe/Belfast|Europe/Jersey",
+		"Europe/Belfast|Europe/London",
+		"Europe/Belfast|GB",
+		"Europe/Belfast|GB-Eire",
+		"Europe/Belgrade|Europe/Ljubljana",
+		"Europe/Belgrade|Europe/Podgorica",
+		"Europe/Belgrade|Europe/Sarajevo",
+		"Europe/Belgrade|Europe/Skopje",
+		"Europe/Belgrade|Europe/Zagreb",
+		"Europe/Bratislava|Europe/Prague",
+		"Europe/Busingen|Europe/Vaduz",
+		"Europe/Busingen|Europe/Zurich",
+		"Europe/Chisinau|Europe/Tiraspol",
+		"Europe/Helsinki|Europe/Mariehamn",
+		"Europe/Lisbon|Portugal",
+		"Europe/Moscow|W-SU",
+		"Europe/Rome|Europe/San_Marino",
+		"Europe/Rome|Europe/Vatican",
+		"Europe/Warsaw|Poland",
+		"Kwajalein|Pacific/Kwajalein",
+		"NZ-CHAT|Pacific/Chatham",
+		"Pacific/Chuuk|Pacific/Truk",
+		"Pacific/Chuuk|Pacific/Yap",
+		"Pacific/Honolulu|Pacific/Johnston",
+		"Pacific/Honolulu|US/Hawaii",
+		"Pacific/Pago_Pago|Pacific/Samoa",
+		"Pacific/Pago_Pago|US/Samoa",
+		"Pacific/Pohnpei|Pacific/Ponape"
+	]
 }
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/moment-timezone.js":[function(require,module,exports){
-// moment-timezone.js
-// version : 0.0.5
-// author : Tim Wood
-// license : MIT
-// github.com/timrwood/moment-timezone
+},{}],7:[function(require,module,exports){
+var moment = module.exports = require("./moment-timezone");
+moment.tz.load(require('./data/packed/latest.json'));
 
-(function () {
+},{"./data/packed/latest.json":6,"./moment-timezone":8}],8:[function(require,module,exports){
+//! moment-timezone.js
+//! version : 0.2.5
+//! author : Tim Wood
+//! license : MIT
+//! github.com/moment/moment-timezone
 
-	var VERSION = "0.0.5";
+(function (root, factory) {
+	"use strict";
 
-	function onload(moment) {
-		var oldZoneName = moment.fn.zoneName,
-			oldZoneAbbr = moment.fn.zoneAbbr,
+	/*global define*/
+	if (typeof define === 'function' && define.amd) {
+		define(['moment'], factory);                 // AMD
+	} else if (typeof exports === 'object') {
+		module.exports = factory(require('moment')); // Node
+	} else {
+		factory(root.moment);                        // Browser
+	}
+}(this, function (moment) {
+	"use strict";
 
-			defaultRule,
-			rules = {},
-			ruleSets = {},
-			zones = {},
-			zoneSets = {},
-			links = {},
+	// Do not load moment-timezone a second time.
+	if (moment.tz !== undefined) { return moment; }
 
-			TIME_RULE_WALL_CLOCK = 0,
-			TIME_RULE_UTC        = 1,
-			TIME_RULE_STANDARD   = 2,
+	var VERSION = "0.2.5",
+		zones = {},
+		links = {},
 
-			DAY_RULE_DAY_OF_MONTH   = 7,
-			DAY_RULE_LAST_WEEKDAY   = 8;
+		momentVersion = moment.version.split('.'),
+		major = +momentVersion[0],
+		minor = +momentVersion[1];
 
-		if (moment.tz !== undefined) {
-			// Do not load moment-timezone a second time.
+	// Moment.js version check
+	if (major < 2 || (major === 2 && minor < 6)) {
+		logError('Moment Timezone requires Moment.js >= 2.6.0. You are using Moment.js ' + moment.version + '. See momentjs.com');
+	}
+
+	/************************************
+		Unpacking
+	************************************/
+
+	function charCodeToInt(charCode) {
+		if (charCode > 96) {
+			return charCode - 87;
+		} else if (charCode > 64) {
+			return charCode - 29;
+		}
+		return charCode - 48;
+	}
+
+	function unpackBase60(string) {
+		var i = 0,
+			parts = string.split('.'),
+			whole = parts[0],
+			fractional = parts[1] || '',
+			multiplier = 1,
+			num,
+			out = 0,
+			sign = 1;
+
+		// handle negative numbers
+		if (string.charCodeAt(0) === 45) {
+			i = 1;
+			sign = -1;
+		}
+
+		// handle digits before the decimal
+		for (i; i < whole.length; i++) {
+			num = charCodeToInt(whole.charCodeAt(i));
+			out = 60 * out + num;
+		}
+
+		// handle digits after the decimal
+		for (i = 0; i < fractional.length; i++) {
+			multiplier = multiplier / 60;
+			num = charCodeToInt(fractional.charCodeAt(i));
+			out += num * multiplier;
+		}
+
+		return out * sign;
+	}
+
+	function arrayToInt (array) {
+		for (var i = 0; i < array.length; i++) {
+			array[i] = unpackBase60(array[i]);
+		}
+	}
+
+	function intToUntil (array, length) {
+		for (var i = 0; i < length; i++) {
+			array[i] = Math.round((array[i - 1] || 0) + (array[i] * 60000)); // minutes to milliseconds
+		}
+
+		array[length - 1] = Infinity;
+	}
+
+	function mapIndices (source, indices) {
+		var out = [], i;
+
+		for (i = 0; i < indices.length; i++) {
+			out[i] = source[indices[i]];
+		}
+
+		return out;
+	}
+
+	function unpack (string) {
+		var data = string.split('|'),
+			offsets = data[2].split(' '),
+			indices = data[3].split(''),
+			untils  = data[4].split(' ');
+
+		arrayToInt(offsets);
+		arrayToInt(indices);
+		arrayToInt(untils);
+
+		intToUntil(untils, indices.length);
+
+		return {
+			name    : data[0],
+			abbrs   : mapIndices(data[1].split(' '), indices),
+			offsets : mapIndices(offsets, indices),
+			untils  : untils
+		};
+	}
+
+	/************************************
+		Zone object
+	************************************/
+
+	function Zone (packedString) {
+		if (packedString) {
+			this._set(unpack(packedString));
+		}
+	}
+
+	Zone.prototype = {
+		_set : function (unpacked) {
+			this.name    = unpacked.name;
+			this.abbrs   = unpacked.abbrs;
+			this.untils  = unpacked.untils;
+			this.offsets = unpacked.offsets;
+		},
+
+		_index : function (timestamp) {
+			var target = +timestamp,
+				untils = this.untils,
+				i;
+
+			for (i = 0; i < untils.length; i++) {
+				if (target < untils[i]) {
+					return i;
+				}
+			}
+		},
+
+		parse : function (timestamp) {
+			var target  = +timestamp,
+				offsets = this.offsets,
+				untils  = this.untils,
+				max     = untils.length - 1,
+				offset, offsetNext, offsetPrev, i;
+
+			for (i = 0; i < max; i++) {
+				offset     = offsets[i];
+				offsetNext = offsets[i + 1];
+				offsetPrev = offsets[i ? i - 1 : i];
+
+				if (offset < offsetNext && tz.moveAmbiguousForward) {
+					offset = offsetNext;
+				} else if (offset > offsetPrev && tz.moveInvalidForward) {
+					offset = offsetPrev;
+				}
+
+				if (target < untils[i] - (offset * 60000)) {
+					return offsets[i];
+				}
+			}
+
+			return offsets[max];
+		},
+
+		abbr : function (mom) {
+			return this.abbrs[this._index(mom)];
+		},
+
+		offset : function (mom) {
+			return this.offsets[this._index(mom)];
+		}
+	};
+
+	/************************************
+		Global Methods
+	************************************/
+
+	function normalizeName (name) {
+		return (name || '').toLowerCase().replace(/\//g, '_');
+	}
+
+	function addZone (packed) {
+		var i, zone, zoneName;
+
+		if (typeof packed === "string") {
+			packed = [packed];
+		}
+
+		for (i = 0; i < packed.length; i++) {
+			zone = new Zone(packed[i]);
+			zoneName = normalizeName(zone.name);
+			zones[zoneName] = zone;
+			upgradeLinksToZones(zoneName);
+		}
+	}
+
+	function getZone (name) {
+		return zones[normalizeName(name)] || null;
+	}
+
+	function getNames () {
+		var i, out = [];
+
+		for (i in zones) {
+			if (zones.hasOwnProperty(i) && zones[i]) {
+				out.push(zones[i].name);
+			}
+		}
+
+		return out.sort();
+	}
+
+	function addLink (aliases) {
+		var i, alias;
+
+		if (typeof aliases === "string") {
+			aliases = [aliases];
+		}
+
+		for (i = 0; i < aliases.length; i++) {
+			alias = aliases[i].split('|');
+			pushLink(alias[0], alias[1]);
+			pushLink(alias[1], alias[0]);
+		}
+	}
+
+	function upgradeLinksToZones (zoneName) {
+		if (!links[zoneName]) {
 			return;
 		}
 
-		// converts time in the HH:mm:ss format to absolute number of minutes
-		function parseMinutes (input) {
-			input = input + '';
-			var output = input.split(':'),
-				sign = ~input.indexOf('-') ? -1 : 1,
-				hour = Math.abs(+output[0]),
-				minute = parseInt(output[1], 10) || 0,
-				second = parseInt(output[2], 10) || 0;
+		var i,
+			zone = zones[zoneName],
+			linkNames = links[zoneName];
 
-			return sign * ((hour * 60) + (minute) + (second / 60));
+		for (i = 0; i < linkNames.length; i++) {
+			copyZoneWithName(zone, linkNames[i]);
 		}
 
-		/************************************
-			Rules
-		************************************/
-
-		function Rule (name, startYear, endYear, month, day, dayRule, time, timeRule, offset, letters) {
-			this.name      = name;
-			this.startYear = +startYear;
-			this.endYear   = +endYear;
-			this.month     = +month;
-			this.day       = +day;
-			this.dayRule   = +dayRule;
-			this.time      = parseMinutes(time);
-			this.timeRule  = +timeRule;
-			this.offset    = parseMinutes(offset);
-			this.letters   = letters || '';
-			this.date = memoize(this.date);
-			this.weekdayAfter = memoize(this.weekdayAfter);
-			this.lastWeekday = memoize(this.lastWeekday);
-		}
-
-		Rule.prototype = {
-			contains : function (year) {
-				return (year >= this.startYear && year <= this.endYear);
-			},
-
-			start : function (year) {
-				year = Math.min(Math.max(year, this.startYear), this.endYear);
-				return moment.utc([year, this.month, this.date(year), 0, this.time]);
-			},
-
-			date : function (year) {
-				if (this.dayRule === DAY_RULE_DAY_OF_MONTH) {
-					return this.day;
-				} else if (this.dayRule === DAY_RULE_LAST_WEEKDAY) {
-					return this.lastWeekday(year);
-				}
-				return this.weekdayAfter(year);
-			},
-
-			weekdayAfter : function (year) {
-				var day = this.day,
-					firstDayOfWeek = moment([year, this.month, 1]).day(),
-					output = this.dayRule + 1 - firstDayOfWeek;
-
-				while (output < day) {
-					output += 7;
-				}
-
-				return output;
-			},
-
-			lastWeekday : function (year) {
-				var day = this.day,
-					dow = day % 7,
-					lastDowOfMonth = moment([year, this.month + 1, 1]).day(),
-					daysInMonth = moment([year, this.month, 1]).daysInMonth(),
-					output = daysInMonth + (dow - (lastDowOfMonth - 1)) - (~~(day / 7) * 7);
-
-				if (dow >= lastDowOfMonth) {
-					output -= 7;
-				}
-				return output;
-			}
-		};
-
-		/************************************
-			Rule Year
-		************************************/
-
-		function RuleYear (year, rule) {
-			this.rule = rule;
-			this.start = rule.start(year);
-		}
-
-		RuleYear.prototype = {
-			equals : function (other) {
-				if (!other || other.rule !== this.rule) {
-					return false;
-				}
-				return Math.abs(other.start - this.start) < 86400000; // 24 * 60 * 60 * 1000
-			}
-		};
-
-		function sortRuleYears (a, b) {
-			if (a.isLast) {
-				return -1;
-			}
-			if (b.isLast) {
-				return 1;
-			}
-			return b.start - a.start;
-		}
-
-		/************************************
-			Rule Sets
-		************************************/
-
-		function RuleSet (name) {
-			this.name = name;
-			this.rules = [];
-			this.lastYearRule = memoize(this.lastYearRule);
-		}
-
-		RuleSet.prototype = {
-			add : function (rule) {
-				this.rules.push(rule);
-			},
-
-			ruleYears : function (mom, lastZone) {
-				var i, j,
-					year = mom.year(),
-					rule,
-					lastZoneRule,
-					rules = [];
-
-				for (i = 0; i < this.rules.length; i++) {
-					rule = this.rules[i];
-					if (rule.contains(year)) {
-						rules.push(new RuleYear(year, rule));
-					} else if (rule.contains(year + 1)) {
-						rules.push(new RuleYear(year + 1, rule));
-					}
-				}
-				rules.push(new RuleYear(year - 1, this.lastYearRule(year - 1)));
-
-				if (lastZone) {
-					lastZoneRule = new RuleYear(year - 1, lastZone.lastRule());
-					lastZoneRule.start = lastZone.until.clone().utc();
-					lastZoneRule.isLast = lastZone.ruleSet !== this;
-					rules.push(lastZoneRule);
-				}
-
-				rules.sort(sortRuleYears);
-				return rules;
-			},
-
-			rule : function (mom, offset, lastZone) {
-				var rules = this.ruleYears(mom, lastZone),
-					lastOffset = 0,
-					rule,
-					lastZoneOffset,
-					lastZoneOffsetAbs,
-					lastRule,
-					i;
-
-				if (lastZone) {
-					lastZoneOffset = lastZone.offset + lastZone.lastRule().offset;
-					lastZoneOffsetAbs = Math.abs(lastZoneOffset) * 90000;
-				}
-
-				// make sure to include the previous rule's offset
-				for (i = rules.length - 1; i > -1; i--) {
-					lastRule = rule;
-					rule = rules[i];
-
-					if (rule.equals(lastRule)) {
-						continue;
-					}
-
-					if (lastZone && !rule.isLast && Math.abs(rule.start - lastZone.until) <= lastZoneOffsetAbs) {
-						lastOffset += lastZoneOffset - offset;
-					}
-
-					if (rule.rule.timeRule === TIME_RULE_STANDARD) {
-						lastOffset = offset;
-					}
-
-					if (rule.rule.timeRule !== TIME_RULE_UTC) {
-						rule.start.add('m', -lastOffset);
-					}
-
-					lastOffset = rule.rule.offset + offset;
-				}
-
-				for (i = 0; i < rules.length; i++) {
-					rule = rules[i];
-					if (mom >= rule.start && !rule.isLast) {
-						return rule.rule;
-					}
-				}
-
-				return defaultRule;
-			},
-
-			lastYearRule : function (year) {
-				var i,
-					rule,
-					start,
-					bestRule = defaultRule,
-					largest = -1e30;
-
-				for (i = 0; i < this.rules.length; i++) {
-					rule = this.rules[i];
-					if (year >= rule.startYear) {
-						start = rule.start(year);
-						if (start > largest) {
-							largest = start;
-							bestRule = rule;
-						}
-					}
-				}
-
-				return bestRule;
-			}
-		};
-
-		/************************************
-			Zone
-		************************************/
-
-		function Zone (name, offset, ruleSet, letters, until, untilOffset) {
-			var i,
-				untilArray = typeof until === 'string' ? until.split('_') : [9999];
-
-			this.name = name;
-			this.offset = parseMinutes(offset);
-			this.ruleSet = ruleSet;
-			this.letters = letters;
-			this.lastRule = memoize(this.lastRule);
-
-			for (i = 0; i < untilArray.length; i++) {
-				untilArray[i] = +untilArray[i];
-			}
-			this.until = moment.utc(untilArray).subtract('m', parseMinutes(untilOffset));
-		}
-
-		Zone.prototype = {
-			rule : function (mom, lastZone) {
-				return this.ruleSet.rule(mom, this.offset, lastZone);
-			},
-
-			lastRule : function () {
-				return this.rule(this.until);
-			},
-
-			format : function (rule) {
-				return this.letters.replace("%s", rule.letters);
-			}
-		};
-
-		/************************************
-			Zone Set
-		************************************/
-
-		function sortZones (a, b) {
-			return a.until - b.until;
-		}
-
-		function ZoneSet (name) {
-			this.name = normalizeName(name);
-			this.displayName = name;
-			this.zones = [];
-			this.zoneAndRule = memoize(this.zoneAndRule, function (mom) {
-				return +mom;
-			});
-		}
-
-		ZoneSet.prototype = {
-			zoneAndRule : function (mom) {
-				var i,
-					zone,
-					lastZone;
-
-				mom = mom.clone().utc();
-				for (i = 0; i < this.zones.length; i++) {
-					zone = this.zones[i];
-					if (mom < zone.until) {
-						break;
-					}
-					lastZone = zone;
-				}
-
-				return [zone, zone.rule(mom, lastZone)];
-			},
-
-			add : function (zone) {
-				this.zones.push(zone);
-				this.zones.sort(sortZones);
-			},
-
-			format : function (mom) {
-				var zoneAndRule = this.zoneAndRule(mom);
-				return zoneAndRule[0].format(zoneAndRule[1]);
-			},
-
-			offset : function (mom) {
-				var zoneAndRule = this.zoneAndRule(mom);
-				return -(zoneAndRule[0].offset + zoneAndRule[1].offset);
-			}
-		};
-
-		/************************************
-			Global Methods
-		************************************/
-
-		function memoize (fn, keyFn) {
-			var cache = {};
-			return function (first) {
-				var key = keyFn ? keyFn.apply(this, arguments) : first;
-				return key in cache ?
-					cache[key] :
-					(cache[key] = fn.apply(this, arguments));
-			};
-		}
-
-		function addRules (rules) {
-			var i, j, rule;
-			for (i in rules) {
-				rule = rules[i];
-				for (j = 0; j < rule.length; j++) {
-					addRule(i + '\t' + rule[j]);
-				}
-			}
-		}
-
-		function addRule (ruleString) {
-			// don't duplicate rules
-			if (rules[ruleString]) {
-				return rules[ruleString];
-			}
-
-			var p = ruleString.split(/\s/),
-				name = normalizeName(p[0]),
-				rule = new Rule(name, p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10]);
-
-			// cache the rule so we don't add it again
-			rules[ruleString] = rule;
-
-			// add to the ruleset
-			getRuleSet(name).add(rule);
-
-			return rule;
-		}
-
-		function normalizeName (name) {
-			return (name || '').toLowerCase().replace(/\//g, '_');
-		}
-
-		function addZones (zones) {
-			var i, j, zone;
-			for (i in zones) {
-				zone = zones[i];
-				for (j = 0; j < zone.length; j++) {
-					addZone(i + '\t' + zone[j]);
-				}
-			}
-		}
-
-		function addLinks (linksToAdd) {
-			var i;
-			for (i in linksToAdd) {
-				links[normalizeName(i)] = normalizeName(linksToAdd[i]);
-			}
-		}
-
-		function addZone (zoneString) {
-			// don't duplicate zones
-			if (zones[zoneString]) {
-				return zones[zoneString];
-			}
-
-			var p = zoneString.split(/\s/),
-				name = normalizeName(p[0]),
-				zone = new Zone(name, p[1], getRuleSet(p[2]), p[3], p[4], p[5]);
-
-			// cache the zone so we don't add it again
-			zones[zoneString] = zone;
-
-			// add to the zoneset
-			getZoneSet(p[0]).add(zone);
-
-			return zone;
-		}
-
-		function getRuleSet (name) {
-			name = normalizeName(name);
-			if (!ruleSets[name]) {
-				ruleSets[name] = new RuleSet(name);
-			}
-			return ruleSets[name];
-		}
-
-		function getZoneSet (name) {
-			var machineName = normalizeName(name);
-			if (links[machineName]) {
-				machineName = links[machineName];
-			}
-			if (!zoneSets[machineName]) {
-				zoneSets[machineName] = new ZoneSet(name);
-			}
-			return zoneSets[machineName];
-		}
-
-		function add (data) {
-			if (!data) {
-				return;
-			}
-			if (data.zones) {
-				addZones(data.zones);
-			}
-			if (data.rules) {
-				addRules(data.rules);
-			}
-			if (data.links) {
-				addLinks(data.links);
-			}
-		}
-
-		// overwrite moment.updateOffset
-		moment.updateOffset = function (mom, keepTime) {
-			var offset;
-			if (mom._z) {
-				offset = mom._z.offset(mom);
-				if (Math.abs(offset) < 16) {
-					offset = offset / 60;
-				}
-				mom.zone(offset, keepTime);
-			}
-		};
-
-		function getZoneSets() {
-			var sets = [],
-				zoneName;
-			for (zoneName in zoneSets) {
-				sets.push(zoneSets[zoneName]);
-			}
-			return sets;
-		}
-
-		moment.fn.tz = function (name) {
-			if (name) {
-				this._z = getZoneSet(name);
-				if (this._z) {
-					moment.updateOffset(this);
-				}
-				return this;
-			}
-			if (this._z) {
-				return this._z.displayName;
-			}
-		};
-
-		moment.fn.zoneName = function () {
-			if (this._z) {
-				return this._z.format(this);
-			}
-			return oldZoneName.call(this);
-		};
-
-		moment.fn.zoneAbbr = function () {
-			if (this._z) {
-				return this._z.format(this);
-			}
-			return oldZoneAbbr.call(this);
-		};
-
-		// Make sure moment's clone includes the newly added properties
-		moment.momentProperties._z = null;
-
-		moment.tz = function () {
-			var args = [], i, len = arguments.length - 1;
-			for (i = 0; i < len; i++) {
-				args[i] = arguments[i];
-			}
-			var m = moment.apply(null, args);
-			var preTzOffset = m.zone();
-			m.tz(arguments[len]);
-			return m.add('minutes', m.zone() - preTzOffset);
-		};
-
-		moment.tz.add = add;
-		moment.tz.addRule = addRule;
-		moment.tz.addZone = addZone;
-		moment.tz.zones = getZoneSets;
-
-		moment.tz.version = VERSION;
-
-		moment.tz.zoneExists = function (name) {
-			return getZoneSet(name).zones.length > 0;
-		};
-
-		// add default rule
-		defaultRule = addRule("- 0 9999 0 0 0 0 0 0");
-
-		return moment;
+		links[zoneName] = null;
 	}
 
-	if (typeof define === "function" && define.amd) {
-		define("moment-timezone", ["moment"], onload);
-	} else if (typeof module !== 'undefined') {
-		module.exports = onload(require('moment'));
-	} else if (typeof window !== "undefined" && window.moment) {
-		onload(window.moment);
+	function copyZoneWithName (zone, name) {
+		var linkZone = zones[normalizeName(name)] = new Zone();
+		linkZone._set(zone);
+		linkZone.name = name;
 	}
-}).apply(this);
 
-},{"moment":"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/node_modules/moment/moment.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/node_modules/moment/moment.js":[function(require,module,exports){
+	function pushLink (zoneName, linkName) {
+		zoneName = normalizeName(zoneName);
+
+		if (zones[zoneName]) {
+			copyZoneWithName(zones[zoneName], linkName);
+		} else {
+			links[zoneName] = links[zoneName] || [];
+			links[zoneName].push(linkName);
+		}
+	}
+
+	function loadData (data) {
+		addZone(data.zones);
+		addLink(data.links);
+		tz.dataVersion = data.version;
+	}
+
+	function zoneExists (name) {
+		if (!zoneExists.didShowError) {
+			zoneExists.didShowError = true;
+				logError("moment.tz.zoneExists('" + name + "') has been deprecated in favor of !moment.tz.zone('" + name + "')");
+		}
+		return !!getZone(name);
+	}
+
+	function needsOffset (m) {
+		return !!(m._a && (m._tzm === undefined));
+	}
+
+	function logError (message) {
+		if (typeof console !== 'undefined' && typeof console.error === 'function') {
+			console.error(message);
+		}
+	}
+
+	/************************************
+		moment.tz namespace
+	************************************/
+
+	function tz () {
+		var args = Array.prototype.slice.call(arguments, 0, -1),
+			name = arguments[arguments.length - 1],
+			zone = getZone(name),
+			out  = moment.utc.apply(null, args);
+
+		if (zone && needsOffset(out)) {
+			out.add(zone.parse(out), 'minutes');
+		}
+
+		out.tz(name);
+
+		return out;
+	}
+
+	tz.version      = VERSION;
+	tz.dataVersion  = '';
+	tz._zones       = zones;
+	tz._links       = links;
+	tz.add          = addZone;
+	tz.link         = addLink;
+	tz.load         = loadData;
+	tz.zone         = getZone;
+	tz.zoneExists   = zoneExists; // deprecated in 0.1.0
+	tz.names        = getNames;
+	tz.Zone         = Zone;
+	tz.unpack       = unpack;
+	tz.unpackBase60 = unpackBase60;
+	tz.needsOffset  = needsOffset;
+	tz.moveInvalidForward   = true;
+	tz.moveAmbiguousForward = false;
+
+	/************************************
+		Interface with Moment.js
+	************************************/
+
+	var fn = moment.fn;
+
+	moment.tz = tz;
+
+	moment.updateOffset = function (mom, keepTime) {
+		var offset;
+		if (mom._z) {
+			offset = mom._z.offset(mom);
+			if (Math.abs(offset) < 16) {
+				offset = offset / 60;
+			}
+			mom.zone(offset, keepTime);
+		}
+	};
+
+	fn.tz = function (name) {
+		if (name) {
+			this._z = getZone(name);
+			if (this._z) {
+				moment.updateOffset(this);
+			} else {
+				logError("Moment Timezone has no data for " + name + ". See http://momentjs.com/timezone/docs/#/data-loading/.");
+			}
+			return this;
+		}
+		if (this._z) { return this._z.name; }
+	};
+
+	function abbrWrap (old) {
+		return function () {
+			if (this._z) { return this._z.abbr(this); }
+			return old.call(this);
+		};
+	}
+
+	function resetZoneWrap (old) {
+		return function () {
+			this._z = null;
+			return old.apply(this, arguments);
+		};
+	}
+
+	fn.zoneName = abbrWrap(fn.zoneName);
+	fn.zoneAbbr = abbrWrap(fn.zoneAbbr);
+	fn.utc      = resetZoneWrap(fn.utc);
+
+	// Cloning a moment should include the _z property.
+	var momentProperties = moment.momentProperties;
+	if (Object.prototype.toString.call(momentProperties) === '[object Array]') {
+		// moment 2.8.1+
+		momentProperties.push('_z');
+		momentProperties.push('_a');
+	} else if (momentProperties) {
+		// moment 2.7.0
+		momentProperties._z = null;
+	}
+
+	// INJECT DATA
+
+	return moment;
+}));
+
+},{"moment":9}],9:[function(require,module,exports){
 (function (global){
 //! moment.js
 //! version : 2.8.4
@@ -11250,21 +4136,14 @@ module.exports=module.exports=module.exports=module.exports=module.exports={
 }).call(this);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/AutoFocusMixin.js":[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule AutoFocusMixin
  * @typechecks static-only
@@ -11284,21 +4163,236 @@ var AutoFocusMixin = {
 
 module.exports = AutoFocusMixin;
 
-},{"./focusNode":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/focusNode.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/CSSProperty.js":[function(require,module,exports){
+},{"./focusNode":120}],11:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013 Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule BeforeInputEventPlugin
+ * @typechecks static-only
+ */
+
+"use strict";
+
+var EventConstants = require("./EventConstants");
+var EventPropagators = require("./EventPropagators");
+var ExecutionEnvironment = require("./ExecutionEnvironment");
+var SyntheticInputEvent = require("./SyntheticInputEvent");
+
+var keyOf = require("./keyOf");
+
+var canUseTextInputEvent = (
+  ExecutionEnvironment.canUseDOM &&
+  'TextEvent' in window &&
+  !('documentMode' in document || isPresto())
+);
+
+/**
+ * Opera <= 12 includes TextEvent in window, but does not fire
+ * text input events. Rely on keypress instead.
+ */
+function isPresto() {
+  var opera = window.opera;
+  return (
+    typeof opera === 'object' &&
+    typeof opera.version === 'function' &&
+    parseInt(opera.version(), 10) <= 12
+  );
+}
+
+var SPACEBAR_CODE = 32;
+var SPACEBAR_CHAR = String.fromCharCode(SPACEBAR_CODE);
+
+var topLevelTypes = EventConstants.topLevelTypes;
+
+// Events and their corresponding property names.
+var eventTypes = {
+  beforeInput: {
+    phasedRegistrationNames: {
+      bubbled: keyOf({onBeforeInput: null}),
+      captured: keyOf({onBeforeInputCapture: null})
+    },
+    dependencies: [
+      topLevelTypes.topCompositionEnd,
+      topLevelTypes.topKeyPress,
+      topLevelTypes.topTextInput,
+      topLevelTypes.topPaste
+    ]
+  }
+};
+
+// Track characters inserted via keypress and composition events.
+var fallbackChars = null;
+
+// Track whether we've ever handled a keypress on the space key.
+var hasSpaceKeypress = false;
+
+/**
+ * Return whether a native keypress event is assumed to be a command.
+ * This is required because Firefox fires `keypress` events for key commands
+ * (cut, copy, select-all, etc.) even though no character is inserted.
+ */
+function isKeypressCommand(nativeEvent) {
+  return (
+    (nativeEvent.ctrlKey || nativeEvent.altKey || nativeEvent.metaKey) &&
+    // ctrlKey && altKey is equivalent to AltGr, and is not a command.
+    !(nativeEvent.ctrlKey && nativeEvent.altKey)
+  );
+}
+
+/**
+ * Create an `onBeforeInput` event to match
+ * http://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105/#events-inputevents.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This event plugin is based on the native `textInput` event
+ * available in Chrome, Safari, Opera, and IE. This event fires after
+ * `onKeyPress` and `onCompositionEnd`, but before `onInput`.
+ *
+ * `beforeInput` is spec'd but not implemented in any browsers, and
+ * the `input` event does not provide any useful information about what has
+ * actually been added, contrary to the spec. Thus, `textInput` is the best
+ * available event to identify the characters that have actually been inserted
+ * into the target node.
+ */
+var BeforeInputEventPlugin = {
+
+  eventTypes: eventTypes,
+
+  /**
+   * @param {string} topLevelType Record from `EventConstants`.
+   * @param {DOMEventTarget} topLevelTarget The listening component root node.
+   * @param {string} topLevelTargetID ID of `topLevelTarget`.
+   * @param {object} nativeEvent Native browser event.
+   * @return {*} An accumulation of synthetic events.
+   * @see {EventPluginHub.extractEvents}
+   */
+  extractEvents: function(
+      topLevelType,
+      topLevelTarget,
+      topLevelTargetID,
+      nativeEvent) {
+
+    var chars;
+
+    if (canUseTextInputEvent) {
+      switch (topLevelType) {
+        case topLevelTypes.topKeyPress:
+          /**
+           * If native `textInput` events are available, our goal is to make
+           * use of them. However, there is a special case: the spacebar key.
+           * In Webkit, preventing default on a spacebar `textInput` event
+           * cancels character insertion, but it *also* causes the browser
+           * to fall back to its default spacebar behavior of scrolling the
+           * page.
+           *
+           * Tracking at:
+           * https://code.google.com/p/chromium/issues/detail?id=355103
+           *
+           * To avoid this issue, use the keypress event as if no `textInput`
+           * event is available.
+           */
+          var which = nativeEvent.which;
+          if (which !== SPACEBAR_CODE) {
+            return;
+          }
+
+          hasSpaceKeypress = true;
+          chars = SPACEBAR_CHAR;
+          break;
+
+        case topLevelTypes.topTextInput:
+          // Record the characters to be added to the DOM.
+          chars = nativeEvent.data;
+
+          // If it's a spacebar character, assume that we have already handled
+          // it at the keypress level and bail immediately. Android Chrome
+          // doesn't give us keycodes, so we need to blacklist it.
+          if (chars === SPACEBAR_CHAR && hasSpaceKeypress) {
+            return;
+          }
+
+          // Otherwise, carry on.
+          break;
+
+        default:
+          // For other native event types, do nothing.
+          return;
+      }
+    } else {
+      switch (topLevelType) {
+        case topLevelTypes.topPaste:
+          // If a paste event occurs after a keypress, throw out the input
+          // chars. Paste events should not lead to BeforeInput events.
+          fallbackChars = null;
+          break;
+        case topLevelTypes.topKeyPress:
+          /**
+           * As of v27, Firefox may fire keypress events even when no character
+           * will be inserted. A few possibilities:
+           *
+           * - `which` is `0`. Arrow keys, Esc key, etc.
+           *
+           * - `which` is the pressed key code, but no char is available.
+           *   Ex: 'AltGr + d` in Polish. There is no modified character for
+           *   this key combination and no character is inserted into the
+           *   document, but FF fires the keypress for char code `100` anyway.
+           *   No `input` event will occur.
+           *
+           * - `which` is the pressed key code, but a command combination is
+           *   being used. Ex: `Cmd+C`. No character is inserted, and no
+           *   `input` event will occur.
+           */
+          if (nativeEvent.which && !isKeypressCommand(nativeEvent)) {
+            fallbackChars = String.fromCharCode(nativeEvent.which);
+          }
+          break;
+        case topLevelTypes.topCompositionEnd:
+          fallbackChars = nativeEvent.data;
+          break;
+      }
+
+      // If no changes have occurred to the fallback string, no relevant
+      // event has fired and we're done.
+      if (fallbackChars === null) {
+        return;
+      }
+
+      chars = fallbackChars;
+    }
+
+    // If no characters are being inserted, no BeforeInput event should
+    // be fired.
+    if (!chars) {
+      return;
+    }
+
+    var event = SyntheticInputEvent.getPooled(
+      eventTypes.beforeInput,
+      topLevelTargetID,
+      nativeEvent
+    );
+
+    event.data = chars;
+    fallbackChars = null;
+    EventPropagators.accumulateTwoPhaseDispatches(event);
+    return event;
+  }
+};
+
+module.exports = BeforeInputEventPlugin;
+
+},{"./EventConstants":24,"./EventPropagators":29,"./ExecutionEnvironment":30,"./SyntheticInputEvent":98,"./keyOf":142}],12:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule CSSProperty
  */
@@ -11310,7 +4404,6 @@ module.exports = AutoFocusMixin;
  */
 var isUnitlessNumber = {
   columnCount: true,
-  fillOpacity: true,
   flex: true,
   flexGrow: true,
   flexShrink: true,
@@ -11322,7 +4415,11 @@ var isUnitlessNumber = {
   orphans: true,
   widows: true,
   zIndex: true,
-  zoom: true
+  zoom: true,
+
+  // SVG-related properties
+  fillOpacity: true,
+  strokeOpacity: true
 };
 
 /**
@@ -11407,21 +4504,15 @@ var CSSProperty = {
 
 module.exports = CSSProperty;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/CSSPropertyOperations.js":[function(require,module,exports){
+},{}],13:[function(require,module,exports){
+(function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule CSSPropertyOperations
  * @typechecks static-only
@@ -11430,15 +4521,42 @@ module.exports = CSSProperty;
 "use strict";
 
 var CSSProperty = require("./CSSProperty");
+var ExecutionEnvironment = require("./ExecutionEnvironment");
 
+var camelizeStyleName = require("./camelizeStyleName");
 var dangerousStyleValue = require("./dangerousStyleValue");
-var escapeTextForBrowser = require("./escapeTextForBrowser");
-var hyphenate = require("./hyphenate");
+var hyphenateStyleName = require("./hyphenateStyleName");
 var memoizeStringOnly = require("./memoizeStringOnly");
+var warning = require("./warning");
 
 var processStyleName = memoizeStringOnly(function(styleName) {
-  return escapeTextForBrowser(hyphenate(styleName));
+  return hyphenateStyleName(styleName);
 });
+
+var styleFloatAccessor = 'cssFloat';
+if (ExecutionEnvironment.canUseDOM) {
+  // IE8 only supports accessing cssFloat (standard) as styleFloat
+  if (document.documentElement.style.cssFloat === undefined) {
+    styleFloatAccessor = 'styleFloat';
+  }
+}
+
+if ("production" !== process.env.NODE_ENV) {
+  var warnedStyleNames = {};
+
+  var warnHyphenatedStyleName = function(name) {
+    if (warnedStyleNames.hasOwnProperty(name) && warnedStyleNames[name]) {
+      return;
+    }
+
+    warnedStyleNames[name] = true;
+    ("production" !== process.env.NODE_ENV ? warning(
+      false,
+      'Unsupported style property ' + name + '. Did you mean ' +
+      camelizeStyleName(name) + '?'
+    ) : null);
+  };
+}
 
 /**
  * Operations for dealing with CSS properties.
@@ -11452,6 +4570,7 @@ var CSSPropertyOperations = {
    *   "width:200px;height:0;"
    *
    * Undefined values are ignored so that declarative programming is easier.
+   * The result should be HTML-escaped before insertion into the DOM.
    *
    * @param {object} styles
    * @return {?string}
@@ -11461,6 +4580,11 @@ var CSSPropertyOperations = {
     for (var styleName in styles) {
       if (!styles.hasOwnProperty(styleName)) {
         continue;
+      }
+      if ("production" !== process.env.NODE_ENV) {
+        if (styleName.indexOf('-') > -1) {
+          warnHyphenatedStyleName(styleName);
+        }
       }
       var styleValue = styles[styleName];
       if (styleValue != null) {
@@ -11484,7 +4608,15 @@ var CSSPropertyOperations = {
       if (!styles.hasOwnProperty(styleName)) {
         continue;
       }
+      if ("production" !== process.env.NODE_ENV) {
+        if (styleName.indexOf('-') > -1) {
+          warnHyphenatedStyleName(styleName);
+        }
+      }
       var styleValue = dangerousStyleValue(styleName, styles[styleName]);
+      if (styleName === 'float') {
+        styleName = styleFloatAccessor;
+      }
       if (styleValue) {
         style[styleName] = styleValue;
       } else {
@@ -11506,21 +4638,115 @@ var CSSPropertyOperations = {
 
 module.exports = CSSPropertyOperations;
 
-},{"./CSSProperty":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/CSSProperty.js","./dangerousStyleValue":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/dangerousStyleValue.js","./escapeTextForBrowser":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/escapeTextForBrowser.js","./hyphenate":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/hyphenate.js","./memoizeStringOnly":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/memoizeStringOnly.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ChangeEventPlugin.js":[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./CSSProperty":12,"./ExecutionEnvironment":30,"./camelizeStyleName":109,"./dangerousStyleValue":114,"./hyphenateStyleName":133,"./memoizeStringOnly":144,"./warning":154,"_process":156}],14:[function(require,module,exports){
+(function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule CallbackQueue
+ */
+
+"use strict";
+
+var PooledClass = require("./PooledClass");
+
+var assign = require("./Object.assign");
+var invariant = require("./invariant");
+
+/**
+ * A specialized pseudo-event module to help keep track of components waiting to
+ * be notified when their DOM representations are available for use.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This implements `PooledClass`, so you should never need to instantiate this.
+ * Instead, use `CallbackQueue.getPooled()`.
+ *
+ * @class ReactMountReady
+ * @implements PooledClass
+ * @internal
+ */
+function CallbackQueue() {
+  this._callbacks = null;
+  this._contexts = null;
+}
+
+assign(CallbackQueue.prototype, {
+
+  /**
+   * Enqueues a callback to be invoked when `notifyAll` is invoked.
+   *
+   * @param {function} callback Invoked when `notifyAll` is invoked.
+   * @param {?object} context Context to call `callback` with.
+   * @internal
+   */
+  enqueue: function(callback, context) {
+    this._callbacks = this._callbacks || [];
+    this._contexts = this._contexts || [];
+    this._callbacks.push(callback);
+    this._contexts.push(context);
+  },
+
+  /**
+   * Invokes all enqueued callbacks and clears the queue. This is invoked after
+   * the DOM representation of a component has been created or updated.
+   *
+   * @internal
+   */
+  notifyAll: function() {
+    var callbacks = this._callbacks;
+    var contexts = this._contexts;
+    if (callbacks) {
+      ("production" !== process.env.NODE_ENV ? invariant(
+        callbacks.length === contexts.length,
+        "Mismatched list of contexts in callback queue"
+      ) : invariant(callbacks.length === contexts.length));
+      this._callbacks = null;
+      this._contexts = null;
+      for (var i = 0, l = callbacks.length; i < l; i++) {
+        callbacks[i].call(contexts[i]);
+      }
+      callbacks.length = 0;
+      contexts.length = 0;
+    }
+  },
+
+  /**
+   * Resets the internal queue.
+   *
+   * @internal
+   */
+  reset: function() {
+    this._callbacks = null;
+    this._contexts = null;
+  },
+
+  /**
+   * `PooledClass` looks for this.
+   */
+  destructor: function() {
+    this.reset();
+  }
+
+});
+
+PooledClass.addPoolingTo(CallbackQueue);
+
+module.exports = CallbackQueue;
+
+}).call(this,require('_process'))
+},{"./Object.assign":35,"./PooledClass":36,"./invariant":135,"_process":156}],15:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ChangeEventPlugin
  */
@@ -11594,7 +4820,7 @@ function manualDispatchChangeEvent(nativeEvent) {
   EventPropagators.accumulateTwoPhaseDispatches(event);
 
   // If change and propertychange bubbled, we'd just bind to it like all the
-  // other events and have it go through ReactEventTopLevelCallback. Since it
+  // other events and have it go through ReactBrowserEventEmitter. Since it
   // doesn't, we manually listen for the events and so we have to enqueue and
   // process the abstract event manually.
   //
@@ -11895,21 +5121,14 @@ var ChangeEventPlugin = {
 
 module.exports = ChangeEventPlugin;
 
-},{"./EventConstants":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventConstants.js","./EventPluginHub":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginHub.js","./EventPropagators":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPropagators.js","./ExecutionEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js","./ReactUpdates":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactUpdates.js","./SyntheticEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticEvent.js","./isEventSupported":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/isEventSupported.js","./isTextInputElement":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/isTextInputElement.js","./keyOf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyOf.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ClientReactRootIndex.js":[function(require,module,exports){
+},{"./EventConstants":24,"./EventPluginHub":26,"./EventPropagators":29,"./ExecutionEnvironment":30,"./ReactUpdates":88,"./SyntheticEvent":96,"./isEventSupported":136,"./isTextInputElement":138,"./keyOf":142}],16:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ClientReactRootIndex
  * @typechecks
@@ -11927,21 +5146,14 @@ var ClientReactRootIndex = {
 
 module.exports = ClientReactRootIndex;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/CompositionEventPlugin.js":[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule CompositionEventPlugin
  * @typechecks static-only
@@ -11974,7 +5186,11 @@ var useCompositionEvent = (
 // events as triggers.
 var useFallbackData = (
   !useCompositionEvent ||
-  'documentMode' in document && document.documentMode > 8
+  (
+    'documentMode' in document &&
+    document.documentMode > 8 &&
+    document.documentMode <= 11
+  )
 );
 
 var topLevelTypes = EventConstants.topLevelTypes;
@@ -12189,21 +5405,15 @@ var CompositionEventPlugin = {
 
 module.exports = CompositionEventPlugin;
 
-},{"./EventConstants":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventConstants.js","./EventPropagators":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPropagators.js","./ExecutionEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js","./ReactInputSelection":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInputSelection.js","./SyntheticCompositionEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticCompositionEvent.js","./getTextContentAccessor":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getTextContentAccessor.js","./keyOf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyOf.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMChildrenOperations.js":[function(require,module,exports){
+},{"./EventConstants":24,"./EventPropagators":29,"./ExecutionEnvironment":30,"./ReactInputSelection":68,"./SyntheticCompositionEvent":94,"./getTextContentAccessor":130,"./keyOf":142}],18:[function(require,module,exports){
+(function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule DOMChildrenOperations
  * @typechecks static-only
@@ -12215,6 +5425,7 @@ var Danger = require("./Danger");
 var ReactMultiChildUpdateTypes = require("./ReactMultiChildUpdateTypes");
 
 var getTextContentAccessor = require("./getTextContentAccessor");
+var invariant = require("./invariant");
 
 /**
  * The DOM property to use when setting text content.
@@ -12233,20 +5444,14 @@ var textContentAccessor = getTextContentAccessor();
  * @internal
  */
 function insertChildAt(parentNode, childNode, index) {
-  var childNodes = parentNode.childNodes;
-  if (childNodes[index] === childNode) {
-    return;
-  }
-  // If `childNode` is already a child of `parentNode`, remove it so that
-  // computing `childNodes[index]` takes into account the removal.
-  if (childNode.parentNode === parentNode) {
-    parentNode.removeChild(childNode);
-  }
-  if (index >= childNodes.length) {
-    parentNode.appendChild(childNode);
-  } else {
-    parentNode.insertBefore(childNode, childNodes[index]);
-  }
+  // By exploiting arrays returning `undefined` for an undefined index, we can
+  // rely exclusively on `insertBefore(node, null)` instead of also using
+  // `appendChild(node)`. However, using `undefined` is not allowed by all
+  // browsers so we must replace it with `null`.
+  parentNode.insertBefore(
+    childNode,
+    parentNode.childNodes[index] || null
+  );
 }
 
 var updateTextContent;
@@ -12311,6 +5516,18 @@ var DOMChildrenOperations = {
         var updatedChild = update.parentNode.childNodes[updatedIndex];
         var parentID = update.parentID;
 
+        ("production" !== process.env.NODE_ENV ? invariant(
+          updatedChild,
+          'processUpdates(): Unable to find child %s of element. This ' +
+          'probably means the DOM was unexpectedly mutated (e.g., by the ' +
+          'browser), usually due to forgetting a <tbody> when using tables, ' +
+          'nesting tags like <form>, <p>, or <a>, or using non-SVG elements '+
+          'in an <svg> parent. Try inspecting the child nodes of the element ' +
+          'with React ID `%s`.',
+          updatedIndex,
+          parentID
+        ) : invariant(updatedChild));
+
         initialChildren = initialChildren || {};
         initialChildren[parentID] = initialChildren[parentID] || [];
         initialChildren[parentID][updatedIndex] = updatedChild;
@@ -12362,22 +5579,16 @@ var DOMChildrenOperations = {
 
 module.exports = DOMChildrenOperations;
 
-},{"./Danger":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/Danger.js","./ReactMultiChildUpdateTypes":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMultiChildUpdateTypes.js","./getTextContentAccessor":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getTextContentAccessor.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMProperty.js":[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./Danger":21,"./ReactMultiChildUpdateTypes":74,"./getTextContentAccessor":130,"./invariant":135,"_process":156}],19:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule DOMProperty
  * @typechecks static-only
@@ -12389,6 +5600,10 @@ module.exports = DOMChildrenOperations;
 
 var invariant = require("./invariant");
 
+function checkMask(value, bitmask) {
+  return (value & bitmask) === bitmask;
+}
+
 var DOMPropertyInjection = {
   /**
    * Mapping from normalized, camelcased property names to a configuration that
@@ -12398,7 +5613,9 @@ var DOMPropertyInjection = {
   MUST_USE_PROPERTY: 0x2,
   HAS_SIDE_EFFECTS: 0x4,
   HAS_BOOLEAN_VALUE: 0x8,
-  HAS_POSITIVE_NUMERIC_VALUE: 0x10,
+  HAS_NUMERIC_VALUE: 0x10,
+  HAS_POSITIVE_NUMERIC_VALUE: 0x20 | 0x10,
+  HAS_OVERLOADED_BOOLEAN_VALUE: 0x40,
 
   /**
    * Inject some specialized knowledge about the DOM. This takes a config object
@@ -12439,45 +5656,53 @@ var DOMPropertyInjection = {
 
     for (var propName in Properties) {
       ("production" !== process.env.NODE_ENV ? invariant(
-        !DOMProperty.isStandardName[propName],
+        !DOMProperty.isStandardName.hasOwnProperty(propName),
         'injectDOMPropertyConfig(...): You\'re trying to inject DOM property ' +
         '\'%s\' which has already been injected. You may be accidentally ' +
         'injecting the same DOM property config twice, or you may be ' +
         'injecting two configs that have conflicting property names.',
         propName
-      ) : invariant(!DOMProperty.isStandardName[propName]));
+      ) : invariant(!DOMProperty.isStandardName.hasOwnProperty(propName)));
 
       DOMProperty.isStandardName[propName] = true;
 
       var lowerCased = propName.toLowerCase();
       DOMProperty.getPossibleStandardName[lowerCased] = propName;
 
-      var attributeName = DOMAttributeNames[propName];
-      if (attributeName) {
+      if (DOMAttributeNames.hasOwnProperty(propName)) {
+        var attributeName = DOMAttributeNames[propName];
         DOMProperty.getPossibleStandardName[attributeName] = propName;
+        DOMProperty.getAttributeName[propName] = attributeName;
+      } else {
+        DOMProperty.getAttributeName[propName] = lowerCased;
       }
 
-      DOMProperty.getAttributeName[propName] = attributeName || lowerCased;
-
       DOMProperty.getPropertyName[propName] =
-        DOMPropertyNames[propName] || propName;
+        DOMPropertyNames.hasOwnProperty(propName) ?
+          DOMPropertyNames[propName] :
+          propName;
 
-      var mutationMethod = DOMMutationMethods[propName];
-      if (mutationMethod) {
-        DOMProperty.getMutationMethod[propName] = mutationMethod;
+      if (DOMMutationMethods.hasOwnProperty(propName)) {
+        DOMProperty.getMutationMethod[propName] = DOMMutationMethods[propName];
+      } else {
+        DOMProperty.getMutationMethod[propName] = null;
       }
 
       var propConfig = Properties[propName];
       DOMProperty.mustUseAttribute[propName] =
-        propConfig & DOMPropertyInjection.MUST_USE_ATTRIBUTE;
+        checkMask(propConfig, DOMPropertyInjection.MUST_USE_ATTRIBUTE);
       DOMProperty.mustUseProperty[propName] =
-        propConfig & DOMPropertyInjection.MUST_USE_PROPERTY;
+        checkMask(propConfig, DOMPropertyInjection.MUST_USE_PROPERTY);
       DOMProperty.hasSideEffects[propName] =
-        propConfig & DOMPropertyInjection.HAS_SIDE_EFFECTS;
+        checkMask(propConfig, DOMPropertyInjection.HAS_SIDE_EFFECTS);
       DOMProperty.hasBooleanValue[propName] =
-        propConfig & DOMPropertyInjection.HAS_BOOLEAN_VALUE;
+        checkMask(propConfig, DOMPropertyInjection.HAS_BOOLEAN_VALUE);
+      DOMProperty.hasNumericValue[propName] =
+        checkMask(propConfig, DOMPropertyInjection.HAS_NUMERIC_VALUE);
       DOMProperty.hasPositiveNumericValue[propName] =
-        propConfig & DOMPropertyInjection.HAS_POSITIVE_NUMERIC_VALUE;
+        checkMask(propConfig, DOMPropertyInjection.HAS_POSITIVE_NUMERIC_VALUE);
+      DOMProperty.hasOverloadedBooleanValue[propName] =
+        checkMask(propConfig, DOMPropertyInjection.HAS_OVERLOADED_BOOLEAN_VALUE);
 
       ("production" !== process.env.NODE_ENV ? invariant(
         !DOMProperty.mustUseAttribute[propName] ||
@@ -12494,12 +5719,15 @@ var DOMPropertyInjection = {
       ) : invariant(DOMProperty.mustUseProperty[propName] ||
         !DOMProperty.hasSideEffects[propName]));
       ("production" !== process.env.NODE_ENV ? invariant(
-        !DOMProperty.hasBooleanValue[propName] ||
-          !DOMProperty.hasPositiveNumericValue[propName],
-        'DOMProperty: Cannot have both boolean and positive numeric value: %s',
+        !!DOMProperty.hasBooleanValue[propName] +
+          !!DOMProperty.hasNumericValue[propName] +
+          !!DOMProperty.hasOverloadedBooleanValue[propName] <= 1,
+        'DOMProperty: Value can be one of boolean, overloaded boolean, or ' +
+        'numeric value, but not a combination: %s',
         propName
-      ) : invariant(!DOMProperty.hasBooleanValue[propName] ||
-        !DOMProperty.hasPositiveNumericValue[propName]));
+      ) : invariant(!!DOMProperty.hasBooleanValue[propName] +
+        !!DOMProperty.hasNumericValue[propName] +
+        !!DOMProperty.hasOverloadedBooleanValue[propName] <= 1));
     }
   }
 };
@@ -12584,11 +5812,26 @@ var DOMProperty = {
   hasBooleanValue: {},
 
   /**
+   * Whether the property must be numeric or parse as a
+   * numeric and should be removed when set to a falsey value.
+   * @type {Object}
+   */
+  hasNumericValue: {},
+
+  /**
    * Whether the property must be positive numeric or parse as a positive
    * numeric and should be removed when set to a falsey value.
    * @type {Object}
    */
   hasPositiveNumericValue: {},
+
+  /**
+   * Whether the property can be used as a flag as well as with a value. Removed
+   * when strictly equal to false; present without a value when strictly equal
+   * to true; present with a value otherwise.
+   * @type {Object}
+   */
+  hasOverloadedBooleanValue: {},
 
   /**
    * All of the isCustomAttribute() functions that have been injected.
@@ -12636,22 +5879,15 @@ var DOMProperty = {
 module.exports = DOMProperty;
 
 }).call(this,require('_process'))
-},{"./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMPropertyOperations.js":[function(require,module,exports){
+},{"./invariant":135,"_process":156}],20:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule DOMPropertyOperations
  * @typechecks static-only
@@ -12667,8 +5903,10 @@ var warning = require("./warning");
 
 function shouldIgnoreValue(name, value) {
   return value == null ||
-    DOMProperty.hasBooleanValue[name] && !value ||
-    DOMProperty.hasPositiveNumericValue[name] && (isNaN(value) || value < 1);
+    (DOMProperty.hasBooleanValue[name] && !value) ||
+    (DOMProperty.hasNumericValue[name] && isNaN(value)) ||
+    (DOMProperty.hasPositiveNumericValue[name] && (value < 1)) ||
+    (DOMProperty.hasOverloadedBooleanValue[name] && value === false);
 }
 
 var processAttributeNameAndPrefix = memoizeStringOnly(function(name) {
@@ -12685,7 +5923,8 @@ if ("production" !== process.env.NODE_ENV) {
   var warnedProperties = {};
 
   var warnUnknownProperty = function(name) {
-    if (reactProps[name] || warnedProperties[name]) {
+    if (reactProps.hasOwnProperty(name) && reactProps[name] ||
+        warnedProperties.hasOwnProperty(name) && warnedProperties[name]) {
       return;
     }
 
@@ -12693,8 +5932,13 @@ if ("production" !== process.env.NODE_ENV) {
     var lowerCasedName = name.toLowerCase();
 
     // data-* attributes should be lowercase; suggest the lowercase version
-    var standardName = DOMProperty.isCustomAttribute(lowerCasedName) ?
-      lowerCasedName : DOMProperty.getPossibleStandardName[lowerCasedName];
+    var standardName = (
+      DOMProperty.isCustomAttribute(lowerCasedName) ?
+        lowerCasedName :
+      DOMProperty.getPossibleStandardName.hasOwnProperty(lowerCasedName) ?
+        DOMProperty.getPossibleStandardName[lowerCasedName] :
+        null
+    );
 
     // For now, only warn when we have a suggested correction. This prevents
     // logging too much when using transferPropsTo.
@@ -12730,12 +5974,14 @@ var DOMPropertyOperations = {
    * @return {?string} Markup string, or null if the property was invalid.
    */
   createMarkupForProperty: function(name, value) {
-    if (DOMProperty.isStandardName[name]) {
+    if (DOMProperty.isStandardName.hasOwnProperty(name) &&
+        DOMProperty.isStandardName[name]) {
       if (shouldIgnoreValue(name, value)) {
         return '';
       }
       var attributeName = DOMProperty.getAttributeName[name];
-      if (DOMProperty.hasBooleanValue[name]) {
+      if (DOMProperty.hasBooleanValue[name] ||
+          (DOMProperty.hasOverloadedBooleanValue[name] && value === true)) {
         return escapeTextForBrowser(attributeName);
       }
       return processAttributeNameAndPrefix(attributeName) +
@@ -12760,23 +6006,31 @@ var DOMPropertyOperations = {
    * @param {*} value
    */
   setValueForProperty: function(node, name, value) {
-    if (DOMProperty.isStandardName[name]) {
+    if (DOMProperty.isStandardName.hasOwnProperty(name) &&
+        DOMProperty.isStandardName[name]) {
       var mutationMethod = DOMProperty.getMutationMethod[name];
       if (mutationMethod) {
         mutationMethod(node, value);
       } else if (shouldIgnoreValue(name, value)) {
         this.deleteValueForProperty(node, name);
       } else if (DOMProperty.mustUseAttribute[name]) {
+        // `setAttribute` with objects becomes only `[object]` in IE8/9,
+        // ('' + value) makes it output the correct toString()-value.
         node.setAttribute(DOMProperty.getAttributeName[name], '' + value);
       } else {
         var propName = DOMProperty.getPropertyName[name];
-        if (!DOMProperty.hasSideEffects[name] || node[propName] !== value) {
+        // Must explicitly cast values for HAS_SIDE_EFFECTS-properties to the
+        // property type before comparing; only `value` does and is string.
+        if (!DOMProperty.hasSideEffects[name] ||
+            ('' + node[propName]) !== ('' + value)) {
+          // Contrary to `setAttribute`, object properties are properly
+          // `toString`ed by IE8/9.
           node[propName] = value;
         }
       }
     } else if (DOMProperty.isCustomAttribute(name)) {
       if (value == null) {
-        node.removeAttribute(DOMProperty.getAttributeName[name]);
+        node.removeAttribute(name);
       } else {
         node.setAttribute(name, '' + value);
       }
@@ -12792,7 +6046,8 @@ var DOMPropertyOperations = {
    * @param {string} name
    */
   deleteValueForProperty: function(node, name) {
-    if (DOMProperty.isStandardName[name]) {
+    if (DOMProperty.isStandardName.hasOwnProperty(name) &&
+        DOMProperty.isStandardName[name]) {
       var mutationMethod = DOMProperty.getMutationMethod[name];
       if (mutationMethod) {
         mutationMethod(node, undefined);
@@ -12805,7 +6060,7 @@ var DOMPropertyOperations = {
           propName
         );
         if (!DOMProperty.hasSideEffects[name] ||
-            node[propName] !== defaultValue) {
+            ('' + node[propName]) !== defaultValue) {
           node[propName] = defaultValue;
         }
       }
@@ -12821,22 +6076,15 @@ var DOMPropertyOperations = {
 module.exports = DOMPropertyOperations;
 
 }).call(this,require('_process'))
-},{"./DOMProperty":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMProperty.js","./escapeTextForBrowser":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/escapeTextForBrowser.js","./memoizeStringOnly":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/memoizeStringOnly.js","./warning":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/warning.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/Danger.js":[function(require,module,exports){
+},{"./DOMProperty":19,"./escapeTextForBrowser":118,"./memoizeStringOnly":144,"./warning":154,"_process":156}],21:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule Danger
  * @typechecks static-only
@@ -12885,9 +6133,10 @@ var Danger = {
   dangerouslyRenderMarkup: function(markupList) {
     ("production" !== process.env.NODE_ENV ? invariant(
       ExecutionEnvironment.canUseDOM,
-      'dangerouslyRenderMarkup(...): Cannot render markup in a Worker ' +
-      'thread. This is likely a bug in the framework. Please report ' +
-      'immediately.'
+      'dangerouslyRenderMarkup(...): Cannot render markup in a worker ' +
+      'thread. Make sure `window` and `document` are available globally ' +
+      'before requiring React when unit testing or use ' +
+      'React.renderToString for server rendering.'
     ) : invariant(ExecutionEnvironment.canUseDOM));
     var nodeName;
     var markupByNodeName = {};
@@ -12991,8 +6240,9 @@ var Danger = {
     ("production" !== process.env.NODE_ENV ? invariant(
       ExecutionEnvironment.canUseDOM,
       'dangerouslyReplaceNodeWithMarkup(...): Cannot render markup in a ' +
-      'worker thread. This is likely a bug in the framework. Please report ' +
-      'immediately.'
+      'worker thread. Make sure `window` and `document` are available ' +
+      'globally before requiring React when unit testing or use ' +
+      'React.renderToString for server rendering.'
     ) : invariant(ExecutionEnvironment.canUseDOM));
     ("production" !== process.env.NODE_ENV ? invariant(markup, 'dangerouslyReplaceNodeWithMarkup(...): Missing markup.') : invariant(markup));
     ("production" !== process.env.NODE_ENV ? invariant(
@@ -13012,219 +6262,14 @@ var Danger = {
 module.exports = Danger;
 
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js","./createNodesFromMarkup":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/createNodesFromMarkup.js","./emptyFunction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/emptyFunction.js","./getMarkupWrap":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getMarkupWrap.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DefaultDOMPropertyConfig.js":[function(require,module,exports){
+},{"./ExecutionEnvironment":30,"./createNodesFromMarkup":113,"./emptyFunction":116,"./getMarkupWrap":127,"./invariant":135,"_process":156}],22:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule DefaultDOMPropertyConfig
- */
-
-/*jslint bitwise: true*/
-
-"use strict";
-
-var DOMProperty = require("./DOMProperty");
-
-var MUST_USE_ATTRIBUTE = DOMProperty.injection.MUST_USE_ATTRIBUTE;
-var MUST_USE_PROPERTY = DOMProperty.injection.MUST_USE_PROPERTY;
-var HAS_BOOLEAN_VALUE = DOMProperty.injection.HAS_BOOLEAN_VALUE;
-var HAS_SIDE_EFFECTS = DOMProperty.injection.HAS_SIDE_EFFECTS;
-var HAS_POSITIVE_NUMERIC_VALUE =
-  DOMProperty.injection.HAS_POSITIVE_NUMERIC_VALUE;
-
-var DefaultDOMPropertyConfig = {
-  isCustomAttribute: RegExp.prototype.test.bind(
-    /^(data|aria)-[a-z_][a-z\d_.\-]*$/
-  ),
-  Properties: {
-    /**
-     * Standard Properties
-     */
-    accept: null,
-    accessKey: null,
-    action: null,
-    allowFullScreen: MUST_USE_ATTRIBUTE | HAS_BOOLEAN_VALUE,
-    allowTransparency: MUST_USE_ATTRIBUTE,
-    alt: null,
-    async: HAS_BOOLEAN_VALUE,
-    autoComplete: null,
-    // autoFocus is polyfilled/normalized by AutoFocusMixin
-    // autoFocus: HAS_BOOLEAN_VALUE,
-    autoPlay: HAS_BOOLEAN_VALUE,
-    cellPadding: null,
-    cellSpacing: null,
-    charSet: MUST_USE_ATTRIBUTE,
-    checked: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
-    className: MUST_USE_PROPERTY,
-    cols: MUST_USE_ATTRIBUTE | HAS_POSITIVE_NUMERIC_VALUE,
-    colSpan: null,
-    content: null,
-    contentEditable: null,
-    contextMenu: MUST_USE_ATTRIBUTE,
-    controls: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
-    crossOrigin: null,
-    data: null, // For `<object />` acts as `src`.
-    dateTime: MUST_USE_ATTRIBUTE,
-    defer: HAS_BOOLEAN_VALUE,
-    dir: null,
-    disabled: MUST_USE_ATTRIBUTE | HAS_BOOLEAN_VALUE,
-    download: null,
-    draggable: null,
-    encType: null,
-    form: MUST_USE_ATTRIBUTE,
-    formNoValidate: HAS_BOOLEAN_VALUE,
-    frameBorder: MUST_USE_ATTRIBUTE,
-    height: MUST_USE_ATTRIBUTE,
-    hidden: MUST_USE_ATTRIBUTE | HAS_BOOLEAN_VALUE,
-    href: null,
-    hrefLang: null,
-    htmlFor: null,
-    httpEquiv: null,
-    icon: null,
-    id: MUST_USE_PROPERTY,
-    label: null,
-    lang: null,
-    list: null,
-    loop: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
-    max: null,
-    maxLength: MUST_USE_ATTRIBUTE,
-    mediaGroup: null,
-    method: null,
-    min: null,
-    multiple: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
-    muted: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
-    name: null,
-    noValidate: HAS_BOOLEAN_VALUE,
-    pattern: null,
-    placeholder: null,
-    poster: null,
-    preload: null,
-    radioGroup: null,
-    readOnly: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
-    rel: null,
-    required: HAS_BOOLEAN_VALUE,
-    role: MUST_USE_ATTRIBUTE,
-    rows: MUST_USE_ATTRIBUTE | HAS_POSITIVE_NUMERIC_VALUE,
-    rowSpan: null,
-    sandbox: null,
-    scope: null,
-    scrollLeft: MUST_USE_PROPERTY,
-    scrollTop: MUST_USE_PROPERTY,
-    seamless: MUST_USE_ATTRIBUTE | HAS_BOOLEAN_VALUE,
-    selected: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
-    size: MUST_USE_ATTRIBUTE | HAS_POSITIVE_NUMERIC_VALUE,
-    span: HAS_POSITIVE_NUMERIC_VALUE,
-    spellCheck: null,
-    src: null,
-    srcDoc: MUST_USE_PROPERTY,
-    srcSet: null,
-    step: null,
-    style: null,
-    tabIndex: null,
-    target: null,
-    title: null,
-    type: null,
-    value: MUST_USE_PROPERTY | HAS_SIDE_EFFECTS,
-    width: MUST_USE_ATTRIBUTE,
-    wmode: MUST_USE_ATTRIBUTE,
-
-    /**
-     * Non-standard Properties
-     */
-    autoCapitalize: null, // Supported in Mobile Safari for keyboard hints
-    autoCorrect: null, // Supported in Mobile Safari for keyboard hints
-    property: null, // Supports OG in meta tags
-
-    /**
-     * SVG Properties
-     */
-    cx: MUST_USE_ATTRIBUTE,
-    cy: MUST_USE_ATTRIBUTE,
-    d: MUST_USE_ATTRIBUTE,
-    fill: MUST_USE_ATTRIBUTE,
-    fx: MUST_USE_ATTRIBUTE,
-    fy: MUST_USE_ATTRIBUTE,
-    gradientTransform: MUST_USE_ATTRIBUTE,
-    gradientUnits: MUST_USE_ATTRIBUTE,
-    offset: MUST_USE_ATTRIBUTE,
-    points: MUST_USE_ATTRIBUTE,
-    r: MUST_USE_ATTRIBUTE,
-    rx: MUST_USE_ATTRIBUTE,
-    ry: MUST_USE_ATTRIBUTE,
-    spreadMethod: MUST_USE_ATTRIBUTE,
-    stopColor: MUST_USE_ATTRIBUTE,
-    stopOpacity: MUST_USE_ATTRIBUTE,
-    stroke: MUST_USE_ATTRIBUTE,
-    strokeLinecap: MUST_USE_ATTRIBUTE,
-    strokeWidth: MUST_USE_ATTRIBUTE,
-    textAnchor: MUST_USE_ATTRIBUTE,
-    transform: MUST_USE_ATTRIBUTE,
-    version: MUST_USE_ATTRIBUTE,
-    viewBox: MUST_USE_ATTRIBUTE,
-    x1: MUST_USE_ATTRIBUTE,
-    x2: MUST_USE_ATTRIBUTE,
-    x: MUST_USE_ATTRIBUTE,
-    y1: MUST_USE_ATTRIBUTE,
-    y2: MUST_USE_ATTRIBUTE,
-    y: MUST_USE_ATTRIBUTE
-  },
-  DOMAttributeNames: {
-    className: 'class',
-    gradientTransform: 'gradientTransform',
-    gradientUnits: 'gradientUnits',
-    htmlFor: 'for',
-    spreadMethod: 'spreadMethod',
-    stopColor: 'stop-color',
-    stopOpacity: 'stop-opacity',
-    strokeLinecap: 'stroke-linecap',
-    strokeWidth: 'stroke-width',
-    textAnchor: 'text-anchor',
-    viewBox: 'viewBox'
-  },
-  DOMPropertyNames: {
-    autoCapitalize: 'autocapitalize',
-    autoComplete: 'autocomplete',
-    autoCorrect: 'autocorrect',
-    autoFocus: 'autofocus',
-    autoPlay: 'autoplay',
-    encType: 'enctype',
-    hrefLang: 'hreflang',
-    radioGroup: 'radiogroup',
-    spellCheck: 'spellcheck',
-    srcDoc: 'srcdoc',
-    srcSet: 'srcset'
-  }
-};
-
-module.exports = DefaultDOMPropertyConfig;
-
-},{"./DOMProperty":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMProperty.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DefaultEventPluginOrder.js":[function(require,module,exports){
-/**
- * Copyright 2013-2014 Facebook, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule DefaultEventPluginOrder
  */
@@ -13250,27 +6295,21 @@ var DefaultEventPluginOrder = [
   keyOf({ChangeEventPlugin: null}),
   keyOf({SelectEventPlugin: null}),
   keyOf({CompositionEventPlugin: null}),
+  keyOf({BeforeInputEventPlugin: null}),
   keyOf({AnalyticsEventPlugin: null}),
   keyOf({MobileSafariClickEventPlugin: null})
 ];
 
 module.exports = DefaultEventPluginOrder;
 
-},{"./keyOf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyOf.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EnterLeaveEventPlugin.js":[function(require,module,exports){
+},{"./keyOf":142}],23:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule EnterLeaveEventPlugin
  * @typechecks static-only
@@ -13403,21 +6442,14 @@ var EnterLeaveEventPlugin = {
 
 module.exports = EnterLeaveEventPlugin;
 
-},{"./EventConstants":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventConstants.js","./EventPropagators":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPropagators.js","./ReactMount":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMount.js","./SyntheticMouseEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticMouseEvent.js","./keyOf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyOf.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventConstants.js":[function(require,module,exports){
+},{"./EventConstants":24,"./EventPropagators":29,"./ReactMount":72,"./SyntheticMouseEvent":100,"./keyOf":142}],24:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule EventConstants
  */
@@ -13467,6 +6499,7 @@ var topLevelTypes = keyMirror({
   topScroll: null,
   topSelectionChange: null,
   topSubmit: null,
+  topTextInput: null,
   topTouchCancel: null,
   topTouchEnd: null,
   topTouchMove: null,
@@ -13481,10 +6514,25 @@ var EventConstants = {
 
 module.exports = EventConstants;
 
-},{"./keyMirror":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyMirror.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventListener.js":[function(require,module,exports){
+},{"./keyMirror":141}],25:[function(require,module,exports){
 (function (process){
 /**
+ * Copyright 2013-2014 Facebook, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  * @providesModule EventListener
+ * @typechecks
  */
 
 var emptyFunction = require("./emptyFunction");
@@ -13514,7 +6562,7 @@ var EventListener = {
       target.attachEvent('on' + eventType, callback);
       return {
         remove: function() {
-          target.detachEvent(eventType, callback);
+          target.detachEvent('on' + eventType, callback);
         }
       };
     }
@@ -13548,28 +6596,23 @@ var EventListener = {
         }
       };
     }
-  }
+  },
+
+  registerDefault: function() {}
 };
 
 module.exports = EventListener;
 
 }).call(this,require('_process'))
-},{"./emptyFunction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/emptyFunction.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginHub.js":[function(require,module,exports){
+},{"./emptyFunction":116,"_process":156}],26:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule EventPluginHub
  */
@@ -13578,13 +6621,10 @@ module.exports = EventListener;
 
 var EventPluginRegistry = require("./EventPluginRegistry");
 var EventPluginUtils = require("./EventPluginUtils");
-var ExecutionEnvironment = require("./ExecutionEnvironment");
 
-var accumulate = require("./accumulate");
+var accumulateInto = require("./accumulateInto");
 var forEachAccumulated = require("./forEachAccumulated");
 var invariant = require("./invariant");
-var isEventSupported = require("./isEventSupported");
-var monitorCodeUse = require("./monitorCodeUse");
 
 /**
  * Internal store for event listeners
@@ -13713,24 +6753,11 @@ var EventPluginHub = {
    */
   putListener: function(id, registrationName, listener) {
     ("production" !== process.env.NODE_ENV ? invariant(
-      ExecutionEnvironment.canUseDOM,
-      'Cannot call putListener() in a non-DOM environment.'
-    ) : invariant(ExecutionEnvironment.canUseDOM));
-    ("production" !== process.env.NODE_ENV ? invariant(
       !listener || typeof listener === 'function',
       'Expected %s listener to be a function, instead got type %s',
       registrationName, typeof listener
     ) : invariant(!listener || typeof listener === 'function'));
 
-    if ("production" !== process.env.NODE_ENV) {
-      // IE8 has no API for event capturing and the `onScroll` event doesn't
-      // bubble.
-      if (registrationName === 'onScroll' &&
-          !isEventSupported('scroll', true)) {
-        monitorCodeUse('react_no_scroll_event');
-        console.warn('This browser doesn\'t support the `onScroll` event');
-      }
-    }
     var bankForRegistrationName =
       listenerBank[registrationName] || (listenerBank[registrationName] = {});
     bankForRegistrationName[id] = listener;
@@ -13799,7 +6826,7 @@ var EventPluginHub = {
           nativeEvent
         );
         if (extractedEvents) {
-          events = accumulate(events, extractedEvents);
+          events = accumulateInto(events, extractedEvents);
         }
       }
     }
@@ -13815,7 +6842,7 @@ var EventPluginHub = {
    */
   enqueueEvents: function(events) {
     if (events) {
-      eventQueue = accumulate(eventQueue, events);
+      eventQueue = accumulateInto(eventQueue, events);
     }
   },
 
@@ -13853,22 +6880,15 @@ var EventPluginHub = {
 module.exports = EventPluginHub;
 
 }).call(this,require('_process'))
-},{"./EventPluginRegistry":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginRegistry.js","./EventPluginUtils":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginUtils.js","./ExecutionEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js","./accumulate":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/accumulate.js","./forEachAccumulated":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/forEachAccumulated.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./isEventSupported":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/isEventSupported.js","./monitorCodeUse":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/monitorCodeUse.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginRegistry.js":[function(require,module,exports){
+},{"./EventPluginRegistry":27,"./EventPluginUtils":28,"./accumulateInto":106,"./forEachAccumulated":121,"./invariant":135,"_process":156}],27:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule EventPluginRegistry
  * @typechecks static-only
@@ -13947,11 +6967,11 @@ function recomputePluginOrdering() {
  */
 function publishEventForPlugin(dispatchConfig, PluginModule, eventName) {
   ("production" !== process.env.NODE_ENV ? invariant(
-    !EventPluginRegistry.eventNameDispatchConfigs[eventName],
+    !EventPluginRegistry.eventNameDispatchConfigs.hasOwnProperty(eventName),
     'EventPluginHub: More than one plugin attempted to publish the same ' +
     'event name, `%s`.',
     eventName
-  ) : invariant(!EventPluginRegistry.eventNameDispatchConfigs[eventName]));
+  ) : invariant(!EventPluginRegistry.eventNameDispatchConfigs.hasOwnProperty(eventName)));
   EventPluginRegistry.eventNameDispatchConfigs[eventName] = dispatchConfig;
 
   var phasedRegistrationNames = dispatchConfig.phasedRegistrationNames;
@@ -14037,7 +7057,8 @@ var EventPluginRegistry = {
   injectEventPluginOrder: function(InjectedEventPluginOrder) {
     ("production" !== process.env.NODE_ENV ? invariant(
       !EventPluginOrder,
-      'EventPluginRegistry: Cannot inject event plugin ordering more than once.'
+      'EventPluginRegistry: Cannot inject event plugin ordering more than ' +
+      'once. You are likely trying to load more than one copy of React.'
     ) : invariant(!EventPluginOrder));
     // Clone the ordering so it cannot be dynamically mutated.
     EventPluginOrder = Array.prototype.slice.call(InjectedEventPluginOrder);
@@ -14061,7 +7082,8 @@ var EventPluginRegistry = {
         continue;
       }
       var PluginModule = injectedNamesToPlugins[pluginName];
-      if (namesToPlugins[pluginName] !== PluginModule) {
+      if (!namesToPlugins.hasOwnProperty(pluginName) ||
+          namesToPlugins[pluginName] !== PluginModule) {
         ("production" !== process.env.NODE_ENV ? invariant(
           !namesToPlugins[pluginName],
           'EventPluginRegistry: Cannot inject two different event plugins ' +
@@ -14138,22 +7160,15 @@ var EventPluginRegistry = {
 module.exports = EventPluginRegistry;
 
 }).call(this,require('_process'))
-},{"./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginUtils.js":[function(require,module,exports){
+},{"./invariant":135,"_process":156}],28:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule EventPluginUtils
  */
@@ -14277,7 +7292,7 @@ function executeDispatchesInOrder(event, executeDispatch) {
  * @return id of the first dispatch execution who's listener returns true, or
  * null if no listener returned true.
  */
-function executeDispatchesInOrderStopAtTrue(event) {
+function executeDispatchesInOrderStopAtTrueImpl(event) {
   var dispatchListeners = event._dispatchListeners;
   var dispatchIDs = event._dispatchIDs;
   if ("production" !== process.env.NODE_ENV) {
@@ -14299,6 +7314,16 @@ function executeDispatchesInOrderStopAtTrue(event) {
     }
   }
   return null;
+}
+
+/**
+ * @see executeDispatchesInOrderStopAtTrueImpl
+ */
+function executeDispatchesInOrderStopAtTrue(event) {
+  var ret = executeDispatchesInOrderStopAtTrueImpl(event);
+  event._dispatchIDs = null;
+  event._dispatchListeners = null;
+  return ret;
 }
 
 /**
@@ -14356,22 +7381,15 @@ var EventPluginUtils = {
 module.exports = EventPluginUtils;
 
 }).call(this,require('_process'))
-},{"./EventConstants":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventConstants.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPropagators.js":[function(require,module,exports){
+},{"./EventConstants":24,"./invariant":135,"_process":156}],29:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule EventPropagators
  */
@@ -14381,7 +7399,7 @@ module.exports = EventPluginUtils;
 var EventConstants = require("./EventConstants");
 var EventPluginHub = require("./EventPluginHub");
 
-var accumulate = require("./accumulate");
+var accumulateInto = require("./accumulateInto");
 var forEachAccumulated = require("./forEachAccumulated");
 
 var PropagationPhases = EventConstants.PropagationPhases;
@@ -14412,8 +7430,9 @@ function accumulateDirectionalDispatches(domID, upwards, event) {
   var phase = upwards ? PropagationPhases.bubbled : PropagationPhases.captured;
   var listener = listenerAtPhase(domID, event, phase);
   if (listener) {
-    event._dispatchListeners = accumulate(event._dispatchListeners, listener);
-    event._dispatchIDs = accumulate(event._dispatchIDs, domID);
+    event._dispatchListeners =
+      accumulateInto(event._dispatchListeners, listener);
+    event._dispatchIDs = accumulateInto(event._dispatchIDs, domID);
   }
 }
 
@@ -14445,8 +7464,9 @@ function accumulateDispatches(id, ignoredDirection, event) {
     var registrationName = event.dispatchConfig.registrationName;
     var listener = getListener(id, registrationName);
     if (listener) {
-      event._dispatchListeners = accumulate(event._dispatchListeners, listener);
-      event._dispatchIDs = accumulate(event._dispatchIDs, id);
+      event._dispatchListeners =
+        accumulateInto(event._dispatchListeners, listener);
+      event._dispatchIDs = accumulateInto(event._dispatchIDs, id);
     }
   }
 }
@@ -14503,21 +7523,14 @@ var EventPropagators = {
 module.exports = EventPropagators;
 
 }).call(this,require('_process'))
-},{"./EventConstants":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventConstants.js","./EventPluginHub":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginHub.js","./accumulate":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/accumulate.js","./forEachAccumulated":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/forEachAccumulated.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js":[function(require,module,exports){
+},{"./EventConstants":24,"./EventPluginHub":26,"./accumulateInto":106,"./forEachAccumulated":121,"_process":156}],30:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ExecutionEnvironment
  */
@@ -14526,7 +7539,11 @@ module.exports = EventPropagators;
 
 "use strict";
 
-var canUseDOM = typeof window !== 'undefined';
+var canUseDOM = !!(
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+);
 
 /**
  * Simple, lightweight module assisting with the detection and context of
@@ -14541,7 +7558,9 @@ var ExecutionEnvironment = {
   canUseWorkers: typeof Worker !== 'undefined',
 
   canUseEventListeners:
-    canUseDOM && (window.addEventListener || window.attachEvent),
+    canUseDOM && !!(window.addEventListener || window.attachEvent),
+
+  canUseViewport: canUseDOM && !!window.screen,
 
   isInWorker: !canUseDOM // For now, this is true - might change in the future.
 
@@ -14549,22 +7568,207 @@ var ExecutionEnvironment = {
 
 module.exports = ExecutionEnvironment;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/LinkedValueUtils.js":[function(require,module,exports){
+},{}],31:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule HTMLDOMPropertyConfig
+ */
+
+/*jslint bitwise: true*/
+
+"use strict";
+
+var DOMProperty = require("./DOMProperty");
+var ExecutionEnvironment = require("./ExecutionEnvironment");
+
+var MUST_USE_ATTRIBUTE = DOMProperty.injection.MUST_USE_ATTRIBUTE;
+var MUST_USE_PROPERTY = DOMProperty.injection.MUST_USE_PROPERTY;
+var HAS_BOOLEAN_VALUE = DOMProperty.injection.HAS_BOOLEAN_VALUE;
+var HAS_SIDE_EFFECTS = DOMProperty.injection.HAS_SIDE_EFFECTS;
+var HAS_NUMERIC_VALUE = DOMProperty.injection.HAS_NUMERIC_VALUE;
+var HAS_POSITIVE_NUMERIC_VALUE =
+  DOMProperty.injection.HAS_POSITIVE_NUMERIC_VALUE;
+var HAS_OVERLOADED_BOOLEAN_VALUE =
+  DOMProperty.injection.HAS_OVERLOADED_BOOLEAN_VALUE;
+
+var hasSVG;
+if (ExecutionEnvironment.canUseDOM) {
+  var implementation = document.implementation;
+  hasSVG = (
+    implementation &&
+    implementation.hasFeature &&
+    implementation.hasFeature(
+      'http://www.w3.org/TR/SVG11/feature#BasicStructure',
+      '1.1'
+    )
+  );
+}
+
+
+var HTMLDOMPropertyConfig = {
+  isCustomAttribute: RegExp.prototype.test.bind(
+    /^(data|aria)-[a-z_][a-z\d_.\-]*$/
+  ),
+  Properties: {
+    /**
+     * Standard Properties
+     */
+    accept: null,
+    acceptCharset: null,
+    accessKey: null,
+    action: null,
+    allowFullScreen: MUST_USE_ATTRIBUTE | HAS_BOOLEAN_VALUE,
+    allowTransparency: MUST_USE_ATTRIBUTE,
+    alt: null,
+    async: HAS_BOOLEAN_VALUE,
+    autoComplete: null,
+    // autoFocus is polyfilled/normalized by AutoFocusMixin
+    // autoFocus: HAS_BOOLEAN_VALUE,
+    autoPlay: HAS_BOOLEAN_VALUE,
+    cellPadding: null,
+    cellSpacing: null,
+    charSet: MUST_USE_ATTRIBUTE,
+    checked: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
+    classID: MUST_USE_ATTRIBUTE,
+    // To set className on SVG elements, it's necessary to use .setAttribute;
+    // this works on HTML elements too in all browsers except IE8. Conveniently,
+    // IE8 doesn't support SVG and so we can simply use the attribute in
+    // browsers that support SVG and the property in browsers that don't,
+    // regardless of whether the element is HTML or SVG.
+    className: hasSVG ? MUST_USE_ATTRIBUTE : MUST_USE_PROPERTY,
+    cols: MUST_USE_ATTRIBUTE | HAS_POSITIVE_NUMERIC_VALUE,
+    colSpan: null,
+    content: null,
+    contentEditable: null,
+    contextMenu: MUST_USE_ATTRIBUTE,
+    controls: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
+    coords: null,
+    crossOrigin: null,
+    data: null, // For `<object />` acts as `src`.
+    dateTime: MUST_USE_ATTRIBUTE,
+    defer: HAS_BOOLEAN_VALUE,
+    dir: null,
+    disabled: MUST_USE_ATTRIBUTE | HAS_BOOLEAN_VALUE,
+    download: HAS_OVERLOADED_BOOLEAN_VALUE,
+    draggable: null,
+    encType: null,
+    form: MUST_USE_ATTRIBUTE,
+    formAction: MUST_USE_ATTRIBUTE,
+    formEncType: MUST_USE_ATTRIBUTE,
+    formMethod: MUST_USE_ATTRIBUTE,
+    formNoValidate: HAS_BOOLEAN_VALUE,
+    formTarget: MUST_USE_ATTRIBUTE,
+    frameBorder: MUST_USE_ATTRIBUTE,
+    height: MUST_USE_ATTRIBUTE,
+    hidden: MUST_USE_ATTRIBUTE | HAS_BOOLEAN_VALUE,
+    href: null,
+    hrefLang: null,
+    htmlFor: null,
+    httpEquiv: null,
+    icon: null,
+    id: MUST_USE_PROPERTY,
+    label: null,
+    lang: null,
+    list: MUST_USE_ATTRIBUTE,
+    loop: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
+    manifest: MUST_USE_ATTRIBUTE,
+    marginHeight: null,
+    marginWidth: null,
+    max: null,
+    maxLength: MUST_USE_ATTRIBUTE,
+    media: MUST_USE_ATTRIBUTE,
+    mediaGroup: null,
+    method: null,
+    min: null,
+    multiple: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
+    muted: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
+    name: null,
+    noValidate: HAS_BOOLEAN_VALUE,
+    open: null,
+    pattern: null,
+    placeholder: null,
+    poster: null,
+    preload: null,
+    radioGroup: null,
+    readOnly: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
+    rel: null,
+    required: HAS_BOOLEAN_VALUE,
+    role: MUST_USE_ATTRIBUTE,
+    rows: MUST_USE_ATTRIBUTE | HAS_POSITIVE_NUMERIC_VALUE,
+    rowSpan: null,
+    sandbox: null,
+    scope: null,
+    scrolling: null,
+    seamless: MUST_USE_ATTRIBUTE | HAS_BOOLEAN_VALUE,
+    selected: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
+    shape: null,
+    size: MUST_USE_ATTRIBUTE | HAS_POSITIVE_NUMERIC_VALUE,
+    sizes: MUST_USE_ATTRIBUTE,
+    span: HAS_POSITIVE_NUMERIC_VALUE,
+    spellCheck: null,
+    src: null,
+    srcDoc: MUST_USE_PROPERTY,
+    srcSet: MUST_USE_ATTRIBUTE,
+    start: HAS_NUMERIC_VALUE,
+    step: null,
+    style: null,
+    tabIndex: null,
+    target: null,
+    title: null,
+    type: null,
+    useMap: null,
+    value: MUST_USE_PROPERTY | HAS_SIDE_EFFECTS,
+    width: MUST_USE_ATTRIBUTE,
+    wmode: MUST_USE_ATTRIBUTE,
+
+    /**
+     * Non-standard Properties
+     */
+    autoCapitalize: null, // Supported in Mobile Safari for keyboard hints
+    autoCorrect: null, // Supported in Mobile Safari for keyboard hints
+    itemProp: MUST_USE_ATTRIBUTE, // Microdata: http://schema.org/docs/gs.html
+    itemScope: MUST_USE_ATTRIBUTE | HAS_BOOLEAN_VALUE, // Microdata: http://schema.org/docs/gs.html
+    itemType: MUST_USE_ATTRIBUTE, // Microdata: http://schema.org/docs/gs.html
+    property: null // Supports OG in meta tags
+  },
+  DOMAttributeNames: {
+    acceptCharset: 'accept-charset',
+    className: 'class',
+    htmlFor: 'for',
+    httpEquiv: 'http-equiv'
+  },
+  DOMPropertyNames: {
+    autoCapitalize: 'autocapitalize',
+    autoComplete: 'autocomplete',
+    autoCorrect: 'autocorrect',
+    autoFocus: 'autofocus',
+    autoPlay: 'autoplay',
+    encType: 'enctype',
+    hrefLang: 'hreflang',
+    radioGroup: 'radiogroup',
+    spellCheck: 'spellcheck',
+    srcDoc: 'srcdoc',
+    srcSet: 'srcset'
+  }
+};
+
+module.exports = HTMLDOMPropertyConfig;
+
+},{"./DOMProperty":19,"./ExecutionEnvironment":30}],32:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule LinkedValueUtils
  * @typechecks static-only
@@ -14575,7 +7779,6 @@ module.exports = ExecutionEnvironment;
 var ReactPropTypes = require("./ReactPropTypes");
 
 var invariant = require("./invariant");
-var warning = require("./warning");
 
 var hasReadOnlyValue = {
   'button': true,
@@ -14589,9 +7792,9 @@ var hasReadOnlyValue = {
 
 function _assertSingleLink(input) {
   ("production" !== process.env.NODE_ENV ? invariant(
-      input.props.checkedLink == null || input.props.valueLink == null,
-      'Cannot provide a checkedLink and a valueLink. If you want to use ' +
-      'checkedLink, you probably don\'t want to use valueLink and vice versa.'
+    input.props.checkedLink == null || input.props.valueLink == null,
+    'Cannot provide a checkedLink and a valueLink. If you want to use ' +
+    'checkedLink, you probably don\'t want to use valueLink and vice versa.'
   ) : invariant(input.props.checkedLink == null || input.props.valueLink == null));
 }
 function _assertValueLink(input) {
@@ -14637,33 +7840,33 @@ var LinkedValueUtils = {
   Mixin: {
     propTypes: {
       value: function(props, propName, componentName) {
-        if ("production" !== process.env.NODE_ENV) {
-          ("production" !== process.env.NODE_ENV ? warning(
-            !props[propName] ||
+        if (!props[propName] ||
             hasReadOnlyValue[props.type] ||
             props.onChange ||
             props.readOnly ||
-            props.disabled,
-            'You provided a `value` prop to a form field without an ' +
-            '`onChange` handler. This will render a read-only field. If ' +
-            'the field should be mutable use `defaultValue`. Otherwise, ' +
-            'set either `onChange` or `readOnly`.'
-          ) : null);
+            props.disabled) {
+          return;
         }
+        return new Error(
+          'You provided a `value` prop to a form field without an ' +
+          '`onChange` handler. This will render a read-only field. If ' +
+          'the field should be mutable use `defaultValue`. Otherwise, ' +
+          'set either `onChange` or `readOnly`.'
+        );
       },
       checked: function(props, propName, componentName) {
-        if ("production" !== process.env.NODE_ENV) {
-          ("production" !== process.env.NODE_ENV ? warning(
-            !props[propName] ||
+        if (!props[propName] ||
             props.onChange ||
             props.readOnly ||
-            props.disabled,
-            'You provided a `checked` prop to a form field without an ' +
-            '`onChange` handler. This will render a read-only field. If ' +
-            'the field should be mutable use `defaultChecked`. Otherwise, ' +
-            'set either `onChange` or `readOnly`.'
-          ) : null);
+            props.disabled) {
+          return;
         }
+        return new Error(
+          'You provided a `checked` prop to a form field without an ' +
+          '`onChange` handler. This will render a read-only field. If ' +
+          'the field should be mutable use `defaultChecked`. Otherwise, ' +
+          'set either `onChange` or `readOnly`.'
+        );
       },
       onChange: ReactPropTypes.func
     }
@@ -14713,21 +7916,64 @@ var LinkedValueUtils = {
 module.exports = LinkedValueUtils;
 
 }).call(this,require('_process'))
-},{"./ReactPropTypes":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPropTypes.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./warning":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/warning.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/MobileSafariClickEventPlugin.js":[function(require,module,exports){
+},{"./ReactPropTypes":81,"./invariant":135,"_process":156}],33:[function(require,module,exports){
+(function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule LocalEventTrapMixin
+ */
+
+"use strict";
+
+var ReactBrowserEventEmitter = require("./ReactBrowserEventEmitter");
+
+var accumulateInto = require("./accumulateInto");
+var forEachAccumulated = require("./forEachAccumulated");
+var invariant = require("./invariant");
+
+function remove(event) {
+  event.remove();
+}
+
+var LocalEventTrapMixin = {
+  trapBubbledEvent:function(topLevelType, handlerBaseName) {
+    ("production" !== process.env.NODE_ENV ? invariant(this.isMounted(), 'Must be mounted to trap events') : invariant(this.isMounted()));
+    var listener = ReactBrowserEventEmitter.trapBubbledEvent(
+      topLevelType,
+      handlerBaseName,
+      this.getDOMNode()
+    );
+    this._localEventListeners =
+      accumulateInto(this._localEventListeners, listener);
+  },
+
+  // trapCapturedEvent would look nearly identical. We don't implement that
+  // method because it isn't currently needed.
+
+  componentWillUnmount:function() {
+    if (this._localEventListeners) {
+      forEachAccumulated(this._localEventListeners, remove);
+    }
+  }
+};
+
+module.exports = LocalEventTrapMixin;
+
+}).call(this,require('_process'))
+},{"./ReactBrowserEventEmitter":39,"./accumulateInto":106,"./forEachAccumulated":121,"./invariant":135,"_process":156}],34:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule MobileSafariClickEventPlugin
  * @typechecks static-only
@@ -14778,22 +8024,62 @@ var MobileSafariClickEventPlugin = {
 
 module.exports = MobileSafariClickEventPlugin;
 
-},{"./EventConstants":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventConstants.js","./emptyFunction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/emptyFunction.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/PooledClass.js":[function(require,module,exports){
+},{"./EventConstants":24,"./emptyFunction":116}],35:[function(require,module,exports){
+/**
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule Object.assign
+ */
+
+// https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.assign
+
+function assign(target, sources) {
+  if (target == null) {
+    throw new TypeError('Object.assign target cannot be null or undefined');
+  }
+
+  var to = Object(target);
+  var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+  for (var nextIndex = 1; nextIndex < arguments.length; nextIndex++) {
+    var nextSource = arguments[nextIndex];
+    if (nextSource == null) {
+      continue;
+    }
+
+    var from = Object(nextSource);
+
+    // We don't currently support accessors nor proxies. Therefore this
+    // copy cannot throw. If we ever supported this then we must handle
+    // exceptions and side-effects. We don't support symbols so they won't
+    // be transferred.
+
+    for (var key in from) {
+      if (hasOwnProperty.call(from, key)) {
+        to[key] = from[key];
+      }
+    }
+  }
+
+  return to;
+};
+
+module.exports = assign;
+
+},{}],36:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule PooledClass
  */
@@ -14901,22 +8187,15 @@ var PooledClass = {
 module.exports = PooledClass;
 
 }).call(this,require('_process'))
-},{"./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/React.js":[function(require,module,exports){
+},{"./invariant":135,"_process":156}],37:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule React
  */
@@ -14930,10 +8209,13 @@ var ReactComponent = require("./ReactComponent");
 var ReactCompositeComponent = require("./ReactCompositeComponent");
 var ReactContext = require("./ReactContext");
 var ReactCurrentOwner = require("./ReactCurrentOwner");
+var ReactElement = require("./ReactElement");
+var ReactElementValidator = require("./ReactElementValidator");
 var ReactDOM = require("./ReactDOM");
 var ReactDOMComponent = require("./ReactDOMComponent");
 var ReactDefaultInjection = require("./ReactDefaultInjection");
 var ReactInstanceHandles = require("./ReactInstanceHandles");
+var ReactLegacyElement = require("./ReactLegacyElement");
 var ReactMount = require("./ReactMount");
 var ReactMultiChild = require("./ReactMultiChild");
 var ReactPerf = require("./ReactPerf");
@@ -14941,14 +8223,35 @@ var ReactPropTypes = require("./ReactPropTypes");
 var ReactServerRendering = require("./ReactServerRendering");
 var ReactTextComponent = require("./ReactTextComponent");
 
+var assign = require("./Object.assign");
+var deprecated = require("./deprecated");
 var onlyChild = require("./onlyChild");
 
 ReactDefaultInjection.inject();
+
+var createElement = ReactElement.createElement;
+var createFactory = ReactElement.createFactory;
+
+if ("production" !== process.env.NODE_ENV) {
+  createElement = ReactElementValidator.createElement;
+  createFactory = ReactElementValidator.createFactory;
+}
+
+// TODO: Drop legacy elements once classes no longer export these factories
+createElement = ReactLegacyElement.wrapCreateElement(
+  createElement
+);
+createFactory = ReactLegacyElement.wrapCreateFactory(
+  createFactory
+);
+
+var render = ReactPerf.measure('React', 'render', ReactMount.render);
 
 var React = {
   Children: {
     map: ReactChildren.map,
     forEach: ReactChildren.forEach,
+    count: ReactChildren.count,
     only: onlyChild
   },
   DOM: ReactDOM,
@@ -14957,21 +8260,58 @@ var React = {
     EventPluginUtils.useTouchEvents = shouldUseTouch;
   },
   createClass: ReactCompositeComponent.createClass,
+  createElement: createElement,
+  createFactory: createFactory,
   constructAndRenderComponent: ReactMount.constructAndRenderComponent,
   constructAndRenderComponentByID: ReactMount.constructAndRenderComponentByID,
-  renderComponent: ReactPerf.measure(
+  render: render,
+  renderToString: ReactServerRendering.renderToString,
+  renderToStaticMarkup: ReactServerRendering.renderToStaticMarkup,
+  unmountComponentAtNode: ReactMount.unmountComponentAtNode,
+  isValidClass: ReactLegacyElement.isValidClass,
+  isValidElement: ReactElement.isValidElement,
+  withContext: ReactContext.withContext,
+
+  // Hook for JSX spread, don't use this for anything else.
+  __spread: assign,
+
+  // Deprecations (remove for 0.13)
+  renderComponent: deprecated(
     'React',
     'renderComponent',
-    ReactMount.renderComponent
+    'render',
+    this,
+    render
   ),
-  renderComponentToString: ReactServerRendering.renderComponentToString,
-  renderComponentToStaticMarkup:
-    ReactServerRendering.renderComponentToStaticMarkup,
-  unmountComponentAtNode: ReactMount.unmountComponentAtNode,
-  isValidClass: ReactCompositeComponent.isValidClass,
-  isValidComponent: ReactComponent.isValidComponent,
-  withContext: ReactContext.withContext,
-  __internals: {
+  renderComponentToString: deprecated(
+    'React',
+    'renderComponentToString',
+    'renderToString',
+    this,
+    ReactServerRendering.renderToString
+  ),
+  renderComponentToStaticMarkup: deprecated(
+    'React',
+    'renderComponentToStaticMarkup',
+    'renderToStaticMarkup',
+    this,
+    ReactServerRendering.renderToStaticMarkup
+  ),
+  isValidComponent: deprecated(
+    'React',
+    'isValidComponent',
+    'isValidElement',
+    this,
+    ReactElement.isValidElement
+  )
+};
+
+// Inject the runtime into a devtools global hook regardless of browser.
+// Allows for debugging when the hook is injected on the page.
+if (
+  typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' &&
+  typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.inject === 'function') {
+  __REACT_DEVTOOLS_GLOBAL_HOOK__.inject({
     Component: ReactComponent,
     CurrentOwner: ReactCurrentOwner,
     DOMComponent: ReactDOMComponent,
@@ -14980,50 +8320,77 @@ var React = {
     Mount: ReactMount,
     MultiChild: ReactMultiChild,
     TextComponent: ReactTextComponent
-  }
-};
+  });
+}
 
 if ("production" !== process.env.NODE_ENV) {
   var ExecutionEnvironment = require("./ExecutionEnvironment");
-  if (ExecutionEnvironment.canUseDOM &&
-      window.top === window.self &&
-      navigator.userAgent.indexOf('Chrome') > -1) {
-    console.debug(
-      'Download the React DevTools for a better development experience: ' +
-      'http://fb.me/react-devtools'
-    );
+  if (ExecutionEnvironment.canUseDOM && window.top === window.self) {
+
+    // If we're in Chrome, look for the devtools marker and provide a download
+    // link if not installed.
+    if (navigator.userAgent.indexOf('Chrome') > -1) {
+      if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined') {
+        console.debug(
+          'Download the React DevTools for a better development experience: ' +
+          'http://fb.me/react-devtools'
+        );
+      }
+    }
+
+    var expectedFeatures = [
+      // shims
+      Array.isArray,
+      Array.prototype.every,
+      Array.prototype.forEach,
+      Array.prototype.indexOf,
+      Array.prototype.map,
+      Date.now,
+      Function.prototype.bind,
+      Object.keys,
+      String.prototype.split,
+      String.prototype.trim,
+
+      // shams
+      Object.create,
+      Object.freeze
+    ];
+
+    for (var i = 0; i < expectedFeatures.length; i++) {
+      if (!expectedFeatures[i]) {
+        console.error(
+          'One or more ES5 shim/shams expected by React are not available: ' +
+          'http://fb.me/react-warning-polyfills'
+        );
+        break;
+      }
+    }
   }
 }
 
 // Version exists only in the open-source version of React, not in Facebook's
 // internal version.
-React.version = '0.10.0';
+React.version = '0.12.2';
 
 module.exports = React;
 
 }).call(this,require('_process'))
-},{"./DOMPropertyOperations":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMPropertyOperations.js","./EventPluginUtils":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginUtils.js","./ExecutionEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js","./ReactChildren":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactChildren.js","./ReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactComponent.js","./ReactCompositeComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCompositeComponent.js","./ReactContext":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactContext.js","./ReactCurrentOwner":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCurrentOwner.js","./ReactDOM":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOM.js","./ReactDOMComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMComponent.js","./ReactDefaultInjection":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDefaultInjection.js","./ReactInstanceHandles":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInstanceHandles.js","./ReactMount":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMount.js","./ReactMultiChild":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMultiChild.js","./ReactPerf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPerf.js","./ReactPropTypes":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPropTypes.js","./ReactServerRendering":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactServerRendering.js","./ReactTextComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactTextComponent.js","./onlyChild":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/onlyChild.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactBrowserComponentMixin.js":[function(require,module,exports){
+},{"./DOMPropertyOperations":20,"./EventPluginUtils":28,"./ExecutionEnvironment":30,"./Object.assign":35,"./ReactChildren":40,"./ReactComponent":41,"./ReactCompositeComponent":43,"./ReactContext":44,"./ReactCurrentOwner":45,"./ReactDOM":46,"./ReactDOMComponent":48,"./ReactDefaultInjection":58,"./ReactElement":61,"./ReactElementValidator":62,"./ReactInstanceHandles":69,"./ReactLegacyElement":70,"./ReactMount":72,"./ReactMultiChild":73,"./ReactPerf":77,"./ReactPropTypes":81,"./ReactServerRendering":85,"./ReactTextComponent":87,"./deprecated":115,"./onlyChild":146,"_process":156}],38:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactBrowserComponentMixin
  */
 
 "use strict";
 
+var ReactEmptyComponent = require("./ReactEmptyComponent");
 var ReactMount = require("./ReactMount");
 
 var invariant = require("./invariant");
@@ -15041,6 +8408,9 @@ var ReactBrowserComponentMixin = {
       this.isMounted(),
       'getDOMNode(): A component must be mounted to have a DOM node.'
     ) : invariant(this.isMounted()));
+    if (ReactEmptyComponent.isNullComponentID(this._rootNodeID)) {
+      return null;
+    }
     return ReactMount.getNode(this._rootNodeID);
   }
 };
@@ -15048,22 +8418,370 @@ var ReactBrowserComponentMixin = {
 module.exports = ReactBrowserComponentMixin;
 
 }).call(this,require('_process'))
-},{"./ReactMount":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMount.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactChildren.js":[function(require,module,exports){
+},{"./ReactEmptyComponent":63,"./ReactMount":72,"./invariant":135,"_process":156}],39:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule ReactBrowserEventEmitter
+ * @typechecks static-only
+ */
+
+"use strict";
+
+var EventConstants = require("./EventConstants");
+var EventPluginHub = require("./EventPluginHub");
+var EventPluginRegistry = require("./EventPluginRegistry");
+var ReactEventEmitterMixin = require("./ReactEventEmitterMixin");
+var ViewportMetrics = require("./ViewportMetrics");
+
+var assign = require("./Object.assign");
+var isEventSupported = require("./isEventSupported");
+
+/**
+ * Summary of `ReactBrowserEventEmitter` event handling:
+ *
+ *  - Top-level delegation is used to trap most native browser events. This
+ *    may only occur in the main thread and is the responsibility of
+ *    ReactEventListener, which is injected and can therefore support pluggable
+ *    event sources. This is the only work that occurs in the main thread.
+ *
+ *  - We normalize and de-duplicate events to account for browser quirks. This
+ *    may be done in the worker thread.
+ *
+ *  - Forward these native events (with the associated top-level type used to
+ *    trap it) to `EventPluginHub`, which in turn will ask plugins if they want
+ *    to extract any synthetic events.
+ *
+ *  - The `EventPluginHub` will then process each event by annotating them with
+ *    "dispatches", a sequence of listeners and IDs that care about that event.
+ *
+ *  - The `EventPluginHub` then dispatches the events.
+ *
+ * Overview of React and the event system:
+ *
+ * +------------+    .
+ * |    DOM     |    .
+ * +------------+    .
+ *       |           .
+ *       v           .
+ * +------------+    .
+ * | ReactEvent |    .
+ * |  Listener  |    .
+ * +------------+    .                         +-----------+
+ *       |           .               +--------+|SimpleEvent|
+ *       |           .               |         |Plugin     |
+ * +-----|------+    .               v         +-----------+
+ * |     |      |    .    +--------------+                    +------------+
+ * |     +-----------.--->|EventPluginHub|                    |    Event   |
+ * |            |    .    |              |     +-----------+  | Propagators|
+ * | ReactEvent |    .    |              |     |TapEvent   |  |------------|
+ * |  Emitter   |    .    |              |<---+|Plugin     |  |other plugin|
+ * |            |    .    |              |     +-----------+  |  utilities |
+ * |     +-----------.--->|              |                    +------------+
+ * |     |      |    .    +--------------+
+ * +-----|------+    .                ^        +-----------+
+ *       |           .                |        |Enter/Leave|
+ *       +           .                +-------+|Plugin     |
+ * +-------------+   .                         +-----------+
+ * | application |   .
+ * |-------------|   .
+ * |             |   .
+ * |             |   .
+ * +-------------+   .
+ *                   .
+ *    React Core     .  General Purpose Event Plugin System
+ */
+
+var alreadyListeningTo = {};
+var isMonitoringScrollValue = false;
+var reactTopListenersCounter = 0;
+
+// For events like 'submit' which don't consistently bubble (which we trap at a
+// lower node than `document`), binding at `document` would cause duplicate
+// events so we don't include them here
+var topEventMapping = {
+  topBlur: 'blur',
+  topChange: 'change',
+  topClick: 'click',
+  topCompositionEnd: 'compositionend',
+  topCompositionStart: 'compositionstart',
+  topCompositionUpdate: 'compositionupdate',
+  topContextMenu: 'contextmenu',
+  topCopy: 'copy',
+  topCut: 'cut',
+  topDoubleClick: 'dblclick',
+  topDrag: 'drag',
+  topDragEnd: 'dragend',
+  topDragEnter: 'dragenter',
+  topDragExit: 'dragexit',
+  topDragLeave: 'dragleave',
+  topDragOver: 'dragover',
+  topDragStart: 'dragstart',
+  topDrop: 'drop',
+  topFocus: 'focus',
+  topInput: 'input',
+  topKeyDown: 'keydown',
+  topKeyPress: 'keypress',
+  topKeyUp: 'keyup',
+  topMouseDown: 'mousedown',
+  topMouseMove: 'mousemove',
+  topMouseOut: 'mouseout',
+  topMouseOver: 'mouseover',
+  topMouseUp: 'mouseup',
+  topPaste: 'paste',
+  topScroll: 'scroll',
+  topSelectionChange: 'selectionchange',
+  topTextInput: 'textInput',
+  topTouchCancel: 'touchcancel',
+  topTouchEnd: 'touchend',
+  topTouchMove: 'touchmove',
+  topTouchStart: 'touchstart',
+  topWheel: 'wheel'
+};
+
+/**
+ * To ensure no conflicts with other potential React instances on the page
+ */
+var topListenersIDKey = "_reactListenersID" + String(Math.random()).slice(2);
+
+function getListeningForDocument(mountAt) {
+  // In IE8, `mountAt` is a host object and doesn't have `hasOwnProperty`
+  // directly.
+  if (!Object.prototype.hasOwnProperty.call(mountAt, topListenersIDKey)) {
+    mountAt[topListenersIDKey] = reactTopListenersCounter++;
+    alreadyListeningTo[mountAt[topListenersIDKey]] = {};
+  }
+  return alreadyListeningTo[mountAt[topListenersIDKey]];
+}
+
+/**
+ * `ReactBrowserEventEmitter` is used to attach top-level event listeners. For
+ * example:
+ *
+ *   ReactBrowserEventEmitter.putListener('myID', 'onClick', myFunction);
+ *
+ * This would allocate a "registration" of `('onClick', myFunction)` on 'myID'.
+ *
+ * @internal
+ */
+var ReactBrowserEventEmitter = assign({}, ReactEventEmitterMixin, {
+
+  /**
+   * Injectable event backend
+   */
+  ReactEventListener: null,
+
+  injection: {
+    /**
+     * @param {object} ReactEventListener
+     */
+    injectReactEventListener: function(ReactEventListener) {
+      ReactEventListener.setHandleTopLevel(
+        ReactBrowserEventEmitter.handleTopLevel
+      );
+      ReactBrowserEventEmitter.ReactEventListener = ReactEventListener;
+    }
+  },
+
+  /**
+   * Sets whether or not any created callbacks should be enabled.
+   *
+   * @param {boolean} enabled True if callbacks should be enabled.
+   */
+  setEnabled: function(enabled) {
+    if (ReactBrowserEventEmitter.ReactEventListener) {
+      ReactBrowserEventEmitter.ReactEventListener.setEnabled(enabled);
+    }
+  },
+
+  /**
+   * @return {boolean} True if callbacks are enabled.
+   */
+  isEnabled: function() {
+    return !!(
+      ReactBrowserEventEmitter.ReactEventListener &&
+      ReactBrowserEventEmitter.ReactEventListener.isEnabled()
+    );
+  },
+
+  /**
+   * We listen for bubbled touch events on the document object.
+   *
+   * Firefox v8.01 (and possibly others) exhibited strange behavior when
+   * mounting `onmousemove` events at some node that was not the document
+   * element. The symptoms were that if your mouse is not moving over something
+   * contained within that mount point (for example on the background) the
+   * top-level listeners for `onmousemove` won't be called. However, if you
+   * register the `mousemove` on the document object, then it will of course
+   * catch all `mousemove`s. This along with iOS quirks, justifies restricting
+   * top-level listeners to the document object only, at least for these
+   * movement types of events and possibly all events.
+   *
+   * @see http://www.quirksmode.org/blog/archives/2010/09/click_event_del.html
+   *
+   * Also, `keyup`/`keypress`/`keydown` do not bubble to the window on IE, but
+   * they bubble to document.
+   *
+   * @param {string} registrationName Name of listener (e.g. `onClick`).
+   * @param {object} contentDocumentHandle Document which owns the container
+   */
+  listenTo: function(registrationName, contentDocumentHandle) {
+    var mountAt = contentDocumentHandle;
+    var isListening = getListeningForDocument(mountAt);
+    var dependencies = EventPluginRegistry.
+      registrationNameDependencies[registrationName];
+
+    var topLevelTypes = EventConstants.topLevelTypes;
+    for (var i = 0, l = dependencies.length; i < l; i++) {
+      var dependency = dependencies[i];
+      if (!(
+            isListening.hasOwnProperty(dependency) &&
+            isListening[dependency]
+          )) {
+        if (dependency === topLevelTypes.topWheel) {
+          if (isEventSupported('wheel')) {
+            ReactBrowserEventEmitter.ReactEventListener.trapBubbledEvent(
+              topLevelTypes.topWheel,
+              'wheel',
+              mountAt
+            );
+          } else if (isEventSupported('mousewheel')) {
+            ReactBrowserEventEmitter.ReactEventListener.trapBubbledEvent(
+              topLevelTypes.topWheel,
+              'mousewheel',
+              mountAt
+            );
+          } else {
+            // Firefox needs to capture a different mouse scroll event.
+            // @see http://www.quirksmode.org/dom/events/tests/scroll.html
+            ReactBrowserEventEmitter.ReactEventListener.trapBubbledEvent(
+              topLevelTypes.topWheel,
+              'DOMMouseScroll',
+              mountAt
+            );
+          }
+        } else if (dependency === topLevelTypes.topScroll) {
+
+          if (isEventSupported('scroll', true)) {
+            ReactBrowserEventEmitter.ReactEventListener.trapCapturedEvent(
+              topLevelTypes.topScroll,
+              'scroll',
+              mountAt
+            );
+          } else {
+            ReactBrowserEventEmitter.ReactEventListener.trapBubbledEvent(
+              topLevelTypes.topScroll,
+              'scroll',
+              ReactBrowserEventEmitter.ReactEventListener.WINDOW_HANDLE
+            );
+          }
+        } else if (dependency === topLevelTypes.topFocus ||
+            dependency === topLevelTypes.topBlur) {
+
+          if (isEventSupported('focus', true)) {
+            ReactBrowserEventEmitter.ReactEventListener.trapCapturedEvent(
+              topLevelTypes.topFocus,
+              'focus',
+              mountAt
+            );
+            ReactBrowserEventEmitter.ReactEventListener.trapCapturedEvent(
+              topLevelTypes.topBlur,
+              'blur',
+              mountAt
+            );
+          } else if (isEventSupported('focusin')) {
+            // IE has `focusin` and `focusout` events which bubble.
+            // @see http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
+            ReactBrowserEventEmitter.ReactEventListener.trapBubbledEvent(
+              topLevelTypes.topFocus,
+              'focusin',
+              mountAt
+            );
+            ReactBrowserEventEmitter.ReactEventListener.trapBubbledEvent(
+              topLevelTypes.topBlur,
+              'focusout',
+              mountAt
+            );
+          }
+
+          // to make sure blur and focus event listeners are only attached once
+          isListening[topLevelTypes.topBlur] = true;
+          isListening[topLevelTypes.topFocus] = true;
+        } else if (topEventMapping.hasOwnProperty(dependency)) {
+          ReactBrowserEventEmitter.ReactEventListener.trapBubbledEvent(
+            dependency,
+            topEventMapping[dependency],
+            mountAt
+          );
+        }
+
+        isListening[dependency] = true;
+      }
+    }
+  },
+
+  trapBubbledEvent: function(topLevelType, handlerBaseName, handle) {
+    return ReactBrowserEventEmitter.ReactEventListener.trapBubbledEvent(
+      topLevelType,
+      handlerBaseName,
+      handle
+    );
+  },
+
+  trapCapturedEvent: function(topLevelType, handlerBaseName, handle) {
+    return ReactBrowserEventEmitter.ReactEventListener.trapCapturedEvent(
+      topLevelType,
+      handlerBaseName,
+      handle
+    );
+  },
+
+  /**
+   * Listens to window scroll and resize events. We cache scroll values so that
+   * application code can access them without triggering reflows.
+   *
+   * NOTE: Scroll events do not bubble.
+   *
+   * @see http://www.quirksmode.org/dom/events/scroll.html
+   */
+  ensureScrollValueMonitoring: function(){
+    if (!isMonitoringScrollValue) {
+      var refresh = ViewportMetrics.refreshScrollValues;
+      ReactBrowserEventEmitter.ReactEventListener.monitorScrollValue(refresh);
+      isMonitoringScrollValue = true;
+    }
+  },
+
+  eventNameDispatchConfigs: EventPluginHub.eventNameDispatchConfigs,
+
+  registrationNameModules: EventPluginHub.registrationNameModules,
+
+  putListener: EventPluginHub.putListener,
+
+  getListener: EventPluginHub.getListener,
+
+  deleteListener: EventPluginHub.deleteListener,
+
+  deleteAllListeners: EventPluginHub.deleteAllListeners
+
+});
+
+module.exports = ReactBrowserEventEmitter;
+
+},{"./EventConstants":24,"./EventPluginHub":26,"./EventPluginRegistry":27,"./Object.assign":35,"./ReactEventEmitterMixin":65,"./ViewportMetrics":105,"./isEventSupported":136}],40:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactChildren
  */
@@ -15072,8 +8790,8 @@ module.exports = ReactBrowserComponentMixin;
 
 var PooledClass = require("./PooledClass");
 
-var invariant = require("./invariant");
 var traverseAllChildren = require("./traverseAllChildren");
+var warning = require("./warning");
 
 var twoArgumentPooler = PooledClass.twoArgumentPooler;
 var threeArgumentPooler = PooledClass.threeArgumentPooler;
@@ -15138,16 +8856,21 @@ PooledClass.addPoolingTo(MapBookKeeping, threeArgumentPooler);
 function mapSingleChildIntoContext(traverseContext, child, name, i) {
   var mapBookKeeping = traverseContext;
   var mapResult = mapBookKeeping.mapResult;
-  var mappedChild =
-    mapBookKeeping.mapFunction.call(mapBookKeeping.mapContext, child, i);
-  // We found a component instance
-  ("production" !== process.env.NODE_ENV ? invariant(
-    !mapResult.hasOwnProperty(name),
+
+  var keyUnique = !mapResult.hasOwnProperty(name);
+  ("production" !== process.env.NODE_ENV ? warning(
+    keyUnique,
     'ReactChildren.map(...): Encountered two children with the same key, ' +
-    '`%s`. Children keys must be unique.',
+    '`%s`. Child keys must be unique; when two children share a key, only ' +
+    'the first child will be used.',
     name
-  ) : invariant(!mapResult.hasOwnProperty(name)));
-  mapResult[name] = mappedChild;
+  ) : null);
+
+  if (keyUnique) {
+    var mappedChild =
+      mapBookKeeping.mapFunction.call(mapBookKeeping.mapContext, child, i);
+    mapResult[name] = mappedChild;
+  }
 }
 
 /**
@@ -15176,44 +8899,52 @@ function mapChildren(children, func, context) {
   return mapResult;
 }
 
+function forEachSingleChildDummy(traverseContext, child, name, i) {
+  return null;
+}
+
+/**
+ * Count the number of children that are typically specified as
+ * `props.children`.
+ *
+ * @param {?*} children Children tree container.
+ * @return {number} The number of children.
+ */
+function countChildren(children, context) {
+  return traverseAllChildren(children, forEachSingleChildDummy, null);
+}
+
 var ReactChildren = {
   forEach: forEachChildren,
-  map: mapChildren
+  map: mapChildren,
+  count: countChildren
 };
 
 module.exports = ReactChildren;
 
 }).call(this,require('_process'))
-},{"./PooledClass":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/PooledClass.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./traverseAllChildren":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/traverseAllChildren.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactComponent.js":[function(require,module,exports){
+},{"./PooledClass":36,"./traverseAllChildren":153,"./warning":154,"_process":156}],41:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactComponent
  */
 
 "use strict";
 
-var ReactCurrentOwner = require("./ReactCurrentOwner");
+var ReactElement = require("./ReactElement");
 var ReactOwner = require("./ReactOwner");
 var ReactUpdates = require("./ReactUpdates");
 
+var assign = require("./Object.assign");
 var invariant = require("./invariant");
 var keyMirror = require("./keyMirror");
-var merge = require("./merge");
-var monitorCodeUse = require("./monitorCodeUse");
 
 /**
  * Every React component is in one of these life cycles.
@@ -15229,18 +8960,6 @@ var ComponentLifeCycle = keyMirror({
    */
   UNMOUNTED: null
 });
-
-/**
- * Warn if there's no key explicitly set on dynamic arrays of children or
- * object keys are not valid. This allows us to keep track of children between
- * updates.
- */
-
-var ownerHasExplicitKeyWarning = {};
-var ownerHasPropertyWarning = {};
-var ownerHasMonitoredObjectMap = {};
-
-var NUMERIC_PROPERTY_REGEX = /^\d+$/;
 
 var injected = false;
 
@@ -15263,130 +8982,6 @@ var unmountIDFromEnvironment = null;
  * @private
  */
 var mountImageIntoNode = null;
-
-/**
- * Warn if the component doesn't have an explicit key assigned to it.
- * This component is in an array. The array could grow and shrink or be
- * reordered. All children that haven't already been validated are required to
- * have a "key" property assigned to it.
- *
- * @internal
- * @param {ReactComponent} component Component that requires a key.
- */
-function validateExplicitKey(component) {
-  if (component.__keyValidated__ || component.props.key != null) {
-    return;
-  }
-  component.__keyValidated__ = true;
-
-  // We can't provide friendly warnings for top level components.
-  if (!ReactCurrentOwner.current) {
-    return;
-  }
-
-  // Name of the component whose render method tried to pass children.
-  var currentName = ReactCurrentOwner.current.constructor.displayName;
-  if (ownerHasExplicitKeyWarning.hasOwnProperty(currentName)) {
-    return;
-  }
-  ownerHasExplicitKeyWarning[currentName] = true;
-
-  var message = 'Each child in an array should have a unique "key" prop. ' +
-                'Check the render method of ' + currentName + '.';
-
-  var childOwnerName = null;
-  if (!component.isOwnedBy(ReactCurrentOwner.current)) {
-    // Name of the component that originally created this child.
-    childOwnerName =
-      component._owner &&
-      component._owner.constructor.displayName;
-
-    // Usually the current owner is the offender, but if it accepts
-    // children as a property, it may be the creator of the child that's
-    // responsible for assigning it a key.
-    message += ' It was passed a child from ' + childOwnerName + '.';
-  }
-
-  message += ' See http://fb.me/react-warning-keys for more information.';
-  monitorCodeUse('react_key_warning', {
-    component: currentName,
-    componentOwner: childOwnerName
-  });
-  console.warn(message);
-}
-
-/**
- * Warn if the key is being defined as an object property but has an incorrect
- * value.
- *
- * @internal
- * @param {string} name Property name of the key.
- * @param {ReactComponent} component Component that requires a key.
- */
-function validatePropertyKey(name) {
-  if (NUMERIC_PROPERTY_REGEX.test(name)) {
-    // Name of the component whose render method tried to pass children.
-    var currentName = ReactCurrentOwner.current.constructor.displayName;
-    if (ownerHasPropertyWarning.hasOwnProperty(currentName)) {
-      return;
-    }
-    ownerHasPropertyWarning[currentName] = true;
-
-    monitorCodeUse('react_numeric_key_warning');
-    console.warn(
-      'Child objects should have non-numeric keys so ordering is preserved. ' +
-      'Check the render method of ' + currentName + '. ' +
-      'See http://fb.me/react-warning-keys for more information.'
-    );
-  }
-}
-
-/**
- * Log that we're using an object map. We're considering deprecating this
- * feature and replace it with proper Map and ImmutableMap data structures.
- *
- * @internal
- */
-function monitorUseOfObjectMap() {
-  // Name of the component whose render method tried to pass children.
-  // We only use this to avoid spewing the logs. We lose additional
-  // owner stacks but hopefully one level is enough to trace the source.
-  var currentName = (ReactCurrentOwner.current &&
-                    ReactCurrentOwner.current.constructor.displayName) || '';
-  if (ownerHasMonitoredObjectMap.hasOwnProperty(currentName)) {
-    return;
-  }
-  ownerHasMonitoredObjectMap[currentName] = true;
-  monitorCodeUse('react_object_map_children');
-}
-
-/**
- * Ensure that every component either is passed in a static location, in an
- * array with an explicit keys property defined, or in an object literal
- * with valid key property.
- *
- * @internal
- * @param {*} component Statically passed child of any type.
- * @return {boolean}
- */
-function validateChildKeys(component) {
-  if (Array.isArray(component)) {
-    for (var i = 0; i < component.length; i++) {
-      var child = component[i];
-      if (ReactComponent.isValidComponent(child)) {
-        validateExplicitKey(child);
-      }
-    }
-  } else if (ReactComponent.isValidComponent(component)) {
-    // This component was passed in a valid location.
-    component.__keyValidated__ = true;
-  } else if (component && typeof component === 'object') {
-    monitorUseOfObjectMap();
-    for (var name in component) {
-      validatePropertyKey(name, component);
-    }
-  }
-}
 
 /**
  * Components are the basic units of composition in React.
@@ -15426,30 +9021,8 @@ var ReactComponent = {
         ReactComponentEnvironment.unmountIDFromEnvironment;
       ReactComponent.BackendIDOperations =
         ReactComponentEnvironment.BackendIDOperations;
-      ReactComponent.ReactReconcileTransaction =
-        ReactComponentEnvironment.ReactReconcileTransaction;
       injected = true;
     }
-  },
-
-  /**
-   * @param {?object} object
-   * @return {boolean} True if `object` is a valid component.
-   * @final
-   */
-  isValidComponent: function(object) {
-    if (!object || !object.type || !object.type.prototype) {
-      return false;
-    }
-    // This is the safer way of duck checking the type of instance this is.
-    // The object can be a generic descriptor but the type property refers to
-    // the constructor and it's prototype can be used to inspect the type that
-    // will actually get mounted.
-    var prototype = object.type.prototype;
-    return (
-      typeof prototype.mountComponentIntoNode === 'function' &&
-      typeof prototype.receiveComponent === 'function'
-    );
   },
 
   /**
@@ -15465,14 +9038,6 @@ var ReactComponent = {
    * @internal
    */
   BackendIDOperations: null,
-
-  /**
-   * React references `ReactReconcileTransaction` using this property in order
-   * to allow dependency injection.
-   *
-   * @internal
-   */
-  ReactReconcileTransaction: null,
 
   /**
    * Base functionality for every ReactComponent constructor. Mixed into the
@@ -15502,9 +9067,11 @@ var ReactComponent = {
      * @public
      */
     setProps: function(partialProps, callback) {
-      // Merge with `_pendingProps` if it exists, otherwise with existing props.
+      // Merge with the pending element if it exists, otherwise with existing
+      // element props.
+      var element = this._pendingElement || this._currentElement;
       this.replaceProps(
-        merge(this._pendingProps || this.props, partialProps),
+        assign({}, element.props, partialProps),
         callback
       );
     },
@@ -15530,7 +9097,31 @@ var ReactComponent = {
         '`render` method to pass the correct value as props to the component ' +
         'where it is created.'
       ) : invariant(this._mountDepth === 0));
-      this._pendingProps = props;
+      // This is a deoptimized path. We optimize for always having a element.
+      // This creates an extra internal element.
+      this._pendingElement = ReactElement.cloneAndReplaceProps(
+        this._pendingElement || this._currentElement,
+        props
+      );
+      ReactUpdates.enqueueUpdate(this, callback);
+    },
+
+    /**
+     * Schedule a partial update to the props. Only used for internal testing.
+     *
+     * @param {object} partialProps Subset of the next props.
+     * @param {?function} callback Called after props are updated.
+     * @final
+     * @internal
+     */
+    _setPropsInternal: function(partialProps, callback) {
+      // This is a deoptimized path. We optimize for always having a element.
+      // This creates an extra internal element.
+      var element = this._pendingElement || this._currentElement;
+      this._pendingElement = ReactElement.cloneAndReplaceProps(
+        element,
+        assign({}, element.props, partialProps)
+      );
       ReactUpdates.enqueueUpdate(this, callback);
     },
 
@@ -15540,43 +9131,30 @@ var ReactComponent = {
      * Subclasses that override this method should make sure to invoke
      * `ReactComponent.Mixin.construct.call(this, ...)`.
      *
-     * @param {?object} initialProps
-     * @param {*} children
+     * @param {ReactElement} element
      * @internal
      */
-    construct: function(initialProps, children) {
-      this.props = initialProps || {};
+    construct: function(element) {
+      // This is the public exposed props object after it has been processed
+      // with default props. The element's props represents the true internal
+      // state of the props.
+      this.props = element.props;
       // Record the component responsible for creating this component.
-      this._owner = ReactCurrentOwner.current;
+      // This is accessible through the element but we maintain an extra
+      // field for compatibility with devtools and as a way to make an
+      // incremental update. TODO: Consider deprecating this field.
+      this._owner = element._owner;
+
       // All components start unmounted.
       this._lifeCycleState = ComponentLifeCycle.UNMOUNTED;
 
-      this._pendingProps = null;
+      // See ReactUpdates.
       this._pendingCallbacks = null;
 
-      // Unlike _pendingProps and _pendingCallbacks, we won't use null to
-      // indicate that nothing is pending because it's possible for a component
-      // to have a null owner. Instead, an owner change is pending when
-      // this._owner !== this._pendingOwner.
-      this._pendingOwner = this._owner;
-
-      // Children can be more than one argument
-      var childrenLength = arguments.length - 1;
-      if (childrenLength === 1) {
-        if ("production" !== process.env.NODE_ENV) {
-          validateChildKeys(children);
-        }
-        this.props.children = children;
-      } else if (childrenLength > 1) {
-        var childArray = Array(childrenLength);
-        for (var i = 0; i < childrenLength; i++) {
-          if ("production" !== process.env.NODE_ENV) {
-            validateChildKeys(arguments[i + 1]);
-          }
-          childArray[i] = arguments[i + 1];
-        }
-        this.props.children = childArray;
-      }
+      // We keep the old element and a reference to the pending element
+      // to track updates.
+      this._currentElement = element;
+      this._pendingElement = null;
     },
 
     /**
@@ -15601,9 +9179,10 @@ var ReactComponent = {
         'single component instance in multiple places.',
         rootID
       ) : invariant(!this.isMounted()));
-      var props = this.props;
-      if (props.ref != null) {
-        ReactOwner.addComponentAsRefTo(this, props.ref, this._owner);
+      var ref = this._currentElement.ref;
+      if (ref != null) {
+        var owner = this._currentElement._owner;
+        ReactOwner.addComponentAsRefTo(this, ref, owner);
       }
       this._rootNodeID = rootID;
       this._lifeCycleState = ComponentLifeCycle.MOUNTED;
@@ -15626,9 +9205,9 @@ var ReactComponent = {
         this.isMounted(),
         'unmountComponent(): Can only unmount a mounted component.'
       ) : invariant(this.isMounted()));
-      var props = this.props;
-      if (props.ref != null) {
-        ReactOwner.removeComponentAsRefFrom(this, props.ref, this._owner);
+      var ref = this._currentElement.ref;
+      if (ref != null) {
+        ReactOwner.removeComponentAsRefFrom(this, ref, this._owner);
       }
       unmountIDFromEnvironment(this._rootNodeID);
       this._rootNodeID = null;
@@ -15646,66 +9225,70 @@ var ReactComponent = {
      * @param {ReactReconcileTransaction} transaction
      * @internal
      */
-    receiveComponent: function(nextComponent, transaction) {
+    receiveComponent: function(nextElement, transaction) {
       ("production" !== process.env.NODE_ENV ? invariant(
         this.isMounted(),
         'receiveComponent(...): Can only update a mounted component.'
       ) : invariant(this.isMounted()));
-      this._pendingOwner = nextComponent._owner;
-      this._pendingProps = nextComponent.props;
-      this._performUpdateIfNecessary(transaction);
+      this._pendingElement = nextElement;
+      this.performUpdateIfNecessary(transaction);
     },
 
     /**
-     * Call `_performUpdateIfNecessary` within a new transaction.
-     *
-     * @internal
-     */
-    performUpdateIfNecessary: function() {
-      var transaction = ReactComponent.ReactReconcileTransaction.getPooled();
-      transaction.perform(this._performUpdateIfNecessary, this, transaction);
-      ReactComponent.ReactReconcileTransaction.release(transaction);
-    },
-
-    /**
-     * If `_pendingProps` is set, update the component.
+     * If `_pendingElement` is set, update the component.
      *
      * @param {ReactReconcileTransaction} transaction
      * @internal
      */
-    _performUpdateIfNecessary: function(transaction) {
-      if (this._pendingProps == null) {
+    performUpdateIfNecessary: function(transaction) {
+      if (this._pendingElement == null) {
         return;
       }
-      var prevProps = this.props;
-      var prevOwner = this._owner;
-      this.props = this._pendingProps;
-      this._owner = this._pendingOwner;
-      this._pendingProps = null;
-      this.updateComponent(transaction, prevProps, prevOwner);
+      var prevElement = this._currentElement;
+      var nextElement = this._pendingElement;
+      this._currentElement = nextElement;
+      this.props = nextElement.props;
+      this._owner = nextElement._owner;
+      this._pendingElement = null;
+      this.updateComponent(transaction, prevElement);
     },
 
     /**
      * Updates the component's currently mounted representation.
      *
      * @param {ReactReconcileTransaction} transaction
-     * @param {object} prevProps
+     * @param {object} prevElement
      * @internal
      */
-    updateComponent: function(transaction, prevProps, prevOwner) {
-      var props = this.props;
+    updateComponent: function(transaction, prevElement) {
+      var nextElement = this._currentElement;
+
       // If either the owner or a `ref` has changed, make sure the newest owner
       // has stored a reference to `this`, and the previous owner (if different)
-      // has forgotten the reference to `this`.
-      if (this._owner !== prevOwner || props.ref !== prevProps.ref) {
-        if (prevProps.ref != null) {
+      // has forgotten the reference to `this`. We use the element instead
+      // of the public this.props because the post processing cannot determine
+      // a ref. The ref conceptually lives on the element.
+
+      // TODO: Should this even be possible? The owner cannot change because
+      // it's forbidden by shouldUpdateReactComponent. The ref can change
+      // if you swap the keys of but not the refs. Reconsider where this check
+      // is made. It probably belongs where the key checking and
+      // instantiateReactComponent is done.
+
+      if (nextElement._owner !== prevElement._owner ||
+          nextElement.ref !== prevElement.ref) {
+        if (prevElement.ref != null) {
           ReactOwner.removeComponentAsRefFrom(
-            this, prevProps.ref, prevOwner
+            this, prevElement.ref, prevElement._owner
           );
         }
         // Correct, even if the owner is the same, and only the ref has changed.
-        if (props.ref != null) {
-          ReactOwner.addComponentAsRefTo(this, props.ref, this._owner);
+        if (nextElement.ref != null) {
+          ReactOwner.addComponentAsRefTo(
+            this,
+            nextElement.ref,
+            nextElement._owner
+          );
         }
       }
     },
@@ -15718,10 +9301,10 @@ var ReactComponent = {
      * @param {boolean} shouldReuseMarkup If true, do not insert markup
      * @final
      * @internal
-     * @see {ReactMount.renderComponent}
+     * @see {ReactMount.render}
      */
     mountComponentIntoNode: function(rootID, container, shouldReuseMarkup) {
-      var transaction = ReactComponent.ReactReconcileTransaction.getPooled();
+      var transaction = ReactUpdates.ReactReconcileTransaction.getPooled();
       transaction.perform(
         this._mountComponentIntoNode,
         this,
@@ -15730,7 +9313,7 @@ var ReactComponent = {
         transaction,
         shouldReuseMarkup
       );
-      ReactComponent.ReactReconcileTransaction.release(transaction);
+      ReactUpdates.ReactReconcileTransaction.release(transaction);
     },
 
     /**
@@ -15783,22 +9366,15 @@ var ReactComponent = {
 module.exports = ReactComponent;
 
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCurrentOwner.js","./ReactOwner":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactOwner.js","./ReactUpdates":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactUpdates.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./keyMirror":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyMirror.js","./merge":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/merge.js","./monitorCodeUse":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/monitorCodeUse.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactComponentBrowserEnvironment.js":[function(require,module,exports){
+},{"./Object.assign":35,"./ReactElement":61,"./ReactOwner":76,"./ReactUpdates":88,"./invariant":135,"./keyMirror":141,"_process":156}],42:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactComponentBrowserEnvironment
  */
@@ -15815,6 +9391,7 @@ var ReactReconcileTransaction = require("./ReactReconcileTransaction");
 
 var getReactRootElementInContainer = require("./getReactRootElementInContainer");
 var invariant = require("./invariant");
+var setInnerHTML = require("./setInnerHTML");
 
 
 var ELEMENT_NODE_TYPE = 1;
@@ -15885,7 +9462,7 @@ var ReactComponentBrowserEnvironment = {
               'React attempted to use reuse markup in a container but the ' +
               'checksum was invalid. This generally means that you are ' +
               'using server rendering and the markup generated on the ' +
-              'server was not what the client was expecting. React injected' +
+              'server was not what the client was expecting. React injected ' +
               'new markup to compensate which works but you have lost many ' +
               'of the benefits of server rendering. Instead, figure out ' +
               'why the markup being generated is different on the client ' +
@@ -15903,7 +9480,7 @@ var ReactComponentBrowserEnvironment = {
           'See renderComponentToString() for server rendering.'
       ) : invariant(container.nodeType !== DOC_NODE_TYPE));
 
-      container.innerHTML = markup;
+      setInnerHTML(container, markup);
     }
   )
 };
@@ -15911,22 +9488,15 @@ var ReactComponentBrowserEnvironment = {
 module.exports = ReactComponentBrowserEnvironment;
 
 }).call(this,require('_process'))
-},{"./ReactDOMIDOperations":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMIDOperations.js","./ReactMarkupChecksum":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMarkupChecksum.js","./ReactMount":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMount.js","./ReactPerf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPerf.js","./ReactReconcileTransaction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactReconcileTransaction.js","./getReactRootElementInContainer":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getReactRootElementInContainer.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCompositeComponent.js":[function(require,module,exports){
+},{"./ReactDOMIDOperations":50,"./ReactMarkupChecksum":71,"./ReactMount":72,"./ReactPerf":77,"./ReactReconcileTransaction":83,"./getReactRootElementInContainer":129,"./invariant":135,"./setInnerHTML":149,"_process":156}],43:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactCompositeComponent
  */
@@ -15936,7 +9506,11 @@ module.exports = ReactComponentBrowserEnvironment;
 var ReactComponent = require("./ReactComponent");
 var ReactContext = require("./ReactContext");
 var ReactCurrentOwner = require("./ReactCurrentOwner");
+var ReactElement = require("./ReactElement");
+var ReactElementValidator = require("./ReactElementValidator");
+var ReactEmptyComponent = require("./ReactEmptyComponent");
 var ReactErrorUtils = require("./ReactErrorUtils");
+var ReactLegacyElement = require("./ReactLegacyElement");
 var ReactOwner = require("./ReactOwner");
 var ReactPerf = require("./ReactPerf");
 var ReactPropTransferer = require("./ReactPropTransferer");
@@ -15944,15 +9518,17 @@ var ReactPropTypeLocations = require("./ReactPropTypeLocations");
 var ReactPropTypeLocationNames = require("./ReactPropTypeLocationNames");
 var ReactUpdates = require("./ReactUpdates");
 
+var assign = require("./Object.assign");
 var instantiateReactComponent = require("./instantiateReactComponent");
 var invariant = require("./invariant");
 var keyMirror = require("./keyMirror");
-var merge = require("./merge");
-var mixInto = require("./mixInto");
+var keyOf = require("./keyOf");
 var monitorCodeUse = require("./monitorCodeUse");
-var objMap = require("./objMap");
+var mapObject = require("./mapObject");
 var shouldUpdateReactComponent = require("./shouldUpdateReactComponent");
 var warning = require("./warning");
+
+var MIXINS_KEY = keyOf({mixins: null});
 
 /**
  * Policies that describe methods in `ReactCompositeComponentInterface`.
@@ -16241,50 +9817,79 @@ var ReactCompositeComponentInterface = {
  * which all other static methods are defined.
  */
 var RESERVED_SPEC_KEYS = {
-  displayName: function(ConvenienceConstructor, displayName) {
-    ConvenienceConstructor.componentConstructor.displayName = displayName;
+  displayName: function(Constructor, displayName) {
+    Constructor.displayName = displayName;
   },
-  mixins: function(ConvenienceConstructor, mixins) {
+  mixins: function(Constructor, mixins) {
     if (mixins) {
       for (var i = 0; i < mixins.length; i++) {
-        mixSpecIntoComponent(ConvenienceConstructor, mixins[i]);
+        mixSpecIntoComponent(Constructor, mixins[i]);
       }
     }
   },
-  childContextTypes: function(ConvenienceConstructor, childContextTypes) {
-    var Constructor = ConvenienceConstructor.componentConstructor;
+  childContextTypes: function(Constructor, childContextTypes) {
     validateTypeDef(
       Constructor,
       childContextTypes,
       ReactPropTypeLocations.childContext
     );
-    Constructor.childContextTypes = merge(
+    Constructor.childContextTypes = assign(
+      {},
       Constructor.childContextTypes,
       childContextTypes
     );
   },
-  contextTypes: function(ConvenienceConstructor, contextTypes) {
-    var Constructor = ConvenienceConstructor.componentConstructor;
+  contextTypes: function(Constructor, contextTypes) {
     validateTypeDef(
       Constructor,
       contextTypes,
       ReactPropTypeLocations.context
     );
-    Constructor.contextTypes = merge(Constructor.contextTypes, contextTypes);
+    Constructor.contextTypes = assign(
+      {},
+      Constructor.contextTypes,
+      contextTypes
+    );
   },
-  propTypes: function(ConvenienceConstructor, propTypes) {
-    var Constructor = ConvenienceConstructor.componentConstructor;
+  /**
+   * Special case getDefaultProps which should move into statics but requires
+   * automatic merging.
+   */
+  getDefaultProps: function(Constructor, getDefaultProps) {
+    if (Constructor.getDefaultProps) {
+      Constructor.getDefaultProps = createMergedResultFunction(
+        Constructor.getDefaultProps,
+        getDefaultProps
+      );
+    } else {
+      Constructor.getDefaultProps = getDefaultProps;
+    }
+  },
+  propTypes: function(Constructor, propTypes) {
     validateTypeDef(
       Constructor,
       propTypes,
       ReactPropTypeLocations.prop
     );
-    Constructor.propTypes = merge(Constructor.propTypes, propTypes);
+    Constructor.propTypes = assign(
+      {},
+      Constructor.propTypes,
+      propTypes
+    );
   },
-  statics: function(ConvenienceConstructor, statics) {
-    mixStaticSpecIntoComponent(ConvenienceConstructor, statics);
+  statics: function(Constructor, statics) {
+    mixStaticSpecIntoComponent(Constructor, statics);
   }
 };
+
+function getDeclarationErrorAddendum(component) {
+  var owner = component._owner || null;
+  if (owner && owner.constructor && owner.constructor.displayName) {
+    return ' Check the render method of `' + owner.constructor.displayName +
+      '`.';
+  }
+  return '';
+}
 
 function validateTypeDef(Constructor, typeDef, location) {
   for (var propName in typeDef) {
@@ -16302,7 +9907,9 @@ function validateTypeDef(Constructor, typeDef, location) {
 }
 
 function validateMethodOverride(proto, name) {
-  var specPolicy = ReactCompositeComponentInterface[name];
+  var specPolicy = ReactCompositeComponentInterface.hasOwnProperty(name) ?
+    ReactCompositeComponentInterface[name] :
+    null;
 
   // Disallow overriding of base class methods unless explicitly allowed.
   if (ReactCompositeComponentMixin.hasOwnProperty(name)) {
@@ -16337,11 +9944,12 @@ function validateLifeCycleOnReplaceState(instance) {
     'replaceState(...): Can only update a mounted or mounting component.'
   ) : invariant(instance.isMounted() ||
     compositeLifeCycleState === CompositeLifeCycle.MOUNTING));
-  ("production" !== process.env.NODE_ENV ? invariant(compositeLifeCycleState !== CompositeLifeCycle.RECEIVING_STATE,
+  ("production" !== process.env.NODE_ENV ? invariant(
+    ReactCurrentOwner.current == null,
     'replaceState(...): Cannot update during an existing state transition ' +
-    '(such as within `render`). This could potentially cause an infinite ' +
-    'loop so it is forbidden.'
-  ) : invariant(compositeLifeCycleState !== CompositeLifeCycle.RECEIVING_STATE));
+    '(such as within `render`). Render methods should be a pure function ' +
+    'of props and state.'
+  ) : invariant(ReactCurrentOwner.current == null));
   ("production" !== process.env.NODE_ENV ? invariant(compositeLifeCycleState !== CompositeLifeCycle.UNMOUNTING,
     'replaceState(...): Cannot update while unmounting component. This ' +
     'usually means you called setState() on an unmounted component.'
@@ -16349,46 +9957,63 @@ function validateLifeCycleOnReplaceState(instance) {
 }
 
 /**
- * Custom version of `mixInto` which handles policy validation and reserved
+ * Mixin helper which handles policy validation and reserved
  * specification keys when building `ReactCompositeComponent` classses.
  */
-function mixSpecIntoComponent(ConvenienceConstructor, spec) {
+function mixSpecIntoComponent(Constructor, spec) {
+  if (!spec) {
+    return;
+  }
+
   ("production" !== process.env.NODE_ENV ? invariant(
-    !isValidClass(spec),
+    !ReactLegacyElement.isValidFactory(spec),
     'ReactCompositeComponent: You\'re attempting to ' +
     'use a component class as a mixin. Instead, just use a regular object.'
-  ) : invariant(!isValidClass(spec)));
+  ) : invariant(!ReactLegacyElement.isValidFactory(spec)));
   ("production" !== process.env.NODE_ENV ? invariant(
-    !ReactComponent.isValidComponent(spec),
+    !ReactElement.isValidElement(spec),
     'ReactCompositeComponent: You\'re attempting to ' +
     'use a component as a mixin. Instead, just use a regular object.'
-  ) : invariant(!ReactComponent.isValidComponent(spec)));
+  ) : invariant(!ReactElement.isValidElement(spec)));
 
-  var Constructor = ConvenienceConstructor.componentConstructor;
   var proto = Constructor.prototype;
+
+  // By handling mixins before any other properties, we ensure the same
+  // chaining order is applied to methods with DEFINE_MANY policy, whether
+  // mixins are listed before or after these methods in the spec.
+  if (spec.hasOwnProperty(MIXINS_KEY)) {
+    RESERVED_SPEC_KEYS.mixins(Constructor, spec.mixins);
+  }
+
   for (var name in spec) {
-    var property = spec[name];
     if (!spec.hasOwnProperty(name)) {
       continue;
     }
 
+    if (name === MIXINS_KEY) {
+      // We have already handled mixins in a special case above
+      continue;
+    }
+
+    var property = spec[name];
     validateMethodOverride(proto, name);
 
     if (RESERVED_SPEC_KEYS.hasOwnProperty(name)) {
-      RESERVED_SPEC_KEYS[name](ConvenienceConstructor, property);
+      RESERVED_SPEC_KEYS[name](Constructor, property);
     } else {
       // Setup methods on prototype:
       // The following member methods should not be automatically bound:
       // 1. Expected ReactCompositeComponent methods (in the "interface").
       // 2. Overridden methods (that were mixed in).
-      var isCompositeComponentMethod = name in ReactCompositeComponentInterface;
-      var isInherited = name in proto;
+      var isCompositeComponentMethod =
+        ReactCompositeComponentInterface.hasOwnProperty(name);
+      var isAlreadyDefined = proto.hasOwnProperty(name);
       var markedDontBind = property && property.__reactDontBind;
       var isFunction = typeof property === 'function';
       var shouldAutoBind =
         isFunction &&
         !isCompositeComponentMethod &&
-        !isInherited &&
+        !isAlreadyDefined &&
         !markedDontBind;
 
       if (shouldAutoBind) {
@@ -16398,51 +10023,75 @@ function mixSpecIntoComponent(ConvenienceConstructor, spec) {
         proto.__reactAutoBindMap[name] = property;
         proto[name] = property;
       } else {
-        if (isInherited) {
+        if (isAlreadyDefined) {
+          var specPolicy = ReactCompositeComponentInterface[name];
+
+          // These cases should already be caught by validateMethodOverride
+          ("production" !== process.env.NODE_ENV ? invariant(
+            isCompositeComponentMethod && (
+              specPolicy === SpecPolicy.DEFINE_MANY_MERGED ||
+              specPolicy === SpecPolicy.DEFINE_MANY
+            ),
+            'ReactCompositeComponent: Unexpected spec policy %s for key %s ' +
+            'when mixing in component specs.',
+            specPolicy,
+            name
+          ) : invariant(isCompositeComponentMethod && (
+            specPolicy === SpecPolicy.DEFINE_MANY_MERGED ||
+            specPolicy === SpecPolicy.DEFINE_MANY
+          )));
+
           // For methods which are defined more than once, call the existing
-          // methods before calling the new property.
-          if (ReactCompositeComponentInterface[name] ===
-              SpecPolicy.DEFINE_MANY_MERGED) {
+          // methods before calling the new property, merging if appropriate.
+          if (specPolicy === SpecPolicy.DEFINE_MANY_MERGED) {
             proto[name] = createMergedResultFunction(proto[name], property);
-          } else {
+          } else if (specPolicy === SpecPolicy.DEFINE_MANY) {
             proto[name] = createChainedFunction(proto[name], property);
           }
         } else {
           proto[name] = property;
+          if ("production" !== process.env.NODE_ENV) {
+            // Add verbose displayName to the function, which helps when looking
+            // at profiling tools.
+            if (typeof property === 'function' && spec.displayName) {
+              proto[name].displayName = spec.displayName + '_' + name;
+            }
+          }
         }
       }
     }
   }
 }
 
-function mixStaticSpecIntoComponent(ConvenienceConstructor, statics) {
+function mixStaticSpecIntoComponent(Constructor, statics) {
   if (!statics) {
     return;
   }
   for (var name in statics) {
     var property = statics[name];
     if (!statics.hasOwnProperty(name)) {
-      return;
+      continue;
     }
 
-    var isInherited = name in ConvenienceConstructor;
-    var result = property;
-    if (isInherited) {
-      var existingProperty = ConvenienceConstructor[name];
-      var existingType = typeof existingProperty;
-      var propertyType = typeof property;
-      ("production" !== process.env.NODE_ENV ? invariant(
-        existingType === 'function' && propertyType === 'function',
-        'ReactCompositeComponent: You are attempting to define ' +
-        '`%s` on your component more than once, but that is only supported ' +
-        'for functions, which are chained together. This conflict may be ' +
-        'due to a mixin.',
-        name
-      ) : invariant(existingType === 'function' && propertyType === 'function'));
-      result = createChainedFunction(existingProperty, property);
-    }
-    ConvenienceConstructor[name] = result;
-    ConvenienceConstructor.componentConstructor[name] = result;
+    var isReserved = name in RESERVED_SPEC_KEYS;
+    ("production" !== process.env.NODE_ENV ? invariant(
+      !isReserved,
+      'ReactCompositeComponent: You are attempting to define a reserved ' +
+      'property, `%s`, that shouldn\'t be on the "statics" key. Define it ' +
+      'as an instance property instead; it will still be accessible on the ' +
+      'constructor.',
+      name
+    ) : invariant(!isReserved));
+
+    var isInherited = name in Constructor;
+    ("production" !== process.env.NODE_ENV ? invariant(
+      !isInherited,
+      'ReactCompositeComponent: You are attempting to define ' +
+      '`%s` on your component more than once. This conflict may be ' +
+      'due to a mixin.',
+      name
+    ) : invariant(!isInherited));
+    Constructor[name] = property;
   }
 }
 
@@ -16459,11 +10108,14 @@ function mergeObjectsWithNoDuplicateKeys(one, two) {
     'mergeObjectsWithNoDuplicateKeys(): Cannot merge non-objects'
   ) : invariant(one && two && typeof one === 'object' && typeof two === 'object'));
 
-  objMap(two, function(value, key) {
+  mapObject(two, function(value, key) {
     ("production" !== process.env.NODE_ENV ? invariant(
       one[key] === undefined,
       'mergeObjectsWithNoDuplicateKeys(): ' +
-      'Tried to merge two objects with the same key: %s',
+      'Tried to merge two objects with the same key: `%s`. This conflict ' +
+      'may be due to a mixin; in particular, this may be caused by two ' +
+      'getInitialState() or getDefaultProps() methods returning objects ' +
+      'with clashing keys.',
       key
     ) : invariant(one[key] === undefined));
     one[key] = value;
@@ -16507,203 +10159,6 @@ function createChainedFunction(one, two) {
   };
 }
 
-if ("production" !== process.env.NODE_ENV) {
-
-  var unmountedPropertyWhitelist = {
-    constructor: true,
-    construct: true,
-    isOwnedBy: true, // should be deprecated but can have code mod (internal)
-    type: true,
-    props: true,
-    // currently private but belong on the descriptor and are valid for use
-    // inside the framework:
-    __keyValidated__: true,
-    _owner: true,
-    _currentContext: true
-  };
-
-  var componentInstanceProperties = {
-    __keyValidated__: true,
-    __keySetters: true,
-    _compositeLifeCycleState: true,
-    _currentContext: true,
-    _defaultProps: true,
-    _instance: true,
-    _lifeCycleState: true,
-    _mountDepth: true,
-    _owner: true,
-    _pendingCallbacks: true,
-    _pendingContext: true,
-    _pendingForceUpdate: true,
-    _pendingOwner: true,
-    _pendingProps: true,
-    _pendingState: true,
-    _renderedComponent: true,
-    _rootNodeID: true,
-    context: true,
-    props: true,
-    refs: true,
-    state: true,
-
-    // These are known instance properties coming from other sources
-    _pendingQueries: true,
-    _queryPropListeners: true,
-    queryParams: true
-
-  };
-
-  var hasWarnedOnComponentType = {};
-
-  var warningStackCounter = 0;
-
-  var issueMembraneWarning = function(instance, key) {
-    var isWhitelisted = unmountedPropertyWhitelist.hasOwnProperty(key);
-    if (warningStackCounter > 0 || isWhitelisted) {
-      return;
-    }
-    var name = instance.constructor.displayName || 'Unknown';
-    var owner = ReactCurrentOwner.current;
-    var ownerName = (owner && owner.constructor.displayName) || 'Unknown';
-    var warningKey = key + '|' + name + '|' + ownerName;
-    if (hasWarnedOnComponentType.hasOwnProperty(warningKey)) {
-      // We have already warned for this combination. Skip it this time.
-      return;
-    }
-    hasWarnedOnComponentType[warningKey] = true;
-
-    var context = owner ? ' in ' + ownerName + '.' : ' at the top level.';
-    var staticMethodExample = '<' + name + ' />.type.' + key + '(...)';
-
-    monitorCodeUse('react_descriptor_property_access', { component: name });
-    console.warn(
-      'Invalid access to component property "' + key + '" on ' + name +
-      context + ' See http://fb.me/react-warning-descriptors .' +
-      ' Use a static method instead: ' + staticMethodExample
-    );
-  };
-
-  var wrapInMembraneFunction = function(fn, thisBinding) {
-    if (fn.__reactMembraneFunction && fn.__reactMembraneSelf === thisBinding) {
-      return fn.__reactMembraneFunction;
-    }
-    return fn.__reactMembraneFunction = function() {
-      /**
-       * By getting this function, you've already received a warning. The
-       * internals of this function will likely cause more warnings. To avoid
-       * Spamming too much we disable any warning triggered inside of this
-       * stack.
-       */
-      warningStackCounter++;
-      try {
-        // If the this binding is unchanged, we defer to the real component.
-        // This is important to keep some referential integrity in the
-        // internals. E.g. owner equality check.
-        var self = this === thisBinding ? this.__realComponentInstance : this;
-        return fn.apply(self, arguments);
-      } finally {
-        warningStackCounter--;
-      }
-    };
-  };
-
-  var defineMembraneProperty = function(membrane, prototype, key) {
-    Object.defineProperty(membrane, key, {
-
-      configurable: false,
-      enumerable: true,
-
-      get: function() {
-        if (this === membrane) {
-          // We're allowed to access the prototype directly.
-          return prototype[key];
-        }
-        issueMembraneWarning(this, key);
-
-        var realValue = this.__realComponentInstance[key];
-        // If the real value is a function, we need to provide a wrapper that
-        // disables nested warnings. The properties type and constructors are
-        // expected to the be constructors and therefore is often use with an
-        // equality check and we shouldn't try to rebind those.
-        if (typeof realValue === 'function' &&
-            key !== 'type' &&
-            key !== 'constructor') {
-          return wrapInMembraneFunction(realValue, this);
-        }
-        return realValue;
-      },
-
-      set: function(value) {
-        if (this === membrane) {
-          // We're allowed to set a value on the prototype directly.
-          prototype[key] = value;
-          return;
-        }
-        issueMembraneWarning(this, key);
-        this.__realComponentInstance[key] = value;
-      }
-
-    });
-  };
-
-  /**
-   * Creates a membrane prototype which wraps the original prototype. If any
-   * property is accessed in an unmounted state, a warning is issued.
-   *
-   * @param {object} prototype Original prototype.
-   * @return {object} The membrane prototype.
-   * @private
-   */
-  var createMountWarningMembrane = function(prototype) {
-    var membrane = {};
-    var key;
-    for (key in prototype) {
-      defineMembraneProperty(membrane, prototype, key);
-    }
-    // These are properties that goes into the instance but not the prototype.
-    // We can create the membrane on the prototype even though this will
-    // result in a faulty hasOwnProperty check it's better perf.
-    for (key in componentInstanceProperties) {
-      if (componentInstanceProperties.hasOwnProperty(key) &&
-          !(key in prototype)) {
-        defineMembraneProperty(membrane, prototype, key);
-      }
-    }
-    return membrane;
-  };
-
-  /**
-   * Creates a membrane constructor which wraps the component that gets mounted.
-   *
-   * @param {function} constructor Original constructor.
-   * @return {function} The membrane constructor.
-   * @private
-   */
-  var createDescriptorProxy = function(constructor) {
-    try {
-      var ProxyConstructor = function() {
-        this.__realComponentInstance = new constructor();
-
-        // We can only safely pass through known instance variables. Unknown
-        // expandos are not safe. Use the real mounted instance to avoid this
-        // problem if it blows something up.
-        Object.freeze(this);
-      };
-
-      ProxyConstructor.prototype = createMountWarningMembrane(
-        constructor.prototype
-      );
-
-      return ProxyConstructor;
-    } catch(x) {
-      // In IE8 define property will fail on non-DOM objects. If anything in
-      // the membrane creation fails, we'll bail out and just use the plain
-      // constructor without warnings.
-      return constructor;
-    }
-  };
-
-}
-
 /**
  * `ReactCompositeComponent` maintains an auxiliary life cycle state in
  * `this._compositeLifeCycleState` (which can be null).
@@ -16716,19 +10171,19 @@ if ("production" !== process.env.NODE_ENV) {
  * Top Row: ReactComponent.ComponentLifeCycle
  * Low Row: ReactComponent.CompositeLifeCycle
  *
- * +-------+------------------------------------------------------+--------+
- * |  UN   |                    MOUNTED                           |   UN   |
- * |MOUNTED|                                                      | MOUNTED|
- * +-------+------------------------------------------------------+--------+
- * |       ^--------+   +------+   +------+   +------+   +--------^        |
- * |       |        |   |      |   |      |   |      |   |        |        |
- * |    0--|MOUNTING|-0-|RECEIV|-0-|RECEIV|-0-|RECEIV|-0-|   UN   |--->0   |
- * |       |        |   |PROPS |   | PROPS|   | STATE|   |MOUNTING|        |
- * |       |        |   |      |   |      |   |      |   |        |        |
- * |       |        |   |      |   |      |   |      |   |        |        |
- * |       +--------+   +------+   +------+   +------+   +--------+        |
- * |       |                                                      |        |
- * +-------+------------------------------------------------------+--------+
+ * +-------+---------------------------------+--------+
+ * |  UN   |             MOUNTED             |   UN   |
+ * |MOUNTED|                                 | MOUNTED|
+ * +-------+---------------------------------+--------+
+ * |       ^--------+   +-------+   +--------^        |
+ * |       |        |   |       |   |        |        |
+ * |    0--|MOUNTING|-0-|RECEIVE|-0-|   UN   |--->0   |
+ * |       |        |   |PROPS  |   |MOUNTING|        |
+ * |       |        |   |       |   |        |        |
+ * |       |        |   |       |   |        |        |
+ * |       +--------+   +-------+   +--------+        |
+ * |       |                                 |        |
+ * +-------+---------------------------------+--------+
  */
 var CompositeLifeCycle = keyMirror({
   /**
@@ -16745,12 +10200,7 @@ var CompositeLifeCycle = keyMirror({
    * Components that are mounted and receiving new props respond to state
    * changes differently.
    */
-  RECEIVING_PROPS: null,
-  /**
-   * Components that are mounted and receiving new state are guarded against
-   * additional state changes.
-   */
-  RECEIVING_STATE: null
+  RECEIVING_PROPS: null
 });
 
 /**
@@ -16761,12 +10211,11 @@ var ReactCompositeComponentMixin = {
   /**
    * Base constructor for all composite component.
    *
-   * @param {?object} initialProps
-   * @param {*} children
+   * @param {ReactElement} element
    * @final
    * @internal
    */
-  construct: function(initialProps, children) {
+  construct: function(element) {
     // Children can be either an array or more than one argument
     ReactComponent.Mixin.construct.apply(this, arguments);
     ReactOwner.Mixin.construct.apply(this, arguments);
@@ -16774,27 +10223,11 @@ var ReactCompositeComponentMixin = {
     this.state = null;
     this._pendingState = null;
 
+    // This is the public post-processed context. The real context and pending
+    // context lives on the element.
     this.context = null;
-    this._currentContext = ReactContext.current;
-    this._pendingContext = null;
-
-    // The descriptor that was used to instantiate this component. Will be
-    // set by the instantiator instead of the constructor since this
-    // constructor is currently used by both instances and descriptors.
-    this._descriptor = null;
 
     this._compositeLifeCycleState = null;
-  },
-
-  /**
-   * Components in the intermediate state now has cyclic references. To avoid
-   * breaking JSON serialization we expose a custom JSON format.
-   * @return {object} JSON compatible representation.
-   * @internal
-   * @final
-   */
-  toJSON: function() {
-    return { type: this.type, props: this.props };
   },
 
   /**
@@ -16830,13 +10263,12 @@ var ReactCompositeComponentMixin = {
       );
       this._compositeLifeCycleState = CompositeLifeCycle.MOUNTING;
 
-      this.context = this._processContext(this._currentContext);
-      this._defaultProps = this.getDefaultProps ? this.getDefaultProps() : null;
-      this.props = this._processProps(this.props);
-
       if (this.__reactAutoBindMap) {
         this._bindAutoBindMethods();
       }
+
+      this.context = this._processContext(this._currentElement._context);
+      this.props = this._processProps(this.props);
 
       this.state = this.getInitialState ? this.getInitialState() : null;
       ("production" !== process.env.NODE_ENV ? invariant(
@@ -16859,7 +10291,8 @@ var ReactCompositeComponentMixin = {
       }
 
       this._renderedComponent = instantiateReactComponent(
-        this._renderValidatedComponent()
+        this._renderValidatedComponent(),
+        this._currentElement.type // The wrapping type
       );
 
       // Done with mounting, `setState` will now trigger UI changes.
@@ -16870,7 +10303,7 @@ var ReactCompositeComponentMixin = {
         mountDepth + 1
       );
       if (this.componentDidMount) {
-        transaction.getReactMountReady().enqueue(this, this.componentDidMount);
+        transaction.getReactMountReady().enqueue(this.componentDidMount, this);
       }
       return markup;
     }
@@ -16888,8 +10321,6 @@ var ReactCompositeComponentMixin = {
       this.componentWillUnmount();
     }
     this._compositeLifeCycleState = null;
-
-    this._defaultProps = null;
 
     this._renderedComponent.unmountComponent();
     this._renderedComponent = null;
@@ -16924,7 +10355,7 @@ var ReactCompositeComponentMixin = {
       typeof partialState === 'object' || partialState == null,
       'setState(...): takes an object of state variables to update.'
     ) : invariant(typeof partialState === 'object' || partialState == null));
-    if ("production" !== process.env.NODE_ENV) {
+    if ("production" !== process.env.NODE_ENV){
       ("production" !== process.env.NODE_ENV ? warning(
         partialState != null,
         'setState(...): You passed an undefined or null state object; ' +
@@ -16933,7 +10364,7 @@ var ReactCompositeComponentMixin = {
     }
     // Merge with `_pendingState` if it exists, otherwise with existing state.
     this.replaceState(
-      merge(this._pendingState || this.state, partialState),
+      assign({}, this._pendingState || this.state, partialState),
       callback
     );
   },
@@ -16953,7 +10384,15 @@ var ReactCompositeComponentMixin = {
   replaceState: function(completeState, callback) {
     validateLifeCycleOnReplaceState(this);
     this._pendingState = completeState;
-    ReactUpdates.enqueueUpdate(this, callback);
+    if (this._compositeLifeCycleState !== CompositeLifeCycle.MOUNTING) {
+      // If we're in a componentWillMount handler, don't enqueue a rerender
+      // because ReactUpdates assumes we're in a browser context (which is wrong
+      // for server rendering) and we're about to do a render anyway.
+      // TODO: The callback here is ignored when setState is called from
+      // componentWillMount. Either fix it or disallow doing so completely in
+      // favor of getInitialState.
+      ReactUpdates.enqueueUpdate(this, callback);
+    }
   },
 
   /**
@@ -17013,7 +10452,7 @@ var ReactCompositeComponentMixin = {
           name
         ) : invariant(name in this.constructor.childContextTypes));
       }
-      return merge(currentContext, childContext);
+      return assign({}, currentContext, childContext);
     }
     return currentContext;
   },
@@ -17028,20 +10467,13 @@ var ReactCompositeComponentMixin = {
    * @private
    */
   _processProps: function(newProps) {
-    var props = merge(newProps);
-    var defaultProps = this._defaultProps;
-    for (var propName in defaultProps) {
-      if (typeof props[propName] === 'undefined') {
-        props[propName] = defaultProps[propName];
-      }
-    }
     if ("production" !== process.env.NODE_ENV) {
       var propTypes = this.constructor.propTypes;
       if (propTypes) {
-        this._checkPropTypes(propTypes, props, ReactPropTypeLocations.prop);
+        this._checkPropTypes(propTypes, newProps, ReactPropTypeLocations.prop);
       }
     }
-    return props;
+    return newProps;
   },
 
   /**
@@ -17053,15 +10485,32 @@ var ReactCompositeComponentMixin = {
    * @private
    */
   _checkPropTypes: function(propTypes, props, location) {
+    // TODO: Stop validating prop types here and only use the element
+    // validation.
     var componentName = this.constructor.displayName;
     for (var propName in propTypes) {
       if (propTypes.hasOwnProperty(propName)) {
-        propTypes[propName](props, propName, componentName, location);
+        var error =
+          propTypes[propName](props, propName, componentName, location);
+        if (error instanceof Error) {
+          // We may want to extend this logic for similar errors in
+          // renderComponent calls, so I'm abstracting it away into
+          // a function to minimize refactoring in the future
+          var addendum = getDeclarationErrorAddendum(this);
+          ("production" !== process.env.NODE_ENV ? warning(false, error.message + addendum) : null);
+        }
       }
     }
   },
 
-  performUpdateIfNecessary: function() {
+  /**
+   * If any of `_pendingElement`, `_pendingState`, or `_pendingForceUpdate`
+   * is set, update the component.
+   *
+   * @param {ReactReconcileTransaction} transaction
+   * @internal
+   */
+  performUpdateIfNecessary: function(transaction) {
     var compositeLifeCycleState = this._compositeLifeCycleState;
     // Do not trigger a state transition if we are in the middle of mounting or
     // receiving props because both of those will already be doing this.
@@ -17069,32 +10518,21 @@ var ReactCompositeComponentMixin = {
         compositeLifeCycleState === CompositeLifeCycle.RECEIVING_PROPS) {
       return;
     }
-    ReactComponent.Mixin.performUpdateIfNecessary.call(this);
-  },
 
-  /**
-   * If any of `_pendingProps`, `_pendingState`, or `_pendingForceUpdate` is
-   * set, update the component.
-   *
-   * @param {ReactReconcileTransaction} transaction
-   * @internal
-   */
-  _performUpdateIfNecessary: function(transaction) {
-    if (this._pendingProps == null &&
+    if (this._pendingElement == null &&
         this._pendingState == null &&
-        this._pendingContext == null &&
         !this._pendingForceUpdate) {
       return;
     }
 
-    var nextFullContext = this._pendingContext || this._currentContext;
-    var nextContext = this._processContext(nextFullContext);
-    this._pendingContext = null;
-
+    var nextContext = this.context;
     var nextProps = this.props;
-    if (this._pendingProps != null) {
-      nextProps = this._processProps(this._pendingProps);
-      this._pendingProps = null;
+    var nextElement = this._currentElement;
+    if (this._pendingElement != null) {
+      nextElement = this._pendingElement;
+      nextContext = this._processContext(nextElement._context);
+      nextProps = this._processProps(nextElement.props);
+      this._pendingElement = null;
 
       this._compositeLifeCycleState = CompositeLifeCycle.RECEIVING_PROPS;
       if (this.componentWillReceiveProps) {
@@ -17102,42 +10540,47 @@ var ReactCompositeComponentMixin = {
       }
     }
 
-    this._compositeLifeCycleState = CompositeLifeCycle.RECEIVING_STATE;
-
-    // Unlike props, state, and context, we specifically don't want to set
-    // _pendingOwner to null here because it's possible for a component to have
-    // a null owner, so we instead make `this._owner === this._pendingOwner`
-    // mean that there's no owner change pending.
-    var nextOwner = this._pendingOwner;
+    this._compositeLifeCycleState = null;
 
     var nextState = this._pendingState || this.state;
     this._pendingState = null;
 
-    try {
-      if (this._pendingForceUpdate ||
-          !this.shouldComponentUpdate ||
-          this.shouldComponentUpdate(nextProps, nextState, nextContext)) {
-        this._pendingForceUpdate = false;
-        // Will set `this.props`, `this.state` and `this.context`.
-        this._performComponentUpdate(
-          nextProps,
-          nextOwner,
-          nextState,
-          nextFullContext,
-          nextContext,
-          transaction
+    var shouldUpdate =
+      this._pendingForceUpdate ||
+      !this.shouldComponentUpdate ||
+      this.shouldComponentUpdate(nextProps, nextState, nextContext);
+
+    if ("production" !== process.env.NODE_ENV) {
+      if (typeof shouldUpdate === "undefined") {
+        console.warn(
+          (this.constructor.displayName || 'ReactCompositeComponent') +
+          '.shouldComponentUpdate(): Returned undefined instead of a ' +
+          'boolean value. Make sure to return true or false.'
         );
-      } else {
-        // If it's determined that a component should not update, we still want
-        // to set props and state.
-        this.props = nextProps;
-        this._owner = nextOwner;
-        this.state = nextState;
-        this._currentContext = nextFullContext;
-        this.context = nextContext;
       }
-    } finally {
-      this._compositeLifeCycleState = null;
+    }
+
+    if (shouldUpdate) {
+      this._pendingForceUpdate = false;
+      // Will set `this.props`, `this.state` and `this.context`.
+      this._performComponentUpdate(
+        nextElement,
+        nextProps,
+        nextState,
+        nextContext,
+        transaction
+      );
+    } else {
+      // If it's determined that a component should not update, we still want
+      // to set props and state.
+      this._currentElement = nextElement;
+      this.props = nextProps;
+      this.state = nextState;
+      this.context = nextContext;
+
+      // Owner cannot change because shouldUpdateReactComponent doesn't allow
+      // it. TODO: Remove this._owner completely.
+      this._owner = nextElement._owner;
     }
   },
 
@@ -17145,24 +10588,22 @@ var ReactCompositeComponentMixin = {
    * Merges new props and state, notifies delegate methods of update and
    * performs update.
    *
-   * @param {object} nextProps Next object to set as properties.
-   * @param {?ReactComponent} nextOwner Next component to set as owner
+   * @param {ReactElement} nextElement Next element
+   * @param {object} nextProps Next public object to set as properties.
    * @param {?object} nextState Next object to set as state.
-   * @param {?object} nextFullContext Next object to set as _currentContext.
-   * @param {?object} nextContext Next object to set as context.
+   * @param {?object} nextContext Next public object to set as context.
    * @param {ReactReconcileTransaction} transaction
    * @private
    */
   _performComponentUpdate: function(
+    nextElement,
     nextProps,
-    nextOwner,
     nextState,
-    nextFullContext,
     nextContext,
     transaction
   ) {
+    var prevElement = this._currentElement;
     var prevProps = this.props;
-    var prevOwner = this._owner;
     var prevState = this.state;
     var prevContext = this.context;
 
@@ -17170,43 +10611,44 @@ var ReactCompositeComponentMixin = {
       this.componentWillUpdate(nextProps, nextState, nextContext);
     }
 
+    this._currentElement = nextElement;
     this.props = nextProps;
-    this._owner = nextOwner;
     this.state = nextState;
-    this._currentContext = nextFullContext;
     this.context = nextContext;
+
+    // Owner cannot change because shouldUpdateReactComponent doesn't allow
+    // it. TODO: Remove this._owner completely.
+    this._owner = nextElement._owner;
 
     this.updateComponent(
       transaction,
-      prevProps,
-      prevOwner,
-      prevState,
-      prevContext
+      prevElement
     );
 
     if (this.componentDidUpdate) {
       transaction.getReactMountReady().enqueue(
-        this,
-        this.componentDidUpdate.bind(this, prevProps, prevState, prevContext)
+        this.componentDidUpdate.bind(this, prevProps, prevState, prevContext),
+        this
       );
     }
   },
 
-  receiveComponent: function(nextComponent, transaction) {
-    if (nextComponent === this._descriptor) {
-      // Since props and context are immutable after the component is
-      // mounted, we can do a cheap identity compare here to determine
-      // if this is a superfluous reconcile.
+  receiveComponent: function(nextElement, transaction) {
+    if (nextElement === this._currentElement &&
+        nextElement._owner != null) {
+      // Since elements are immutable after the owner is rendered,
+      // we can do a cheap identity compare here to determine if this is a
+      // superfluous reconcile. It's possible for state to be mutable but such
+      // change should trigger an update of the owner which would recreate
+      // the element. We explicitly check for the existence of an owner since
+      // it's possible for a element created outside a composite to be
+      // deeply mutated and reused.
       return;
     }
 
-    // Update the descriptor that was last used by this component instance
-    this._descriptor = nextComponent;
-
-    this._pendingContext = nextComponent._currentContext;
     ReactComponent.Mixin.receiveComponent.call(
       this,
-      nextComponent,
+      nextElement,
       transaction
     );
   },
@@ -17218,35 +10660,34 @@ var ReactCompositeComponentMixin = {
    * Sophisticated clients may wish to override this.
    *
    * @param {ReactReconcileTransaction} transaction
-   * @param {object} prevProps
-   * @param {?ReactComponent} prevOwner
-   * @param {?object} prevState
-   * @param {?object} prevContext
+   * @param {ReactElement} prevElement
    * @internal
    * @overridable
    */
   updateComponent: ReactPerf.measure(
     'ReactCompositeComponent',
     'updateComponent',
-    function(transaction, prevProps, prevOwner, prevState, prevContext) {
+    function(transaction, prevParentElement) {
       ReactComponent.Mixin.updateComponent.call(
         this,
         transaction,
-        prevProps,
-        prevOwner
+        prevParentElement
       );
 
-
       var prevComponentInstance = this._renderedComponent;
-      var nextComponent = this._renderValidatedComponent();
-      if (shouldUpdateReactComponent(prevComponentInstance, nextComponent)) {
-        prevComponentInstance.receiveComponent(nextComponent, transaction);
+      var prevElement = prevComponentInstance._currentElement;
+      var nextElement = this._renderValidatedComponent();
+      if (shouldUpdateReactComponent(prevElement, nextElement)) {
+        prevComponentInstance.receiveComponent(nextElement, transaction);
       } else {
         // These two IDs are actually the same! But nothing should rely on that.
         var thisID = this._rootNodeID;
         var prevComponentID = prevComponentInstance._rootNodeID;
         prevComponentInstance.unmountComponent();
-        this._renderedComponent = instantiateReactComponent(nextComponent);
+        this._renderedComponent = instantiateReactComponent(
+          nextElement,
+          this._currentElement.type
+        );
         var nextMarkup = this._renderedComponent.mountComponent(
           thisID,
           transaction,
@@ -17284,12 +10725,12 @@ var ReactCompositeComponentMixin = {
     ) : invariant(this.isMounted() ||
       compositeLifeCycleState === CompositeLifeCycle.MOUNTING));
     ("production" !== process.env.NODE_ENV ? invariant(
-      compositeLifeCycleState !== CompositeLifeCycle.RECEIVING_STATE &&
-      compositeLifeCycleState !== CompositeLifeCycle.UNMOUNTING,
+      compositeLifeCycleState !== CompositeLifeCycle.UNMOUNTING &&
+      ReactCurrentOwner.current == null,
       'forceUpdate(...): Cannot force an update while unmounting component ' +
-      'or during an existing state transition (such as within `render`).'
-    ) : invariant(compositeLifeCycleState !== CompositeLifeCycle.RECEIVING_STATE &&
-    compositeLifeCycleState !== CompositeLifeCycle.UNMOUNTING));
+      'or within a `render` function.'
+    ) : invariant(compositeLifeCycleState !== CompositeLifeCycle.UNMOUNTING &&
+    ReactCurrentOwner.current == null));
     this._pendingForceUpdate = true;
     ReactUpdates.enqueueUpdate(this, callback);
   },
@@ -17303,20 +10744,28 @@ var ReactCompositeComponentMixin = {
     function() {
       var renderedComponent;
       var previousContext = ReactContext.current;
-      ReactContext.current = this._processChildContext(this._currentContext);
+      ReactContext.current = this._processChildContext(
+        this._currentElement._context
+      );
       ReactCurrentOwner.current = this;
       try {
         renderedComponent = this.render();
+        if (renderedComponent === null || renderedComponent === false) {
+          renderedComponent = ReactEmptyComponent.getEmptyComponent();
+          ReactEmptyComponent.registerNullComponentID(this._rootNodeID);
+        } else {
+          ReactEmptyComponent.deregisterNullComponentID(this._rootNodeID);
+        }
       } finally {
         ReactContext.current = previousContext;
         ReactCurrentOwner.current = null;
       }
       ("production" !== process.env.NODE_ENV ? invariant(
-        ReactComponent.isValidComponent(renderedComponent),
+        ReactElement.isValidElement(renderedComponent),
         '%s.render(): A valid ReactComponent must be returned. You may have ' +
-          'returned null, undefined, an array, or some other invalid object.',
+          'returned undefined, an array or some other invalid object.',
         this.constructor.displayName || 'ReactCompositeComponent'
-      ) : invariant(ReactComponent.isValidComponent(renderedComponent)));
+      ) : invariant(ReactElement.isValidElement(renderedComponent)));
       return renderedComponent;
     }
   ),
@@ -17345,16 +10794,14 @@ var ReactCompositeComponentMixin = {
    */
   _bindAutoBindMethod: function(method) {
     var component = this;
-    var boundMethod = function() {
-      return method.apply(component, arguments);
-    };
+    var boundMethod = method.bind(component);
     if ("production" !== process.env.NODE_ENV) {
       boundMethod.__reactBoundContext = component;
       boundMethod.__reactBoundMethod = method;
       boundMethod.__reactBoundArguments = null;
       var componentName = component.constructor.displayName;
       var _bind = boundMethod.bind;
-      boundMethod.bind = function(newThis ) {var args=Array.prototype.slice.call(arguments,1);
+      boundMethod.bind = function(newThis ) {for (var args=[],$__0=1,$__1=arguments.length;$__0<$__1;$__0++) args.push(arguments[$__0]);
         // User is trying to bind() an autobound method; we effectively will
         // ignore the value of "this" that the user is trying to use, so
         // let's warn.
@@ -17385,23 +10832,14 @@ var ReactCompositeComponentMixin = {
 };
 
 var ReactCompositeComponentBase = function() {};
-mixInto(ReactCompositeComponentBase, ReactComponent.Mixin);
-mixInto(ReactCompositeComponentBase, ReactOwner.Mixin);
-mixInto(ReactCompositeComponentBase, ReactPropTransferer.Mixin);
-mixInto(ReactCompositeComponentBase, ReactCompositeComponentMixin);
+assign(
+  ReactCompositeComponentBase.prototype,
+  ReactComponent.Mixin,
+  ReactOwner.Mixin,
+  ReactPropTransferer.Mixin,
+  ReactCompositeComponentMixin
+);
 
-/**
- * Checks if a value is a valid component constructor.
- *
- * @param {*}
- * @return {boolean}
- * @public
- */
-function isValidClass(componentClass) {
-  return componentClass instanceof Function &&
-         'componentConstructor' in componentClass &&
-         componentClass.componentConstructor instanceof Function;
-}
 /**
  * Module for creating composite components.
  *
@@ -17424,26 +10862,24 @@ var ReactCompositeComponent = {
    * @public
    */
   createClass: function(spec) {
-    var Constructor = function() {};
+    var Constructor = function(props) {
+      // This constructor is overridden by mocks. The argument is used
+      // by mocks to assert on what gets mounted. This will later be used
+      // by the stand-alone class implementation.
+    };
     Constructor.prototype = new ReactCompositeComponentBase();
     Constructor.prototype.constructor = Constructor;
 
-    var DescriptorConstructor = Constructor;
-
-    var ConvenienceConstructor = function(props, children) {
-      var descriptor = new DescriptorConstructor();
-      descriptor.construct.apply(descriptor, arguments);
-      return descriptor;
-    };
-    ConvenienceConstructor.componentConstructor = Constructor;
-    Constructor.ConvenienceConstructor = ConvenienceConstructor;
-    ConvenienceConstructor.originalSpec = spec;
-
     injectedMixins.forEach(
-      mixSpecIntoComponent.bind(null, ConvenienceConstructor)
+      mixSpecIntoComponent.bind(null, Constructor)
     );
 
-    mixSpecIntoComponent(ConvenienceConstructor, spec);
+    mixSpecIntoComponent(Constructor, spec);
+
+    // Initialize the defaultProps property after all mixins have been merged
+    if (Constructor.getDefaultProps) {
+      Constructor.defaultProps = Constructor.getDefaultProps();
+    }
 
     ("production" !== process.env.NODE_ENV ? invariant(
       Constructor.prototype.render,
@@ -17465,14 +10901,6 @@ var ReactCompositeComponent = {
       }
     }
 
-    // Expose the convience constructor on the prototype so that it can be
-    // easily accessed on descriptors. E.g. <Foo />.type === Foo.type and for
-    // static methods like <Foo />.type.staticMethod();
-    // This should not be named constructor since this may not be the function
-    // that created the descriptor, and it may not even be a constructor.
-    ConvenienceConstructor.type = Constructor;
-    Constructor.prototype.type = Constructor;
-
     // Reduce time spent doing lookups by setting these on the prototype.
     for (var methodName in ReactCompositeComponentInterface) {
       if (!Constructor.prototype[methodName]) {
@@ -17481,16 +10909,14 @@ var ReactCompositeComponent = {
     }
 
     if ("production" !== process.env.NODE_ENV) {
-      // In DEV the convenience constructor generates a proxy to another
-      // instance around it to warn about access to properties on the
-      // descriptor.
-      DescriptorConstructor = createDescriptorProxy(Constructor);
+      return ReactLegacyElement.wrapFactory(
+        ReactElementValidator.createFactory(Constructor)
+      );
     }
-
-    return ConvenienceConstructor;
+    return ReactLegacyElement.wrapFactory(
+      ReactElement.createFactory(Constructor)
+    );
   },
-
-  isValidClass: isValidClass,
 
   injection: {
     injectMixin: function(mixin) {
@@ -17502,28 +10928,21 @@ var ReactCompositeComponent = {
 module.exports = ReactCompositeComponent;
 
 }).call(this,require('_process'))
-},{"./ReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactComponent.js","./ReactContext":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactContext.js","./ReactCurrentOwner":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCurrentOwner.js","./ReactErrorUtils":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactErrorUtils.js","./ReactOwner":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactOwner.js","./ReactPerf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPerf.js","./ReactPropTransferer":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPropTransferer.js","./ReactPropTypeLocationNames":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPropTypeLocationNames.js","./ReactPropTypeLocations":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPropTypeLocations.js","./ReactUpdates":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactUpdates.js","./instantiateReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/instantiateReactComponent.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./keyMirror":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyMirror.js","./merge":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/merge.js","./mixInto":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mixInto.js","./monitorCodeUse":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/monitorCodeUse.js","./objMap":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/objMap.js","./shouldUpdateReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/shouldUpdateReactComponent.js","./warning":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/warning.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactContext.js":[function(require,module,exports){
+},{"./Object.assign":35,"./ReactComponent":41,"./ReactContext":44,"./ReactCurrentOwner":45,"./ReactElement":61,"./ReactElementValidator":62,"./ReactEmptyComponent":63,"./ReactErrorUtils":64,"./ReactLegacyElement":70,"./ReactOwner":76,"./ReactPerf":77,"./ReactPropTransferer":78,"./ReactPropTypeLocationNames":79,"./ReactPropTypeLocations":80,"./ReactUpdates":88,"./instantiateReactComponent":134,"./invariant":135,"./keyMirror":141,"./keyOf":142,"./mapObject":143,"./monitorCodeUse":145,"./shouldUpdateReactComponent":151,"./warning":154,"_process":156}],44:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactContext
  */
 
 "use strict";
 
-var merge = require("./merge");
+var assign = require("./Object.assign");
 
 /**
  * Keeps track of the current context.
@@ -17545,7 +10964,7 @@ var ReactContext = {
    * A typical use case might look like
    *
    *  render: function() {
-   *    var children = ReactContext.withContext({foo: 'foo'} () => (
+   *    var children = ReactContext.withContext({foo: 'foo'}, () => (
    *
    *    ));
    *    return <div>{children}</div>;
@@ -17558,7 +10977,7 @@ var ReactContext = {
   withContext: function(newContext, scopedCallback) {
     var result;
     var previousContext = ReactContext.current;
-    ReactContext.current = merge(previousContext, newContext);
+    ReactContext.current = assign({}, previousContext, newContext);
     try {
       result = scopedCallback();
     } finally {
@@ -17571,21 +10990,14 @@ var ReactContext = {
 
 module.exports = ReactContext;
 
-},{"./merge":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/merge.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCurrentOwner.js":[function(require,module,exports){
+},{"./Object.assign":35}],45:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactCurrentOwner
  */
@@ -17612,21 +11024,15 @@ var ReactCurrentOwner = {
 
 module.exports = ReactCurrentOwner;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOM.js":[function(require,module,exports){
+},{}],46:[function(require,module,exports){
+(function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDOM
  * @typechecks static-only
@@ -17634,47 +11040,27 @@ module.exports = ReactCurrentOwner;
 
 "use strict";
 
-var ReactDOMComponent = require("./ReactDOMComponent");
+var ReactElement = require("./ReactElement");
+var ReactElementValidator = require("./ReactElementValidator");
+var ReactLegacyElement = require("./ReactLegacyElement");
 
-var mergeInto = require("./mergeInto");
-var objMapKeyVal = require("./objMapKeyVal");
+var mapObject = require("./mapObject");
 
 /**
- * Creates a new React class that is idempotent and capable of containing other
- * React components. It accepts event listeners and DOM properties that are
- * valid according to `DOMProperty`.
- *
- *  - Event listeners: `onClick`, `onMouseDown`, etc.
- *  - DOM properties: `className`, `name`, `title`, etc.
- *
- * The `style` property functions differently from the DOM API. It accepts an
- * object mapping of style properties to values.
+ * Create a factory that creates HTML tag elements.
  *
  * @param {string} tag Tag name (e.g. `div`).
- * @param {boolean} omitClose True if the close tag should be omitted.
  * @private
  */
-function createDOMComponentClass(tag, omitClose) {
-  var Constructor = function() {};
-  Constructor.prototype = new ReactDOMComponent(tag, omitClose);
-  Constructor.prototype.constructor = Constructor;
-  Constructor.displayName = tag;
-
-  var ConvenienceConstructor = function(props, children) {
-    var instance = new Constructor();
-    instance.construct.apply(instance, arguments);
-    return instance;
-  };
-
-  // Expose the constructor on the ConvenienceConstructor and prototype so that
-  // it can be easily easily accessed on descriptors.
-  // E.g. <div />.type === div.type
-  ConvenienceConstructor.type = Constructor;
-  Constructor.prototype.type = Constructor;
-
-  Constructor.ConvenienceConstructor = ConvenienceConstructor;
-  ConvenienceConstructor.componentConstructor = Constructor;
-  return ConvenienceConstructor;
+function createDOMFactory(tag) {
+  if ("production" !== process.env.NODE_ENV) {
+    return ReactLegacyElement.markNonLegacyFactory(
+      ReactElementValidator.createFactory(tag)
+    );
+  }
+  return ReactLegacyElement.markNonLegacyFactory(
+    ReactElement.createFactory(tag)
+  );
 }
 
 /**
@@ -17683,159 +11069,152 @@ function createDOMComponentClass(tag, omitClose) {
  *
  * @public
  */
-var ReactDOM = objMapKeyVal({
-  a: false,
-  abbr: false,
-  address: false,
-  area: true,
-  article: false,
-  aside: false,
-  audio: false,
-  b: false,
-  base: true,
-  bdi: false,
-  bdo: false,
-  big: false,
-  blockquote: false,
-  body: false,
-  br: true,
-  button: false,
-  canvas: false,
-  caption: false,
-  cite: false,
-  code: false,
-  col: true,
-  colgroup: false,
-  data: false,
-  datalist: false,
-  dd: false,
-  del: false,
-  details: false,
-  dfn: false,
-  div: false,
-  dl: false,
-  dt: false,
-  em: false,
-  embed: true,
-  fieldset: false,
-  figcaption: false,
-  figure: false,
-  footer: false,
-  form: false, // NOTE: Injected, see `ReactDOMForm`.
-  h1: false,
-  h2: false,
-  h3: false,
-  h4: false,
-  h5: false,
-  h6: false,
-  head: false,
-  header: false,
-  hr: true,
-  html: false,
-  i: false,
-  iframe: false,
-  img: true,
-  input: true,
-  ins: false,
-  kbd: false,
-  keygen: true,
-  label: false,
-  legend: false,
-  li: false,
-  link: true,
-  main: false,
-  map: false,
-  mark: false,
-  menu: false,
-  menuitem: false, // NOTE: Close tag should be omitted, but causes problems.
-  meta: true,
-  meter: false,
-  nav: false,
-  noscript: false,
-  object: false,
-  ol: false,
-  optgroup: false,
-  option: false,
-  output: false,
-  p: false,
-  param: true,
-  pre: false,
-  progress: false,
-  q: false,
-  rp: false,
-  rt: false,
-  ruby: false,
-  s: false,
-  samp: false,
-  script: false,
-  section: false,
-  select: false,
-  small: false,
-  source: true,
-  span: false,
-  strong: false,
-  style: false,
-  sub: false,
-  summary: false,
-  sup: false,
-  table: false,
-  tbody: false,
-  td: false,
-  textarea: false, // NOTE: Injected, see `ReactDOMTextarea`.
-  tfoot: false,
-  th: false,
-  thead: false,
-  time: false,
-  title: false,
-  tr: false,
-  track: true,
-  u: false,
-  ul: false,
-  'var': false,
-  video: false,
-  wbr: true,
+var ReactDOM = mapObject({
+  a: 'a',
+  abbr: 'abbr',
+  address: 'address',
+  area: 'area',
+  article: 'article',
+  aside: 'aside',
+  audio: 'audio',
+  b: 'b',
+  base: 'base',
+  bdi: 'bdi',
+  bdo: 'bdo',
+  big: 'big',
+  blockquote: 'blockquote',
+  body: 'body',
+  br: 'br',
+  button: 'button',
+  canvas: 'canvas',
+  caption: 'caption',
+  cite: 'cite',
+  code: 'code',
+  col: 'col',
+  colgroup: 'colgroup',
+  data: 'data',
+  datalist: 'datalist',
+  dd: 'dd',
+  del: 'del',
+  details: 'details',
+  dfn: 'dfn',
+  dialog: 'dialog',
+  div: 'div',
+  dl: 'dl',
+  dt: 'dt',
+  em: 'em',
+  embed: 'embed',
+  fieldset: 'fieldset',
+  figcaption: 'figcaption',
+  figure: 'figure',
+  footer: 'footer',
+  form: 'form',
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
+  head: 'head',
+  header: 'header',
+  hr: 'hr',
+  html: 'html',
+  i: 'i',
+  iframe: 'iframe',
+  img: 'img',
+  input: 'input',
+  ins: 'ins',
+  kbd: 'kbd',
+  keygen: 'keygen',
+  label: 'label',
+  legend: 'legend',
+  li: 'li',
+  link: 'link',
+  main: 'main',
+  map: 'map',
+  mark: 'mark',
+  menu: 'menu',
+  menuitem: 'menuitem',
+  meta: 'meta',
+  meter: 'meter',
+  nav: 'nav',
+  noscript: 'noscript',
+  object: 'object',
+  ol: 'ol',
+  optgroup: 'optgroup',
+  option: 'option',
+  output: 'output',
+  p: 'p',
+  param: 'param',
+  picture: 'picture',
+  pre: 'pre',
+  progress: 'progress',
+  q: 'q',
+  rp: 'rp',
+  rt: 'rt',
+  ruby: 'ruby',
+  s: 's',
+  samp: 'samp',
+  script: 'script',
+  section: 'section',
+  select: 'select',
+  small: 'small',
+  source: 'source',
+  span: 'span',
+  strong: 'strong',
+  style: 'style',
+  sub: 'sub',
+  summary: 'summary',
+  sup: 'sup',
+  table: 'table',
+  tbody: 'tbody',
+  td: 'td',
+  textarea: 'textarea',
+  tfoot: 'tfoot',
+  th: 'th',
+  thead: 'thead',
+  time: 'time',
+  title: 'title',
+  tr: 'tr',
+  track: 'track',
+  u: 'u',
+  ul: 'ul',
+  'var': 'var',
+  video: 'video',
+  wbr: 'wbr',
 
   // SVG
-  circle: false,
-  defs: false,
-  g: false,
-  line: false,
-  linearGradient: false,
-  path: false,
-  polygon: false,
-  polyline: false,
-  radialGradient: false,
-  rect: false,
-  stop: false,
-  svg: false,
-  text: false
-}, createDOMComponentClass);
+  circle: 'circle',
+  defs: 'defs',
+  ellipse: 'ellipse',
+  g: 'g',
+  line: 'line',
+  linearGradient: 'linearGradient',
+  mask: 'mask',
+  path: 'path',
+  pattern: 'pattern',
+  polygon: 'polygon',
+  polyline: 'polyline',
+  radialGradient: 'radialGradient',
+  rect: 'rect',
+  stop: 'stop',
+  svg: 'svg',
+  text: 'text',
+  tspan: 'tspan'
 
-var injection = {
-  injectComponentClasses: function(componentClasses) {
-    mergeInto(ReactDOM, componentClasses);
-  }
-};
-
-ReactDOM.injection = injection;
+}, createDOMFactory);
 
 module.exports = ReactDOM;
 
-},{"./ReactDOMComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMComponent.js","./mergeInto":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mergeInto.js","./objMapKeyVal":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/objMapKeyVal.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMButton.js":[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./ReactElement":61,"./ReactElementValidator":62,"./ReactLegacyElement":70,"./mapObject":143,"_process":156}],47:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDOMButton
  */
@@ -17845,12 +11224,13 @@ module.exports = ReactDOM;
 var AutoFocusMixin = require("./AutoFocusMixin");
 var ReactBrowserComponentMixin = require("./ReactBrowserComponentMixin");
 var ReactCompositeComponent = require("./ReactCompositeComponent");
+var ReactElement = require("./ReactElement");
 var ReactDOM = require("./ReactDOM");
 
 var keyMirror = require("./keyMirror");
 
-// Store a reference to the <button> `ReactDOMComponent`.
-var button = ReactDOM.button;
+// Store a reference to the <button> `ReactDOMComponent`. TODO: use string
+var button = ReactElement.createFactory(ReactDOM.button.type);
 
 var mouseListenerNames = keyMirror({
   onClick: true,
@@ -17892,22 +11272,15 @@ var ReactDOMButton = ReactCompositeComponent.createClass({
 
 module.exports = ReactDOMButton;
 
-},{"./AutoFocusMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/AutoFocusMixin.js","./ReactBrowserComponentMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactBrowserComponentMixin.js","./ReactCompositeComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCompositeComponent.js","./ReactDOM":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOM.js","./keyMirror":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyMirror.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMComponent.js":[function(require,module,exports){
+},{"./AutoFocusMixin":10,"./ReactBrowserComponentMixin":38,"./ReactCompositeComponent":43,"./ReactDOM":46,"./ReactElement":61,"./keyMirror":141}],48:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDOMComponent
  * @typechecks static-only
@@ -17920,20 +11293,21 @@ var DOMProperty = require("./DOMProperty");
 var DOMPropertyOperations = require("./DOMPropertyOperations");
 var ReactBrowserComponentMixin = require("./ReactBrowserComponentMixin");
 var ReactComponent = require("./ReactComponent");
-var ReactEventEmitter = require("./ReactEventEmitter");
+var ReactBrowserEventEmitter = require("./ReactBrowserEventEmitter");
 var ReactMount = require("./ReactMount");
 var ReactMultiChild = require("./ReactMultiChild");
 var ReactPerf = require("./ReactPerf");
 
+var assign = require("./Object.assign");
 var escapeTextForBrowser = require("./escapeTextForBrowser");
 var invariant = require("./invariant");
+var isEventSupported = require("./isEventSupported");
 var keyOf = require("./keyOf");
-var merge = require("./merge");
-var mixInto = require("./mixInto");
+var monitorCodeUse = require("./monitorCodeUse");
 
-var deleteListener = ReactEventEmitter.deleteListener;
-var listenTo = ReactEventEmitter.listenTo;
-var registrationNameModules = ReactEventEmitter.registrationNameModules;
+var deleteListener = ReactBrowserEventEmitter.deleteListener;
+var listenTo = ReactBrowserEventEmitter.listenTo;
+var registrationNameModules = ReactBrowserEventEmitter.registrationNameModules;
 
 // For quickly matching children type, to test if can be treated as content.
 var CONTENT_TYPES = {'string': true, 'number': true};
@@ -17954,6 +11328,16 @@ function assertValidProps(props) {
     props.children == null || props.dangerouslySetInnerHTML == null,
     'Can only set one of `children` or `props.dangerouslySetInnerHTML`.'
   ) : invariant(props.children == null || props.dangerouslySetInnerHTML == null));
+  if ("production" !== process.env.NODE_ENV) {
+    if (props.contentEditable && props.children != null) {
+      console.warn(
+        'A component is `contentEditable` and contains `children` managed by ' +
+        'React. It is now your responsibility to guarantee that none of those '+
+        'nodes are unexpectedly modified or duplicated. This is probably not ' +
+        'intentional.'
+      );
+    }
+  }
   ("production" !== process.env.NODE_ENV ? invariant(
     props.style == null || typeof props.style === 'object',
     'The `style` prop expects a mapping from style properties to values, ' +
@@ -17962,6 +11346,15 @@ function assertValidProps(props) {
 }
 
 function putListener(id, registrationName, listener, transaction) {
+  if ("production" !== process.env.NODE_ENV) {
+    // IE8 has no API for event capturing and the `onScroll` event doesn't
+    // bubble.
+    if (registrationName === 'onScroll' &&
+        !isEventSupported('scroll', true)) {
+      monitorCodeUse('react_no_scroll_event');
+      console.warn('This browser doesn\'t support the `onScroll` event');
+    }
+  }
   var container = ReactMount.findReactContainerForID(id);
   if (container) {
     var doc = container.nodeType === ELEMENT_NODE_TYPE ?
@@ -17976,17 +11369,65 @@ function putListener(id, registrationName, listener, transaction) {
   );
 }
 
+// For HTML, certain tags should omit their close tag. We keep a whitelist for
+// those special cased tags.
+
+var omittedCloseTags = {
+  'area': true,
+  'base': true,
+  'br': true,
+  'col': true,
+  'embed': true,
+  'hr': true,
+  'img': true,
+  'input': true,
+  'keygen': true,
+  'link': true,
+  'meta': true,
+  'param': true,
+  'source': true,
+  'track': true,
+  'wbr': true
+  // NOTE: menuitem's close tag should be omitted, but that causes problems.
+};
+
+// We accept any tag to be rendered but since this gets injected into abitrary
+// HTML, we want to make sure that it's a safe tag.
+// http://www.w3.org/TR/REC-xml/#NT-Name
+
+var VALID_TAG_REGEX = /^[a-zA-Z][a-zA-Z:_\.\-\d]*$/; // Simplified subset
+var validatedTagCache = {};
+var hasOwnProperty = {}.hasOwnProperty;
+
+function validateDangerousTag(tag) {
+  if (!hasOwnProperty.call(validatedTagCache, tag)) {
+    ("production" !== process.env.NODE_ENV ? invariant(VALID_TAG_REGEX.test(tag), 'Invalid tag: %s', tag) : invariant(VALID_TAG_REGEX.test(tag)));
+    validatedTagCache[tag] = true;
+  }
+}
 
 /**
+ * Creates a new React class that is idempotent and capable of containing other
+ * React components. It accepts event listeners and DOM properties that are
+ * valid according to `DOMProperty`.
+ *
+ *  - Event listeners: `onClick`, `onMouseDown`, etc.
+ *  - DOM properties: `className`, `name`, `title`, etc.
+ *
+ * The `style` property functions differently from the DOM API. It accepts an
+ * object mapping of style properties to values.
+ *
  * @constructor ReactDOMComponent
  * @extends ReactComponent
  * @extends ReactMultiChild
  */
-function ReactDOMComponent(tag, omitClose) {
-  this._tagOpen = '<' + tag;
-  this._tagClose = omitClose ? '' : '</' + tag + '>';
+function ReactDOMComponent(tag) {
+  validateDangerousTag(tag);
+  this._tag = tag;
   this.tagName = tag.toUpperCase();
 }
+
+ReactDOMComponent.displayName = 'ReactDOMComponent';
 
 ReactDOMComponent.Mixin = {
 
@@ -18011,10 +11452,11 @@ ReactDOMComponent.Mixin = {
         mountDepth
       );
       assertValidProps(this.props);
+      var closeTag = omittedCloseTags[this._tag] ? '' : '</' + this._tag + '>';
       return (
         this._createOpenTagMarkupAndPutListeners(transaction) +
         this._createContentMarkup(transaction) +
-        this._tagClose
+        closeTag
       );
     }
   ),
@@ -18033,7 +11475,7 @@ ReactDOMComponent.Mixin = {
    */
   _createOpenTagMarkupAndPutListeners: function(transaction) {
     var props = this.props;
-    var ret = this._tagOpen;
+    var ret = '<' + this._tag;
 
     for (var propKey in props) {
       if (!props.hasOwnProperty(propKey)) {
@@ -18043,12 +11485,12 @@ ReactDOMComponent.Mixin = {
       if (propValue == null) {
         continue;
       }
-      if (registrationNameModules[propKey]) {
+      if (registrationNameModules.hasOwnProperty(propKey)) {
         putListener(this._rootNodeID, propKey, propValue, transaction);
       } else {
         if (propKey === STYLE) {
           if (propValue) {
-            propValue = props.style = merge(props.style);
+            propValue = props.style = assign({}, props.style);
           }
           propValue = CSSPropertyOperations.createMarkupForStyles(propValue);
         }
@@ -18101,20 +11543,22 @@ ReactDOMComponent.Mixin = {
     return '';
   },
 
-  receiveComponent: function(nextComponent, transaction) {
-    if (nextComponent === this) {
-      // Since props and context are immutable after the component is
-      // mounted, we can do a cheap identity compare here to determine
-      // if this is a superfluous reconcile.
-
-      // TODO: compare the descriptor
+  receiveComponent: function(nextElement, transaction) {
+    if (nextElement === this._currentElement &&
+        nextElement._owner != null) {
+      // Since elements are immutable after the owner is rendered,
+      // we can do a cheap identity compare here to determine if this is a
+      // superfluous reconcile. It's possible for state to be mutable but such
+      // change should trigger an update of the owner which would recreate
+      // the element. We explicitly check for the existence of an owner since
+      // it's possible for a element created outside a composite to be
+      // deeply mutated and reused.
       return;
     }
 
-    assertValidProps(nextComponent.props);
     ReactComponent.Mixin.receiveComponent.call(
       this,
-      nextComponent,
+      nextElement,
       transaction
     );
   },
@@ -18124,22 +11568,22 @@ ReactDOMComponent.Mixin = {
    * attached to the DOM. Reconciles the root DOM node, then recurses.
    *
    * @param {ReactReconcileTransaction} transaction
-   * @param {object} prevProps
+   * @param {ReactElement} prevElement
    * @internal
    * @overridable
    */
   updateComponent: ReactPerf.measure(
     'ReactDOMComponent',
     'updateComponent',
-    function(transaction, prevProps, prevOwner) {
+    function(transaction, prevElement) {
+      assertValidProps(this._currentElement.props);
       ReactComponent.Mixin.updateComponent.call(
         this,
         transaction,
-        prevProps,
-        prevOwner
+        prevElement
       );
-      this._updateDOMProperties(prevProps, transaction);
-      this._updateDOMChildren(prevProps, transaction);
+      this._updateDOMProperties(prevElement.props, transaction);
+      this._updateDOMChildren(prevElement.props, transaction);
     }
   ),
 
@@ -18176,7 +11620,7 @@ ReactDOMComponent.Mixin = {
             styleUpdates[styleName] = '';
           }
         }
-      } else if (registrationNameModules[propKey]) {
+      } else if (registrationNameModules.hasOwnProperty(propKey)) {
         deleteListener(this._rootNodeID, propKey);
       } else if (
           DOMProperty.isStandardName[propKey] ||
@@ -18195,13 +11639,13 @@ ReactDOMComponent.Mixin = {
       }
       if (propKey === STYLE) {
         if (nextProp) {
-          nextProp = nextProps.style = merge(nextProp);
+          nextProp = nextProps.style = assign({}, nextProp);
         }
         if (lastProp) {
           // Unset styles on `lastProp` but not on `nextProp`.
           for (styleName in lastProp) {
             if (lastProp.hasOwnProperty(styleName) &&
-                !nextProp.hasOwnProperty(styleName)) {
+                (!nextProp || !nextProp.hasOwnProperty(styleName))) {
               styleUpdates = styleUpdates || {};
               styleUpdates[styleName] = '';
             }
@@ -18218,7 +11662,7 @@ ReactDOMComponent.Mixin = {
           // Relies on `updateStylesByID` not mutating `styleUpdates`.
           styleUpdates = nextProp;
         }
-      } else if (registrationNameModules[propKey]) {
+      } else if (registrationNameModules.hasOwnProperty(propKey)) {
         putListener(this._rootNodeID, propKey, nextProp, transaction);
       } else if (
           DOMProperty.isStandardName[propKey] ||
@@ -18298,49 +11742,46 @@ ReactDOMComponent.Mixin = {
    */
   unmountComponent: function() {
     this.unmountChildren();
-    ReactEventEmitter.deleteAllListeners(this._rootNodeID);
+    ReactBrowserEventEmitter.deleteAllListeners(this._rootNodeID);
     ReactComponent.Mixin.unmountComponent.call(this);
   }
 
 };
 
-mixInto(ReactDOMComponent, ReactComponent.Mixin);
-mixInto(ReactDOMComponent, ReactDOMComponent.Mixin);
-mixInto(ReactDOMComponent, ReactMultiChild.Mixin);
-mixInto(ReactDOMComponent, ReactBrowserComponentMixin);
+assign(
+  ReactDOMComponent.prototype,
+  ReactComponent.Mixin,
+  ReactDOMComponent.Mixin,
+  ReactMultiChild.Mixin,
+  ReactBrowserComponentMixin
+);
 
 module.exports = ReactDOMComponent;
 
 }).call(this,require('_process'))
-},{"./CSSPropertyOperations":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/CSSPropertyOperations.js","./DOMProperty":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMProperty.js","./DOMPropertyOperations":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMPropertyOperations.js","./ReactBrowserComponentMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactBrowserComponentMixin.js","./ReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactComponent.js","./ReactEventEmitter":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventEmitter.js","./ReactMount":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMount.js","./ReactMultiChild":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMultiChild.js","./ReactPerf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPerf.js","./escapeTextForBrowser":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/escapeTextForBrowser.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./keyOf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyOf.js","./merge":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/merge.js","./mixInto":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mixInto.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMForm.js":[function(require,module,exports){
+},{"./CSSPropertyOperations":13,"./DOMProperty":19,"./DOMPropertyOperations":20,"./Object.assign":35,"./ReactBrowserComponentMixin":38,"./ReactBrowserEventEmitter":39,"./ReactComponent":41,"./ReactMount":72,"./ReactMultiChild":73,"./ReactPerf":77,"./escapeTextForBrowser":118,"./invariant":135,"./isEventSupported":136,"./keyOf":142,"./monitorCodeUse":145,"_process":156}],49:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDOMForm
  */
 
 "use strict";
 
+var EventConstants = require("./EventConstants");
+var LocalEventTrapMixin = require("./LocalEventTrapMixin");
 var ReactBrowserComponentMixin = require("./ReactBrowserComponentMixin");
 var ReactCompositeComponent = require("./ReactCompositeComponent");
+var ReactElement = require("./ReactElement");
 var ReactDOM = require("./ReactDOM");
-var ReactEventEmitter = require("./ReactEventEmitter");
-var EventConstants = require("./EventConstants");
 
-// Store a reference to the <form> `ReactDOMComponent`.
-var form = ReactDOM.form;
+// Store a reference to the <form> `ReactDOMComponent`. TODO: use string
+var form = ReactElement.createFactory(ReactDOM.form.type);
 
 /**
  * Since onSubmit doesn't bubble OR capture on the top level in IE8, we need
@@ -18351,47 +11792,32 @@ var form = ReactDOM.form;
 var ReactDOMForm = ReactCompositeComponent.createClass({
   displayName: 'ReactDOMForm',
 
-  mixins: [ReactBrowserComponentMixin],
+  mixins: [ReactBrowserComponentMixin, LocalEventTrapMixin],
 
   render: function() {
     // TODO: Instead of using `ReactDOM` directly, we should use JSX. However,
     // `jshint` fails to parse JSX so in order for linting to work in the open
     // source repo, we need to just use `ReactDOM.form`.
-    return this.transferPropsTo(form(null, this.props.children));
+    return form(this.props);
   },
 
   componentDidMount: function() {
-    ReactEventEmitter.trapBubbledEvent(
-      EventConstants.topLevelTypes.topReset,
-      'reset',
-      this.getDOMNode()
-    );
-    ReactEventEmitter.trapBubbledEvent(
-      EventConstants.topLevelTypes.topSubmit,
-      'submit',
-      this.getDOMNode()
-    );
+    this.trapBubbledEvent(EventConstants.topLevelTypes.topReset, 'reset');
+    this.trapBubbledEvent(EventConstants.topLevelTypes.topSubmit, 'submit');
   }
 });
 
 module.exports = ReactDOMForm;
 
-},{"./EventConstants":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventConstants.js","./ReactBrowserComponentMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactBrowserComponentMixin.js","./ReactCompositeComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCompositeComponent.js","./ReactDOM":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOM.js","./ReactEventEmitter":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventEmitter.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMIDOperations.js":[function(require,module,exports){
+},{"./EventConstants":24,"./LocalEventTrapMixin":33,"./ReactBrowserComponentMixin":38,"./ReactCompositeComponent":43,"./ReactDOM":46,"./ReactElement":61}],50:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDOMIDOperations
  * @typechecks static-only
@@ -18408,6 +11834,7 @@ var ReactMount = require("./ReactMount");
 var ReactPerf = require("./ReactPerf");
 
 var invariant = require("./invariant");
+var setInnerHTML = require("./setInnerHTML");
 
 /**
  * Errors for properties that should not be updated with `updatePropertyById()`.
@@ -18420,8 +11847,6 @@ var INVALID_PROPERTY_ERRORS = {
     '`dangerouslySetInnerHTML` must be set using `updateInnerHTMLByID()`.',
   style: '`style` must be set using `updateStylesByID()`.'
 };
-
-var useWhitespaceWorkaround;
 
 /**
  * Operations used to process updates to DOM nodes. This is made injectable via
@@ -18511,35 +11936,7 @@ var ReactDOMIDOperations = {
     'updateInnerHTMLByID',
     function(id, html) {
       var node = ReactMount.getNode(id);
-
-      // IE8: When updating a just created node with innerHTML only leading
-      // whitespace is removed. When updating an existing node with innerHTML
-      // whitespace in root TextNodes is also collapsed.
-      // @see quirksmode.org/bugreports/archives/2004/11/innerhtml_and_t.html
-
-      if (useWhitespaceWorkaround === undefined) {
-        // Feature detection; only IE8 is known to behave improperly like this.
-        var temp = document.createElement('div');
-        temp.innerHTML = ' ';
-        useWhitespaceWorkaround = temp.innerHTML === '';
-      }
-
-      if (useWhitespaceWorkaround) {
-        // Magic theory: IE8 supposedly differentiates between added and updated
-        // nodes when processing innerHTML, innerHTML on updated nodes suffers
-        // from worse whitespace behavior. Re-adding a node like this triggers
-        // the initial and more favorable whitespace behavior.
-        node.parentNode.replaceChild(node, node);
-      }
-
-      if (useWhitespaceWorkaround && html.match(/^[ \r\n\t\f]/)) {
-        // Recover leading whitespace by temporarily prepending any character.
-        // \uFEFF has the potential advantage of being zero-width/invisible.
-        node.innerHTML = '\uFEFF' + html;
-        node.firstChild.deleteData(0, 1);
-      } else {
-        node.innerHTML = html;
-      }
+      setInnerHTML(node, html);
     }
   ),
 
@@ -18598,35 +11995,29 @@ var ReactDOMIDOperations = {
 module.exports = ReactDOMIDOperations;
 
 }).call(this,require('_process'))
-},{"./CSSPropertyOperations":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/CSSPropertyOperations.js","./DOMChildrenOperations":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMChildrenOperations.js","./DOMPropertyOperations":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMPropertyOperations.js","./ReactMount":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMount.js","./ReactPerf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPerf.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMImg.js":[function(require,module,exports){
+},{"./CSSPropertyOperations":13,"./DOMChildrenOperations":18,"./DOMPropertyOperations":20,"./ReactMount":72,"./ReactPerf":77,"./invariant":135,"./setInnerHTML":149,"_process":156}],51:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDOMImg
  */
 
 "use strict";
 
+var EventConstants = require("./EventConstants");
+var LocalEventTrapMixin = require("./LocalEventTrapMixin");
 var ReactBrowserComponentMixin = require("./ReactBrowserComponentMixin");
 var ReactCompositeComponent = require("./ReactCompositeComponent");
+var ReactElement = require("./ReactElement");
 var ReactDOM = require("./ReactDOM");
-var ReactEventEmitter = require("./ReactEventEmitter");
-var EventConstants = require("./EventConstants");
 
-// Store a reference to the <img> `ReactDOMComponent`.
-var img = ReactDOM.img;
+// Store a reference to the <img> `ReactDOMComponent`. TODO: use string
+var img = ReactElement.createFactory(ReactDOM.img.type);
 
 /**
  * Since onLoad doesn't bubble OR capture on the top level in IE8, we need to
@@ -18638,45 +12029,29 @@ var ReactDOMImg = ReactCompositeComponent.createClass({
   displayName: 'ReactDOMImg',
   tagName: 'IMG',
 
-  mixins: [ReactBrowserComponentMixin],
+  mixins: [ReactBrowserComponentMixin, LocalEventTrapMixin],
 
   render: function() {
     return img(this.props);
   },
 
   componentDidMount: function() {
-    var node = this.getDOMNode();
-    ReactEventEmitter.trapBubbledEvent(
-      EventConstants.topLevelTypes.topLoad,
-      'load',
-      node
-    );
-    ReactEventEmitter.trapBubbledEvent(
-      EventConstants.topLevelTypes.topError,
-      'error',
-      node
-    );
+    this.trapBubbledEvent(EventConstants.topLevelTypes.topLoad, 'load');
+    this.trapBubbledEvent(EventConstants.topLevelTypes.topError, 'error');
   }
 });
 
 module.exports = ReactDOMImg;
 
-},{"./EventConstants":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventConstants.js","./ReactBrowserComponentMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactBrowserComponentMixin.js","./ReactCompositeComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCompositeComponent.js","./ReactDOM":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOM.js","./ReactEventEmitter":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventEmitter.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMInput.js":[function(require,module,exports){
+},{"./EventConstants":24,"./LocalEventTrapMixin":33,"./ReactBrowserComponentMixin":38,"./ReactCompositeComponent":43,"./ReactDOM":46,"./ReactElement":61}],52:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDOMInput
  */
@@ -18688,16 +12063,25 @@ var DOMPropertyOperations = require("./DOMPropertyOperations");
 var LinkedValueUtils = require("./LinkedValueUtils");
 var ReactBrowserComponentMixin = require("./ReactBrowserComponentMixin");
 var ReactCompositeComponent = require("./ReactCompositeComponent");
+var ReactElement = require("./ReactElement");
 var ReactDOM = require("./ReactDOM");
 var ReactMount = require("./ReactMount");
+var ReactUpdates = require("./ReactUpdates");
 
+var assign = require("./Object.assign");
 var invariant = require("./invariant");
-var merge = require("./merge");
 
-// Store a reference to the <input> `ReactDOMComponent`.
-var input = ReactDOM.input;
+// Store a reference to the <input> `ReactDOMComponent`. TODO: use string
+var input = ReactElement.createFactory(ReactDOM.input.type);
 
 var instancesByReactID = {};
+
+function forceUpdateIfMounted() {
+  /*jshint validthis:true */
+  if (this.isMounted()) {
+    this.forceUpdate();
+  }
+}
 
 /**
  * Implements an <input> native component that allows setting these optional
@@ -18723,28 +12107,23 @@ var ReactDOMInput = ReactCompositeComponent.createClass({
   getInitialState: function() {
     var defaultValue = this.props.defaultValue;
     return {
-      checked: this.props.defaultChecked || false,
-      value: defaultValue != null ? defaultValue : null
+      initialChecked: this.props.defaultChecked || false,
+      initialValue: defaultValue != null ? defaultValue : null
     };
-  },
-
-  shouldComponentUpdate: function() {
-    // Defer any updates to this component during the `onChange` handler.
-    return !this._isChanging;
   },
 
   render: function() {
     // Clone `this.props` so we don't mutate the input.
-    var props = merge(this.props);
+    var props = assign({}, this.props);
 
     props.defaultChecked = null;
     props.defaultValue = null;
 
     var value = LinkedValueUtils.getValue(this);
-    props.value = value != null ? value : this.state.value;
+    props.value = value != null ? value : this.state.initialValue;
 
     var checked = LinkedValueUtils.getChecked(this);
-    props.checked = checked != null ? checked : this.state.checked;
+    props.checked = checked != null ? checked : this.state.initialChecked;
 
     props.onChange = this._handleChange;
 
@@ -18784,14 +12163,12 @@ var ReactDOMInput = ReactCompositeComponent.createClass({
     var returnValue;
     var onChange = LinkedValueUtils.getOnChange(this);
     if (onChange) {
-      this._isChanging = true;
       returnValue = onChange.call(this, event);
-      this._isChanging = false;
     }
-    this.setState({
-      checked: event.target.checked,
-      value: event.target.value
-    });
+    // Here we use asap to wait until all updates have propagated, which
+    // is important when using controlled components within layers:
+    // https://github.com/facebook/react/issues/1698
+    ReactUpdates.asap(forceUpdateIfMounted, this);
 
     var name = this.props.name;
     if (this.props.type === 'radio' && name != null) {
@@ -18829,13 +12206,10 @@ var ReactDOMInput = ReactCompositeComponent.createClass({
           'ReactDOMInput: Unknown radio button ID %s.',
           otherID
         ) : invariant(otherInstance));
-        // In some cases, this will actually change the `checked` state value.
-        // In other cases, there's no change but this forces a reconcile upon
-        // which componentDidUpdate will reset the DOM property to whatever it
-        // should be.
-        otherInstance.setState({
-          checked: false
-        });
+        // If this is a controlled radio button group, forcing the input that
+        // was previously checked to update will cause it to be come re-checked
+        // as appropriate.
+        ReactUpdates.asap(forceUpdateIfMounted, otherInstance);
       }
     }
 
@@ -18847,22 +12221,15 @@ var ReactDOMInput = ReactCompositeComponent.createClass({
 module.exports = ReactDOMInput;
 
 }).call(this,require('_process'))
-},{"./AutoFocusMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/AutoFocusMixin.js","./DOMPropertyOperations":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMPropertyOperations.js","./LinkedValueUtils":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/LinkedValueUtils.js","./ReactBrowserComponentMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactBrowserComponentMixin.js","./ReactCompositeComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCompositeComponent.js","./ReactDOM":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOM.js","./ReactMount":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMount.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./merge":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/merge.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMOption.js":[function(require,module,exports){
+},{"./AutoFocusMixin":10,"./DOMPropertyOperations":20,"./LinkedValueUtils":32,"./Object.assign":35,"./ReactBrowserComponentMixin":38,"./ReactCompositeComponent":43,"./ReactDOM":46,"./ReactElement":61,"./ReactMount":72,"./ReactUpdates":88,"./invariant":135,"_process":156}],53:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDOMOption
  */
@@ -18871,12 +12238,13 @@ module.exports = ReactDOMInput;
 
 var ReactBrowserComponentMixin = require("./ReactBrowserComponentMixin");
 var ReactCompositeComponent = require("./ReactCompositeComponent");
+var ReactElement = require("./ReactElement");
 var ReactDOM = require("./ReactDOM");
 
 var warning = require("./warning");
 
-// Store a reference to the <option> `ReactDOMComponent`.
-var option = ReactDOM.option;
+// Store a reference to the <option> `ReactDOMComponent`. TODO: use string
+var option = ReactElement.createFactory(ReactDOM.option.type);
 
 /**
  * Implements an <option> native component that warns when `selected` is set.
@@ -18906,22 +12274,14 @@ var ReactDOMOption = ReactCompositeComponent.createClass({
 module.exports = ReactDOMOption;
 
 }).call(this,require('_process'))
-},{"./ReactBrowserComponentMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactBrowserComponentMixin.js","./ReactCompositeComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCompositeComponent.js","./ReactDOM":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOM.js","./warning":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/warning.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMSelect.js":[function(require,module,exports){
-(function (process){
+},{"./ReactBrowserComponentMixin":38,"./ReactCompositeComponent":43,"./ReactDOM":46,"./ReactElement":61,"./warning":154,"_process":156}],54:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDOMSelect
  */
@@ -18932,13 +12292,22 @@ var AutoFocusMixin = require("./AutoFocusMixin");
 var LinkedValueUtils = require("./LinkedValueUtils");
 var ReactBrowserComponentMixin = require("./ReactBrowserComponentMixin");
 var ReactCompositeComponent = require("./ReactCompositeComponent");
+var ReactElement = require("./ReactElement");
 var ReactDOM = require("./ReactDOM");
+var ReactUpdates = require("./ReactUpdates");
 
-var invariant = require("./invariant");
-var merge = require("./merge");
+var assign = require("./Object.assign");
 
-// Store a reference to the <select> `ReactDOMComponent`.
-var select = ReactDOM.select;
+// Store a reference to the <select> `ReactDOMComponent`. TODO: use string
+var select = ReactElement.createFactory(ReactDOM.select.type);
+
+function updateWithPendingValueIfMounted() {
+  /*jshint validthis:true */
+  if (this.isMounted()) {
+    this.setState({value: this._pendingValue});
+    this._pendingValue = 0;
+  }
+}
 
 /**
  * Validation function for `value` and `defaultValue`.
@@ -18949,19 +12318,19 @@ function selectValueType(props, propName, componentName) {
     return;
   }
   if (props.multiple) {
-    ("production" !== process.env.NODE_ENV ? invariant(
-      Array.isArray(props[propName]),
-      'The `%s` prop supplied to <select> must be an array if `multiple` is ' +
-      'true.',
-      propName
-    ) : invariant(Array.isArray(props[propName])));
+    if (!Array.isArray(props[propName])) {
+      return new Error(
+        ("The `" + propName + "` prop supplied to <select> must be an array if ") +
+        ("`multiple` is true.")
+      );
+    }
   } else {
-    ("production" !== process.env.NODE_ENV ? invariant(
-      !Array.isArray(props[propName]),
-      'The `%s` prop supplied to <select> must be a scalar value if ' +
-      '`multiple` is false.',
-      propName
-    ) : invariant(!Array.isArray(props[propName])));
+    if (Array.isArray(props[propName])) {
+      return new Error(
+        ("The `" + propName + "` prop supplied to <select> must be a scalar ") +
+        ("value if `multiple` is false.")
+      );
+    }
   }
 }
 
@@ -19025,6 +12394,10 @@ var ReactDOMSelect = ReactCompositeComponent.createClass({
     return {value: this.props.defaultValue || (this.props.multiple ? [] : '')};
   },
 
+  componentWillMount: function() {
+    this._pendingValue = null;
+  },
+
   componentWillReceiveProps: function(nextProps) {
     if (!this.props.multiple && nextProps.multiple) {
       this.setState({value: [this.state.value]});
@@ -19033,14 +12406,9 @@ var ReactDOMSelect = ReactCompositeComponent.createClass({
     }
   },
 
-  shouldComponentUpdate: function() {
-    // Defer any updates to this component during the `onChange` handler.
-    return !this._isChanging;
-  },
-
   render: function() {
     // Clone `this.props` so we don't mutate the input.
-    var props = merge(this.props);
+    var props = assign({}, this.props);
 
     props.onChange = this._handleChange;
     props.value = null;
@@ -19052,9 +12420,11 @@ var ReactDOMSelect = ReactCompositeComponent.createClass({
     updateOptions(this, LinkedValueUtils.getValue(this));
   },
 
-  componentDidUpdate: function() {
+  componentDidUpdate: function(prevProps) {
     var value = LinkedValueUtils.getValue(this);
-    if (value != null) {
+    var prevMultiple = !!prevProps.multiple;
+    var multiple = !!this.props.multiple;
+    if (value != null || prevMultiple !== multiple) {
       updateOptions(this, value);
     }
   },
@@ -19063,9 +12433,7 @@ var ReactDOMSelect = ReactCompositeComponent.createClass({
     var returnValue;
     var onChange = LinkedValueUtils.getOnChange(this);
     if (onChange) {
-      this._isChanging = true;
       returnValue = onChange.call(this, event);
-      this._isChanging = false;
     }
 
     var selectedValue;
@@ -19081,7 +12449,8 @@ var ReactDOMSelect = ReactCompositeComponent.createClass({
       selectedValue = event.target.value;
     }
 
-    this.setState({value: selectedValue});
+    this._pendingValue = selectedValue;
+    ReactUpdates.asap(updateWithPendingValueIfMounted, this);
     return returnValue;
   }
 
@@ -19089,30 +12458,33 @@ var ReactDOMSelect = ReactCompositeComponent.createClass({
 
 module.exports = ReactDOMSelect;
 
-}).call(this,require('_process'))
-},{"./AutoFocusMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/AutoFocusMixin.js","./LinkedValueUtils":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/LinkedValueUtils.js","./ReactBrowserComponentMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactBrowserComponentMixin.js","./ReactCompositeComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCompositeComponent.js","./ReactDOM":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOM.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./merge":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/merge.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMSelection.js":[function(require,module,exports){
+},{"./AutoFocusMixin":10,"./LinkedValueUtils":32,"./Object.assign":35,"./ReactBrowserComponentMixin":38,"./ReactCompositeComponent":43,"./ReactDOM":46,"./ReactElement":61,"./ReactUpdates":88}],55:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDOMSelection
  */
 
 "use strict";
 
+var ExecutionEnvironment = require("./ExecutionEnvironment");
+
 var getNodeForCharacterOffset = require("./getNodeForCharacterOffset");
 var getTextContentAccessor = require("./getTextContentAccessor");
+
+/**
+ * While `isCollapsed` is available on the Selection object and `collapsed`
+ * is available on the Range object, IE11 sometimes gets them wrong.
+ * If the anchor/focus nodes and offsets are the same, the range is collapsed.
+ */
+function isCollapsed(anchorNode, anchorOffset, focusNode, focusOffset) {
+  return anchorNode === focusNode && anchorOffset === focusOffset;
+}
 
 /**
  * Get the appropriate anchor and focus node/offset pairs for IE.
@@ -19152,9 +12524,9 @@ function getIEOffsets(node) {
  * @return {?object}
  */
 function getModernOffsets(node) {
-  var selection = window.getSelection();
+  var selection = window.getSelection && window.getSelection();
 
-  if (selection.rangeCount === 0) {
+  if (!selection || selection.rangeCount === 0) {
     return null;
   }
 
@@ -19164,13 +12536,31 @@ function getModernOffsets(node) {
   var focusOffset = selection.focusOffset;
 
   var currentRange = selection.getRangeAt(0);
-  var rangeLength = currentRange.toString().length;
+
+  // If the node and offset values are the same, the selection is collapsed.
+  // `Selection.isCollapsed` is available natively, but IE sometimes gets
+  // this value wrong.
+  var isSelectionCollapsed = isCollapsed(
+    selection.anchorNode,
+    selection.anchorOffset,
+    selection.focusNode,
+    selection.focusOffset
+  );
+
+  var rangeLength = isSelectionCollapsed ? 0 : currentRange.toString().length;
 
   var tempRange = currentRange.cloneRange();
   tempRange.selectNodeContents(node);
   tempRange.setEnd(currentRange.startContainer, currentRange.startOffset);
 
-  var start = tempRange.toString().length;
+  var isTempRangeCollapsed = isCollapsed(
+    tempRange.startContainer,
+    tempRange.startOffset,
+    tempRange.endContainer,
+    tempRange.endOffset
+  );
+
+  var start = isTempRangeCollapsed ? 0 : tempRange.toString().length;
   var end = start + rangeLength;
 
   // Detect whether the selection is backward.
@@ -19178,7 +12568,6 @@ function getModernOffsets(node) {
   detectionRange.setStart(anchorNode, anchorOffset);
   detectionRange.setEnd(focusNode, focusOffset);
   var isBackward = detectionRange.collapsed;
-  detectionRange.detach();
 
   return {
     start: isBackward ? end : start,
@@ -19225,8 +12614,11 @@ function setIEOffsets(node, offsets) {
  * @param {object} offsets
  */
 function setModernOffsets(node, offsets) {
-  var selection = window.getSelection();
+  if (!window.getSelection) {
+    return;
+  }
 
+  var selection = window.getSelection();
   var length = node[getTextContentAccessor()].length;
   var start = Math.min(offsets.start, length);
   var end = typeof offsets.end === 'undefined' ?
@@ -19255,48 +12647,35 @@ function setModernOffsets(node, offsets) {
       range.setEnd(endMarker.node, endMarker.offset);
       selection.addRange(range);
     }
-
-    range.detach();
   }
 }
+
+var useIEOffsets = ExecutionEnvironment.canUseDOM && document.selection;
 
 var ReactDOMSelection = {
   /**
    * @param {DOMElement} node
    */
-  getOffsets: function(node) {
-    var getOffsets = document.selection ? getIEOffsets : getModernOffsets;
-    return getOffsets(node);
-  },
+  getOffsets: useIEOffsets ? getIEOffsets : getModernOffsets,
 
   /**
    * @param {DOMElement|DOMTextNode} node
    * @param {object} offsets
    */
-  setOffsets: function(node, offsets) {
-    var setOffsets = document.selection ? setIEOffsets : setModernOffsets;
-    setOffsets(node, offsets);
-  }
+  setOffsets: useIEOffsets ? setIEOffsets : setModernOffsets
 };
 
 module.exports = ReactDOMSelection;
 
-},{"./getNodeForCharacterOffset":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getNodeForCharacterOffset.js","./getTextContentAccessor":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getTextContentAccessor.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMTextarea.js":[function(require,module,exports){
+},{"./ExecutionEnvironment":30,"./getNodeForCharacterOffset":128,"./getTextContentAccessor":130}],56:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDOMTextarea
  */
@@ -19308,15 +12687,24 @@ var DOMPropertyOperations = require("./DOMPropertyOperations");
 var LinkedValueUtils = require("./LinkedValueUtils");
 var ReactBrowserComponentMixin = require("./ReactBrowserComponentMixin");
 var ReactCompositeComponent = require("./ReactCompositeComponent");
+var ReactElement = require("./ReactElement");
 var ReactDOM = require("./ReactDOM");
+var ReactUpdates = require("./ReactUpdates");
 
+var assign = require("./Object.assign");
 var invariant = require("./invariant");
-var merge = require("./merge");
 
 var warning = require("./warning");
 
-// Store a reference to the <textarea> `ReactDOMComponent`.
-var textarea = ReactDOM.textarea;
+// Store a reference to the <textarea> `ReactDOMComponent`. TODO: use string
+var textarea = ReactElement.createFactory(ReactDOM.textarea.type);
+
+function forceUpdateIfMounted() {
+  /*jshint validthis:true */
+  if (this.isMounted()) {
+    this.forceUpdate();
+  }
+}
 
 /**
  * Implements a <textarea> native component that allows setting `value`, and
@@ -19373,20 +12761,13 @@ var ReactDOMTextarea = ReactCompositeComponent.createClass({
       // `textContent` (unnecessary since we update value).
       // The initial value can be a boolean or object so that's why it's
       // forced to be a string.
-      initialValue: '' + (value != null ? value : defaultValue),
-      value: defaultValue
+      initialValue: '' + (value != null ? value : defaultValue)
     };
-  },
-
-  shouldComponentUpdate: function() {
-    // Defer any updates to this component during the `onChange` handler.
-    return !this._isChanging;
   },
 
   render: function() {
     // Clone `this.props` so we don't mutate the input.
-    var props = merge(this.props);
-    var value = LinkedValueUtils.getValue(this);
+    var props = assign({}, this.props);
 
     ("production" !== process.env.NODE_ENV ? invariant(
       props.dangerouslySetInnerHTML == null,
@@ -19394,7 +12775,7 @@ var ReactDOMTextarea = ReactCompositeComponent.createClass({
     ) : invariant(props.dangerouslySetInnerHTML == null));
 
     props.defaultValue = null;
-    props.value = value != null ? value : this.state.value;
+    props.value = null;
     props.onChange = this._handleChange;
 
     // Always set children to the same thing. In IE9, the selection range will
@@ -19416,11 +12797,9 @@ var ReactDOMTextarea = ReactCompositeComponent.createClass({
     var returnValue;
     var onChange = LinkedValueUtils.getOnChange(this);
     if (onChange) {
-      this._isChanging = true;
       returnValue = onChange.call(this, event);
-      this._isChanging = false;
     }
-    this.setState({value: event.target.value});
+    ReactUpdates.asap(forceUpdateIfMounted, this);
     return returnValue;
   }
 
@@ -19429,21 +12808,14 @@ var ReactDOMTextarea = ReactCompositeComponent.createClass({
 module.exports = ReactDOMTextarea;
 
 }).call(this,require('_process'))
-},{"./AutoFocusMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/AutoFocusMixin.js","./DOMPropertyOperations":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMPropertyOperations.js","./LinkedValueUtils":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/LinkedValueUtils.js","./ReactBrowserComponentMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactBrowserComponentMixin.js","./ReactCompositeComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCompositeComponent.js","./ReactDOM":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOM.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./merge":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/merge.js","./warning":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/warning.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDefaultBatchingStrategy.js":[function(require,module,exports){
+},{"./AutoFocusMixin":10,"./DOMPropertyOperations":20,"./LinkedValueUtils":32,"./Object.assign":35,"./ReactBrowserComponentMixin":38,"./ReactCompositeComponent":43,"./ReactDOM":46,"./ReactElement":61,"./ReactUpdates":88,"./invariant":135,"./warning":154,"_process":156}],57:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDefaultBatchingStrategy
  */
@@ -19453,8 +12825,8 @@ module.exports = ReactDOMTextarea;
 var ReactUpdates = require("./ReactUpdates");
 var Transaction = require("./Transaction");
 
+var assign = require("./Object.assign");
 var emptyFunction = require("./emptyFunction");
-var mixInto = require("./mixInto");
 
 var RESET_BATCHED_UPDATES = {
   initialize: emptyFunction,
@@ -19474,12 +12846,15 @@ function ReactDefaultBatchingStrategyTransaction() {
   this.reinitializeTransaction();
 }
 
-mixInto(ReactDefaultBatchingStrategyTransaction, Transaction.Mixin);
-mixInto(ReactDefaultBatchingStrategyTransaction, {
-  getTransactionWrappers: function() {
-    return TRANSACTION_WRAPPERS;
+assign(
+  ReactDefaultBatchingStrategyTransaction.prototype,
+  Transaction.Mixin,
+  {
+    getTransactionWrappers: function() {
+      return TRANSACTION_WRAPPERS;
+    }
   }
-});
+);
 
 var transaction = new ReactDefaultBatchingStrategyTransaction();
 
@@ -19490,61 +12865,51 @@ var ReactDefaultBatchingStrategy = {
    * Call the provided function in a context within which calls to `setState`
    * and friends are batched such that components aren't updated unnecessarily.
    */
-  batchedUpdates: function(callback, param) {
+  batchedUpdates: function(callback, a, b) {
     var alreadyBatchingUpdates = ReactDefaultBatchingStrategy.isBatchingUpdates;
 
     ReactDefaultBatchingStrategy.isBatchingUpdates = true;
 
     // The code is written this way to avoid extra allocations
     if (alreadyBatchingUpdates) {
-      callback(param);
+      callback(a, b);
     } else {
-      transaction.perform(callback, null, param);
+      transaction.perform(callback, null, a, b);
     }
   }
 };
 
 module.exports = ReactDefaultBatchingStrategy;
 
-},{"./ReactUpdates":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactUpdates.js","./Transaction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/Transaction.js","./emptyFunction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/emptyFunction.js","./mixInto":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mixInto.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDefaultInjection.js":[function(require,module,exports){
+},{"./Object.assign":35,"./ReactUpdates":88,"./Transaction":104,"./emptyFunction":116}],58:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDefaultInjection
  */
 
 "use strict";
 
-var ReactInjection = require("./ReactInjection");
-
-var ExecutionEnvironment = require("./ExecutionEnvironment");
-
-var DefaultDOMPropertyConfig = require("./DefaultDOMPropertyConfig");
-
+var BeforeInputEventPlugin = require("./BeforeInputEventPlugin");
 var ChangeEventPlugin = require("./ChangeEventPlugin");
 var ClientReactRootIndex = require("./ClientReactRootIndex");
 var CompositionEventPlugin = require("./CompositionEventPlugin");
 var DefaultEventPluginOrder = require("./DefaultEventPluginOrder");
 var EnterLeaveEventPlugin = require("./EnterLeaveEventPlugin");
+var ExecutionEnvironment = require("./ExecutionEnvironment");
+var HTMLDOMPropertyConfig = require("./HTMLDOMPropertyConfig");
 var MobileSafariClickEventPlugin = require("./MobileSafariClickEventPlugin");
 var ReactBrowserComponentMixin = require("./ReactBrowserComponentMixin");
 var ReactComponentBrowserEnvironment =
   require("./ReactComponentBrowserEnvironment");
-var ReactEventTopLevelCallback = require("./ReactEventTopLevelCallback");
-var ReactDOM = require("./ReactDOM");
+var ReactDefaultBatchingStrategy = require("./ReactDefaultBatchingStrategy");
+var ReactDOMComponent = require("./ReactDOMComponent");
 var ReactDOMButton = require("./ReactDOMButton");
 var ReactDOMForm = require("./ReactDOMForm");
 var ReactDOMImg = require("./ReactDOMImg");
@@ -19552,19 +12917,20 @@ var ReactDOMInput = require("./ReactDOMInput");
 var ReactDOMOption = require("./ReactDOMOption");
 var ReactDOMSelect = require("./ReactDOMSelect");
 var ReactDOMTextarea = require("./ReactDOMTextarea");
+var ReactEventListener = require("./ReactEventListener");
+var ReactInjection = require("./ReactInjection");
 var ReactInstanceHandles = require("./ReactInstanceHandles");
 var ReactMount = require("./ReactMount");
 var SelectEventPlugin = require("./SelectEventPlugin");
 var ServerReactRootIndex = require("./ServerReactRootIndex");
 var SimpleEventPlugin = require("./SimpleEventPlugin");
-
-var ReactDefaultBatchingStrategy = require("./ReactDefaultBatchingStrategy");
+var SVGDOMPropertyConfig = require("./SVGDOMPropertyConfig");
 
 var createFullPageComponent = require("./createFullPageComponent");
 
 function inject() {
-  ReactInjection.EventEmitter.injectTopLevelCallbackCreator(
-    ReactEventTopLevelCallback
+  ReactInjection.EventEmitter.injectReactEventListener(
+    ReactEventListener
   );
 
   /**
@@ -19584,31 +12950,40 @@ function inject() {
     ChangeEventPlugin: ChangeEventPlugin,
     CompositionEventPlugin: CompositionEventPlugin,
     MobileSafariClickEventPlugin: MobileSafariClickEventPlugin,
-    SelectEventPlugin: SelectEventPlugin
+    SelectEventPlugin: SelectEventPlugin,
+    BeforeInputEventPlugin: BeforeInputEventPlugin
   });
 
-  ReactInjection.DOM.injectComponentClasses({
-    button: ReactDOMButton,
-    form: ReactDOMForm,
-    img: ReactDOMImg,
-    input: ReactDOMInput,
-    option: ReactDOMOption,
-    select: ReactDOMSelect,
-    textarea: ReactDOMTextarea,
+  ReactInjection.NativeComponent.injectGenericComponentClass(
+    ReactDOMComponent
+  );
 
-    html: createFullPageComponent(ReactDOM.html),
-    head: createFullPageComponent(ReactDOM.head),
-    title: createFullPageComponent(ReactDOM.title),
-    body: createFullPageComponent(ReactDOM.body)
+  ReactInjection.NativeComponent.injectComponentClasses({
+    'button': ReactDOMButton,
+    'form': ReactDOMForm,
+    'img': ReactDOMImg,
+    'input': ReactDOMInput,
+    'option': ReactDOMOption,
+    'select': ReactDOMSelect,
+    'textarea': ReactDOMTextarea,
+
+    'html': createFullPageComponent('html'),
+    'head': createFullPageComponent('head'),
+    'body': createFullPageComponent('body')
   });
-
 
   // This needs to happen after createFullPageComponent() otherwise the mixin
   // gets double injected.
   ReactInjection.CompositeComponent.injectMixin(ReactBrowserComponentMixin);
 
-  ReactInjection.DOMProperty.injectDOMPropertyConfig(DefaultDOMPropertyConfig);
+  ReactInjection.DOMProperty.injectDOMPropertyConfig(HTMLDOMPropertyConfig);
+  ReactInjection.DOMProperty.injectDOMPropertyConfig(SVGDOMPropertyConfig);
 
+  ReactInjection.EmptyComponent.injectEmptyComponent('noscript');
+
+  ReactInjection.Updates.injectReconcileTransaction(
+    ReactComponentBrowserEnvironment.ReactReconcileTransaction
+  );
   ReactInjection.Updates.injectBatchingStrategy(
     ReactDefaultBatchingStrategy
   );
@@ -19635,21 +13010,14 @@ module.exports = {
 };
 
 }).call(this,require('_process'))
-},{"./ChangeEventPlugin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ChangeEventPlugin.js","./ClientReactRootIndex":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ClientReactRootIndex.js","./CompositionEventPlugin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/CompositionEventPlugin.js","./DefaultDOMPropertyConfig":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DefaultDOMPropertyConfig.js","./DefaultEventPluginOrder":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DefaultEventPluginOrder.js","./EnterLeaveEventPlugin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EnterLeaveEventPlugin.js","./ExecutionEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js","./MobileSafariClickEventPlugin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/MobileSafariClickEventPlugin.js","./ReactBrowserComponentMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactBrowserComponentMixin.js","./ReactComponentBrowserEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactComponentBrowserEnvironment.js","./ReactDOM":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOM.js","./ReactDOMButton":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMButton.js","./ReactDOMForm":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMForm.js","./ReactDOMImg":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMImg.js","./ReactDOMInput":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMInput.js","./ReactDOMOption":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMOption.js","./ReactDOMSelect":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMSelect.js","./ReactDOMTextarea":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMTextarea.js","./ReactDefaultBatchingStrategy":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDefaultBatchingStrategy.js","./ReactDefaultPerf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDefaultPerf.js","./ReactEventTopLevelCallback":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventTopLevelCallback.js","./ReactInjection":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInjection.js","./ReactInstanceHandles":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInstanceHandles.js","./ReactMount":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMount.js","./SelectEventPlugin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SelectEventPlugin.js","./ServerReactRootIndex":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ServerReactRootIndex.js","./SimpleEventPlugin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SimpleEventPlugin.js","./createFullPageComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/createFullPageComponent.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDefaultPerf.js":[function(require,module,exports){
+},{"./BeforeInputEventPlugin":11,"./ChangeEventPlugin":15,"./ClientReactRootIndex":16,"./CompositionEventPlugin":17,"./DefaultEventPluginOrder":22,"./EnterLeaveEventPlugin":23,"./ExecutionEnvironment":30,"./HTMLDOMPropertyConfig":31,"./MobileSafariClickEventPlugin":34,"./ReactBrowserComponentMixin":38,"./ReactComponentBrowserEnvironment":42,"./ReactDOMButton":47,"./ReactDOMComponent":48,"./ReactDOMForm":49,"./ReactDOMImg":51,"./ReactDOMInput":52,"./ReactDOMOption":53,"./ReactDOMSelect":54,"./ReactDOMTextarea":56,"./ReactDefaultBatchingStrategy":57,"./ReactDefaultPerf":59,"./ReactEventListener":66,"./ReactInjection":67,"./ReactInstanceHandles":69,"./ReactMount":72,"./SVGDOMPropertyConfig":89,"./SelectEventPlugin":90,"./ServerReactRootIndex":91,"./SimpleEventPlugin":92,"./createFullPageComponent":112,"_process":156}],59:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDefaultPerf
  * @typechecks static-only
@@ -19668,8 +13036,13 @@ function roundFloat(val) {
   return Math.floor(val * 100) / 100;
 }
 
+function addValue(obj, key, val) {
+  obj[key] = (obj[key] || 0) + val;
+}
+
 var ReactDefaultPerf = {
   _allMeasurements: [], // last item in the list is the current one
+  _mountStack: [0],
   _injected: false,
 
   start: function() {
@@ -19696,15 +13069,15 @@ var ReactDefaultPerf = {
       return {
         'Component class name': item.componentName,
         'Total inclusive time (ms)': roundFloat(item.inclusive),
-        'Total exclusive time (ms)': roundFloat(item.exclusive),
-        'Exclusive time per instance (ms)': roundFloat(item.exclusive / item.count),
+        'Exclusive mount time (ms)': roundFloat(item.exclusive),
+        'Exclusive render time (ms)': roundFloat(item.render),
+        'Mount time per instance (ms)': roundFloat(item.exclusive / item.count),
+        'Render time per instance (ms)': roundFloat(item.render / item.count),
         'Instances': item.count
       };
     }));
-    console.log(
-      'Total time:',
-      ReactDefaultPerfAnalysis.getTotalTime(measurements).toFixed(2) + ' ms'
-    );
+    // TODO: ReactDefaultPerfAnalysis.getTotalTime() does not return the correct
+    // number.
   },
 
   printInclusive: function(measurements) {
@@ -19723,19 +13096,23 @@ var ReactDefaultPerf = {
     );
   },
 
-  printWasted: function(measurements) {
-    measurements = measurements || ReactDefaultPerf._allMeasurements;
+  getMeasurementsSummaryMap: function(measurements) {
     var summary = ReactDefaultPerfAnalysis.getInclusiveSummary(
       measurements,
       true
     );
-    console.table(summary.map(function(item) {
+    return summary.map(function(item) {
       return {
         'Owner > component': item.componentName,
         'Wasted time (ms)': item.time,
         'Instances': item.count
       };
-    }));
+    });
+  },
+
+  printWasted: function(measurements) {
+    measurements = measurements || ReactDefaultPerf._allMeasurements;
+    console.table(ReactDefaultPerf.getMeasurementsSummaryMap(measurements));
     console.log(
       'Total time:',
       ReactDefaultPerfAnalysis.getTotalTime(measurements).toFixed(2) + ' ms'
@@ -19773,7 +13150,7 @@ var ReactDefaultPerf = {
   },
 
   measure: function(moduleName, fnName, func) {
-    return function() {var args=Array.prototype.slice.call(arguments,0);
+    return function() {for (var args=[],$__0=0,$__1=arguments.length;$__0<$__1;$__0++) args.push(arguments[$__0]);
       var totalTime;
       var rv;
       var start;
@@ -19787,6 +13164,7 @@ var ReactDefaultPerf = {
         ReactDefaultPerf._allMeasurements.push({
           exclusive: {},
           inclusive: {},
+          render: {},
           counts: {},
           writes: {},
           displayNames: {},
@@ -19849,22 +13227,33 @@ var ReactDefaultPerf = {
           args[0] :
           this._rootNodeID;
         var isRender = fnName === '_renderValidatedComponent';
+        var isMount = fnName === 'mountComponent';
+
+        var mountStack = ReactDefaultPerf._mountStack;
         var entry = ReactDefaultPerf._allMeasurements[
           ReactDefaultPerf._allMeasurements.length - 1
         ];
 
         if (isRender) {
-          entry.counts[rootNodeID] = entry.counts[rootNodeID] || 0;
-          entry.counts[rootNodeID] += 1;
+          addValue(entry.counts, rootNodeID, 1);
+        } else if (isMount) {
+          mountStack.push(0);
         }
 
         start = performanceNow();
         rv = func.apply(this, args);
         totalTime = performanceNow() - start;
 
-        var typeOfLog = isRender ? entry.exclusive : entry.inclusive;
-        typeOfLog[rootNodeID] = typeOfLog[rootNodeID] || 0;
-        typeOfLog[rootNodeID] += totalTime;
+        if (isRender) {
+          addValue(entry.render, rootNodeID, totalTime);
+        } else if (isMount) {
+          var subMountTime = mountStack.pop();
+          mountStack[mountStack.length - 1] += totalTime;
+          addValue(entry.exclusive, rootNodeID, totalTime - subMountTime);
+          addValue(entry.inclusive, rootNodeID, totalTime);
+        } else {
+          addValue(entry.inclusive, rootNodeID, totalTime);
+        }
 
         entry.displayNames[rootNodeID] = {
           current: this.constructor.displayName,
@@ -19881,26 +13270,19 @@ var ReactDefaultPerf = {
 
 module.exports = ReactDefaultPerf;
 
-},{"./DOMProperty":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMProperty.js","./ReactDefaultPerfAnalysis":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDefaultPerfAnalysis.js","./ReactMount":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMount.js","./ReactPerf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPerf.js","./performanceNow":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/performanceNow.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDefaultPerfAnalysis.js":[function(require,module,exports){
+},{"./DOMProperty":19,"./ReactDefaultPerfAnalysis":60,"./ReactMount":72,"./ReactPerf":77,"./performanceNow":148}],60:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactDefaultPerfAnalysis
  */
 
-var merge = require("./merge");
+var assign = require("./Object.assign");
 
 // Don't try to save users less than 1.2ms (a number I made up)
 var DONT_CARE_THRESHOLD = 1.2;
@@ -19955,7 +13337,11 @@ function getExclusiveSummary(measurements) {
 
   for (var i = 0; i < measurements.length; i++) {
     var measurement = measurements[i];
-    var allIDs = merge(measurement.exclusive, measurement.inclusive);
+    var allIDs = assign(
+      {},
+      measurement.exclusive,
+      measurement.inclusive
+    );
 
     for (var id in allIDs) {
       displayName = measurement.displayNames[id].current;
@@ -19964,8 +13350,12 @@ function getExclusiveSummary(measurements) {
         componentName: displayName,
         inclusive: 0,
         exclusive: 0,
+        render: 0,
         count: 0
       };
+      if (measurement.render[id]) {
+        candidates[displayName].render += measurement.render[id];
+      }
       if (measurement.exclusive[id]) {
         candidates[displayName].exclusive += measurement.exclusive[id];
       }
@@ -19999,7 +13389,11 @@ function getInclusiveSummary(measurements, onlyClean) {
 
   for (var i = 0; i < measurements.length; i++) {
     var measurement = measurements[i];
-    var allIDs = merge(measurement.exclusive, measurement.inclusive);
+    var allIDs = assign(
+      {},
+      measurement.exclusive,
+      measurement.inclusive
+    );
     var cleanComponents;
 
     if (onlyClean) {
@@ -20054,11 +13448,11 @@ function getUnchangedComponents(measurement) {
   // the amount of time it took to render the entire subtree.
   var cleanComponents = {};
   var dirtyLeafIDs = Object.keys(measurement.writes);
-  var allIDs = merge(measurement.exclusive, measurement.inclusive);
+  var allIDs = assign({}, measurement.exclusive, measurement.inclusive);
 
   for (var id in allIDs) {
     var isDirty = false;
-    // For each component that rendered, see if a component that triggerd
+    // For each component that rendered, see if a component that triggered
     // a DOM op is in its subtree.
     for (var i = 0; i < dirtyLeafIDs.length; i++) {
       if (dirtyLeafIDs[i].indexOf(id) === 0) {
@@ -20082,21 +13476,619 @@ var ReactDefaultPerfAnalysis = {
 
 module.exports = ReactDefaultPerfAnalysis;
 
-},{"./merge":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/merge.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactErrorUtils.js":[function(require,module,exports){
+},{"./Object.assign":35}],61:[function(require,module,exports){
+(function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule ReactElement
+ */
+
+"use strict";
+
+var ReactContext = require("./ReactContext");
+var ReactCurrentOwner = require("./ReactCurrentOwner");
+
+var warning = require("./warning");
+
+var RESERVED_PROPS = {
+  key: true,
+  ref: true
+};
+
+/**
+ * Warn for mutations.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * @internal
+ * @param {object} object
+ * @param {string} key
+ */
+function defineWarningProperty(object, key) {
+  Object.defineProperty(object, key, {
+
+    configurable: false,
+    enumerable: true,
+
+    get: function() {
+      if (!this._store) {
+        return null;
+      }
+      return this._store[key];
+    },
+
+    set: function(value) {
+      ("production" !== process.env.NODE_ENV ? warning(
+        false,
+        'Don\'t set the ' + key + ' property of the component. ' +
+        'Mutate the existing props object instead.'
+      ) : null);
+      this._store[key] = value;
+    }
+
+  });
+}
+
+/**
+ * This is updated to true if the membrane is successfully created.
+ */
+var useMutationMembrane = false;
+
+/**
+ * Warn for mutations.
+ *
+ * @internal
+ * @param {object} element
+ */
+function defineMutationMembrane(prototype) {
+  try {
+    var pseudoFrozenProperties = {
+      props: true
+    };
+    for (var key in pseudoFrozenProperties) {
+      defineWarningProperty(prototype, key);
+    }
+    useMutationMembrane = true;
+  } catch (x) {
+    // IE will fail on defineProperty
+  }
+}
+
+/**
+ * Base constructor for all React elements. This is only used to make this
+ * work with a dynamic instanceof check. Nothing should live on this prototype.
+ *
+ * @param {*} type
+ * @param {string|object} ref
+ * @param {*} key
+ * @param {*} props
+ * @internal
+ */
+var ReactElement = function(type, key, ref, owner, context, props) {
+  // Built-in properties that belong on the element
+  this.type = type;
+  this.key = key;
+  this.ref = ref;
+
+  // Record the component responsible for creating this element.
+  this._owner = owner;
+
+  // TODO: Deprecate withContext, and then the context becomes accessible
+  // through the owner.
+  this._context = context;
+
+  if ("production" !== process.env.NODE_ENV) {
+    // The validation flag and props are currently mutative. We put them on
+    // an external backing store so that we can freeze the whole object.
+    // This can be replaced with a WeakMap once they are implemented in
+    // commonly used development environments.
+    this._store = { validated: false, props: props };
+
+    // We're not allowed to set props directly on the object so we early
+    // return and rely on the prototype membrane to forward to the backing
+    // store.
+    if (useMutationMembrane) {
+      Object.freeze(this);
+      return;
+    }
+  }
+
+  this.props = props;
+};
+
+// We intentionally don't expose the function on the constructor property.
+// ReactElement should be indistinguishable from a plain object.
+ReactElement.prototype = {
+  _isReactElement: true
+};
+
+if ("production" !== process.env.NODE_ENV) {
+  defineMutationMembrane(ReactElement.prototype);
+}
+
+ReactElement.createElement = function(type, config, children) {
+  var propName;
+
+  // Reserved names are extracted
+  var props = {};
+
+  var key = null;
+  var ref = null;
+
+  if (config != null) {
+    ref = config.ref === undefined ? null : config.ref;
+    if ("production" !== process.env.NODE_ENV) {
+      ("production" !== process.env.NODE_ENV ? warning(
+        config.key !== null,
+        'createElement(...): Encountered component with a `key` of null. In ' +
+        'a future version, this will be treated as equivalent to the string ' +
+        '\'null\'; instead, provide an explicit key or use undefined.'
+      ) : null);
+    }
+    // TODO: Change this back to `config.key === undefined`
+    key = config.key == null ? null : '' + config.key;
+    // Remaining properties are added to a new props object
+    for (propName in config) {
+      if (config.hasOwnProperty(propName) &&
+          !RESERVED_PROPS.hasOwnProperty(propName)) {
+        props[propName] = config[propName];
+      }
+    }
+  }
+
+  // Children can be more than one argument, and those are transferred onto
+  // the newly allocated props object.
+  var childrenLength = arguments.length - 2;
+  if (childrenLength === 1) {
+    props.children = children;
+  } else if (childrenLength > 1) {
+    var childArray = Array(childrenLength);
+    for (var i = 0; i < childrenLength; i++) {
+      childArray[i] = arguments[i + 2];
+    }
+    props.children = childArray;
+  }
+
+  // Resolve default props
+  if (type && type.defaultProps) {
+    var defaultProps = type.defaultProps;
+    for (propName in defaultProps) {
+      if (typeof props[propName] === 'undefined') {
+        props[propName] = defaultProps[propName];
+      }
+    }
+  }
+
+  return new ReactElement(
+    type,
+    key,
+    ref,
+    ReactCurrentOwner.current,
+    ReactContext.current,
+    props
+  );
+};
+
+ReactElement.createFactory = function(type) {
+  var factory = ReactElement.createElement.bind(null, type);
+  // Expose the type on the factory and the prototype so that it can be
+  // easily accessed on elements. E.g. <Foo />.type === Foo.type.
+  // This should not be named `constructor` since this may not be the function
+  // that created the element, and it may not even be a constructor.
+  factory.type = type;
+  return factory;
+};
+
+ReactElement.cloneAndReplaceProps = function(oldElement, newProps) {
+  var newElement = new ReactElement(
+    oldElement.type,
+    oldElement.key,
+    oldElement.ref,
+    oldElement._owner,
+    oldElement._context,
+    newProps
+  );
+
+  if ("production" !== process.env.NODE_ENV) {
+    // If the key on the original is valid, then the clone is valid
+    newElement._store.validated = oldElement._store.validated;
+  }
+  return newElement;
+};
+
+/**
+ * @param {?object} object
+ * @return {boolean} True if `object` is a valid component.
+ * @final
+ */
+ReactElement.isValidElement = function(object) {
+  // ReactTestUtils is often used outside of beforeEach where as React is
+  // within it. This leads to two different instances of React on the same
+  // page. To identify a element from a different React instance we use
+  // a flag instead of an instanceof check.
+  var isElement = !!(object && object._isReactElement);
+  // if (isElement && !(object instanceof ReactElement)) {
+  // This is an indicator that you're using multiple versions of React at the
+  // same time. This will screw with ownership and stuff. Fix it, please.
+  // TODO: We could possibly warn here.
+  // }
+  return isElement;
+};
+
+module.exports = ReactElement;
+
+}).call(this,require('_process'))
+},{"./ReactContext":44,"./ReactCurrentOwner":45,"./warning":154,"_process":156}],62:[function(require,module,exports){
+(function (process){
+/**
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule ReactElementValidator
+ */
+
+/**
+ * ReactElementValidator provides a wrapper around a element factory
+ * which validates the props passed to the element. This is intended to be
+ * used only in DEV and could be replaced by a static type checker for languages
+ * that support it.
+ */
+
+"use strict";
+
+var ReactElement = require("./ReactElement");
+var ReactPropTypeLocations = require("./ReactPropTypeLocations");
+var ReactCurrentOwner = require("./ReactCurrentOwner");
+
+var monitorCodeUse = require("./monitorCodeUse");
+var warning = require("./warning");
+
+/**
+ * Warn if there's no key explicitly set on dynamic arrays of children or
+ * object keys are not valid. This allows us to keep track of children between
+ * updates.
+ */
+var ownerHasKeyUseWarning = {
+  'react_key_warning': {},
+  'react_numeric_key_warning': {}
+};
+var ownerHasMonitoredObjectMap = {};
+
+var loggedTypeFailures = {};
+
+var NUMERIC_PROPERTY_REGEX = /^\d+$/;
+
+/**
+ * Gets the current owner's displayName for use in warnings.
+ *
+ * @internal
+ * @return {?string} Display name or undefined
+ */
+function getCurrentOwnerDisplayName() {
+  var current = ReactCurrentOwner.current;
+  return current && current.constructor.displayName || undefined;
+}
+
+/**
+ * Warn if the component doesn't have an explicit key assigned to it.
+ * This component is in an array. The array could grow and shrink or be
+ * reordered. All children that haven't already been validated are required to
+ * have a "key" property assigned to it.
+ *
+ * @internal
+ * @param {ReactComponent} component Component that requires a key.
+ * @param {*} parentType component's parent's type.
+ */
+function validateExplicitKey(component, parentType) {
+  if (component._store.validated || component.key != null) {
+    return;
+  }
+  component._store.validated = true;
+
+  warnAndMonitorForKeyUse(
+    'react_key_warning',
+    'Each child in an array should have a unique "key" prop.',
+    component,
+    parentType
+  );
+}
+
+/**
+ * Warn if the key is being defined as an object property but has an incorrect
+ * value.
+ *
+ * @internal
+ * @param {string} name Property name of the key.
+ * @param {ReactComponent} component Component that requires a key.
+ * @param {*} parentType component's parent's type.
+ */
+function validatePropertyKey(name, component, parentType) {
+  if (!NUMERIC_PROPERTY_REGEX.test(name)) {
+    return;
+  }
+  warnAndMonitorForKeyUse(
+    'react_numeric_key_warning',
+    'Child objects should have non-numeric keys so ordering is preserved.',
+    component,
+    parentType
+  );
+}
+
+/**
+ * Shared warning and monitoring code for the key warnings.
+ *
+ * @internal
+ * @param {string} warningID The id used when logging.
+ * @param {string} message The base warning that gets output.
+ * @param {ReactComponent} component Component that requires a key.
+ * @param {*} parentType component's parent's type.
+ */
+function warnAndMonitorForKeyUse(warningID, message, component, parentType) {
+  var ownerName = getCurrentOwnerDisplayName();
+  var parentName = parentType.displayName;
+
+  var useName = ownerName || parentName;
+  var memoizer = ownerHasKeyUseWarning[warningID];
+  if (memoizer.hasOwnProperty(useName)) {
+    return;
+  }
+  memoizer[useName] = true;
+
+  message += ownerName ?
+    (" Check the render method of " + ownerName + ".") :
+    (" Check the renderComponent call using <" + parentName + ">.");
+
+  // Usually the current owner is the offender, but if it accepts children as a
+  // property, it may be the creator of the child that's responsible for
+  // assigning it a key.
+  var childOwnerName = null;
+  if (component._owner && component._owner !== ReactCurrentOwner.current) {
+    // Name of the component that originally created this child.
+    childOwnerName = component._owner.constructor.displayName;
+
+    message += (" It was passed a child from " + childOwnerName + ".");
+  }
+
+  message += ' See http://fb.me/react-warning-keys for more information.';
+  monitorCodeUse(warningID, {
+    component: useName,
+    componentOwner: childOwnerName
+  });
+  console.warn(message);
+}
+
+/**
+ * Log that we're using an object map. We're considering deprecating this
+ * feature and replace it with proper Map and ImmutableMap data structures.
+ *
+ * @internal
+ */
+function monitorUseOfObjectMap() {
+  var currentName = getCurrentOwnerDisplayName() || '';
+  if (ownerHasMonitoredObjectMap.hasOwnProperty(currentName)) {
+    return;
+  }
+  ownerHasMonitoredObjectMap[currentName] = true;
+  monitorCodeUse('react_object_map_children');
+}
+
+/**
+ * Ensure that every component either is passed in a static location, in an
+ * array with an explicit keys property defined, or in an object literal
+ * with valid key property.
+ *
+ * @internal
+ * @param {*} component Statically passed child of any type.
+ * @param {*} parentType component's parent's type.
+ * @return {boolean}
+ */
+function validateChildKeys(component, parentType) {
+  if (Array.isArray(component)) {
+    for (var i = 0; i < component.length; i++) {
+      var child = component[i];
+      if (ReactElement.isValidElement(child)) {
+        validateExplicitKey(child, parentType);
+      }
+    }
+  } else if (ReactElement.isValidElement(component)) {
+    // This component was passed in a valid location.
+    component._store.validated = true;
+  } else if (component && typeof component === 'object') {
+    monitorUseOfObjectMap();
+    for (var name in component) {
+      validatePropertyKey(name, component[name], parentType);
+    }
+  }
+}
+
+/**
+ * Assert that the props are valid
+ *
+ * @param {string} componentName Name of the component for error messages.
+ * @param {object} propTypes Map of prop name to a ReactPropType
+ * @param {object} props
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @private
+ */
+function checkPropTypes(componentName, propTypes, props, location) {
+  for (var propName in propTypes) {
+    if (propTypes.hasOwnProperty(propName)) {
+      var error;
+      // Prop type validation may throw. In case they do, we don't want to
+      // fail the render phase where it didn't fail before. So we log it.
+      // After these have been cleaned up, we'll let them throw.
+      try {
+        error = propTypes[propName](props, propName, componentName, location);
+      } catch (ex) {
+        error = ex;
+      }
+      if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+        // Only monitor this failure once because there tends to be a lot of the
+        // same error.
+        loggedTypeFailures[error.message] = true;
+        // This will soon use the warning module
+        monitorCodeUse(
+          'react_failed_descriptor_type_check',
+          { message: error.message }
+        );
+      }
+    }
+  }
+}
+
+var ReactElementValidator = {
+
+  createElement: function(type, props, children) {
+    // We warn in this case but don't throw. We expect the element creation to
+    // succeed and there will likely be errors in render.
+    ("production" !== process.env.NODE_ENV ? warning(
+      type != null,
+      'React.createElement: type should not be null or undefined. It should ' +
+        'be a string (for DOM elements) or a ReactClass (for composite ' +
+        'components).'
+    ) : null);
+
+    var element = ReactElement.createElement.apply(this, arguments);
+
+    // The result can be nullish if a mock or a custom function is used.
+    // TODO: Drop this when these are no longer allowed as the type argument.
+    if (element == null) {
+      return element;
+    }
+
+    for (var i = 2; i < arguments.length; i++) {
+      validateChildKeys(arguments[i], type);
+    }
+
+    if (type) {
+      var name = type.displayName;
+      if (type.propTypes) {
+        checkPropTypes(
+          name,
+          type.propTypes,
+          element.props,
+          ReactPropTypeLocations.prop
+        );
+      }
+      if (type.contextTypes) {
+        checkPropTypes(
+          name,
+          type.contextTypes,
+          element._context,
+          ReactPropTypeLocations.context
+        );
+      }
+    }
+    return element;
+  },
+
+  createFactory: function(type) {
+    var validatedFactory = ReactElementValidator.createElement.bind(
+      null,
+      type
+    );
+    validatedFactory.type = type;
+    return validatedFactory;
+  }
+
+};
+
+module.exports = ReactElementValidator;
+
+}).call(this,require('_process'))
+},{"./ReactCurrentOwner":45,"./ReactElement":61,"./ReactPropTypeLocations":80,"./monitorCodeUse":145,"./warning":154,"_process":156}],63:[function(require,module,exports){
+(function (process){
+/**
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule ReactEmptyComponent
+ */
+
+"use strict";
+
+var ReactElement = require("./ReactElement");
+
+var invariant = require("./invariant");
+
+var component;
+// This registry keeps track of the React IDs of the components that rendered to
+// `null` (in reality a placeholder such as `noscript`)
+var nullComponentIdsRegistry = {};
+
+var ReactEmptyComponentInjection = {
+  injectEmptyComponent: function(emptyComponent) {
+    component = ReactElement.createFactory(emptyComponent);
+  }
+};
+
+/**
+ * @return {ReactComponent} component The injected empty component.
+ */
+function getEmptyComponent() {
+  ("production" !== process.env.NODE_ENV ? invariant(
+    component,
+    'Trying to return null from a render, but no null placeholder component ' +
+    'was injected.'
+  ) : invariant(component));
+  return component();
+}
+
+/**
+ * Mark the component as having rendered to null.
+ * @param {string} id Component's `_rootNodeID`.
+ */
+function registerNullComponentID(id) {
+  nullComponentIdsRegistry[id] = true;
+}
+
+/**
+ * Unmark the component as having rendered to null: it renders to something now.
+ * @param {string} id Component's `_rootNodeID`.
+ */
+function deregisterNullComponentID(id) {
+  delete nullComponentIdsRegistry[id];
+}
+
+/**
+ * @param {string} id Component's `_rootNodeID`.
+ * @return {boolean} True if the component is rendered to null.
+ */
+function isNullComponentID(id) {
+  return nullComponentIdsRegistry[id];
+}
+
+var ReactEmptyComponent = {
+  deregisterNullComponentID: deregisterNullComponentID,
+  getEmptyComponent: getEmptyComponent,
+  injection: ReactEmptyComponentInjection,
+  isNullComponentID: isNullComponentID,
+  registerNullComponentID: registerNullComponentID
+};
+
+module.exports = ReactEmptyComponent;
+
+}).call(this,require('_process'))
+},{"./ReactElement":61,"./invariant":135,"_process":156}],64:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactErrorUtils
  * @typechecks
@@ -20121,364 +14113,14 @@ var ReactErrorUtils = {
 
 module.exports = ReactErrorUtils;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventEmitter.js":[function(require,module,exports){
-(function (process){
+},{}],65:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule ReactEventEmitter
- * @typechecks static-only
- */
-
-"use strict";
-
-var EventConstants = require("./EventConstants");
-var EventListener = require("./EventListener");
-var EventPluginHub = require("./EventPluginHub");
-var EventPluginRegistry = require("./EventPluginRegistry");
-var ExecutionEnvironment = require("./ExecutionEnvironment");
-var ReactEventEmitterMixin = require("./ReactEventEmitterMixin");
-var ViewportMetrics = require("./ViewportMetrics");
-
-var invariant = require("./invariant");
-var isEventSupported = require("./isEventSupported");
-var merge = require("./merge");
-
-/**
- * Summary of `ReactEventEmitter` event handling:
- *
- *  - Top-level delegation is used to trap native browser events. We normalize
- *    and de-duplicate events to account for browser quirks.
- *
- *  - Forward these native events (with the associated top-level type used to
- *    trap it) to `EventPluginHub`, which in turn will ask plugins if they want
- *    to extract any synthetic events.
- *
- *  - The `EventPluginHub` will then process each event by annotating them with
- *    "dispatches", a sequence of listeners and IDs that care about that event.
- *
- *  - The `EventPluginHub` then dispatches the events.
- *
- * Overview of React and the event system:
- *
- *                   .
- * +------------+    .
- * |    DOM     |    .
- * +------------+    .                         +-----------+
- *       +           .               +--------+|SimpleEvent|
- *       |           .               |         |Plugin     |
- * +-----|------+    .               v         +-----------+
- * |     |      |    .    +--------------+                    +------------+
- * |     +-----------.--->|EventPluginHub|                    |    Event   |
- * |            |    .    |              |     +-----------+  | Propagators|
- * | ReactEvent |    .    |              |     |TapEvent   |  |------------|
- * |  Emitter   |    .    |              |<---+|Plugin     |  |other plugin|
- * |            |    .    |              |     +-----------+  |  utilities |
- * |     +-----------.--->|              |                    +------------+
- * |     |      |    .    +--------------+
- * +-----|------+    .                ^        +-----------+
- *       |           .                |        |Enter/Leave|
- *       +           .                +-------+|Plugin     |
- * +-------------+   .                         +-----------+
- * | application |   .
- * |-------------|   .
- * |             |   .
- * |             |   .
- * +-------------+   .
- *                   .
- *    React Core     .  General Purpose Event Plugin System
- */
-
-var alreadyListeningTo = {};
-var isMonitoringScrollValue = false;
-var reactTopListenersCounter = 0;
-
-// For events like 'submit' which don't consistently bubble (which we trap at a
-// lower node than `document`), binding at `document` would cause duplicate
-// events so we don't include them here
-var topEventMapping = {
-  topBlur: 'blur',
-  topChange: 'change',
-  topClick: 'click',
-  topCompositionEnd: 'compositionend',
-  topCompositionStart: 'compositionstart',
-  topCompositionUpdate: 'compositionupdate',
-  topContextMenu: 'contextmenu',
-  topCopy: 'copy',
-  topCut: 'cut',
-  topDoubleClick: 'dblclick',
-  topDrag: 'drag',
-  topDragEnd: 'dragend',
-  topDragEnter: 'dragenter',
-  topDragExit: 'dragexit',
-  topDragLeave: 'dragleave',
-  topDragOver: 'dragover',
-  topDragStart: 'dragstart',
-  topDrop: 'drop',
-  topFocus: 'focus',
-  topInput: 'input',
-  topKeyDown: 'keydown',
-  topKeyPress: 'keypress',
-  topKeyUp: 'keyup',
-  topMouseDown: 'mousedown',
-  topMouseMove: 'mousemove',
-  topMouseOut: 'mouseout',
-  topMouseOver: 'mouseover',
-  topMouseUp: 'mouseup',
-  topPaste: 'paste',
-  topScroll: 'scroll',
-  topSelectionChange: 'selectionchange',
-  topTouchCancel: 'touchcancel',
-  topTouchEnd: 'touchend',
-  topTouchMove: 'touchmove',
-  topTouchStart: 'touchstart',
-  topWheel: 'wheel'
-};
-
-/**
- * To ensure no conflicts with other potential React instances on the page
- */
-var topListenersIDKey = "_reactListenersID" + String(Math.random()).slice(2);
-
-function getListeningForDocument(mountAt) {
-  if (mountAt[topListenersIDKey] == null) {
-    mountAt[topListenersIDKey] = reactTopListenersCounter++;
-    alreadyListeningTo[mountAt[topListenersIDKey]] = {};
-  }
-  return alreadyListeningTo[mountAt[topListenersIDKey]];
-}
-
-/**
- * Traps top-level events by using event bubbling.
- *
- * @param {string} topLevelType Record from `EventConstants`.
- * @param {string} handlerBaseName Event name (e.g. "click").
- * @param {DOMEventTarget} element Element on which to attach listener.
- * @internal
- */
-function trapBubbledEvent(topLevelType, handlerBaseName, element) {
-  EventListener.listen(
-    element,
-    handlerBaseName,
-    ReactEventEmitter.TopLevelCallbackCreator.createTopLevelCallback(
-      topLevelType
-    )
-  );
-}
-
-/**
- * Traps a top-level event by using event capturing.
- *
- * @param {string} topLevelType Record from `EventConstants`.
- * @param {string} handlerBaseName Event name (e.g. "click").
- * @param {DOMEventTarget} element Element on which to attach listener.
- * @internal
- */
-function trapCapturedEvent(topLevelType, handlerBaseName, element) {
-  EventListener.capture(
-    element,
-    handlerBaseName,
-    ReactEventEmitter.TopLevelCallbackCreator.createTopLevelCallback(
-      topLevelType
-    )
-  );
-}
-
-/**
- * `ReactEventEmitter` is used to attach top-level event listeners. For example:
- *
- *   ReactEventEmitter.putListener('myID', 'onClick', myFunction);
- *
- * This would allocate a "registration" of `('onClick', myFunction)` on 'myID'.
- *
- * @internal
- */
-var ReactEventEmitter = merge(ReactEventEmitterMixin, {
-
-  /**
-   * React references `ReactEventTopLevelCallback` using this property in order
-   * to allow dependency injection.
-   */
-  TopLevelCallbackCreator: null,
-
-  injection: {
-    /**
-     * @param {function} TopLevelCallbackCreator
-     */
-    injectTopLevelCallbackCreator: function(TopLevelCallbackCreator) {
-      ReactEventEmitter.TopLevelCallbackCreator = TopLevelCallbackCreator;
-    }
-  },
-
-  /**
-   * Sets whether or not any created callbacks should be enabled.
-   *
-   * @param {boolean} enabled True if callbacks should be enabled.
-   */
-  setEnabled: function(enabled) {
-    ("production" !== process.env.NODE_ENV ? invariant(
-      ExecutionEnvironment.canUseDOM,
-      'setEnabled(...): Cannot toggle event listening in a Worker thread. ' +
-      'This is likely a bug in the framework. Please report immediately.'
-    ) : invariant(ExecutionEnvironment.canUseDOM));
-    if (ReactEventEmitter.TopLevelCallbackCreator) {
-      ReactEventEmitter.TopLevelCallbackCreator.setEnabled(enabled);
-    }
-  },
-
-  /**
-   * @return {boolean} True if callbacks are enabled.
-   */
-  isEnabled: function() {
-    return !!(
-      ReactEventEmitter.TopLevelCallbackCreator &&
-      ReactEventEmitter.TopLevelCallbackCreator.isEnabled()
-    );
-  },
-
-  /**
-   * We listen for bubbled touch events on the document object.
-   *
-   * Firefox v8.01 (and possibly others) exhibited strange behavior when
-   * mounting `onmousemove` events at some node that was not the document
-   * element. The symptoms were that if your mouse is not moving over something
-   * contained within that mount point (for example on the background) the
-   * top-level listeners for `onmousemove` won't be called. However, if you
-   * register the `mousemove` on the document object, then it will of course
-   * catch all `mousemove`s. This along with iOS quirks, justifies restricting
-   * top-level listeners to the document object only, at least for these
-   * movement types of events and possibly all events.
-   *
-   * @see http://www.quirksmode.org/blog/archives/2010/09/click_event_del.html
-   *
-   * Also, `keyup`/`keypress`/`keydown` do not bubble to the window on IE, but
-   * they bubble to document.
-   *
-   * @param {string} registrationName Name of listener (e.g. `onClick`).
-   * @param {DOMDocument} contentDocument Document which owns the container
-   */
-  listenTo: function(registrationName, contentDocument) {
-    var mountAt = contentDocument;
-    var isListening = getListeningForDocument(mountAt);
-    var dependencies = EventPluginRegistry.
-      registrationNameDependencies[registrationName];
-
-    var topLevelTypes = EventConstants.topLevelTypes;
-    for (var i = 0, l = dependencies.length; i < l; i++) {
-      var dependency = dependencies[i];
-      if (!isListening[dependency]) {
-        var topLevelType = topLevelTypes[dependency];
-
-        if (topLevelType === topLevelTypes.topWheel) {
-          if (isEventSupported('wheel')) {
-            trapBubbledEvent(topLevelTypes.topWheel, 'wheel', mountAt);
-          } else if (isEventSupported('mousewheel')) {
-            trapBubbledEvent(topLevelTypes.topWheel, 'mousewheel', mountAt);
-          } else {
-            // Firefox needs to capture a different mouse scroll event.
-            // @see http://www.quirksmode.org/dom/events/tests/scroll.html
-            trapBubbledEvent(
-              topLevelTypes.topWheel,
-              'DOMMouseScroll',
-              mountAt);
-          }
-        } else if (topLevelType === topLevelTypes.topScroll) {
-
-          if (isEventSupported('scroll', true)) {
-            trapCapturedEvent(topLevelTypes.topScroll, 'scroll', mountAt);
-          } else {
-            trapBubbledEvent(topLevelTypes.topScroll, 'scroll', window);
-          }
-        } else if (topLevelType === topLevelTypes.topFocus ||
-            topLevelType === topLevelTypes.topBlur) {
-
-          if (isEventSupported('focus', true)) {
-            trapCapturedEvent(topLevelTypes.topFocus, 'focus', mountAt);
-            trapCapturedEvent(topLevelTypes.topBlur, 'blur', mountAt);
-          } else if (isEventSupported('focusin')) {
-            // IE has `focusin` and `focusout` events which bubble.
-            // @see http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
-            trapBubbledEvent(topLevelTypes.topFocus, 'focusin', mountAt);
-            trapBubbledEvent(topLevelTypes.topBlur, 'focusout', mountAt);
-          }
-
-          // to make sure blur and focus event listeners are only attached once
-          isListening[topLevelTypes.topBlur] = true;
-          isListening[topLevelTypes.topFocus] = true;
-        } else if (topEventMapping[dependency]) {
-          trapBubbledEvent(topLevelType, topEventMapping[dependency], mountAt);
-        }
-
-        isListening[dependency] = true;
-      }
-    }
-  },
-
-  /**
-   * Listens to window scroll and resize events. We cache scroll values so that
-   * application code can access them without triggering reflows.
-   *
-   * NOTE: Scroll events do not bubble.
-   *
-   * @see http://www.quirksmode.org/dom/events/scroll.html
-   */
-  ensureScrollValueMonitoring: function(){
-    if (!isMonitoringScrollValue) {
-      var refresh = ViewportMetrics.refreshScrollValues;
-      EventListener.listen(window, 'scroll', refresh);
-      EventListener.listen(window, 'resize', refresh);
-      isMonitoringScrollValue = true;
-    }
-  },
-
-  eventNameDispatchConfigs: EventPluginHub.eventNameDispatchConfigs,
-
-  registrationNameModules: EventPluginHub.registrationNameModules,
-
-  putListener: EventPluginHub.putListener,
-
-  getListener: EventPluginHub.getListener,
-
-  deleteListener: EventPluginHub.deleteListener,
-
-  deleteAllListeners: EventPluginHub.deleteAllListeners,
-
-  trapBubbledEvent: trapBubbledEvent,
-
-  trapCapturedEvent: trapCapturedEvent
-
-});
-
-module.exports = ReactEventEmitter;
-
-}).call(this,require('_process'))
-},{"./EventConstants":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventConstants.js","./EventListener":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventListener.js","./EventPluginHub":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginHub.js","./EventPluginRegistry":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginRegistry.js","./ExecutionEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js","./ReactEventEmitterMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventEmitterMixin.js","./ViewportMetrics":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ViewportMetrics.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./isEventSupported":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/isEventSupported.js","./merge":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/merge.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventEmitterMixin.js":[function(require,module,exports){
-/**
- * Copyright 2013-2014 Facebook, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactEventEmitterMixin
  */
@@ -20486,7 +14128,6 @@ module.exports = ReactEventEmitter;
 "use strict";
 
 var EventPluginHub = require("./EventPluginHub");
-var ReactUpdates = require("./ReactUpdates");
 
 function runEventQueueInBatch(events) {
   EventPluginHub.enqueueEvents(events);
@@ -20516,48 +14157,37 @@ var ReactEventEmitterMixin = {
       nativeEvent
     );
 
-    // Event queue being processed in the same cycle allows `preventDefault`.
-    ReactUpdates.batchedUpdates(runEventQueueInBatch, events);
+    runEventQueueInBatch(events);
   }
 };
 
 module.exports = ReactEventEmitterMixin;
 
-},{"./EventPluginHub":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginHub.js","./ReactUpdates":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactUpdates.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventTopLevelCallback.js":[function(require,module,exports){
+},{"./EventPluginHub":26}],66:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule ReactEventTopLevelCallback
+ * @providesModule ReactEventListener
  * @typechecks static-only
  */
 
 "use strict";
 
+var EventListener = require("./EventListener");
+var ExecutionEnvironment = require("./ExecutionEnvironment");
 var PooledClass = require("./PooledClass");
-var ReactEventEmitter = require("./ReactEventEmitter");
 var ReactInstanceHandles = require("./ReactInstanceHandles");
 var ReactMount = require("./ReactMount");
+var ReactUpdates = require("./ReactUpdates");
 
+var assign = require("./Object.assign");
 var getEventTarget = require("./getEventTarget");
-var mixInto = require("./mixInto");
-
-/**
- * @type {boolean}
- * @private
- */
-var _topLevelListenersEnabled = true;
+var getUnboundedScrollPosition = require("./getUnboundedScrollPosition");
 
 /**
  * Finds the parent React component of `node`.
@@ -20577,18 +14207,27 @@ function findParent(node) {
   return parent;
 }
 
-/**
- * Calls ReactEventEmitter.handleTopLevel for each node stored in bookKeeping's
- * ancestor list. Separated from createTopLevelCallback to avoid try/finally
- * deoptimization.
- *
- * @param {string} topLevelType
- * @param {DOMEvent} nativeEvent
- * @param {TopLevelCallbackBookKeeping} bookKeeping
- */
-function handleTopLevelImpl(topLevelType, nativeEvent, bookKeeping) {
+// Used to store ancestor hierarchy in top level callback
+function TopLevelCallbackBookKeeping(topLevelType, nativeEvent) {
+  this.topLevelType = topLevelType;
+  this.nativeEvent = nativeEvent;
+  this.ancestors = [];
+}
+assign(TopLevelCallbackBookKeeping.prototype, {
+  destructor: function() {
+    this.topLevelType = null;
+    this.nativeEvent = null;
+    this.ancestors.length = 0;
+  }
+});
+PooledClass.addPoolingTo(
+  TopLevelCallbackBookKeeping,
+  PooledClass.twoArgumentPooler
+);
+
+function handleTopLevelImpl(bookKeeping) {
   var topLevelTarget = ReactMount.getFirstReactDOM(
-    getEventTarget(nativeEvent)
+    getEventTarget(bookKeeping.nativeEvent)
   ) || window;
 
   // Loop through the hierarchy, in case there's any nested components.
@@ -20604,91 +14243,118 @@ function handleTopLevelImpl(topLevelType, nativeEvent, bookKeeping) {
   for (var i = 0, l = bookKeeping.ancestors.length; i < l; i++) {
     topLevelTarget = bookKeeping.ancestors[i];
     var topLevelTargetID = ReactMount.getID(topLevelTarget) || '';
-    ReactEventEmitter.handleTopLevel(
-      topLevelType,
+    ReactEventListener._handleTopLevel(
+      bookKeeping.topLevelType,
       topLevelTarget,
       topLevelTargetID,
-      nativeEvent
+      bookKeeping.nativeEvent
     );
   }
 }
 
-// Used to store ancestor hierarchy in top level callback
-function TopLevelCallbackBookKeeping() {
-  this.ancestors = [];
+function scrollValueMonitor(cb) {
+  var scrollPosition = getUnboundedScrollPosition(window);
+  cb(scrollPosition);
 }
-mixInto(TopLevelCallbackBookKeeping, {
-  destructor: function() {
-    this.ancestors.length = 0;
-  }
-});
-PooledClass.addPoolingTo(TopLevelCallbackBookKeeping);
 
-/**
- * Top-level callback creator used to implement event handling using delegation.
- * This is used via dependency injection.
- */
-var ReactEventTopLevelCallback = {
+var ReactEventListener = {
+  _enabled: true,
+  _handleTopLevel: null,
 
-  /**
-   * Sets whether or not any created callbacks should be enabled.
-   *
-   * @param {boolean} enabled True if callbacks should be enabled.
-   */
+  WINDOW_HANDLE: ExecutionEnvironment.canUseDOM ? window : null,
+
+  setHandleTopLevel: function(handleTopLevel) {
+    ReactEventListener._handleTopLevel = handleTopLevel;
+  },
+
   setEnabled: function(enabled) {
-    _topLevelListenersEnabled = !!enabled;
+    ReactEventListener._enabled = !!enabled;
   },
 
-  /**
-   * @return {boolean} True if callbacks are enabled.
-   */
   isEnabled: function() {
-    return _topLevelListenersEnabled;
+    return ReactEventListener._enabled;
   },
 
+
   /**
-   * Creates a callback for the supplied `topLevelType` that could be added as
-   * a listener to the document. The callback computes a `topLevelTarget` which
-   * should be the root node of a mounted React component where the listener
-   * is attached.
+   * Traps top-level events by using event bubbling.
    *
    * @param {string} topLevelType Record from `EventConstants`.
-   * @return {function} Callback for handling top-level events.
+   * @param {string} handlerBaseName Event name (e.g. "click").
+   * @param {object} handle Element on which to attach listener.
+   * @return {object} An object with a remove function which will forcefully
+   *                  remove the listener.
+   * @internal
    */
-  createTopLevelCallback: function(topLevelType) {
-    return function(nativeEvent) {
-      if (!_topLevelListenersEnabled) {
-        return;
-      }
+  trapBubbledEvent: function(topLevelType, handlerBaseName, handle) {
+    var element = handle;
+    if (!element) {
+      return;
+    }
+    return EventListener.listen(
+      element,
+      handlerBaseName,
+      ReactEventListener.dispatchEvent.bind(null, topLevelType)
+    );
+  },
 
-      var bookKeeping = TopLevelCallbackBookKeeping.getPooled();
-      try {
-        handleTopLevelImpl(topLevelType, nativeEvent, bookKeeping);
-      } finally {
-        TopLevelCallbackBookKeeping.release(bookKeeping);
-      }
-    };
+  /**
+   * Traps a top-level event by using event capturing.
+   *
+   * @param {string} topLevelType Record from `EventConstants`.
+   * @param {string} handlerBaseName Event name (e.g. "click").
+   * @param {object} handle Element on which to attach listener.
+   * @return {object} An object with a remove function which will forcefully
+   *                  remove the listener.
+   * @internal
+   */
+  trapCapturedEvent: function(topLevelType, handlerBaseName, handle) {
+    var element = handle;
+    if (!element) {
+      return;
+    }
+    return EventListener.capture(
+      element,
+      handlerBaseName,
+      ReactEventListener.dispatchEvent.bind(null, topLevelType)
+    );
+  },
+
+  monitorScrollValue: function(refresh) {
+    var callback = scrollValueMonitor.bind(null, refresh);
+    EventListener.listen(window, 'scroll', callback);
+    EventListener.listen(window, 'resize', callback);
+  },
+
+  dispatchEvent: function(topLevelType, nativeEvent) {
+    if (!ReactEventListener._enabled) {
+      return;
+    }
+
+    var bookKeeping = TopLevelCallbackBookKeeping.getPooled(
+      topLevelType,
+      nativeEvent
+    );
+    try {
+      // Event queue being processed in the same cycle allows
+      // `preventDefault`.
+      ReactUpdates.batchedUpdates(handleTopLevelImpl, bookKeeping);
+    } finally {
+      TopLevelCallbackBookKeeping.release(bookKeeping);
+    }
   }
-
 };
 
-module.exports = ReactEventTopLevelCallback;
+module.exports = ReactEventListener;
 
-},{"./PooledClass":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/PooledClass.js","./ReactEventEmitter":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventEmitter.js","./ReactInstanceHandles":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInstanceHandles.js","./ReactMount":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMount.js","./getEventTarget":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getEventTarget.js","./mixInto":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mixInto.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInjection.js":[function(require,module,exports){
+},{"./EventListener":25,"./ExecutionEnvironment":30,"./Object.assign":35,"./PooledClass":36,"./ReactInstanceHandles":69,"./ReactMount":72,"./ReactUpdates":88,"./getEventTarget":126,"./getUnboundedScrollPosition":131}],67:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactInjection
  */
@@ -20699,8 +14365,9 @@ var DOMProperty = require("./DOMProperty");
 var EventPluginHub = require("./EventPluginHub");
 var ReactComponent = require("./ReactComponent");
 var ReactCompositeComponent = require("./ReactCompositeComponent");
-var ReactDOM = require("./ReactDOM");
-var ReactEventEmitter = require("./ReactEventEmitter");
+var ReactEmptyComponent = require("./ReactEmptyComponent");
+var ReactBrowserEventEmitter = require("./ReactBrowserEventEmitter");
+var ReactNativeComponent = require("./ReactNativeComponent");
 var ReactPerf = require("./ReactPerf");
 var ReactRootIndex = require("./ReactRootIndex");
 var ReactUpdates = require("./ReactUpdates");
@@ -20709,9 +14376,10 @@ var ReactInjection = {
   Component: ReactComponent.injection,
   CompositeComponent: ReactCompositeComponent.injection,
   DOMProperty: DOMProperty.injection,
+  EmptyComponent: ReactEmptyComponent.injection,
   EventPluginHub: EventPluginHub.injection,
-  DOM: ReactDOM.injection,
-  EventEmitter: ReactEventEmitter.injection,
+  EventEmitter: ReactBrowserEventEmitter.injection,
+  NativeComponent: ReactNativeComponent.injection,
   Perf: ReactPerf.injection,
   RootIndex: ReactRootIndex.injection,
   Updates: ReactUpdates.injection
@@ -20719,21 +14387,14 @@ var ReactInjection = {
 
 module.exports = ReactInjection;
 
-},{"./DOMProperty":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMProperty.js","./EventPluginHub":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginHub.js","./ReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactComponent.js","./ReactCompositeComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCompositeComponent.js","./ReactDOM":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOM.js","./ReactEventEmitter":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventEmitter.js","./ReactPerf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPerf.js","./ReactRootIndex":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactRootIndex.js","./ReactUpdates":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactUpdates.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInputSelection.js":[function(require,module,exports){
+},{"./DOMProperty":19,"./EventPluginHub":26,"./ReactBrowserEventEmitter":39,"./ReactComponent":41,"./ReactCompositeComponent":43,"./ReactEmptyComponent":63,"./ReactNativeComponent":75,"./ReactPerf":77,"./ReactRootIndex":84,"./ReactUpdates":88}],68:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactInputSelection
  */
@@ -20862,22 +14523,15 @@ var ReactInputSelection = {
 
 module.exports = ReactInputSelection;
 
-},{"./ReactDOMSelection":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactDOMSelection.js","./containsNode":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/containsNode.js","./focusNode":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/focusNode.js","./getActiveElement":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getActiveElement.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInstanceHandles.js":[function(require,module,exports){
+},{"./ReactDOMSelection":55,"./containsNode":110,"./focusNode":120,"./getActiveElement":122}],69:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactInstanceHandles
  * @typechecks static-only
@@ -21204,21 +14858,261 @@ var ReactInstanceHandles = {
 module.exports = ReactInstanceHandles;
 
 }).call(this,require('_process'))
-},{"./ReactRootIndex":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactRootIndex.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMarkupChecksum.js":[function(require,module,exports){
+},{"./ReactRootIndex":84,"./invariant":135,"_process":156}],70:[function(require,module,exports){
+(function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule ReactLegacyElement
+ */
+
+"use strict";
+
+var ReactCurrentOwner = require("./ReactCurrentOwner");
+
+var invariant = require("./invariant");
+var monitorCodeUse = require("./monitorCodeUse");
+var warning = require("./warning");
+
+var legacyFactoryLogs = {};
+function warnForLegacyFactoryCall() {
+  if (!ReactLegacyElementFactory._isLegacyCallWarningEnabled) {
+    return;
+  }
+  var owner = ReactCurrentOwner.current;
+  var name = owner && owner.constructor ? owner.constructor.displayName : '';
+  if (!name) {
+    name = 'Something';
+  }
+  if (legacyFactoryLogs.hasOwnProperty(name)) {
+    return;
+  }
+  legacyFactoryLogs[name] = true;
+  ("production" !== process.env.NODE_ENV ? warning(
+    false,
+    name + ' is calling a React component directly. ' +
+    'Use a factory or JSX instead. See: http://fb.me/react-legacyfactory'
+  ) : null);
+  monitorCodeUse('react_legacy_factory_call', { version: 3, name: name });
+}
+
+function warnForPlainFunctionType(type) {
+  var isReactClass =
+    type.prototype &&
+    typeof type.prototype.mountComponent === 'function' &&
+    typeof type.prototype.receiveComponent === 'function';
+  if (isReactClass) {
+    ("production" !== process.env.NODE_ENV ? warning(
+      false,
+      'Did not expect to get a React class here. Use `Component` instead ' +
+      'of `Component.type` or `this.constructor`.'
+    ) : null);
+  } else {
+    if (!type._reactWarnedForThisType) {
+      try {
+        type._reactWarnedForThisType = true;
+      } catch (x) {
+        // just incase this is a frozen object or some special object
+      }
+      monitorCodeUse(
+        'react_non_component_in_jsx',
+        { version: 3, name: type.name }
+      );
+    }
+    ("production" !== process.env.NODE_ENV ? warning(
+      false,
+      'This JSX uses a plain function. Only React components are ' +
+      'valid in React\'s JSX transform.'
+    ) : null);
+  }
+}
+
+function warnForNonLegacyFactory(type) {
+  ("production" !== process.env.NODE_ENV ? warning(
+    false,
+    'Do not pass React.DOM.' + type.type + ' to JSX or createFactory. ' +
+    'Use the string "' + type.type + '" instead.'
+  ) : null);
+}
+
+/**
+ * Transfer static properties from the source to the target. Functions are
+ * rebound to have this reflect the original source.
+ */
+function proxyStaticMethods(target, source) {
+  if (typeof source !== 'function') {
+    return;
+  }
+  for (var key in source) {
+    if (source.hasOwnProperty(key)) {
+      var value = source[key];
+      if (typeof value === 'function') {
+        var bound = value.bind(source);
+        // Copy any properties defined on the function, such as `isRequired` on
+        // a PropTypes validator.
+        for (var k in value) {
+          if (value.hasOwnProperty(k)) {
+            bound[k] = value[k];
+          }
+        }
+        target[key] = bound;
+      } else {
+        target[key] = value;
+      }
+    }
+  }
+}
+
+// We use an object instead of a boolean because booleans are ignored by our
+// mocking libraries when these factories gets mocked.
+var LEGACY_MARKER = {};
+var NON_LEGACY_MARKER = {};
+
+var ReactLegacyElementFactory = {};
+
+ReactLegacyElementFactory.wrapCreateFactory = function(createFactory) {
+  var legacyCreateFactory = function(type) {
+    if (typeof type !== 'function') {
+      // Non-function types cannot be legacy factories
+      return createFactory(type);
+    }
+
+    if (type.isReactNonLegacyFactory) {
+      // This is probably a factory created by ReactDOM we unwrap it to get to
+      // the underlying string type. It shouldn't have been passed here so we
+      // warn.
+      if ("production" !== process.env.NODE_ENV) {
+        warnForNonLegacyFactory(type);
+      }
+      return createFactory(type.type);
+    }
+
+    if (type.isReactLegacyFactory) {
+      // This is probably a legacy factory created by ReactCompositeComponent.
+      // We unwrap it to get to the underlying class.
+      return createFactory(type.type);
+    }
+
+    if ("production" !== process.env.NODE_ENV) {
+      warnForPlainFunctionType(type);
+    }
+
+    // Unless it's a legacy factory, then this is probably a plain function,
+    // that is expecting to be invoked by JSX. We can just return it as is.
+    return type;
+  };
+  return legacyCreateFactory;
+};
+
+ReactLegacyElementFactory.wrapCreateElement = function(createElement) {
+  var legacyCreateElement = function(type, props, children) {
+    if (typeof type !== 'function') {
+      // Non-function types cannot be legacy factories
+      return createElement.apply(this, arguments);
+    }
+
+    var args;
+
+    if (type.isReactNonLegacyFactory) {
+      // This is probably a factory created by ReactDOM we unwrap it to get to
+      // the underlying string type. It shouldn't have been passed here so we
+      // warn.
+      if ("production" !== process.env.NODE_ENV) {
+        warnForNonLegacyFactory(type);
+      }
+      args = Array.prototype.slice.call(arguments, 0);
+      args[0] = type.type;
+      return createElement.apply(this, args);
+    }
+
+    if (type.isReactLegacyFactory) {
+      // This is probably a legacy factory created by ReactCompositeComponent.
+      // We unwrap it to get to the underlying class.
+      if (type._isMockFunction) {
+        // If this is a mock function, people will expect it to be called. We
+        // will actually call the original mock factory function instead. This
+        // future proofs unit testing that assume that these are classes.
+        type.type._mockedReactClassConstructor = type;
+      }
+      args = Array.prototype.slice.call(arguments, 0);
+      args[0] = type.type;
+      return createElement.apply(this, args);
+    }
+
+    if ("production" !== process.env.NODE_ENV) {
+      warnForPlainFunctionType(type);
+    }
+
+    // This is being called with a plain function we should invoke it
+    // immediately as if this was used with legacy JSX.
+    return type.apply(null, Array.prototype.slice.call(arguments, 1));
+  };
+  return legacyCreateElement;
+};
+
+ReactLegacyElementFactory.wrapFactory = function(factory) {
+  ("production" !== process.env.NODE_ENV ? invariant(
+    typeof factory === 'function',
+    'This is suppose to accept a element factory'
+  ) : invariant(typeof factory === 'function'));
+  var legacyElementFactory = function(config, children) {
+    // This factory should not be called when JSX is used. Use JSX instead.
+    if ("production" !== process.env.NODE_ENV) {
+      warnForLegacyFactoryCall();
+    }
+    return factory.apply(this, arguments);
+  };
+  proxyStaticMethods(legacyElementFactory, factory.type);
+  legacyElementFactory.isReactLegacyFactory = LEGACY_MARKER;
+  legacyElementFactory.type = factory.type;
+  return legacyElementFactory;
+};
+
+// This is used to mark a factory that will remain. E.g. we're allowed to call
+// it as a function. However, you're not suppose to pass it to createElement
+// or createFactory, so it will warn you if you do.
+ReactLegacyElementFactory.markNonLegacyFactory = function(factory) {
+  factory.isReactNonLegacyFactory = NON_LEGACY_MARKER;
+  return factory;
+};
+
+// Checks if a factory function is actually a legacy factory pretending to
+// be a class.
+ReactLegacyElementFactory.isValidFactory = function(factory) {
+  // TODO: This will be removed and moved into a class validator or something.
+  return typeof factory === 'function' &&
+    factory.isReactLegacyFactory === LEGACY_MARKER;
+};
+
+ReactLegacyElementFactory.isValidClass = function(factory) {
+  if ("production" !== process.env.NODE_ENV) {
+    ("production" !== process.env.NODE_ENV ? warning(
+      false,
+      'isValidClass is deprecated and will be removed in a future release. ' +
+      'Use a more specific validator instead.'
+    ) : null);
+  }
+  return ReactLegacyElementFactory.isValidFactory(factory);
+};
+
+ReactLegacyElementFactory._isLegacyCallWarningEnabled = true;
+
+module.exports = ReactLegacyElementFactory;
+
+}).call(this,require('_process'))
+},{"./ReactCurrentOwner":45,"./invariant":135,"./monitorCodeUse":145,"./warning":154,"_process":156}],71:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactMarkupChecksum
  */
@@ -21259,22 +15153,15 @@ var ReactMarkupChecksum = {
 
 module.exports = ReactMarkupChecksum;
 
-},{"./adler32":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/adler32.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMount.js":[function(require,module,exports){
+},{"./adler32":107}],72:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactMount
  */
@@ -21282,15 +15169,24 @@ module.exports = ReactMarkupChecksum;
 "use strict";
 
 var DOMProperty = require("./DOMProperty");
-var ReactEventEmitter = require("./ReactEventEmitter");
+var ReactBrowserEventEmitter = require("./ReactBrowserEventEmitter");
+var ReactCurrentOwner = require("./ReactCurrentOwner");
+var ReactElement = require("./ReactElement");
+var ReactLegacyElement = require("./ReactLegacyElement");
 var ReactInstanceHandles = require("./ReactInstanceHandles");
 var ReactPerf = require("./ReactPerf");
 
 var containsNode = require("./containsNode");
+var deprecated = require("./deprecated");
 var getReactRootElementInContainer = require("./getReactRootElementInContainer");
 var instantiateReactComponent = require("./instantiateReactComponent");
 var invariant = require("./invariant");
 var shouldUpdateReactComponent = require("./shouldUpdateReactComponent");
+var warning = require("./warning");
+
+var createElement = ReactLegacyElement.wrapCreateElement(
+  ReactElement.createElement
+);
 
 var SEPARATOR = ReactInstanceHandles.SEPARATOR;
 
@@ -21459,7 +15355,7 @@ function findDeepestCachedAncestor(targetID) {
  * representative DOM elements and inserting them into a supplied `container`.
  * Any prior content inside `container` is destroyed in the process.
  *
- *   ReactMount.renderComponent(
+ *   ReactMount.render(
  *     component,
  *     document.getElementById('container')
  *   );
@@ -21473,15 +15369,6 @@ function findDeepestCachedAncestor(targetID) {
  * Inside of `container`, the first element rendered is the "reactRoot".
  */
 var ReactMount = {
-  /** Time spent generating markup. */
-  totalInstantiationTime: 0,
-
-  /** Time spent inserting markup into the DOM. */
-  totalInjectionTime: 0,
-
-  /** Whether support for touch events should be initialized. */
-  useTouchEvents: false,
-
   /** Exposed for debugging purposes **/
   _instancesByReactRootID: instancesByReactRootID,
 
@@ -21542,7 +15429,7 @@ var ReactMount = {
       container.nodeType === DOC_NODE_TYPE
     )));
 
-    ReactEventEmitter.ensureScrollValueMonitoring();
+    ReactBrowserEventEmitter.ensureScrollValueMonitoring();
 
     var reactRootID = ReactMount.registerContainer(container);
     instancesByReactRootID[reactRootID] = nextComponent;
@@ -21563,8 +15450,18 @@ var ReactMount = {
         nextComponent,
         container,
         shouldReuseMarkup) {
+      // Various parts of our code (such as ReactCompositeComponent's
+      // _renderValidatedComponent) assume that calls to render aren't nested;
+      // verify that that's the case.
+      ("production" !== process.env.NODE_ENV ? warning(
+        ReactCurrentOwner.current == null,
+        '_renderNewRootComponent(): Render methods should be a pure function ' +
+        'of props and state; triggering nested component updates from ' +
+        'render is not allowed. If necessary, trigger nested updates in ' +
+        'componentDidUpdate.'
+      ) : null);
 
-      var componentInstance = instantiateReactComponent(nextComponent);
+      var componentInstance = instantiateReactComponent(nextComponent, null);
       var reactRootID = ReactMount._registerComponent(
         componentInstance,
         container
@@ -21592,19 +15489,38 @@ var ReactMount = {
    * perform an update on it and only mutate the DOM as necessary to reflect the
    * latest React component.
    *
-   * @param {ReactComponent} nextComponent Component instance to render.
+   * @param {ReactElement} nextElement Component element to render.
    * @param {DOMElement} container DOM element to render into.
    * @param {?function} callback function triggered on completion
    * @return {ReactComponent} Component instance rendered in `container`.
    */
-  renderComponent: function(nextComponent, container, callback) {
+  render: function(nextElement, container, callback) {
+    ("production" !== process.env.NODE_ENV ? invariant(
+      ReactElement.isValidElement(nextElement),
+      'renderComponent(): Invalid component element.%s',
+      (
+        typeof nextElement === 'string' ?
+          ' Instead of passing an element string, make sure to instantiate ' +
+          'it by passing it to React.createElement.' :
+        ReactLegacyElement.isValidFactory(nextElement) ?
+          ' Instead of passing a component class, make sure to instantiate ' +
+          'it by passing it to React.createElement.' :
+        // Check if it quacks like a element
+        typeof nextElement.props !== "undefined" ?
+          ' This may be caused by unintentionally loading two independent ' +
+          'copies of React.' :
+          ''
+      )
+    ) : invariant(ReactElement.isValidElement(nextElement)));
+
     var prevComponent = instancesByReactRootID[getReactRootID(container)];
 
     if (prevComponent) {
-      if (shouldUpdateReactComponent(prevComponent, nextComponent)) {
+      var prevElement = prevComponent._currentElement;
+      if (shouldUpdateReactComponent(prevElement, nextElement)) {
         return ReactMount._updateRootComponent(
           prevComponent,
-          nextComponent,
+          nextElement,
           container,
           callback
         );
@@ -21620,7 +15536,7 @@ var ReactMount = {
     var shouldReuseMarkup = containerHasReactMarkup && !prevComponent;
 
     var component = ReactMount._renderNewRootComponent(
-      nextComponent,
+      nextElement,
       container,
       shouldReuseMarkup
     );
@@ -21638,7 +15554,8 @@ var ReactMount = {
    * @return {ReactComponent} Component instance rendered in `container`.
    */
   constructAndRenderComponent: function(constructor, props, container) {
-    return ReactMount.renderComponent(constructor(props), container);
+    var element = createElement(constructor, props);
+    return ReactMount.render(element, container);
   },
 
   /**
@@ -21690,6 +15607,18 @@ var ReactMount = {
    *                   `container`
    */
   unmountComponentAtNode: function(container) {
+    // Various parts of our code (such as ReactCompositeComponent's
+    // _renderValidatedComponent) assume that calls to render aren't nested;
+    // verify that that's the case. (Strictly speaking, unmounting won't cause a
+    // render but we still don't expect to be in a render call here.)
+    ("production" !== process.env.NODE_ENV ? warning(
+      ReactCurrentOwner.current == null,
+      'unmountComponentAtNode(): Render methods should be a pure function of ' +
+      'props and state; triggering nested component updates from render is ' +
+      'not allowed. If necessary, trigger nested updates in ' +
+      'componentDidUpdate.'
+    ) : null);
+
     var reactRootID = getReactRootID(container);
     var component = instancesByReactRootID[reactRootID];
     if (!component) {
@@ -21885,9 +15814,10 @@ var ReactMount = {
       false,
       'findComponentRoot(..., %s): Unable to find element. This probably ' +
       'means the DOM was unexpectedly mutated (e.g., by the browser), ' +
-      'usually due to forgetting a <tbody> when using tables or nesting <p> ' +
-      'or <a> tags. Try inspecting the child nodes of the element with React ' +
-      'ID `%s`.',
+      'usually due to forgetting a <tbody> when using tables, nesting tags ' +
+      'like <form>, <p>, or <a>, or using non-SVG elements in an <svg> ' +
+      'parent. ' +
+      'Try inspecting the child nodes of the element with React ID `%s`.',
       targetID,
       ReactMount.getID(ancestorNode)
     ) : invariant(false));
@@ -21909,121 +15839,26 @@ var ReactMount = {
   purgeID: purgeID
 };
 
+// Deprecations (remove for 0.13)
+ReactMount.renderComponent = deprecated(
+  'ReactMount',
+  'renderComponent',
+  'render',
+  this,
+  ReactMount.render
+);
+
 module.exports = ReactMount;
 
 }).call(this,require('_process'))
-},{"./DOMProperty":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMProperty.js","./ReactEventEmitter":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventEmitter.js","./ReactInstanceHandles":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInstanceHandles.js","./ReactPerf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPerf.js","./containsNode":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/containsNode.js","./getReactRootElementInContainer":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getReactRootElementInContainer.js","./instantiateReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/instantiateReactComponent.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./shouldUpdateReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/shouldUpdateReactComponent.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMountReady.js":[function(require,module,exports){
+},{"./DOMProperty":19,"./ReactBrowserEventEmitter":39,"./ReactCurrentOwner":45,"./ReactElement":61,"./ReactInstanceHandles":69,"./ReactLegacyElement":70,"./ReactPerf":77,"./containsNode":110,"./deprecated":115,"./getReactRootElementInContainer":129,"./instantiateReactComponent":134,"./invariant":135,"./shouldUpdateReactComponent":151,"./warning":154,"_process":156}],73:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule ReactMountReady
- */
-
-"use strict";
-
-var PooledClass = require("./PooledClass");
-
-var mixInto = require("./mixInto");
-
-/**
- * A specialized pseudo-event module to help keep track of components waiting to
- * be notified when their DOM representations are available for use.
- *
- * This implements `PooledClass`, so you should never need to instantiate this.
- * Instead, use `ReactMountReady.getPooled()`.
- *
- * @param {?array<function>} initialCollection
- * @class ReactMountReady
- * @implements PooledClass
- * @internal
- */
-function ReactMountReady(initialCollection) {
-  this._queue = initialCollection || null;
-}
-
-mixInto(ReactMountReady, {
-
-  /**
-   * Enqueues a callback to be invoked when `notifyAll` is invoked. This is used
-   * to enqueue calls to `componentDidMount` and `componentDidUpdate`.
-   *
-   * @param {ReactComponent} component Component being rendered.
-   * @param {function(DOMElement)} callback Invoked when `notifyAll` is invoked.
-   * @internal
-   */
-  enqueue: function(component, callback) {
-    this._queue = this._queue || [];
-    this._queue.push({component: component, callback: callback});
-  },
-
-  /**
-   * Invokes all enqueued callbacks and clears the queue. This is invoked after
-   * the DOM representation of a component has been created or updated.
-   *
-   * @internal
-   */
-  notifyAll: function() {
-    var queue = this._queue;
-    if (queue) {
-      this._queue = null;
-      for (var i = 0, l = queue.length; i < l; i++) {
-        var component = queue[i].component;
-        var callback = queue[i].callback;
-        callback.call(component);
-      }
-      queue.length = 0;
-    }
-  },
-
-  /**
-   * Resets the internal queue.
-   *
-   * @internal
-   */
-  reset: function() {
-    this._queue = null;
-  },
-
-  /**
-   * `PooledClass` looks for this.
-   */
-  destructor: function() {
-    this.reset();
-  }
-
-});
-
-PooledClass.addPoolingTo(ReactMountReady);
-
-module.exports = ReactMountReady;
-
-},{"./PooledClass":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/PooledClass.js","./mixInto":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mixInto.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMultiChild.js":[function(require,module,exports){
-/**
- * Copyright 2013-2014 Facebook, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactMultiChild
  * @typechecks static-only
@@ -22207,7 +16042,7 @@ var ReactMultiChild = {
         if (children.hasOwnProperty(name)) {
           // The rendered children must be turned into instances as they're
           // mounted.
-          var childInstance = instantiateReactComponent(child);
+          var childInstance = instantiateReactComponent(child, null);
           children[name] = childInstance;
           // Inlined for performance, see `ReactInstanceHandles.createReactID`.
           var rootID = this._rootNodeID + name;
@@ -22298,11 +16133,12 @@ var ReactMultiChild = {
           continue;
         }
         var prevChild = prevChildren && prevChildren[name];
-        var nextChild = nextChildren[name];
-        if (shouldUpdateReactComponent(prevChild, nextChild)) {
+        var prevElement = prevChild && prevChild._currentElement;
+        var nextElement = nextChildren[name];
+        if (shouldUpdateReactComponent(prevElement, nextElement)) {
           this.moveChild(prevChild, nextIndex, lastIndex);
           lastIndex = Math.max(prevChild._mountIndex, lastIndex);
-          prevChild.receiveComponent(nextChild, transaction);
+          prevChild.receiveComponent(nextElement, transaction);
           prevChild._mountIndex = nextIndex;
         } else {
           if (prevChild) {
@@ -22311,7 +16147,10 @@ var ReactMultiChild = {
             this._unmountChildByName(prevChild, name);
           }
           // The child must be instantiated before it's mounted.
-          var nextChildInstance = instantiateReactComponent(nextChild);
+          var nextChildInstance = instantiateReactComponent(
+            nextElement,
+            null
+          );
           this._mountChildByNameAtIndex(
             nextChildInstance, name, nextIndex, transaction
           );
@@ -22428,13 +16267,10 @@ var ReactMultiChild = {
      * @private
      */
     _unmountChildByName: function(child, name) {
-      // TODO: When is this not true?
-      if (ReactComponent.isValidComponent(child)) {
-        this.removeChild(child);
-        child._mountIndex = null;
-        child.unmountComponent();
-        delete this._renderedChildren[name];
-      }
+      this.removeChild(child);
+      child._mountIndex = null;
+      child.unmountComponent();
+      delete this._renderedChildren[name];
     }
 
   }
@@ -22443,21 +16279,14 @@ var ReactMultiChild = {
 
 module.exports = ReactMultiChild;
 
-},{"./ReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactComponent.js","./ReactMultiChildUpdateTypes":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMultiChildUpdateTypes.js","./flattenChildren":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/flattenChildren.js","./instantiateReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/instantiateReactComponent.js","./shouldUpdateReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/shouldUpdateReactComponent.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMultiChildUpdateTypes.js":[function(require,module,exports){
+},{"./ReactComponent":41,"./ReactMultiChildUpdateTypes":74,"./flattenChildren":119,"./instantiateReactComponent":134,"./shouldUpdateReactComponent":151}],74:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactMultiChildUpdateTypes
  */
@@ -22483,22 +16312,88 @@ var ReactMultiChildUpdateTypes = keyMirror({
 
 module.exports = ReactMultiChildUpdateTypes;
 
-},{"./keyMirror":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyMirror.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactOwner.js":[function(require,module,exports){
+},{"./keyMirror":141}],75:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule ReactNativeComponent
+ */
+
+"use strict";
+
+var assign = require("./Object.assign");
+var invariant = require("./invariant");
+
+var genericComponentClass = null;
+// This registry keeps track of wrapper classes around native tags
+var tagToComponentClass = {};
+
+var ReactNativeComponentInjection = {
+  // This accepts a class that receives the tag string. This is a catch all
+  // that can render any kind of tag.
+  injectGenericComponentClass: function(componentClass) {
+    genericComponentClass = componentClass;
+  },
+  // This accepts a keyed object with classes as values. Each key represents a
+  // tag. That particular tag will use this class instead of the generic one.
+  injectComponentClasses: function(componentClasses) {
+    assign(tagToComponentClass, componentClasses);
+  }
+};
+
+/**
+ * Create an internal class for a specific tag.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * @param {string} tag The tag for which to create an internal instance.
+ * @param {any} props The props passed to the instance constructor.
+ * @return {ReactComponent} component The injected empty component.
+ */
+function createInstanceForTag(tag, props, parentType) {
+  var componentClass = tagToComponentClass[tag];
+  if (componentClass == null) {
+    ("production" !== process.env.NODE_ENV ? invariant(
+      genericComponentClass,
+      'There is no registered component for the tag %s',
+      tag
+    ) : invariant(genericComponentClass));
+    return new genericComponentClass(tag, props);
+  }
+  if (parentType === tag) {
+    // Avoid recursion
+    ("production" !== process.env.NODE_ENV ? invariant(
+      genericComponentClass,
+      'There is no registered component for the tag %s',
+      tag
+    ) : invariant(genericComponentClass));
+    return new genericComponentClass(tag, props);
+  }
+  // Unwrap legacy factories
+  return new componentClass.type(props);
+}
+
+var ReactNativeComponent = {
+  createInstanceForTag: createInstanceForTag,
+  injection: ReactNativeComponentInjection
+};
+
+module.exports = ReactNativeComponent;
+
+}).call(this,require('_process'))
+},{"./Object.assign":35,"./invariant":135,"_process":156}],76:[function(require,module,exports){
+(function (process){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactOwner
  */
@@ -22646,22 +16541,15 @@ var ReactOwner = {
 module.exports = ReactOwner;
 
 }).call(this,require('_process'))
-},{"./emptyObject":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/emptyObject.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPerf.js":[function(require,module,exports){
+},{"./emptyObject":117,"./invariant":135,"_process":156}],77:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactPerf
  * @typechecks static-only
@@ -22697,7 +16585,7 @@ var ReactPerf = {
   measure: function(objName, fnName, func) {
     if ("production" !== process.env.NODE_ENV) {
       var measuredFunc = null;
-      return function() {
+      var wrapper = function() {
         if (ReactPerf.enableMeasure) {
           if (!measuredFunc) {
             measuredFunc = ReactPerf.storedMeasure(objName, fnName, func);
@@ -22706,6 +16594,8 @@ var ReactPerf = {
         }
         return func.apply(this, arguments);
       };
+      wrapper.displayName = objName + '_' + fnName;
+      return wrapper;
     }
     return func;
   },
@@ -22735,32 +16625,28 @@ function _noMeasure(objName, fnName, func) {
 module.exports = ReactPerf;
 
 }).call(this,require('_process'))
-},{"_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPropTransferer.js":[function(require,module,exports){
+},{"_process":156}],78:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactPropTransferer
  */
 
 "use strict";
 
+var assign = require("./Object.assign");
 var emptyFunction = require("./emptyFunction");
 var invariant = require("./invariant");
 var joinClasses = require("./joinClasses");
-var merge = require("./merge");
+var warning = require("./warning");
+
+var didWarn = false;
 
 /**
  * Creates a transfer strategy that will merge prop values using the supplied
@@ -22779,6 +16665,13 @@ function createTransferStrategy(mergeStrategy) {
   };
 }
 
+var transferStrategyMerge = createTransferStrategy(function(a, b) {
+  // `merge` overrides the first object's (`props[key]` above) keys using the
+  // second object's (`value`) keys. An object's style's existing `propA` would
+  // get overridden. Flip the order here.
+  return assign({}, b, a);
+});
+
 /**
  * Transfer strategies dictate how props are transferred by `transferPropsTo`.
  * NOTE: if you add any more exceptions to this list you should be sure to
@@ -22794,18 +16687,35 @@ var TransferStrategies = {
    */
   className: createTransferStrategy(joinClasses),
   /**
-   * Never transfer the `key` prop.
-   */
-  key: emptyFunction,
-  /**
-   * Never transfer the `ref` prop.
-   */
-  ref: emptyFunction,
-  /**
    * Transfer the `style` prop (which is an object) by merging them.
    */
-  style: createTransferStrategy(merge)
+  style: transferStrategyMerge
 };
+
+/**
+ * Mutates the first argument by transferring the properties from the second
+ * argument.
+ *
+ * @param {object} props
+ * @param {object} newProps
+ * @return {object}
+ */
+function transferInto(props, newProps) {
+  for (var thisKey in newProps) {
+    if (!newProps.hasOwnProperty(thisKey)) {
+      continue;
+    }
+
+    var transferStrategy = TransferStrategies[thisKey];
+
+    if (transferStrategy && TransferStrategies.hasOwnProperty(thisKey)) {
+      transferStrategy(props, thisKey, newProps[thisKey]);
+    } else if (!props.hasOwnProperty(thisKey)) {
+      props[thisKey] = newProps[thisKey];
+    }
+  }
+  return props;
+}
 
 /**
  * ReactPropTransferer are capable of transferring props to another component
@@ -22825,23 +16735,7 @@ var ReactPropTransferer = {
    * @return {object} a new object containing both sets of props merged.
    */
   mergeProps: function(oldProps, newProps) {
-    var props = merge(oldProps);
-
-    for (var thisKey in newProps) {
-      if (!newProps.hasOwnProperty(thisKey)) {
-        continue;
-      }
-
-      var transferStrategy = TransferStrategies[thisKey];
-
-      if (transferStrategy && TransferStrategies.hasOwnProperty(thisKey)) {
-        transferStrategy(props, thisKey, newProps[thisKey]);
-      } else if (!props.hasOwnProperty(thisKey)) {
-        props[thisKey] = newProps[thisKey];
-      }
-    }
-
-    return props;
+    return transferInto(assign({}, oldProps), newProps);
   },
 
   /**
@@ -22857,27 +16751,39 @@ var ReactPropTransferer = {
      *
      * This is usually used to pass down props to a returned root component.
      *
-     * @param {ReactComponent} component Component receiving the properties.
-     * @return {ReactComponent} The supplied `component`.
+     * @param {ReactElement} element Component receiving the properties.
+     * @return {ReactElement} The supplied `component`.
      * @final
      * @protected
      */
-    transferPropsTo: function(component) {
+    transferPropsTo: function(element) {
       ("production" !== process.env.NODE_ENV ? invariant(
-        component._owner === this,
+        element._owner === this,
         '%s: You can\'t call transferPropsTo() on a component that you ' +
         'don\'t own, %s. This usually means you are calling ' +
         'transferPropsTo() on a component passed in as props or children.',
         this.constructor.displayName,
-        component.constructor.displayName
-      ) : invariant(component._owner === this));
+        typeof element.type === 'string' ?
+        element.type :
+        element.type.displayName
+      ) : invariant(element._owner === this));
 
-      component.props = ReactPropTransferer.mergeProps(
-        component.props,
-        this.props
-      );
+      if ("production" !== process.env.NODE_ENV) {
+        if (!didWarn) {
+          didWarn = true;
+          ("production" !== process.env.NODE_ENV ? warning(
+            false,
+            'transferPropsTo is deprecated. ' +
+            'See http://fb.me/react-transferpropsto for more information.'
+          ) : null);
+        }
+      }
 
-      return component;
+      // Because elements are immutable we have to merge into the existing
+      // props object rather than clone it.
+      transferInto(element.props, this.props);
+
+      return element;
     }
 
   }
@@ -22886,22 +16792,15 @@ var ReactPropTransferer = {
 module.exports = ReactPropTransferer;
 
 }).call(this,require('_process'))
-},{"./emptyFunction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/emptyFunction.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./joinClasses":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/joinClasses.js","./merge":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/merge.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPropTypeLocationNames.js":[function(require,module,exports){
+},{"./Object.assign":35,"./emptyFunction":116,"./invariant":135,"./joinClasses":140,"./warning":154,"_process":156}],79:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactPropTypeLocationNames
  */
@@ -22921,21 +16820,14 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = ReactPropTypeLocationNames;
 
 }).call(this,require('_process'))
-},{"_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPropTypeLocations.js":[function(require,module,exports){
+},{"_process":156}],80:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactPropTypeLocations
  */
@@ -22952,33 +16844,25 @@ var ReactPropTypeLocations = keyMirror({
 
 module.exports = ReactPropTypeLocations;
 
-},{"./keyMirror":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyMirror.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPropTypes.js":[function(require,module,exports){
-(function (process){
+},{"./keyMirror":141}],81:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactPropTypes
  */
 
 "use strict";
 
-var ReactComponent = require("./ReactComponent");
+var ReactElement = require("./ReactElement");
 var ReactPropTypeLocationNames = require("./ReactPropTypeLocationNames");
 
-var warning = require("./warning");
-var createObjectFrom = require("./createObjectFrom");
+var deprecated = require("./deprecated");
+var emptyFunction = require("./emptyFunction");
 
 /**
  * Collection of methods that allow declaration and validation of props that are
@@ -23007,29 +16891,32 @@ var createObjectFrom = require("./createObjectFrom");
  * Each and every declaration produces a function with the same signature. This
  * allows the creation of custom validation functions. For example:
  *
- *   var Props = require('ReactPropTypes');
- *   var MyLink = React.createClass({
- *     propTypes: {
- *       // An optional string or URI prop named "href".
- *       href: function(props, propName, componentName) {
- *         var propValue = props[propName];
- *         warning(
- *           propValue == null ||
- *           typeof propValue === 'string' ||
- *           propValue instanceof URI,
- *           'Invalid `%s` supplied to `%s`, expected string or URI.',
- *           propName,
- *           componentName
- *         );
- *       }
- *     },
- *     render: function() { ... }
- *   });
+ *  var MyLink = React.createClass({
+ *    propTypes: {
+ *      // An optional string or URI prop named "href".
+ *      href: function(props, propName, componentName) {
+ *        var propValue = props[propName];
+ *        if (propValue != null && typeof propValue !== 'string' &&
+ *            !(propValue instanceof URI)) {
+ *          return new Error(
+ *            'Expected a string or an URI for ' + propName + ' in ' +
+ *            componentName
+ *          );
+ *        }
+ *      }
+ *    },
+ *    render: function() {...}
+ *  });
  *
  * @internal
  */
-var Props = {
 
+var ANONYMOUS = '<<anonymous>>';
+
+var elementTypeChecker = createElementTypeChecker();
+var nodeTypeChecker = createNodeChecker();
+
+var ReactPropTypes = {
   array: createPrimitiveTypeChecker('array'),
   bool: createPrimitiveTypeChecker('boolean'),
   func: createPrimitiveTypeChecker('function'),
@@ -23037,36 +16924,240 @@ var Props = {
   object: createPrimitiveTypeChecker('object'),
   string: createPrimitiveTypeChecker('string'),
 
-  shape: createShapeTypeChecker,
+  any: createAnyTypeChecker(),
+  arrayOf: createArrayOfTypeChecker,
+  element: elementTypeChecker,
+  instanceOf: createInstanceTypeChecker,
+  node: nodeTypeChecker,
+  objectOf: createObjectOfTypeChecker,
   oneOf: createEnumTypeChecker,
   oneOfType: createUnionTypeChecker,
-  arrayOf: createArrayOfTypeChecker,
+  shape: createShapeTypeChecker,
 
-  instanceOf: createInstanceTypeChecker,
-
-  renderable: createRenderableTypeChecker(),
-
-  component: createComponentTypeChecker(),
-
-  any: createAnyTypeChecker()
+  component: deprecated(
+    'React.PropTypes',
+    'component',
+    'element',
+    this,
+    elementTypeChecker
+  ),
+  renderable: deprecated(
+    'React.PropTypes',
+    'renderable',
+    'node',
+    this,
+    nodeTypeChecker
+  )
 };
 
-var ANONYMOUS = '<<anonymous>>';
+function createChainableTypeChecker(validate) {
+  function checkType(isRequired, props, propName, componentName, location) {
+    componentName = componentName || ANONYMOUS;
+    if (props[propName] == null) {
+      var locationName = ReactPropTypeLocationNames[location];
+      if (isRequired) {
+        return new Error(
+          ("Required " + locationName + " `" + propName + "` was not specified in ")+
+          ("`" + componentName + "`.")
+        );
+      }
+    } else {
+      return validate(props, propName, componentName, location);
+    }
+  }
 
-function isRenderable(propValue) {
+  var chainedCheckType = checkType.bind(null, false);
+  chainedCheckType.isRequired = checkType.bind(null, true);
+
+  return chainedCheckType;
+}
+
+function createPrimitiveTypeChecker(expectedType) {
+  function validate(props, propName, componentName, location) {
+    var propValue = props[propName];
+    var propType = getPropType(propValue);
+    if (propType !== expectedType) {
+      var locationName = ReactPropTypeLocationNames[location];
+      // `propValue` being instance of, say, date/regexp, pass the 'object'
+      // check, but we can offer a more precise error message here rather than
+      // 'of type `object`'.
+      var preciseType = getPreciseType(propValue);
+
+      return new Error(
+        ("Invalid " + locationName + " `" + propName + "` of type `" + preciseType + "` ") +
+        ("supplied to `" + componentName + "`, expected `" + expectedType + "`.")
+      );
+    }
+  }
+  return createChainableTypeChecker(validate);
+}
+
+function createAnyTypeChecker() {
+  return createChainableTypeChecker(emptyFunction.thatReturns());
+}
+
+function createArrayOfTypeChecker(typeChecker) {
+  function validate(props, propName, componentName, location) {
+    var propValue = props[propName];
+    if (!Array.isArray(propValue)) {
+      var locationName = ReactPropTypeLocationNames[location];
+      var propType = getPropType(propValue);
+      return new Error(
+        ("Invalid " + locationName + " `" + propName + "` of type ") +
+        ("`" + propType + "` supplied to `" + componentName + "`, expected an array.")
+      );
+    }
+    for (var i = 0; i < propValue.length; i++) {
+      var error = typeChecker(propValue, i, componentName, location);
+      if (error instanceof Error) {
+        return error;
+      }
+    }
+  }
+  return createChainableTypeChecker(validate);
+}
+
+function createElementTypeChecker() {
+  function validate(props, propName, componentName, location) {
+    if (!ReactElement.isValidElement(props[propName])) {
+      var locationName = ReactPropTypeLocationNames[location];
+      return new Error(
+        ("Invalid " + locationName + " `" + propName + "` supplied to ") +
+        ("`" + componentName + "`, expected a ReactElement.")
+      );
+    }
+  }
+  return createChainableTypeChecker(validate);
+}
+
+function createInstanceTypeChecker(expectedClass) {
+  function validate(props, propName, componentName, location) {
+    if (!(props[propName] instanceof expectedClass)) {
+      var locationName = ReactPropTypeLocationNames[location];
+      var expectedClassName = expectedClass.name || ANONYMOUS;
+      return new Error(
+        ("Invalid " + locationName + " `" + propName + "` supplied to ") +
+        ("`" + componentName + "`, expected instance of `" + expectedClassName + "`.")
+      );
+    }
+  }
+  return createChainableTypeChecker(validate);
+}
+
+function createEnumTypeChecker(expectedValues) {
+  function validate(props, propName, componentName, location) {
+    var propValue = props[propName];
+    for (var i = 0; i < expectedValues.length; i++) {
+      if (propValue === expectedValues[i]) {
+        return;
+      }
+    }
+
+    var locationName = ReactPropTypeLocationNames[location];
+    var valuesString = JSON.stringify(expectedValues);
+    return new Error(
+      ("Invalid " + locationName + " `" + propName + "` of value `" + propValue + "` ") +
+      ("supplied to `" + componentName + "`, expected one of " + valuesString + ".")
+    );
+  }
+  return createChainableTypeChecker(validate);
+}
+
+function createObjectOfTypeChecker(typeChecker) {
+  function validate(props, propName, componentName, location) {
+    var propValue = props[propName];
+    var propType = getPropType(propValue);
+    if (propType !== 'object') {
+      var locationName = ReactPropTypeLocationNames[location];
+      return new Error(
+        ("Invalid " + locationName + " `" + propName + "` of type ") +
+        ("`" + propType + "` supplied to `" + componentName + "`, expected an object.")
+      );
+    }
+    for (var key in propValue) {
+      if (propValue.hasOwnProperty(key)) {
+        var error = typeChecker(propValue, key, componentName, location);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+    }
+  }
+  return createChainableTypeChecker(validate);
+}
+
+function createUnionTypeChecker(arrayOfTypeCheckers) {
+  function validate(props, propName, componentName, location) {
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (checker(props, propName, componentName, location) == null) {
+        return;
+      }
+    }
+
+    var locationName = ReactPropTypeLocationNames[location];
+    return new Error(
+      ("Invalid " + locationName + " `" + propName + "` supplied to ") +
+      ("`" + componentName + "`.")
+    );
+  }
+  return createChainableTypeChecker(validate);
+}
+
+function createNodeChecker() {
+  function validate(props, propName, componentName, location) {
+    if (!isNode(props[propName])) {
+      var locationName = ReactPropTypeLocationNames[location];
+      return new Error(
+        ("Invalid " + locationName + " `" + propName + "` supplied to ") +
+        ("`" + componentName + "`, expected a ReactNode.")
+      );
+    }
+  }
+  return createChainableTypeChecker(validate);
+}
+
+function createShapeTypeChecker(shapeTypes) {
+  function validate(props, propName, componentName, location) {
+    var propValue = props[propName];
+    var propType = getPropType(propValue);
+    if (propType !== 'object') {
+      var locationName = ReactPropTypeLocationNames[location];
+      return new Error(
+        ("Invalid " + locationName + " `" + propName + "` of type `" + propType + "` ") +
+        ("supplied to `" + componentName + "`, expected `object`.")
+      );
+    }
+    for (var key in shapeTypes) {
+      var checker = shapeTypes[key];
+      if (!checker) {
+        continue;
+      }
+      var error = checker(propValue, key, componentName, location);
+      if (error) {
+        return error;
+      }
+    }
+  }
+  return createChainableTypeChecker(validate, 'expected `object`');
+}
+
+function isNode(propValue) {
   switch(typeof propValue) {
     case 'number':
     case 'string':
       return true;
+    case 'boolean':
+      return !propValue;
     case 'object':
       if (Array.isArray(propValue)) {
-        return propValue.every(isRenderable);
+        return propValue.every(isNode);
       }
-      if (ReactComponent.isValidComponent(propValue)) {
+      if (ReactElement.isValidElement(propValue)) {
         return true;
       }
       for (var k in propValue) {
-        if (!isRenderable(propValue[k])) {
+        if (!isNode(propValue[k])) {
           return false;
         }
       }
@@ -23076,260 +17167,45 @@ function isRenderable(propValue) {
   }
 }
 
-// Equivalent of typeof but with special handling for arrays
+// Equivalent of `typeof` but with special handling for array and regexp.
 function getPropType(propValue) {
   var propType = typeof propValue;
-  if (propType === 'object' && Array.isArray(propValue)) {
+  if (Array.isArray(propValue)) {
     return 'array';
+  }
+  if (propValue instanceof RegExp) {
+    // Old webkits (at least until Android 4.0) return 'function' rather than
+    // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+    // passes PropTypes.object.
+    return 'object';
   }
   return propType;
 }
 
-function createAnyTypeChecker() {
-  function validateAnyType(
-    shouldWarn, propValue, propName, componentName, location
-  ) {
-    return true; // is always valid
-  }
-  return createChainableTypeChecker(validateAnyType);
-}
-
-function createPrimitiveTypeChecker(expectedType) {
-  function validatePrimitiveType(
-    shouldWarn, propValue, propName, componentName, location
-  ) {
-    var propType = getPropType(propValue);
-    var isValid = propType === expectedType;
-    if (shouldWarn) {
-      ("production" !== process.env.NODE_ENV ? warning(
-        isValid,
-        'Invalid %s `%s` of type `%s` supplied to `%s`, expected `%s`.',
-        ReactPropTypeLocationNames[location],
-        propName,
-        propType,
-        componentName,
-        expectedType
-      ) : null);
-    }
-    return isValid;
-  }
-  return createChainableTypeChecker(validatePrimitiveType);
-}
-
-function createEnumTypeChecker(expectedValues) {
-  var expectedEnum = createObjectFrom(expectedValues);
-  function validateEnumType(
-    shouldWarn, propValue, propName, componentName, location
-  ) {
-    var isValid = expectedEnum[propValue];
-    if (shouldWarn) {
-      ("production" !== process.env.NODE_ENV ? warning(
-        isValid,
-        'Invalid %s `%s` supplied to `%s`, expected one of %s.',
-        ReactPropTypeLocationNames[location],
-        propName,
-        componentName,
-        JSON.stringify(Object.keys(expectedEnum))
-      ) : null);
-    }
-    return isValid;
-  }
-  return createChainableTypeChecker(validateEnumType);
-}
-
-function createShapeTypeChecker(shapeTypes) {
-  function validateShapeType(
-    shouldWarn, propValue, propName, componentName, location
-  ) {
-    var propType = getPropType(propValue);
-    var isValid = propType === 'object';
-    if (isValid) {
-      for (var key in shapeTypes) {
-        var checker = shapeTypes[key];
-        if (checker && !checker(propValue, key, componentName, location)) {
-          return false;
-        }
-      }
-    }
-    if (shouldWarn) {
-      ("production" !== process.env.NODE_ENV ? warning(
-        isValid,
-        'Invalid %s `%s` of type `%s` supplied to `%s`, expected `object`.',
-        ReactPropTypeLocationNames[location],
-        propName,
-        propType,
-        componentName
-      ) : null);
-    }
-    return isValid;
-  }
-  return createChainableTypeChecker(validateShapeType);
-}
-
-function createInstanceTypeChecker(expectedClass) {
-  function validateInstanceType(
-    shouldWarn, propValue, propName, componentName, location
-  ) {
-    var isValid = propValue instanceof expectedClass;
-    if (shouldWarn) {
-      ("production" !== process.env.NODE_ENV ? warning(
-        isValid,
-        'Invalid %s `%s` supplied to `%s`, expected instance of `%s`.',
-        ReactPropTypeLocationNames[location],
-        propName,
-        componentName,
-        expectedClass.name || ANONYMOUS
-      ) : null);
-    }
-    return isValid;
-  }
-  return createChainableTypeChecker(validateInstanceType);
-}
-
-function createArrayOfTypeChecker(propTypeChecker) {
-  function validateArrayType(
-    shouldWarn, propValue, propName, componentName, location
-  ) {
-    var isValid = Array.isArray(propValue);
-    if (isValid) {
-      for (var i = 0; i < propValue.length; i++) {
-        if (!propTypeChecker(propValue, i, componentName, location)) {
-          return false;
-        }
-      }
-    }
-    if (shouldWarn) {
-      ("production" !== process.env.NODE_ENV ? warning(
-        isValid,
-        'Invalid %s `%s` supplied to `%s`, expected an array.',
-        ReactPropTypeLocationNames[location],
-        propName,
-        componentName
-      ) : null);
-    }
-    return isValid;
-  }
-  return createChainableTypeChecker(validateArrayType);
-}
-
-function createRenderableTypeChecker() {
-  function validateRenderableType(
-    shouldWarn, propValue, propName, componentName, location
-  ) {
-    var isValid = isRenderable(propValue);
-    if (shouldWarn) {
-      ("production" !== process.env.NODE_ENV ? warning(
-        isValid,
-        'Invalid %s `%s` supplied to `%s`, expected a renderable prop.',
-        ReactPropTypeLocationNames[location],
-        propName,
-        componentName
-      ) : null);
-    }
-    return isValid;
-  }
-  return createChainableTypeChecker(validateRenderableType);
-}
-
-function createComponentTypeChecker() {
-  function validateComponentType(
-    shouldWarn, propValue, propName, componentName, location
-  ) {
-    var isValid = ReactComponent.isValidComponent(propValue);
-    if (shouldWarn) {
-      ("production" !== process.env.NODE_ENV ? warning(
-        isValid,
-        'Invalid %s `%s` supplied to `%s`, expected a React component.',
-        ReactPropTypeLocationNames[location],
-        propName,
-        componentName
-      ) : null);
-    }
-    return isValid;
-  }
-  return createChainableTypeChecker(validateComponentType);
-}
-
-function createUnionTypeChecker(arrayOfValidators) {
-  return function(props, propName, componentName, location) {
-    var isValid = false;
-    for (var ii = 0; ii < arrayOfValidators.length; ii++) {
-      var validate = arrayOfValidators[ii];
-      if (typeof validate.weak === 'function') {
-        validate = validate.weak;
-      }
-      if (validate(props, propName, componentName, location)) {
-        isValid = true;
-        break;
-      }
-    }
-    ("production" !== process.env.NODE_ENV ? warning(
-      isValid,
-      'Invalid %s `%s` supplied to `%s`.',
-      ReactPropTypeLocationNames[location],
-      propName,
-      componentName || ANONYMOUS
-    ) : null);
-    return isValid;
-  };
-}
-
-function createChainableTypeChecker(validate) {
-  function checkType(
-    isRequired, shouldWarn, props, propName, componentName, location
-  ) {
-    var propValue = props[propName];
-    if (propValue != null) {
-      // Only validate if there is a value to check.
-      return validate(
-        shouldWarn,
-        propValue,
-        propName,
-        componentName || ANONYMOUS,
-        location
-      );
-    } else {
-      var isValid = !isRequired;
-      if (shouldWarn) {
-        ("production" !== process.env.NODE_ENV ? warning(
-          isValid,
-          'Required %s `%s` was not specified in `%s`.',
-          ReactPropTypeLocationNames[location],
-          propName,
-          componentName || ANONYMOUS
-        ) : null);
-      }
-      return isValid;
+// This handles more types than `getPropType`. Only used for error messages.
+// See `createPrimitiveTypeChecker`.
+function getPreciseType(propValue) {
+  var propType = getPropType(propValue);
+  if (propType === 'object') {
+    if (propValue instanceof Date) {
+      return 'date';
+    } else if (propValue instanceof RegExp) {
+      return 'regexp';
     }
   }
-
-  var checker = checkType.bind(null, false, true);
-  checker.weak = checkType.bind(null, false, false);
-  checker.isRequired = checkType.bind(null, true, true);
-  checker.weak.isRequired = checkType.bind(null, true, false);
-  checker.isRequired.weak = checker.weak.isRequired;
-
-  return checker;
+  return propType;
 }
 
-module.exports = Props;
+module.exports = ReactPropTypes;
 
-}).call(this,require('_process'))
-},{"./ReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactComponent.js","./ReactPropTypeLocationNames":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPropTypeLocationNames.js","./createObjectFrom":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/createObjectFrom.js","./warning":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/warning.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPutListenerQueue.js":[function(require,module,exports){
+},{"./ReactElement":61,"./ReactPropTypeLocationNames":79,"./deprecated":115,"./emptyFunction":116}],82:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactPutListenerQueue
  */
@@ -23337,15 +17213,15 @@ module.exports = Props;
 "use strict";
 
 var PooledClass = require("./PooledClass");
-var ReactEventEmitter = require("./ReactEventEmitter");
+var ReactBrowserEventEmitter = require("./ReactBrowserEventEmitter");
 
-var mixInto = require("./mixInto");
+var assign = require("./Object.assign");
 
 function ReactPutListenerQueue() {
   this.listenersToPut = [];
 }
 
-mixInto(ReactPutListenerQueue, {
+assign(ReactPutListenerQueue.prototype, {
   enqueuePutListener: function(rootNodeID, propKey, propValue) {
     this.listenersToPut.push({
       rootNodeID: rootNodeID,
@@ -23357,7 +17233,7 @@ mixInto(ReactPutListenerQueue, {
   putListeners: function() {
     for (var i = 0; i < this.listenersToPut.length; i++) {
       var listenerToPut = this.listenersToPut[i];
-      ReactEventEmitter.putListener(
+      ReactBrowserEventEmitter.putListener(
         listenerToPut.rootNodeID,
         listenerToPut.propKey,
         listenerToPut.propValue
@@ -23378,21 +17254,14 @@ PooledClass.addPoolingTo(ReactPutListenerQueue);
 
 module.exports = ReactPutListenerQueue;
 
-},{"./PooledClass":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/PooledClass.js","./ReactEventEmitter":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventEmitter.js","./mixInto":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mixInto.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactReconcileTransaction.js":[function(require,module,exports){
+},{"./Object.assign":35,"./PooledClass":36,"./ReactBrowserEventEmitter":39}],83:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactReconcileTransaction
  * @typechecks static-only
@@ -23400,14 +17269,14 @@ module.exports = ReactPutListenerQueue;
 
 "use strict";
 
+var CallbackQueue = require("./CallbackQueue");
 var PooledClass = require("./PooledClass");
-var ReactEventEmitter = require("./ReactEventEmitter");
+var ReactBrowserEventEmitter = require("./ReactBrowserEventEmitter");
 var ReactInputSelection = require("./ReactInputSelection");
-var ReactMountReady = require("./ReactMountReady");
 var ReactPutListenerQueue = require("./ReactPutListenerQueue");
 var Transaction = require("./Transaction");
 
-var mixInto = require("./mixInto");
+var assign = require("./Object.assign");
 
 /**
  * Ensures that, when possible, the selection range (currently selected text
@@ -23431,27 +17300,28 @@ var SELECTION_RESTORATION = {
  */
 var EVENT_SUPPRESSION = {
   /**
-   * @return {boolean} The enabled status of `ReactEventEmitter` before the
-   * reconciliation.
+   * @return {boolean} The enabled status of `ReactBrowserEventEmitter` before
+   * the reconciliation.
    */
   initialize: function() {
-    var currentlyEnabled = ReactEventEmitter.isEnabled();
-    ReactEventEmitter.setEnabled(false);
+    var currentlyEnabled = ReactBrowserEventEmitter.isEnabled();
+    ReactBrowserEventEmitter.setEnabled(false);
     return currentlyEnabled;
   },
 
   /**
-   * @param {boolean} previouslyEnabled Enabled status of `ReactEventEmitter`
-   *   before the reconciliation occured. `close` restores the previous value.
+   * @param {boolean} previouslyEnabled Enabled status of
+   *   `ReactBrowserEventEmitter` before the reconciliation occured. `close`
+   *   restores the previous value.
    */
   close: function(previouslyEnabled) {
-    ReactEventEmitter.setEnabled(previouslyEnabled);
+    ReactBrowserEventEmitter.setEnabled(previouslyEnabled);
   }
 };
 
 /**
- * Provides a `ReactMountReady` queue for collecting `onDOMReady` callbacks
- * during the performing of the transaction.
+ * Provides a queue for collecting `componentDidMount` and
+ * `componentDidUpdate` callbacks during the the transaction.
  */
 var ON_DOM_READY_QUEUEING = {
   /**
@@ -23513,7 +17383,7 @@ function ReactReconcileTransaction() {
   // accessible and defaults to false when `ReactDOMComponent` and
   // `ReactTextComponent` checks it in `mountComponent`.`
   this.renderToStaticMarkup = false;
-  this.reactMountReady = ReactMountReady.getPooled(null);
+  this.reactMountReady = CallbackQueue.getPooled(null);
   this.putListenerQueue = ReactPutListenerQueue.getPooled();
 }
 
@@ -23531,7 +17401,6 @@ var Mixin = {
 
   /**
    * @return {object} The queue to collect `onDOMReady` callbacks with.
-   *   TODO: convert to ReactMountReady
    */
   getReactMountReady: function() {
     return this.reactMountReady;
@@ -23546,7 +17415,7 @@ var Mixin = {
    * instance to be resused.
    */
   destructor: function() {
-    ReactMountReady.release(this.reactMountReady);
+    CallbackQueue.release(this.reactMountReady);
     this.reactMountReady = null;
 
     ReactPutListenerQueue.release(this.putListenerQueue);
@@ -23555,28 +17424,20 @@ var Mixin = {
 };
 
 
-mixInto(ReactReconcileTransaction, Transaction.Mixin);
-mixInto(ReactReconcileTransaction, Mixin);
+assign(ReactReconcileTransaction.prototype, Transaction.Mixin, Mixin);
 
 PooledClass.addPoolingTo(ReactReconcileTransaction);
 
 module.exports = ReactReconcileTransaction;
 
-},{"./PooledClass":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/PooledClass.js","./ReactEventEmitter":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactEventEmitter.js","./ReactInputSelection":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInputSelection.js","./ReactMountReady":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMountReady.js","./ReactPutListenerQueue":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPutListenerQueue.js","./Transaction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/Transaction.js","./mixInto":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mixInto.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactRootIndex.js":[function(require,module,exports){
+},{"./CallbackQueue":14,"./Object.assign":35,"./PooledClass":36,"./ReactBrowserEventEmitter":39,"./ReactInputSelection":68,"./ReactPutListenerQueue":82,"./Transaction":104}],84:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactRootIndex
  * @typechecks
@@ -23600,29 +17461,22 @@ var ReactRootIndex = {
 
 module.exports = ReactRootIndex;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactServerRendering.js":[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @typechecks static-only
  * @providesModule ReactServerRendering
  */
 "use strict";
 
-var ReactComponent = require("./ReactComponent");
+var ReactElement = require("./ReactElement");
 var ReactInstanceHandles = require("./ReactInstanceHandles");
 var ReactMarkupChecksum = require("./ReactMarkupChecksum");
 var ReactServerRenderingTransaction =
@@ -23632,20 +17486,14 @@ var instantiateReactComponent = require("./instantiateReactComponent");
 var invariant = require("./invariant");
 
 /**
- * @param {ReactComponent} component
+ * @param {ReactElement} element
  * @return {string} the HTML markup
  */
-function renderComponentToString(component) {
+function renderToString(element) {
   ("production" !== process.env.NODE_ENV ? invariant(
-    ReactComponent.isValidComponent(component),
-    'renderComponentToString(): You must pass a valid ReactComponent.'
-  ) : invariant(ReactComponent.isValidComponent(component)));
-
-  ("production" !== process.env.NODE_ENV ? invariant(
-    !(arguments.length === 2 && typeof arguments[1] === 'function'),
-    'renderComponentToString(): This function became synchronous and now ' +
-    'returns the generated markup. Please remove the second parameter.'
-  ) : invariant(!(arguments.length === 2 && typeof arguments[1] === 'function')));
+    ReactElement.isValidElement(element),
+    'renderToString(): You must pass a valid ReactElement.'
+  ) : invariant(ReactElement.isValidElement(element)));
 
   var transaction;
   try {
@@ -23653,7 +17501,7 @@ function renderComponentToString(component) {
     transaction = ReactServerRenderingTransaction.getPooled(false);
 
     return transaction.perform(function() {
-      var componentInstance = instantiateReactComponent(component);
+      var componentInstance = instantiateReactComponent(element, null);
       var markup = componentInstance.mountComponent(id, transaction, 0);
       return ReactMarkupChecksum.addChecksumToMarkup(markup);
     }, null);
@@ -23663,15 +17511,15 @@ function renderComponentToString(component) {
 }
 
 /**
- * @param {ReactComponent} component
+ * @param {ReactElement} element
  * @return {string} the HTML markup, without the extra React ID and checksum
-* (for generating static pages)
+ * (for generating static pages)
  */
-function renderComponentToStaticMarkup(component) {
+function renderToStaticMarkup(element) {
   ("production" !== process.env.NODE_ENV ? invariant(
-    ReactComponent.isValidComponent(component),
-    'renderComponentToStaticMarkup(): You must pass a valid ReactComponent.'
-  ) : invariant(ReactComponent.isValidComponent(component)));
+    ReactElement.isValidElement(element),
+    'renderToStaticMarkup(): You must pass a valid ReactElement.'
+  ) : invariant(ReactElement.isValidElement(element)));
 
   var transaction;
   try {
@@ -23679,7 +17527,7 @@ function renderComponentToStaticMarkup(component) {
     transaction = ReactServerRenderingTransaction.getPooled(true);
 
     return transaction.perform(function() {
-      var componentInstance = instantiateReactComponent(component);
+      var componentInstance = instantiateReactComponent(element, null);
       return componentInstance.mountComponent(id, transaction, 0);
     }, null);
   } finally {
@@ -23688,26 +17536,19 @@ function renderComponentToStaticMarkup(component) {
 }
 
 module.exports = {
-  renderComponentToString: renderComponentToString,
-  renderComponentToStaticMarkup: renderComponentToStaticMarkup
+  renderToString: renderToString,
+  renderToStaticMarkup: renderToStaticMarkup
 };
 
 }).call(this,require('_process'))
-},{"./ReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactComponent.js","./ReactInstanceHandles":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInstanceHandles.js","./ReactMarkupChecksum":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMarkupChecksum.js","./ReactServerRenderingTransaction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactServerRenderingTransaction.js","./instantiateReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/instantiateReactComponent.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactServerRenderingTransaction.js":[function(require,module,exports){
+},{"./ReactElement":61,"./ReactInstanceHandles":69,"./ReactMarkupChecksum":71,"./ReactServerRenderingTransaction":86,"./instantiateReactComponent":134,"./invariant":135,"_process":156}],86:[function(require,module,exports){
 /**
- * Copyright 2014 Facebook, Inc.
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactServerRenderingTransaction
  * @typechecks
@@ -23716,15 +17557,15 @@ module.exports = {
 "use strict";
 
 var PooledClass = require("./PooledClass");
-var ReactMountReady = require("./ReactMountReady");
+var CallbackQueue = require("./CallbackQueue");
 var ReactPutListenerQueue = require("./ReactPutListenerQueue");
 var Transaction = require("./Transaction");
 
+var assign = require("./Object.assign");
 var emptyFunction = require("./emptyFunction");
-var mixInto = require("./mixInto");
 
 /**
- * Provides a `ReactMountReady` queue for collecting `onDOMReady` callbacks
+ * Provides a `CallbackQueue` queue for collecting `onDOMReady` callbacks
  * during the performing of the transaction.
  */
 var ON_DOM_READY_QUEUEING = {
@@ -23763,7 +17604,7 @@ var TRANSACTION_WRAPPERS = [
 function ReactServerRenderingTransaction(renderToStaticMarkup) {
   this.reinitializeTransaction();
   this.renderToStaticMarkup = renderToStaticMarkup;
-  this.reactMountReady = ReactMountReady.getPooled(null);
+  this.reactMountReady = CallbackQueue.getPooled(null);
   this.putListenerQueue = ReactPutListenerQueue.getPooled();
 }
 
@@ -23780,7 +17621,6 @@ var Mixin = {
 
   /**
    * @return {object} The queue to collect `onDOMReady` callbacks with.
-   *   TODO: convert to ReactMountReady
    */
   getReactMountReady: function() {
     return this.reactMountReady;
@@ -23795,7 +17635,7 @@ var Mixin = {
    * instance to be resused.
    */
   destructor: function() {
-    ReactMountReady.release(this.reactMountReady);
+    CallbackQueue.release(this.reactMountReady);
     this.reactMountReady = null;
 
     ReactPutListenerQueue.release(this.putListenerQueue);
@@ -23804,28 +17644,24 @@ var Mixin = {
 };
 
 
-mixInto(ReactServerRenderingTransaction, Transaction.Mixin);
-mixInto(ReactServerRenderingTransaction, Mixin);
+assign(
+  ReactServerRenderingTransaction.prototype,
+  Transaction.Mixin,
+  Mixin
+);
 
 PooledClass.addPoolingTo(ReactServerRenderingTransaction);
 
 module.exports = ReactServerRenderingTransaction;
 
-},{"./PooledClass":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/PooledClass.js","./ReactMountReady":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactMountReady.js","./ReactPutListenerQueue":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPutListenerQueue.js","./Transaction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/Transaction.js","./emptyFunction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/emptyFunction.js","./mixInto":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mixInto.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactTextComponent.js":[function(require,module,exports){
+},{"./CallbackQueue":14,"./Object.assign":35,"./PooledClass":36,"./ReactPutListenerQueue":82,"./Transaction":104,"./emptyFunction":116}],87:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactTextComponent
  * @typechecks static-only
@@ -23834,11 +17670,11 @@ module.exports = ReactServerRenderingTransaction;
 "use strict";
 
 var DOMPropertyOperations = require("./DOMPropertyOperations");
-var ReactBrowserComponentMixin = require("./ReactBrowserComponentMixin");
 var ReactComponent = require("./ReactComponent");
+var ReactElement = require("./ReactElement");
 
+var assign = require("./Object.assign");
 var escapeTextForBrowser = require("./escapeTextForBrowser");
-var mixInto = require("./mixInto");
 
 /**
  * Text nodes violate a couple assumptions that React makes about components:
@@ -23855,23 +17691,11 @@ var mixInto = require("./mixInto");
  * @extends ReactComponent
  * @internal
  */
-var ReactTextComponent = function(initialText) {
-  this.construct({text: initialText});
+var ReactTextComponent = function(props) {
+  // This constructor and it's argument is currently used by mocks.
 };
 
-/**
- * Used to clone the text descriptor object before it's mounted.
- *
- * @param {object} props
- * @return {object} A new ReactTextComponent instance
- */
-ReactTextComponent.ConvenienceConstructor = function(props) {
-  return new ReactTextComponent(props.text);
-};
-
-mixInto(ReactTextComponent, ReactComponent.Mixin);
-mixInto(ReactTextComponent, ReactBrowserComponentMixin);
-mixInto(ReactTextComponent, {
+assign(ReactTextComponent.prototype, ReactComponent.Mixin, {
 
   /**
    * Creates the markup for this text node. This node is not intended to have
@@ -23891,7 +17715,7 @@ mixInto(ReactTextComponent, {
       mountDepth
     );
 
-    var escapedText = escapeTextForBrowser(this.props.text);
+    var escapedText = escapeTextForBrowser(this.props);
 
     if (transaction.renderToStaticMarkup) {
       // Normally we'd wrap this in a `span` for the reasons stated above, but
@@ -23916,61 +17740,137 @@ mixInto(ReactTextComponent, {
    */
   receiveComponent: function(nextComponent, transaction) {
     var nextProps = nextComponent.props;
-    if (nextProps.text !== this.props.text) {
-      this.props.text = nextProps.text;
+    if (nextProps !== this.props) {
+      this.props = nextProps;
       ReactComponent.BackendIDOperations.updateTextContentByID(
         this._rootNodeID,
-        nextProps.text
+        nextProps
       );
     }
   }
 
 });
 
-// Expose the constructor on itself and the prototype for consistency with other
-// descriptors.
-ReactTextComponent.type = ReactTextComponent;
-ReactTextComponent.prototype.type = ReactTextComponent;
+var ReactTextComponentFactory = function(text) {
+  // Bypass validation and configuration
+  return new ReactElement(ReactTextComponent, null, null, null, null, text);
+};
 
-module.exports = ReactTextComponent;
+ReactTextComponentFactory.type = ReactTextComponent;
 
-},{"./DOMPropertyOperations":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/DOMPropertyOperations.js","./ReactBrowserComponentMixin":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactBrowserComponentMixin.js","./ReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactComponent.js","./escapeTextForBrowser":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/escapeTextForBrowser.js","./mixInto":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mixInto.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactUpdates.js":[function(require,module,exports){
+module.exports = ReactTextComponentFactory;
+
+},{"./DOMPropertyOperations":20,"./Object.assign":35,"./ReactComponent":41,"./ReactElement":61,"./escapeTextForBrowser":118}],88:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ReactUpdates
  */
 
 "use strict";
 
+var CallbackQueue = require("./CallbackQueue");
+var PooledClass = require("./PooledClass");
+var ReactCurrentOwner = require("./ReactCurrentOwner");
 var ReactPerf = require("./ReactPerf");
+var Transaction = require("./Transaction");
 
+var assign = require("./Object.assign");
 var invariant = require("./invariant");
+var warning = require("./warning");
 
 var dirtyComponents = [];
+var asapCallbackQueue = CallbackQueue.getPooled();
+var asapEnqueued = false;
 
 var batchingStrategy = null;
 
-function ensureBatchingStrategy() {
-  ("production" !== process.env.NODE_ENV ? invariant(batchingStrategy, 'ReactUpdates: must inject a batching strategy') : invariant(batchingStrategy));
+function ensureInjected() {
+  ("production" !== process.env.NODE_ENV ? invariant(
+    ReactUpdates.ReactReconcileTransaction && batchingStrategy,
+    'ReactUpdates: must inject a reconcile transaction class and batching ' +
+    'strategy'
+  ) : invariant(ReactUpdates.ReactReconcileTransaction && batchingStrategy));
 }
 
-function batchedUpdates(callback, param) {
-  ensureBatchingStrategy();
-  batchingStrategy.batchedUpdates(callback, param);
+var NESTED_UPDATES = {
+  initialize: function() {
+    this.dirtyComponentsLength = dirtyComponents.length;
+  },
+  close: function() {
+    if (this.dirtyComponentsLength !== dirtyComponents.length) {
+      // Additional updates were enqueued by componentDidUpdate handlers or
+      // similar; before our own UPDATE_QUEUEING wrapper closes, we want to run
+      // these new updates so that if A's componentDidUpdate calls setState on
+      // B, B will update before the callback A's updater provided when calling
+      // setState.
+      dirtyComponents.splice(0, this.dirtyComponentsLength);
+      flushBatchedUpdates();
+    } else {
+      dirtyComponents.length = 0;
+    }
+  }
+};
+
+var UPDATE_QUEUEING = {
+  initialize: function() {
+    this.callbackQueue.reset();
+  },
+  close: function() {
+    this.callbackQueue.notifyAll();
+  }
+};
+
+var TRANSACTION_WRAPPERS = [NESTED_UPDATES, UPDATE_QUEUEING];
+
+function ReactUpdatesFlushTransaction() {
+  this.reinitializeTransaction();
+  this.dirtyComponentsLength = null;
+  this.callbackQueue = CallbackQueue.getPooled();
+  this.reconcileTransaction =
+    ReactUpdates.ReactReconcileTransaction.getPooled();
+}
+
+assign(
+  ReactUpdatesFlushTransaction.prototype,
+  Transaction.Mixin, {
+  getTransactionWrappers: function() {
+    return TRANSACTION_WRAPPERS;
+  },
+
+  destructor: function() {
+    this.dirtyComponentsLength = null;
+    CallbackQueue.release(this.callbackQueue);
+    this.callbackQueue = null;
+    ReactUpdates.ReactReconcileTransaction.release(this.reconcileTransaction);
+    this.reconcileTransaction = null;
+  },
+
+  perform: function(method, scope, a) {
+    // Essentially calls `this.reconcileTransaction.perform(method, scope, a)`
+    // with this transaction's wrappers around it.
+    return Transaction.Mixin.perform.call(
+      this,
+      this.reconcileTransaction.perform,
+      this.reconcileTransaction,
+      method,
+      scope,
+      a
+    );
+  }
+});
+
+PooledClass.addPoolingTo(ReactUpdatesFlushTransaction);
+
+function batchedUpdates(callback, a, b) {
+  ensureInjected();
+  batchingStrategy.batchedUpdates(callback, a, b);
 }
 
 /**
@@ -23984,14 +17884,22 @@ function mountDepthComparator(c1, c2) {
   return c1._mountDepth - c2._mountDepth;
 }
 
-function runBatchedUpdates() {
+function runBatchedUpdates(transaction) {
+  var len = transaction.dirtyComponentsLength;
+  ("production" !== process.env.NODE_ENV ? invariant(
+    len === dirtyComponents.length,
+    'Expected flush transaction\'s stored dirty-components length (%s) to ' +
+    'match dirty-components array length (%s).',
+    len,
+    dirtyComponents.length
+  ) : invariant(len === dirtyComponents.length));
+
   // Since reconciling a component higher in the owner hierarchy usually (not
   // always -- see shouldComponentUpdate()) will reconcile children, reconcile
   // them before their children by sorting the array.
-
   dirtyComponents.sort(mountDepthComparator);
 
-  for (var i = 0; i < dirtyComponents.length; i++) {
+  for (var i = 0; i < len; i++) {
     // If a component is unmounted before pending changes apply, ignore them
     // TODO: Queue unmounts in the same list to avoid this happening at all
     var component = dirtyComponents[i];
@@ -24001,29 +17909,42 @@ function runBatchedUpdates() {
       // stash the callbacks first
       var callbacks = component._pendingCallbacks;
       component._pendingCallbacks = null;
-      component.performUpdateIfNecessary();
+      component.performUpdateIfNecessary(transaction.reconcileTransaction);
+
       if (callbacks) {
         for (var j = 0; j < callbacks.length; j++) {
-          callbacks[j].call(component);
+          transaction.callbackQueue.enqueue(
+            callbacks[j],
+            component
+          );
         }
       }
     }
   }
 }
 
-function clearDirtyComponents() {
-  dirtyComponents.length = 0;
-}
-
 var flushBatchedUpdates = ReactPerf.measure(
   'ReactUpdates',
   'flushBatchedUpdates',
   function() {
-    // Run these in separate functions so the JIT can optimize
-    try {
-      runBatchedUpdates();
-    } finally {
-      clearDirtyComponents();
+    // ReactUpdatesFlushTransaction's wrappers will clear the dirtyComponents
+    // array and perform any updates enqueued by mount-ready handlers (i.e.,
+    // componentDidUpdate) but we need to check here too in order to catch
+    // updates enqueued by setState callbacks and asap calls.
+    while (dirtyComponents.length || asapEnqueued) {
+      if (dirtyComponents.length) {
+        var transaction = ReactUpdatesFlushTransaction.getPooled();
+        transaction.perform(runBatchedUpdates, null, transaction);
+        ReactUpdatesFlushTransaction.release(transaction);
+      }
+
+      if (asapEnqueued) {
+        asapEnqueued = false;
+        var queue = asapCallbackQueue;
+        asapCallbackQueue = CallbackQueue.getPooled();
+        queue.notifyAll();
+        CallbackQueue.release(queue);
+      }
     }
   }
 );
@@ -24039,11 +17960,23 @@ function enqueueUpdate(component, callback) {
     '`setState`, `replaceState`, or `forceUpdate` with a callback that ' +
     'isn\'t callable.'
   ) : invariant(!callback || typeof callback === "function"));
-  ensureBatchingStrategy();
+  ensureInjected();
+
+  // Various parts of our code (such as ReactCompositeComponent's
+  // _renderValidatedComponent) assume that calls to render aren't nested;
+  // verify that that's the case. (This is called by each top-level update
+  // function, like setProps, setState, forceUpdate, etc.; creation and
+  // destruction of top-level components is guarded in ReactMount.)
+  ("production" !== process.env.NODE_ENV ? warning(
+    ReactCurrentOwner.current == null,
+    'enqueueUpdate(): Render methods should be a pure function of props ' +
+    'and state; triggering nested component updates from render is not ' +
+    'allowed. If necessary, trigger nested updates in ' +
+    'componentDidUpdate.'
+  ) : null);
 
   if (!batchingStrategy.isBatchingUpdates) {
-    component.performUpdateIfNecessary();
-    callback && callback.call(component);
+    batchingStrategy.batchedUpdates(enqueueUpdate, component, callback);
     return;
   }
 
@@ -24058,7 +17991,29 @@ function enqueueUpdate(component, callback) {
   }
 }
 
+/**
+ * Enqueue a callback to be run at the end of the current batching cycle. Throws
+ * if no updates are currently being performed.
+ */
+function asap(callback, context) {
+  ("production" !== process.env.NODE_ENV ? invariant(
+    batchingStrategy.isBatchingUpdates,
+    'ReactUpdates.asap: Can\'t enqueue an asap callback in a context where' +
+    'updates are not being batched.'
+  ) : invariant(batchingStrategy.isBatchingUpdates));
+  asapCallbackQueue.enqueue(callback, context);
+  asapEnqueued = true;
+}
+
 var ReactUpdatesInjection = {
+  injectReconcileTransaction: function(ReconcileTransaction) {
+    ("production" !== process.env.NODE_ENV ? invariant(
+      ReconcileTransaction,
+      'ReactUpdates: must provide a reconcile transaction class'
+    ) : invariant(ReconcileTransaction));
+    ReactUpdates.ReactReconcileTransaction = ReconcileTransaction;
+  },
+
   injectBatchingStrategy: function(_batchingStrategy) {
     ("production" !== process.env.NODE_ENV ? invariant(
       _batchingStrategy,
@@ -24077,30 +18032,124 @@ var ReactUpdatesInjection = {
 };
 
 var ReactUpdates = {
+  /**
+   * React references `ReactReconcileTransaction` using this property in order
+   * to allow dependency injection.
+   *
+   * @internal
+   */
+  ReactReconcileTransaction: null,
+
   batchedUpdates: batchedUpdates,
   enqueueUpdate: enqueueUpdate,
   flushBatchedUpdates: flushBatchedUpdates,
-  injection: ReactUpdatesInjection
+  injection: ReactUpdatesInjection,
+  asap: asap
 };
 
 module.exports = ReactUpdates;
 
 }).call(this,require('_process'))
-},{"./ReactPerf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactPerf.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SelectEventPlugin.js":[function(require,module,exports){
+},{"./CallbackQueue":14,"./Object.assign":35,"./PooledClass":36,"./ReactCurrentOwner":45,"./ReactPerf":77,"./Transaction":104,"./invariant":135,"./warning":154,"_process":156}],89:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule SVGDOMPropertyConfig
+ */
+
+/*jslint bitwise: true*/
+
+"use strict";
+
+var DOMProperty = require("./DOMProperty");
+
+var MUST_USE_ATTRIBUTE = DOMProperty.injection.MUST_USE_ATTRIBUTE;
+
+var SVGDOMPropertyConfig = {
+  Properties: {
+    cx: MUST_USE_ATTRIBUTE,
+    cy: MUST_USE_ATTRIBUTE,
+    d: MUST_USE_ATTRIBUTE,
+    dx: MUST_USE_ATTRIBUTE,
+    dy: MUST_USE_ATTRIBUTE,
+    fill: MUST_USE_ATTRIBUTE,
+    fillOpacity: MUST_USE_ATTRIBUTE,
+    fontFamily: MUST_USE_ATTRIBUTE,
+    fontSize: MUST_USE_ATTRIBUTE,
+    fx: MUST_USE_ATTRIBUTE,
+    fy: MUST_USE_ATTRIBUTE,
+    gradientTransform: MUST_USE_ATTRIBUTE,
+    gradientUnits: MUST_USE_ATTRIBUTE,
+    markerEnd: MUST_USE_ATTRIBUTE,
+    markerMid: MUST_USE_ATTRIBUTE,
+    markerStart: MUST_USE_ATTRIBUTE,
+    offset: MUST_USE_ATTRIBUTE,
+    opacity: MUST_USE_ATTRIBUTE,
+    patternContentUnits: MUST_USE_ATTRIBUTE,
+    patternUnits: MUST_USE_ATTRIBUTE,
+    points: MUST_USE_ATTRIBUTE,
+    preserveAspectRatio: MUST_USE_ATTRIBUTE,
+    r: MUST_USE_ATTRIBUTE,
+    rx: MUST_USE_ATTRIBUTE,
+    ry: MUST_USE_ATTRIBUTE,
+    spreadMethod: MUST_USE_ATTRIBUTE,
+    stopColor: MUST_USE_ATTRIBUTE,
+    stopOpacity: MUST_USE_ATTRIBUTE,
+    stroke: MUST_USE_ATTRIBUTE,
+    strokeDasharray: MUST_USE_ATTRIBUTE,
+    strokeLinecap: MUST_USE_ATTRIBUTE,
+    strokeOpacity: MUST_USE_ATTRIBUTE,
+    strokeWidth: MUST_USE_ATTRIBUTE,
+    textAnchor: MUST_USE_ATTRIBUTE,
+    transform: MUST_USE_ATTRIBUTE,
+    version: MUST_USE_ATTRIBUTE,
+    viewBox: MUST_USE_ATTRIBUTE,
+    x1: MUST_USE_ATTRIBUTE,
+    x2: MUST_USE_ATTRIBUTE,
+    x: MUST_USE_ATTRIBUTE,
+    y1: MUST_USE_ATTRIBUTE,
+    y2: MUST_USE_ATTRIBUTE,
+    y: MUST_USE_ATTRIBUTE
+  },
+  DOMAttributeNames: {
+    fillOpacity: 'fill-opacity',
+    fontFamily: 'font-family',
+    fontSize: 'font-size',
+    gradientTransform: 'gradientTransform',
+    gradientUnits: 'gradientUnits',
+    markerEnd: 'marker-end',
+    markerMid: 'marker-mid',
+    markerStart: 'marker-start',
+    patternContentUnits: 'patternContentUnits',
+    patternUnits: 'patternUnits',
+    preserveAspectRatio: 'preserveAspectRatio',
+    spreadMethod: 'spreadMethod',
+    stopColor: 'stop-color',
+    stopOpacity: 'stop-opacity',
+    strokeDasharray: 'stroke-dasharray',
+    strokeLinecap: 'stroke-linecap',
+    strokeOpacity: 'stroke-opacity',
+    strokeWidth: 'stroke-width',
+    textAnchor: 'text-anchor',
+    viewBox: 'viewBox'
+  }
+};
+
+module.exports = SVGDOMPropertyConfig;
+
+},{"./DOMProperty":19}],90:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule SelectEventPlugin
  */
@@ -24158,6 +18207,14 @@ function getSelection(node) {
       start: node.selectionStart,
       end: node.selectionEnd
     };
+  } else if (window.getSelection) {
+    var selection = window.getSelection();
+    return {
+      anchorNode: selection.anchorNode,
+      anchorOffset: selection.anchorOffset,
+      focusNode: selection.focusNode,
+      focusOffset: selection.focusOffset
+    };
   } else if (document.selection) {
     var range = document.selection.createRange();
     return {
@@ -24165,14 +18222,6 @@ function getSelection(node) {
       text: range.text,
       top: range.boundingTop,
       left: range.boundingLeft
-    };
-  } else {
-    var selection = window.getSelection();
-    return {
-      anchorNode: selection.anchorNode,
-      anchorOffset: selection.anchorOffset,
-      focusNode: selection.focusNode,
-      focusOffset: selection.focusOffset
     };
   }
 }
@@ -24288,21 +18337,14 @@ var SelectEventPlugin = {
 
 module.exports = SelectEventPlugin;
 
-},{"./EventConstants":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventConstants.js","./EventPropagators":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPropagators.js","./ReactInputSelection":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInputSelection.js","./SyntheticEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticEvent.js","./getActiveElement":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getActiveElement.js","./isTextInputElement":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/isTextInputElement.js","./keyOf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyOf.js","./shallowEqual":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/shallowEqual.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ServerReactRootIndex.js":[function(require,module,exports){
+},{"./EventConstants":24,"./EventPropagators":29,"./ReactInputSelection":68,"./SyntheticEvent":96,"./getActiveElement":122,"./isTextInputElement":138,"./keyOf":142,"./shallowEqual":150}],91:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ServerReactRootIndex
  * @typechecks
@@ -24326,22 +18368,15 @@ var ServerReactRootIndex = {
 
 module.exports = ServerReactRootIndex;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SimpleEventPlugin.js":[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule SimpleEventPlugin
  */
@@ -24361,8 +18396,11 @@ var SyntheticTouchEvent = require("./SyntheticTouchEvent");
 var SyntheticUIEvent = require("./SyntheticUIEvent");
 var SyntheticWheelEvent = require("./SyntheticWheelEvent");
 
+var getEventCharCode = require("./getEventCharCode");
+
 var invariant = require("./invariant");
 var keyOf = require("./keyOf");
+var warning = require("./warning");
 
 var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -24629,7 +18667,7 @@ var SimpleEventPlugin = {
 
   /**
    * Same as the default implementation, except cancels the event when return
-   * value is false.
+   * value is false. This behavior will be disabled in a future release.
    *
    * @param {object} Event to be dispatched.
    * @param {function} Application-level callback.
@@ -24637,6 +18675,14 @@ var SimpleEventPlugin = {
    */
   executeDispatch: function(event, listener, domID) {
     var returnValue = EventPluginUtils.executeDispatch(event, listener, domID);
+
+    ("production" !== process.env.NODE_ENV ? warning(
+      typeof returnValue !== 'boolean',
+      'Returning `false` from an event handler is deprecated and will be ' +
+      'ignored in a future release. Instead, manually call ' +
+      'e.stopPropagation() or e.preventDefault(), as appropriate.'
+    ) : null);
+
     if (returnValue === false) {
       event.stopPropagation();
       event.preventDefault();
@@ -24671,8 +18717,15 @@ var SimpleEventPlugin = {
         // @see http://www.w3.org/TR/html5/index.html#events-0
         EventConstructor = SyntheticEvent;
         break;
-      case topLevelTypes.topKeyDown:
       case topLevelTypes.topKeyPress:
+        // FireFox creates a keypress event for function keys too. This removes
+        // the unwanted keypress events. Enter is however both printable and
+        // non-printable. One would expect Tab to be as well (but it isn't).
+        if (getEventCharCode(nativeEvent) === 0) {
+          return null;
+        }
+        /* falls through */
+      case topLevelTypes.topKeyDown:
       case topLevelTypes.topKeyUp:
         EventConstructor = SyntheticKeyboardEvent;
         break;
@@ -24743,21 +18796,14 @@ var SimpleEventPlugin = {
 module.exports = SimpleEventPlugin;
 
 }).call(this,require('_process'))
-},{"./EventConstants":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventConstants.js","./EventPluginUtils":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPluginUtils.js","./EventPropagators":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/EventPropagators.js","./SyntheticClipboardEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticClipboardEvent.js","./SyntheticDragEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticDragEvent.js","./SyntheticEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticEvent.js","./SyntheticFocusEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticFocusEvent.js","./SyntheticKeyboardEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticKeyboardEvent.js","./SyntheticMouseEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticMouseEvent.js","./SyntheticTouchEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticTouchEvent.js","./SyntheticUIEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticUIEvent.js","./SyntheticWheelEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticWheelEvent.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./keyOf":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyOf.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticClipboardEvent.js":[function(require,module,exports){
+},{"./EventConstants":24,"./EventPluginUtils":28,"./EventPropagators":29,"./SyntheticClipboardEvent":93,"./SyntheticDragEvent":95,"./SyntheticEvent":96,"./SyntheticFocusEvent":97,"./SyntheticKeyboardEvent":99,"./SyntheticMouseEvent":100,"./SyntheticTouchEvent":101,"./SyntheticUIEvent":102,"./SyntheticWheelEvent":103,"./getEventCharCode":123,"./invariant":135,"./keyOf":142,"./warning":154,"_process":156}],93:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule SyntheticClipboardEvent
  * @typechecks static-only
@@ -24796,21 +18842,14 @@ SyntheticEvent.augmentClass(SyntheticClipboardEvent, ClipboardEventInterface);
 module.exports = SyntheticClipboardEvent;
 
 
-},{"./SyntheticEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticEvent.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticCompositionEvent.js":[function(require,module,exports){
+},{"./SyntheticEvent":96}],94:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule SyntheticCompositionEvent
  * @typechecks static-only
@@ -24849,21 +18888,14 @@ SyntheticEvent.augmentClass(
 module.exports = SyntheticCompositionEvent;
 
 
-},{"./SyntheticEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticEvent.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticDragEvent.js":[function(require,module,exports){
+},{"./SyntheticEvent":96}],95:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule SyntheticDragEvent
  * @typechecks static-only
@@ -24895,21 +18927,14 @@ SyntheticMouseEvent.augmentClass(SyntheticDragEvent, DragEventInterface);
 
 module.exports = SyntheticDragEvent;
 
-},{"./SyntheticMouseEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticMouseEvent.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticEvent.js":[function(require,module,exports){
+},{"./SyntheticMouseEvent":100}],96:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule SyntheticEvent
  * @typechecks static-only
@@ -24919,10 +18944,9 @@ module.exports = SyntheticDragEvent;
 
 var PooledClass = require("./PooledClass");
 
+var assign = require("./Object.assign");
 var emptyFunction = require("./emptyFunction");
 var getEventTarget = require("./getEventTarget");
-var merge = require("./merge");
-var mergeInto = require("./mergeInto");
 
 /**
  * @interface Event
@@ -24989,7 +19013,7 @@ function SyntheticEvent(dispatchConfig, dispatchMarker, nativeEvent) {
   this.isPropagationStopped = emptyFunction.thatReturnsFalse;
 }
 
-mergeInto(SyntheticEvent.prototype, {
+assign(SyntheticEvent.prototype, {
 
   preventDefault: function() {
     this.defaultPrevented = true;
@@ -25047,11 +19071,11 @@ SyntheticEvent.augmentClass = function(Class, Interface) {
   var Super = this;
 
   var prototype = Object.create(Super.prototype);
-  mergeInto(prototype, Class.prototype);
+  assign(prototype, Class.prototype);
   Class.prototype = prototype;
   Class.prototype.constructor = Class;
 
-  Class.Interface = merge(Super.Interface, Interface);
+  Class.Interface = assign({}, Super.Interface, Interface);
   Class.augmentClass = Super.augmentClass;
 
   PooledClass.addPoolingTo(Class, PooledClass.threeArgumentPooler);
@@ -25061,21 +19085,14 @@ PooledClass.addPoolingTo(SyntheticEvent, PooledClass.threeArgumentPooler);
 
 module.exports = SyntheticEvent;
 
-},{"./PooledClass":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/PooledClass.js","./emptyFunction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/emptyFunction.js","./getEventTarget":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getEventTarget.js","./merge":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/merge.js","./mergeInto":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mergeInto.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticFocusEvent.js":[function(require,module,exports){
+},{"./Object.assign":35,"./PooledClass":36,"./emptyFunction":116,"./getEventTarget":126}],97:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule SyntheticFocusEvent
  * @typechecks static-only
@@ -25107,21 +19124,61 @@ SyntheticUIEvent.augmentClass(SyntheticFocusEvent, FocusEventInterface);
 
 module.exports = SyntheticFocusEvent;
 
-},{"./SyntheticUIEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticUIEvent.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticKeyboardEvent.js":[function(require,module,exports){
+},{"./SyntheticUIEvent":102}],98:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013 Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule SyntheticInputEvent
+ * @typechecks static-only
+ */
+
+"use strict";
+
+var SyntheticEvent = require("./SyntheticEvent");
+
+/**
+ * @interface Event
+ * @see http://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105
+ *      /#events-inputevents
+ */
+var InputEventInterface = {
+  data: null
+};
+
+/**
+ * @param {object} dispatchConfig Configuration used to dispatch this event.
+ * @param {string} dispatchMarker Marker identifying the event target.
+ * @param {object} nativeEvent Native browser event.
+ * @extends {SyntheticUIEvent}
+ */
+function SyntheticInputEvent(
+  dispatchConfig,
+  dispatchMarker,
+  nativeEvent) {
+  SyntheticEvent.call(this, dispatchConfig, dispatchMarker, nativeEvent);
+}
+
+SyntheticEvent.augmentClass(
+  SyntheticInputEvent,
+  InputEventInterface
+);
+
+module.exports = SyntheticInputEvent;
+
+
+},{"./SyntheticEvent":96}],99:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule SyntheticKeyboardEvent
  * @typechecks static-only
@@ -25131,7 +19188,9 @@ module.exports = SyntheticFocusEvent;
 
 var SyntheticUIEvent = require("./SyntheticUIEvent");
 
+var getEventCharCode = require("./getEventCharCode");
 var getEventKey = require("./getEventKey");
+var getEventModifierState = require("./getEventModifierState");
 
 /**
  * @interface KeyboardEvent
@@ -25146,11 +19205,43 @@ var KeyboardEventInterface = {
   metaKey: null,
   repeat: null,
   locale: null,
+  getModifierState: getEventModifierState,
   // Legacy Interface
-  'char': null,
-  charCode: null,
-  keyCode: null,
-  which: null
+  charCode: function(event) {
+    // `charCode` is the result of a KeyPress event and represents the value of
+    // the actual printable character.
+
+    // KeyPress is deprecated, but its replacement is not yet final and not
+    // implemented in any major browser. Only KeyPress has charCode.
+    if (event.type === 'keypress') {
+      return getEventCharCode(event);
+    }
+    return 0;
+  },
+  keyCode: function(event) {
+    // `keyCode` is the result of a KeyDown/Up event and represents the value of
+    // physical keyboard key.
+
+    // The actual meaning of the value depends on the users' keyboard layout
+    // which cannot be detected. Assuming that it is a US keyboard layout
+    // provides a surprisingly accurate mapping for US and European users.
+    // Due to this, it is left to the user to implement at this time.
+    if (event.type === 'keydown' || event.type === 'keyup') {
+      return event.keyCode;
+    }
+    return 0;
+  },
+  which: function(event) {
+    // `which` is an alias for either `keyCode` or `charCode` depending on the
+    // type of the event.
+    if (event.type === 'keypress') {
+      return getEventCharCode(event);
+    }
+    if (event.type === 'keydown' || event.type === 'keyup') {
+      return event.keyCode;
+    }
+    return 0;
+  }
 };
 
 /**
@@ -25167,21 +19258,14 @@ SyntheticUIEvent.augmentClass(SyntheticKeyboardEvent, KeyboardEventInterface);
 
 module.exports = SyntheticKeyboardEvent;
 
-},{"./SyntheticUIEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticUIEvent.js","./getEventKey":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getEventKey.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticMouseEvent.js":[function(require,module,exports){
+},{"./SyntheticUIEvent":102,"./getEventCharCode":123,"./getEventKey":124,"./getEventModifierState":125}],100:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule SyntheticMouseEvent
  * @typechecks static-only
@@ -25191,6 +19275,8 @@ module.exports = SyntheticKeyboardEvent;
 
 var SyntheticUIEvent = require("./SyntheticUIEvent");
 var ViewportMetrics = require("./ViewportMetrics");
+
+var getEventModifierState = require("./getEventModifierState");
 
 /**
  * @interface MouseEvent
@@ -25205,6 +19291,7 @@ var MouseEventInterface = {
   shiftKey: null,
   altKey: null,
   metaKey: null,
+  getModifierState: getEventModifierState,
   button: function(event) {
     // Webkit, Firefox, IE9+
     // which:  1 2 3
@@ -25254,21 +19341,14 @@ SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 
 module.exports = SyntheticMouseEvent;
 
-},{"./SyntheticUIEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticUIEvent.js","./ViewportMetrics":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ViewportMetrics.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticTouchEvent.js":[function(require,module,exports){
+},{"./SyntheticUIEvent":102,"./ViewportMetrics":105,"./getEventModifierState":125}],101:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule SyntheticTouchEvent
  * @typechecks static-only
@@ -25277,6 +19357,8 @@ module.exports = SyntheticMouseEvent;
 "use strict";
 
 var SyntheticUIEvent = require("./SyntheticUIEvent");
+
+var getEventModifierState = require("./getEventModifierState");
 
 /**
  * @interface TouchEvent
@@ -25289,7 +19371,8 @@ var TouchEventInterface = {
   altKey: null,
   metaKey: null,
   ctrlKey: null,
-  shiftKey: null
+  shiftKey: null,
+  getModifierState: getEventModifierState
 };
 
 /**
@@ -25306,21 +19389,14 @@ SyntheticUIEvent.augmentClass(SyntheticTouchEvent, TouchEventInterface);
 
 module.exports = SyntheticTouchEvent;
 
-},{"./SyntheticUIEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticUIEvent.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticUIEvent.js":[function(require,module,exports){
+},{"./SyntheticUIEvent":102,"./getEventModifierState":125}],102:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule SyntheticUIEvent
  * @typechecks static-only
@@ -25330,13 +19406,35 @@ module.exports = SyntheticTouchEvent;
 
 var SyntheticEvent = require("./SyntheticEvent");
 
+var getEventTarget = require("./getEventTarget");
+
 /**
  * @interface UIEvent
  * @see http://www.w3.org/TR/DOM-Level-3-Events/
  */
 var UIEventInterface = {
-  view: null,
-  detail: null
+  view: function(event) {
+    if (event.view) {
+      return event.view;
+    }
+
+    var target = getEventTarget(event);
+    if (target != null && target.window === target) {
+      // target is a window object
+      return target;
+    }
+
+    var doc = target.ownerDocument;
+    // TODO: Figure out why `ownerDocument` is sometimes undefined in IE8.
+    if (doc) {
+      return doc.defaultView || doc.parentWindow;
+    } else {
+      return window;
+    }
+  },
+  detail: function(event) {
+    return event.detail || 0;
+  }
 };
 
 /**
@@ -25353,21 +19451,14 @@ SyntheticEvent.augmentClass(SyntheticUIEvent, UIEventInterface);
 
 module.exports = SyntheticUIEvent;
 
-},{"./SyntheticEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticEvent.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticWheelEvent.js":[function(require,module,exports){
+},{"./SyntheticEvent":96,"./getEventTarget":126}],103:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule SyntheticWheelEvent
  * @typechecks static-only
@@ -25421,22 +19512,15 @@ SyntheticMouseEvent.augmentClass(SyntheticWheelEvent, WheelEventInterface);
 
 module.exports = SyntheticWheelEvent;
 
-},{"./SyntheticMouseEvent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/SyntheticMouseEvent.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/Transaction.js":[function(require,module,exports){
+},{"./SyntheticMouseEvent":100}],104:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule Transaction
  */
@@ -25482,9 +19566,6 @@ var invariant = require("./invariant");
  *                    +-----------------------------------------+
  * </pre>
  *
- * Bonus:
- * - Reports timing metrics by method name and wrapper index.
- *
  * Use cases:
  * - Preserving the input selection ranges before/after reconciliation.
  *   Restoring selection even in the event of an unexpected error.
@@ -25524,20 +19605,6 @@ var Mixin = {
     } else {
       this.wrapperInitData.length = 0;
     }
-    if (!this.timingMetrics) {
-      this.timingMetrics = {};
-    }
-    this.timingMetrics.methodInvocationTime = 0;
-    if (!this.timingMetrics.wrapperInitTimes) {
-      this.timingMetrics.wrapperInitTimes = [];
-    } else {
-      this.timingMetrics.wrapperInitTimes.length = 0;
-    }
-    if (!this.timingMetrics.wrapperCloseTimes) {
-      this.timingMetrics.wrapperCloseTimes = [];
-    } else {
-      this.timingMetrics.wrapperCloseTimes.length = 0;
-    }
     this._isInTransaction = false;
   },
 
@@ -25570,7 +19637,6 @@ var Mixin = {
       'Transaction.perform(...): Cannot initialize a transaction when there ' +
       'is already an outstanding transaction.'
     ) : invariant(!this.isInTransaction()));
-    var memberStart = Date.now();
     var errorThrown;
     var ret;
     try {
@@ -25584,8 +19650,6 @@ var Mixin = {
       ret = method.call(scope, a, b, c, d, e, f);
       errorThrown = false;
     } finally {
-      var memberEnd = Date.now();
-      this.methodInvocationTime += (memberEnd - memberStart);
       try {
         if (errorThrown) {
           // If `method` throws, prefer to show that stack trace over any thrown
@@ -25608,9 +19672,7 @@ var Mixin = {
 
   initializeAll: function(startIndex) {
     var transactionWrappers = this.transactionWrappers;
-    var wrapperInitTimes = this.timingMetrics.wrapperInitTimes;
     for (var i = startIndex; i < transactionWrappers.length; i++) {
-      var initStart = Date.now();
       var wrapper = transactionWrappers[i];
       try {
         // Catching errors makes debugging more difficult, so we start with the
@@ -25622,10 +19684,6 @@ var Mixin = {
           wrapper.initialize.call(this) :
           null;
       } finally {
-        var curInitTime = wrapperInitTimes[i];
-        var initEnd = Date.now();
-        wrapperInitTimes[i] = (curInitTime || 0) + (initEnd - initStart);
-
         if (this.wrapperInitData[i] === Transaction.OBSERVED_ERROR) {
           // The initializer for wrapper i threw an error; initialize the
           // remaining wrappers but silence any exceptions from them to ensure
@@ -25651,10 +19709,8 @@ var Mixin = {
       'Transaction.closeAll(): Cannot close transaction when none are open.'
     ) : invariant(this.isInTransaction()));
     var transactionWrappers = this.transactionWrappers;
-    var wrapperCloseTimes = this.timingMetrics.wrapperCloseTimes;
     for (var i = startIndex; i < transactionWrappers.length; i++) {
       var wrapper = transactionWrappers[i];
-      var closeStart = Date.now();
       var initData = this.wrapperInitData[i];
       var errorThrown;
       try {
@@ -25668,10 +19724,6 @@ var Mixin = {
         }
         errorThrown = false;
       } finally {
-        var closeEnd = Date.now();
-        var curCloseTime = wrapperCloseTimes[i];
-        wrapperCloseTimes[i] = (curCloseTime || 0) + (closeEnd - closeStart);
-
         if (errorThrown) {
           // The closer for wrapper i threw an error; close the remaining
           // wrappers but silence any exceptions from them to ensure that the
@@ -25701,21 +19753,14 @@ var Transaction = {
 module.exports = Transaction;
 
 }).call(this,require('_process'))
-},{"./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ViewportMetrics.js":[function(require,module,exports){
+},{"./invariant":135,"_process":156}],105:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ViewportMetrics
  */
@@ -25740,24 +19785,17 @@ var ViewportMetrics = {
 
 module.exports = ViewportMetrics;
 
-},{"./getUnboundedScrollPosition":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getUnboundedScrollPosition.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/accumulate.js":[function(require,module,exports){
+},{"./getUnboundedScrollPosition":131}],106:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule accumulate
+ * @providesModule accumulateInto
  */
 
 "use strict";
@@ -25765,54 +19803,62 @@ module.exports = ViewportMetrics;
 var invariant = require("./invariant");
 
 /**
- * Accumulates items that must not be null or undefined.
  *
- * This is used to conserve memory by avoiding array allocations.
+ * Accumulates items that must not be null or undefined into the first one. This
+ * is used to conserve memory by avoiding array allocations, and thus sacrifices
+ * API cleanness. Since `current` can be null before being passed in and not
+ * null after this function, make sure to assign it back to `current`:
+ *
+ * `a = accumulateInto(a, b);`
+ *
+ * This API should be sparingly used. Try `accumulate` for something cleaner.
  *
  * @return {*|array<*>} An accumulation of items.
  */
-function accumulate(current, next) {
+
+function accumulateInto(current, next) {
   ("production" !== process.env.NODE_ENV ? invariant(
     next != null,
-    'accumulate(...): Accumulated items must be not be null or undefined.'
+    'accumulateInto(...): Accumulated items must not be null or undefined.'
   ) : invariant(next != null));
   if (current == null) {
     return next;
-  } else {
-    // Both are not empty. Warning: Never call x.concat(y) when you are not
-    // certain that x is an Array (x could be a string with concat method).
-    var currentIsArray = Array.isArray(current);
-    var nextIsArray = Array.isArray(next);
-    if (currentIsArray) {
-      return current.concat(next);
-    } else {
-      if (nextIsArray) {
-        return [current].concat(next);
-      } else {
-        return [current, next];
-      }
-    }
   }
+
+  // Both are not empty. Warning: Never call x.concat(y) when you are not
+  // certain that x is an Array (x could be a string with concat method).
+  var currentIsArray = Array.isArray(current);
+  var nextIsArray = Array.isArray(next);
+
+  if (currentIsArray && nextIsArray) {
+    current.push.apply(current, next);
+    return current;
+  }
+
+  if (currentIsArray) {
+    current.push(next);
+    return current;
+  }
+
+  if (nextIsArray) {
+    // A bit too dangerous to mutate `next`.
+    return [current].concat(next);
+  }
+
+  return [current, next];
 }
 
-module.exports = accumulate;
+module.exports = accumulateInto;
 
 }).call(this,require('_process'))
-},{"./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/adler32.js":[function(require,module,exports){
+},{"./invariant":135,"_process":156}],107:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule adler32
  */
@@ -25825,7 +19871,7 @@ var MOD = 65521;
 
 // This is a clean-room implementation of adler32 designed for detecting
 // if markup is not what we expect it to be. It does not need to be
-// cryptographically strong, only reasonable good at detecting if markup
+// cryptographically strong, only reasonably good at detecting if markup
 // generated on the server is different than that on the client.
 function adler32(data) {
   var a = 1;
@@ -25839,21 +19885,88 @@ function adler32(data) {
 
 module.exports = adler32;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/containsNode.js":[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule camelize
+ * @typechecks
+ */
+
+var _hyphenPattern = /-(.)/g;
+
+/**
+ * Camelcases a hyphenated string, for example:
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *   > camelize('background-color')
+ *   < "backgroundColor"
+ *
+ * @param {string} string
+ * @return {string}
+ */
+function camelize(string) {
+  return string.replace(_hyphenPattern, function(_, character) {
+    return character.toUpperCase();
+  });
+}
+
+module.exports = camelize;
+
+},{}],109:[function(require,module,exports){
+/**
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule camelizeStyleName
+ * @typechecks
+ */
+
+"use strict";
+
+var camelize = require("./camelize");
+
+var msPattern = /^-ms-/;
+
+/**
+ * Camelcases a hyphenated CSS property name, for example:
+ *
+ *   > camelizeStyleName('background-color')
+ *   < "backgroundColor"
+ *   > camelizeStyleName('-moz-transition')
+ *   < "MozTransition"
+ *   > camelizeStyleName('-ms-transition')
+ *   < "msTransition"
+ *
+ * As Andi Smith suggests
+ * (http://www.andismith.com/blog/2012/02/modernizr-prefixed/), an `-ms` prefix
+ * is converted to lowercase `ms`.
+ *
+ * @param {string} string
+ * @return {string}
+ */
+function camelizeStyleName(string) {
+  return camelize(string.replace(msPattern, 'ms-'));
+}
+
+module.exports = camelizeStyleName;
+
+},{"./camelize":108}],110:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule containsNode
  * @typechecks
@@ -25890,79 +20003,14 @@ function containsNode(outerNode, innerNode) {
 
 module.exports = containsNode;
 
-},{"./isTextNode":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/isTextNode.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/copyProperties.js":[function(require,module,exports){
-(function (process){
+},{"./isTextNode":139}],111:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule copyProperties
- */
-
-/**
- * Copy properties from one or more objects (up to 5) into the first object.
- * This is a shallow copy. It mutates the first object and also returns it.
- *
- * NOTE: `arguments` has a very significant performance penalty, which is why
- * we don't support unlimited arguments.
- */
-function copyProperties(obj, a, b, c, d, e, f) {
-  obj = obj || {};
-
-  if ("production" !== process.env.NODE_ENV) {
-    if (f) {
-      throw new Error('Too many arguments passed to copyProperties');
-    }
-  }
-
-  var args = [a, b, c, d, e];
-  var ii = 0, v;
-  while (args[ii]) {
-    v = args[ii++];
-    for (var k in v) {
-      obj[k] = v[k];
-    }
-
-    // IE ignores toString in object iteration.. See:
-    // webreflection.blogspot.com/2007/07/quick-fix-internet-explorer-and.html
-    if (v.hasOwnProperty && v.hasOwnProperty('toString') &&
-        (typeof v.toString != 'undefined') && (obj.toString !== v.toString)) {
-      obj.toString = v.toString;
-    }
-  }
-
-  return obj;
-}
-
-module.exports = copyProperties;
-
-}).call(this,require('_process'))
-},{"_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/createArrayFrom.js":[function(require,module,exports){
-/**
- * Copyright 2013-2014 Facebook, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule createArrayFrom
  * @typechecks
@@ -26041,22 +20089,15 @@ function createArrayFrom(obj) {
 
 module.exports = createArrayFrom;
 
-},{"./toArray":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/toArray.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/createFullPageComponent.js":[function(require,module,exports){
+},{"./toArray":152}],112:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule createFullPageComponent
  * @typechecks
@@ -26066,6 +20107,7 @@ module.exports = createArrayFrom;
 
 // Defeat circular references by requiring this directly.
 var ReactCompositeComponent = require("./ReactCompositeComponent");
+var ReactElement = require("./ReactElement");
 
 var invariant = require("./invariant");
 
@@ -26077,14 +20119,14 @@ var invariant = require("./invariant");
  * take advantage of React's reconciliation for styling and <title>
  * management. So we just document it and throw in dangerous cases.
  *
- * @param {function} componentClass convenience constructor to wrap
+ * @param {string} tag The tag to wrap
  * @return {function} convenience constructor of new component
  */
-function createFullPageComponent(componentClass) {
+function createFullPageComponent(tag) {
+  var elementFactory = ReactElement.createFactory(tag);
+
   var FullPageComponent = ReactCompositeComponent.createClass({
-    displayName: 'ReactFullPageComponent' + (
-      componentClass.componentConstructor.displayName || ''
-    ),
+    displayName: 'ReactFullPageComponent' + tag,
 
     componentWillUnmount: function() {
       ("production" !== process.env.NODE_ENV ? invariant(
@@ -26098,7 +20140,7 @@ function createFullPageComponent(componentClass) {
     },
 
     render: function() {
-      return this.transferPropsTo(componentClass(null, this.props.children));
+      return elementFactory(this.props);
     }
   });
 
@@ -26108,22 +20150,15 @@ function createFullPageComponent(componentClass) {
 module.exports = createFullPageComponent;
 
 }).call(this,require('_process'))
-},{"./ReactCompositeComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactCompositeComponent.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/createNodesFromMarkup.js":[function(require,module,exports){
+},{"./ReactCompositeComponent":43,"./ReactElement":61,"./invariant":135,"_process":156}],113:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule createNodesFromMarkup
  * @typechecks
@@ -26205,86 +20240,14 @@ function createNodesFromMarkup(markup, handleScript) {
 module.exports = createNodesFromMarkup;
 
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js","./createArrayFrom":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/createArrayFrom.js","./getMarkupWrap":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getMarkupWrap.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/createObjectFrom.js":[function(require,module,exports){
-(function (process){
+},{"./ExecutionEnvironment":30,"./createArrayFrom":111,"./getMarkupWrap":127,"./invariant":135,"_process":156}],114:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule createObjectFrom
- */
-
-/**
- * Construct an object from an array of keys
- * and optionally specified value or list of values.
- *
- *  >>> createObjectFrom(['a','b','c']);
- *  {a: true, b: true, c: true}
- *
- *  >>> createObjectFrom(['a','b','c'], false);
- *  {a: false, b: false, c: false}
- *
- *  >>> createObjectFrom(['a','b','c'], 'monkey');
- *  {c:'monkey', b:'monkey' c:'monkey'}
- *
- *  >>> createObjectFrom(['a','b','c'], [1,2,3]);
- *  {a: 1, b: 2, c: 3}
- *
- *  >>> createObjectFrom(['women', 'men'], [true, false]);
- *  {women: true, men: false}
- *
- * @param   Array   list of keys
- * @param   mixed   optional value or value array.  defaults true.
- * @returns object
- */
-function createObjectFrom(keys, values /* = true */) {
-  if ("production" !== process.env.NODE_ENV) {
-    if (!Array.isArray(keys)) {
-      throw new TypeError('Must pass an array of keys.');
-    }
-  }
-
-  var object = {};
-  var isArray = Array.isArray(values);
-  if (typeof values == 'undefined') {
-    values = true;
-  }
-
-  for (var ii = keys.length; ii--;) {
-    object[keys[ii]] = isArray ? values[ii] : values;
-  }
-  return object;
-}
-
-module.exports = createObjectFrom;
-
-}).call(this,require('_process'))
-},{"_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/dangerousStyleValue.js":[function(require,module,exports){
-/**
- * Copyright 2013-2014 Facebook, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule dangerousStyleValue
  * @typechecks static-only
@@ -26294,16 +20257,18 @@ module.exports = createObjectFrom;
 
 var CSSProperty = require("./CSSProperty");
 
+var isUnitlessNumber = CSSProperty.isUnitlessNumber;
+
 /**
- * Convert a value into the proper css writable value. The `styleName` name
- * name should be logical (no hyphens), as specified
+ * Convert a value into the proper css writable value. The style name `name`
+ * should be logical (no hyphens), as specified
  * in `CSSProperty.isUnitlessNumber`.
  *
- * @param {string} styleName CSS property name such as `topMargin`.
+ * @param {string} name CSS property name such as `topMargin`.
  * @param {*} value CSS property value such as `10px`.
  * @return {string} Normalized style value with dimensions applied.
  */
-function dangerousStyleValue(styleName, value) {
+function dangerousStyleValue(name, value) {
   // Note that we've removed escapeTextForBrowser() calls here since the
   // whole string will be escaped when the attribute is injected into
   // the markup. If you provide unsafe user data here they can inject
@@ -26320,35 +20285,81 @@ function dangerousStyleValue(styleName, value) {
   }
 
   var isNonNumeric = isNaN(value);
-  if (isNonNumeric || value === 0 || CSSProperty.isUnitlessNumber[styleName]) {
+  if (isNonNumeric || value === 0 ||
+      isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name]) {
     return '' + value; // cast to string
   }
 
+  if (typeof value === 'string') {
+    value = value.trim();
+  }
   return value + 'px';
 }
 
 module.exports = dangerousStyleValue;
 
-},{"./CSSProperty":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/CSSProperty.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/emptyFunction.js":[function(require,module,exports){
+},{"./CSSProperty":12}],115:[function(require,module,exports){
+(function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule deprecated
+ */
+
+var assign = require("./Object.assign");
+var warning = require("./warning");
+
+/**
+ * This will log a single deprecation notice per function and forward the call
+ * on to the new API.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * @param {string} namespace The namespace of the call, eg 'React'
+ * @param {string} oldName The old function name, eg 'renderComponent'
+ * @param {string} newName The new function name, eg 'render'
+ * @param {*} ctx The context this forwarded call should run in
+ * @param {function} fn The function to forward on to
+ * @return {*} Will be the value as returned from `fn`
+ */
+function deprecated(namespace, oldName, newName, ctx, fn) {
+  var warned = false;
+  if ("production" !== process.env.NODE_ENV) {
+    var newFn = function() {
+      ("production" !== process.env.NODE_ENV ? warning(
+        warned,
+        (namespace + "." + oldName + " will be deprecated in a future version. ") +
+        ("Use " + namespace + "." + newName + " instead.")
+      ) : null);
+      warned = true;
+      return fn.apply(ctx, arguments);
+    };
+    newFn.displayName = (namespace + "_" + oldName);
+    // We need to make sure all properties of the original fn are copied over.
+    // In particular, this is needed to support PropTypes
+    return assign(newFn, fn);
+  }
+
+  return fn;
+}
+
+module.exports = deprecated;
+
+}).call(this,require('_process'))
+},{"./Object.assign":35,"./warning":154,"_process":156}],116:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule emptyFunction
  */
-
-var copyProperties = require("./copyProperties");
 
 function makeEmptyFunction(arg) {
   return function() {
@@ -26363,33 +20374,24 @@ function makeEmptyFunction(arg) {
  */
 function emptyFunction() {}
 
-copyProperties(emptyFunction, {
-  thatReturns: makeEmptyFunction,
-  thatReturnsFalse: makeEmptyFunction(false),
-  thatReturnsTrue: makeEmptyFunction(true),
-  thatReturnsNull: makeEmptyFunction(null),
-  thatReturnsThis: function() { return this; },
-  thatReturnsArgument: function(arg) { return arg; }
-});
+emptyFunction.thatReturns = makeEmptyFunction;
+emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+emptyFunction.thatReturnsThis = function() { return this; };
+emptyFunction.thatReturnsArgument = function(arg) { return arg; };
 
 module.exports = emptyFunction;
 
-},{"./copyProperties":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/copyProperties.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/emptyObject.js":[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule emptyObject
  */
@@ -26405,21 +20407,14 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = emptyObject;
 
 }).call(this,require('_process'))
-},{"_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/escapeTextForBrowser.js":[function(require,module,exports){
+},{"_process":156}],118:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule escapeTextForBrowser
  * @typechecks static-only
@@ -26432,11 +20427,10 @@ var ESCAPE_LOOKUP = {
   ">": "&gt;",
   "<": "&lt;",
   "\"": "&quot;",
-  "'": "&#x27;",
-  "/": "&#x2f;"
+  "'": "&#x27;"
 };
 
-var ESCAPE_REGEX = /[&><"'\/]/g;
+var ESCAPE_REGEX = /[&><"']/g;
 
 function escaper(match) {
   return ESCAPE_LOOKUP[match];
@@ -26454,30 +20448,25 @@ function escapeTextForBrowser(text) {
 
 module.exports = escapeTextForBrowser;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/flattenChildren.js":[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule flattenChildren
  */
 
 "use strict";
 
-var invariant = require("./invariant");
+var ReactTextComponent = require("./ReactTextComponent");
+
 var traverseAllChildren = require("./traverseAllChildren");
+var warning = require("./warning");
 
 /**
  * @param {function} traverseContext Context passed through traversal.
@@ -26487,14 +20476,27 @@ var traverseAllChildren = require("./traverseAllChildren");
 function flattenSingleChildIntoContext(traverseContext, child, name) {
   // We found a component instance.
   var result = traverseContext;
-  ("production" !== process.env.NODE_ENV ? invariant(
-    !result.hasOwnProperty(name),
-    'flattenChildren(...): Encountered two children with the same key, `%s`. ' +
-    'Children keys must be unique.',
+  var keyUnique = !result.hasOwnProperty(name);
+  ("production" !== process.env.NODE_ENV ? warning(
+    keyUnique,
+    'flattenChildren(...): Encountered two children with the same key, ' +
+    '`%s`. Child keys must be unique; when two children share a key, only ' +
+    'the first child will be used.',
     name
-  ) : invariant(!result.hasOwnProperty(name)));
-  if (child != null) {
-    result[name] = child;
+  ) : null);
+  if (keyUnique && child != null) {
+    var type = typeof child;
+    var normalizedValue;
+
+    if (type === 'string') {
+      normalizedValue = ReactTextComponent(child);
+    } else if (type === 'number') {
+      normalizedValue = ReactTextComponent('' + child);
+    } else {
+      normalizedValue = child;
+    }
+
+    result[name] = normalizedValue;
   }
 }
 
@@ -26515,21 +20517,14 @@ function flattenChildren(children) {
 module.exports = flattenChildren;
 
 }).call(this,require('_process'))
-},{"./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./traverseAllChildren":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/traverseAllChildren.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/focusNode.js":[function(require,module,exports){
+},{"./ReactTextComponent":87,"./traverseAllChildren":153,"./warning":154,"_process":156}],120:[function(require,module,exports){
 /**
- * Copyright 2014 Facebook, Inc.
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule focusNode
  */
@@ -26537,34 +20532,28 @@ module.exports = flattenChildren;
 "use strict";
 
 /**
- * IE8 throws if an input/textarea is disabled and we try to focus it.
- * Focus only when necessary.
- *
  * @param {DOMElement} node input/textarea to focus
  */
 function focusNode(node) {
-  if (!node.disabled) {
+  // IE8 can throw "Can't move focus to the control because it is invisible,
+  // not enabled, or of a type that does not accept the focus." for all kinds of
+  // reasons that are too expensive and fragile to test.
+  try {
     node.focus();
+  } catch(e) {
   }
 }
 
 module.exports = focusNode;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/forEachAccumulated.js":[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule forEachAccumulated
  */
@@ -26588,21 +20577,14 @@ var forEachAccumulated = function(arr, cb, scope) {
 
 module.exports = forEachAccumulated;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getActiveElement.js":[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule getActiveElement
  * @typechecks
@@ -26624,21 +20606,66 @@ function getActiveElement() /*?DOMElement*/ {
 
 module.exports = getActiveElement;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getEventKey.js":[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule getEventCharCode
+ * @typechecks static-only
+ */
+
+"use strict";
+
+/**
+ * `charCode` represents the actual "character code" and is safe to use with
+ * `String.fromCharCode`. As such, only keys that correspond to printable
+ * characters produce a valid `charCode`, the only exception to this is Enter.
+ * The Tab-key is considered non-printable and does not have a `charCode`,
+ * presumably because it does not produce a tab-character in browsers.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * @param {object} nativeEvent Native browser event.
+ * @return {string} Normalized `charCode` property.
+ */
+function getEventCharCode(nativeEvent) {
+  var charCode;
+  var keyCode = nativeEvent.keyCode;
+
+  if ('charCode' in nativeEvent) {
+    charCode = nativeEvent.charCode;
+
+    // FF does not set `charCode` for the Enter-key, check against `keyCode`.
+    if (charCode === 0 && keyCode === 13) {
+      charCode = 13;
+    }
+  } else {
+    // IE8 does not implement `charCode`, but `keyCode` has the correct value.
+    charCode = keyCode;
+  }
+
+  // Some non-printable keys are reported in `charCode`/`keyCode`, discard them.
+  // Must not discard the (non-)printable Enter-key.
+  if (charCode >= 32 || charCode === 13) {
+    return charCode;
+  }
+
+  return 0;
+}
+
+module.exports = getEventCharCode;
+
+},{}],124:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule getEventKey
  * @typechecks static-only
@@ -26646,8 +20673,10 @@ module.exports = getActiveElement;
 
 "use strict";
 
+var getEventCharCode = require("./getEventCharCode");
+
 /**
- * Normalization of deprecated HTML5 "key" values
+ * Normalization of deprecated HTML5 `key` values
  * @see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent#Key_names
  */
 var normalizeKey = {
@@ -26666,7 +20695,7 @@ var normalizeKey = {
 };
 
 /**
- * Translation from legacy "which/keyCode" to HTML5 "key"
+ * Translation from legacy `keyCode` to HTML5 `key`
  * Only special keys supported, all others depend on keyboard layout or browser
  * @see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent#Key_names
  */
@@ -26704,28 +20733,91 @@ var translateToKey = {
  * @return {string} Normalized `key` property.
  */
 function getEventKey(nativeEvent) {
-  return 'key' in nativeEvent ?
-    normalizeKey[nativeEvent.key] || nativeEvent.key :
-    translateToKey[nativeEvent.which || nativeEvent.keyCode] || 'Unidentified';
+  if (nativeEvent.key) {
+    // Normalize inconsistent values reported by browsers due to
+    // implementations of a working draft specification.
+
+    // FireFox implements `key` but returns `MozPrintableKey` for all
+    // printable characters (normalized to `Unidentified`), ignore it.
+    var key = normalizeKey[nativeEvent.key] || nativeEvent.key;
+    if (key !== 'Unidentified') {
+      return key;
+    }
+  }
+
+  // Browser does not implement `key`, polyfill as much of it as we can.
+  if (nativeEvent.type === 'keypress') {
+    var charCode = getEventCharCode(nativeEvent);
+
+    // The enter-key is technically both printable and non-printable and can
+    // thus be captured by `keypress`, no other non-printable key should.
+    return charCode === 13 ? 'Enter' : String.fromCharCode(charCode);
+  }
+  if (nativeEvent.type === 'keydown' || nativeEvent.type === 'keyup') {
+    // While user keyboard layout determines the actual meaning of each
+    // `keyCode` value, almost all function keys have a universal value.
+    return translateToKey[nativeEvent.keyCode] || 'Unidentified';
+  }
+  return '';
 }
 
 module.exports = getEventKey;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getEventTarget.js":[function(require,module,exports){
+},{"./getEventCharCode":123}],125:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013 Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule getEventModifierState
+ * @typechecks static-only
+ */
+
+"use strict";
+
+/**
+ * Translation from modifier key to the associated property in the event.
+ * @see http://www.w3.org/TR/DOM-Level-3-Events/#keys-Modifiers
+ */
+
+var modifierKeyToProp = {
+  'Alt': 'altKey',
+  'Control': 'ctrlKey',
+  'Meta': 'metaKey',
+  'Shift': 'shiftKey'
+};
+
+// IE8 does not implement getModifierState so we simply map it to the only
+// modifier keys exposed by the event itself, does not support Lock-keys.
+// Currently, all major browsers except Chrome seems to support Lock-keys.
+function modifierStateGetter(keyArg) {
+  /*jshint validthis:true */
+  var syntheticEvent = this;
+  var nativeEvent = syntheticEvent.nativeEvent;
+  if (nativeEvent.getModifierState) {
+    return nativeEvent.getModifierState(keyArg);
+  }
+  var keyProp = modifierKeyToProp[keyArg];
+  return keyProp ? !!nativeEvent[keyProp] : false;
+}
+
+function getEventModifierState(nativeEvent) {
+  return modifierStateGetter;
+}
+
+module.exports = getEventModifierState;
+
+},{}],126:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule getEventTarget
  * @typechecks static-only
@@ -26749,22 +20841,15 @@ function getEventTarget(nativeEvent) {
 
 module.exports = getEventTarget;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getMarkupWrap.js":[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule getMarkupWrap
  */
@@ -26790,6 +20875,7 @@ var shouldWrap = {
   // they will be initialized in the wrong namespace (and will not display).
   'circle': true,
   'defs': true,
+  'ellipse': true,
   'g': true,
   'line': true,
   'linearGradient': true,
@@ -26831,6 +20917,7 @@ var markupWrap = {
 
   'circle': svgWrap,
   'defs': svgWrap,
+  'ellipse': svgWrap,
   'g': svgWrap,
   'line': svgWrap,
   'linearGradient': svgWrap,
@@ -26871,21 +20958,14 @@ function getMarkupWrap(nodeName) {
 module.exports = getMarkupWrap;
 
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getNodeForCharacterOffset.js":[function(require,module,exports){
+},{"./ExecutionEnvironment":30,"./invariant":135,"_process":156}],128:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule getNodeForCharacterOffset
  */
@@ -26953,21 +21033,14 @@ function getNodeForCharacterOffset(root, offset) {
 
 module.exports = getNodeForCharacterOffset;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getReactRootElementInContainer.js":[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule getReactRootElementInContainer
  */
@@ -26995,21 +21068,14 @@ function getReactRootElementInContainer(container) {
 
 module.exports = getReactRootElementInContainer;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getTextContentAccessor.js":[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule getTextContentAccessor
  */
@@ -27030,7 +21096,7 @@ function getTextContentAccessor() {
   if (!contentKey && ExecutionEnvironment.canUseDOM) {
     // Prefer textContent to innerText because many browsers support both but
     // SVG <text> elements don't support innerText even when <div> does.
-    contentKey = 'textContent' in document.createElement('div') ?
+    contentKey = 'textContent' in document.documentElement ?
       'textContent' :
       'innerText';
   }
@@ -27039,21 +21105,14 @@ function getTextContentAccessor() {
 
 module.exports = getTextContentAccessor;
 
-},{"./ExecutionEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/getUnboundedScrollPosition.js":[function(require,module,exports){
+},{"./ExecutionEnvironment":30}],131:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule getUnboundedScrollPosition
  * @typechecks
@@ -27086,21 +21145,14 @@ function getUnboundedScrollPosition(scrollable) {
 
 module.exports = getUnboundedScrollPosition;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/hyphenate.js":[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule hyphenate
  * @typechecks
@@ -27114,6 +21166,9 @@ var _uppercasePattern = /([A-Z])/g;
  *   > hyphenate('backgroundColor')
  *   < "background-color"
  *
+ * For CSS style names, use `hyphenateStyleName` instead which works properly
+ * with all vendor prefixes, including `ms`.
+ *
  * @param {string} string
  * @return {string}
  */
@@ -27123,22 +21178,56 @@ function hyphenate(string) {
 
 module.exports = hyphenate;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/instantiateReactComponent.js":[function(require,module,exports){
+},{}],133:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule hyphenateStyleName
+ * @typechecks
+ */
+
+"use strict";
+
+var hyphenate = require("./hyphenate");
+
+var msPattern = /^ms-/;
+
+/**
+ * Hyphenates a camelcased CSS property name, for example:
+ *
+ *   > hyphenateStyleName('backgroundColor')
+ *   < "background-color"
+ *   > hyphenateStyleName('MozTransition')
+ *   < "-moz-transition"
+ *   > hyphenateStyleName('msTransition')
+ *   < "-ms-transition"
+ *
+ * As Modernizr suggests (http://modernizr.com/docs/#prefixed), an `ms` prefix
+ * is converted to `-ms-`.
+ *
+ * @param {string} string
+ * @return {string}
+ */
+function hyphenateStyleName(string) {
+  return hyphenate(string).replace(msPattern, '-ms-');
+}
+
+module.exports = hyphenateStyleName;
+
+},{"./hyphenate":132}],134:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule instantiateReactComponent
  * @typechecks static-only
@@ -27148,71 +21237,111 @@ module.exports = hyphenate;
 
 var warning = require("./warning");
 
-/**
- * Validate a `componentDescriptor`. This should be exposed publicly in a follow
- * up diff.
- *
- * @param {object} descriptor
- * @return {boolean} Returns true if this is a valid descriptor of a Component.
- */
-function isValidComponentDescriptor(descriptor) {
-  return (
-    typeof descriptor.constructor === 'function' &&
-    typeof descriptor.constructor.prototype.construct === 'function' &&
-    typeof descriptor.constructor.prototype.mountComponent === 'function' &&
-    typeof descriptor.constructor.prototype.receiveComponent === 'function'
-  );
-}
+var ReactElement = require("./ReactElement");
+var ReactLegacyElement = require("./ReactLegacyElement");
+var ReactNativeComponent = require("./ReactNativeComponent");
+var ReactEmptyComponent = require("./ReactEmptyComponent");
 
 /**
- * Given a `componentDescriptor` create an instance that will actually be
- * mounted. Currently it just extracts an existing clone from composite
- * components but this is an implementation detail which will change.
+ * Given an `element` create an instance that will actually be mounted.
  *
- * @param {object} descriptor
- * @return {object} A new instance of componentDescriptor's constructor.
+ * @param {object} element
+ * @param {*} parentCompositeType The composite type that resolved this.
+ * @return {object} A new instance of the element's constructor.
  * @protected
  */
-function instantiateReactComponent(descriptor) {
+function instantiateReactComponent(element, parentCompositeType) {
+  var instance;
+
   if ("production" !== process.env.NODE_ENV) {
     ("production" !== process.env.NODE_ENV ? warning(
-      isValidComponentDescriptor(descriptor),
-      'Only React Components are valid for mounting.'
+      element && (typeof element.type === 'function' ||
+                     typeof element.type === 'string'),
+      'Only functions or strings can be mounted as React components.'
     ) : null);
-    // We use the clone of a composite component instead of the original
-    // instance. This allows us to warn you if you're are accessing the wrong
-    // instance.
-    var instance = descriptor.__realComponentInstance || descriptor;
-    instance._descriptor = descriptor;
-    return instance;
+
+    // Resolve mock instances
+    if (element.type._mockedReactClassConstructor) {
+      // If this is a mocked class, we treat the legacy factory as if it was the
+      // class constructor for future proofing unit tests. Because this might
+      // be mocked as a legacy factory, we ignore any warnings triggerd by
+      // this temporary hack.
+      ReactLegacyElement._isLegacyCallWarningEnabled = false;
+      try {
+        instance = new element.type._mockedReactClassConstructor(
+          element.props
+        );
+      } finally {
+        ReactLegacyElement._isLegacyCallWarningEnabled = true;
+      }
+
+      // If the mock implementation was a legacy factory, then it returns a
+      // element. We need to turn this into a real component instance.
+      if (ReactElement.isValidElement(instance)) {
+        instance = new instance.type(instance.props);
+      }
+
+      var render = instance.render;
+      if (!render) {
+        // For auto-mocked factories, the prototype isn't shimmed and therefore
+        // there is no render function on the instance. We replace the whole
+        // component with an empty component instance instead.
+        element = ReactEmptyComponent.getEmptyComponent();
+      } else {
+        if (render._isMockFunction && !render._getMockImplementation()) {
+          // Auto-mocked components may have a prototype with a mocked render
+          // function. For those, we'll need to mock the result of the render
+          // since we consider undefined to be invalid results from render.
+          render.mockImplementation(
+            ReactEmptyComponent.getEmptyComponent
+          );
+        }
+        instance.construct(element);
+        return instance;
+      }
+    }
   }
-  // In prod we don't clone, we simply use the same instance for unaffected
-  // behavior. We have to keep the descriptor around for comparison later on.
-  // This should ideally be accepted in the constructor of the instance but
-  // since that is currently overloaded, we just manually attach it here.
-  descriptor._descriptor = descriptor;
-  return descriptor;
+
+  // Special case string values
+  if (typeof element.type === 'string') {
+    instance = ReactNativeComponent.createInstanceForTag(
+      element.type,
+      element.props,
+      parentCompositeType
+    );
+  } else {
+    // Normal case for non-mocks and non-strings
+    instance = new element.type(element.props);
+  }
+
+  if ("production" !== process.env.NODE_ENV) {
+    ("production" !== process.env.NODE_ENV ? warning(
+      typeof instance.construct === 'function' &&
+      typeof instance.mountComponent === 'function' &&
+      typeof instance.receiveComponent === 'function',
+      'Only React Components can be mounted.'
+    ) : null);
+  }
+
+  // This actually sets up the internal instance. This will become decoupled
+  // from the public instance in a future diff.
+  instance.construct(element);
+
+  return instance;
 }
 
 module.exports = instantiateReactComponent;
 
 }).call(this,require('_process'))
-},{"./warning":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/warning.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js":[function(require,module,exports){
+},{"./ReactElement":61,"./ReactEmptyComponent":63,"./ReactLegacyElement":70,"./ReactNativeComponent":75,"./warning":154,"_process":156}],135:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule invariant
  */
@@ -27230,54 +21359,45 @@ module.exports = instantiateReactComponent;
  * will remain to ensure logic does not differ in production.
  */
 
-var invariant = function(condition) {
+var invariant = function(condition, format, a, b, c, d, e, f) {
+  if ("production" !== process.env.NODE_ENV) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  }
+
   if (!condition) {
-    var error = new Error(
-      'Minified exception occured; use the non-minified dev environment for ' +
-      'the full error message and additional helpful warnings.'
-    );
-    error.framesToPop = 1;
+    var error;
+    if (format === undefined) {
+      error = new Error(
+        'Minified exception occurred; use the non-minified dev environment ' +
+        'for the full error message and additional helpful warnings.'
+      );
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(
+        'Invariant Violation: ' +
+        format.replace(/%s/g, function() { return args[argIndex++]; })
+      );
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
     throw error;
   }
 };
 
-if ("production" !== process.env.NODE_ENV) {
-  invariant = function(condition, format, a, b, c, d, e, f) {
-    if (format === undefined) {
-      throw new Error('invariant requires an error message argument');
-    }
-
-    if (!condition) {
-      var args = [a, b, c, d, e, f];
-      var argIndex = 0;
-      var error = new Error(
-        'Invariant Violation: ' +
-        format.replace(/%s/g, function() { return args[argIndex++]; })
-      );
-      error.framesToPop = 1; // we don't care about invariant's own frame
-      throw error;
-    }
-  };
-}
-
 module.exports = invariant;
 
 }).call(this,require('_process'))
-},{"_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/isEventSupported.js":[function(require,module,exports){
+},{"_process":156}],136:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule isEventSupported
  */
@@ -27335,21 +21455,14 @@ function isEventSupported(eventNameSuffix, capture) {
 
 module.exports = isEventSupported;
 
-},{"./ExecutionEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/isNode.js":[function(require,module,exports){
+},{"./ExecutionEnvironment":30}],137:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule isNode
  * @typechecks
@@ -27370,21 +21483,14 @@ function isNode(object) {
 
 module.exports = isNode;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/isTextInputElement.js":[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule isTextInputElement
  */
@@ -27421,21 +21527,14 @@ function isTextInputElement(elem) {
 
 module.exports = isTextInputElement;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/isTextNode.js":[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule isTextNode
  * @typechecks
@@ -27453,21 +21552,14 @@ function isTextNode(object) {
 
 module.exports = isTextNode;
 
-},{"./isNode":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/isNode.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/joinClasses.js":[function(require,module,exports){
+},{"./isNode":137}],140:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule joinClasses
  * @typechecks static-only
@@ -27491,7 +21583,9 @@ function joinClasses(className/*, ... */) {
   if (argLength > 1) {
     for (var ii = 1; ii < argLength; ii++) {
       nextClass = arguments[ii];
-      nextClass && (className += ' ' + nextClass);
+      if (nextClass) {
+        className = (className ? className + ' ' : '') + nextClass;
+      }
     }
   }
   return className;
@@ -27499,22 +21593,15 @@ function joinClasses(className/*, ... */) {
 
 module.exports = joinClasses;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyMirror.js":[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule keyMirror
  * @typechecks static-only
@@ -27561,21 +21648,14 @@ var keyMirror = function(obj) {
 module.exports = keyMirror;
 
 }).call(this,require('_process'))
-},{"./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyOf.js":[function(require,module,exports){
+},{"./invariant":135,"_process":156}],142:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule keyOf
  */
@@ -27604,21 +21684,67 @@ var keyOf = function(oneKeyObj) {
 
 module.exports = keyOf;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/memoizeStringOnly.js":[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule mapObject
+ */
+
+'use strict';
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+/**
+ * Executes the provided `callback` once for each enumerable own property in the
+ * object and constructs a new object from the results. The `callback` is
+ * invoked with three arguments:
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  - the property value
+ *  - the property name
+ *  - the object being traversed
+ *
+ * Properties that are added after the call to `mapObject` will not be visited
+ * by `callback`. If the values of existing properties are changed, the value
+ * passed to `callback` will be the value at the time `mapObject` visits them.
+ * Properties that are deleted before being visited are not visited.
+ *
+ * @grep function objectMap()
+ * @grep function objMap()
+ *
+ * @param {?object} object
+ * @param {function} callback
+ * @param {*} context
+ * @return {?object}
+ */
+function mapObject(object, callback, context) {
+  if (!object) {
+    return null;
+  }
+  var result = {};
+  for (var name in object) {
+    if (hasOwnProperty.call(object, name)) {
+      result[name] = callback.call(context, object[name], name, object);
+    }
+  }
+  return result;
+}
+
+module.exports = mapObject;
+
+},{}],144:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule memoizeStringOnly
  * @typechecks static-only
@@ -27645,284 +21771,15 @@ function memoizeStringOnly(callback) {
 
 module.exports = memoizeStringOnly;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/merge.js":[function(require,module,exports){
-/**
- * Copyright 2013-2014 Facebook, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule merge
- */
-
-"use strict";
-
-var mergeInto = require("./mergeInto");
-
-/**
- * Shallow merges two structures into a return value, without mutating either.
- *
- * @param {?object} one Optional object with properties to merge from.
- * @param {?object} two Optional object with properties to merge from.
- * @return {object} The shallow extension of one by two.
- */
-var merge = function(one, two) {
-  var result = {};
-  mergeInto(result, one);
-  mergeInto(result, two);
-  return result;
-};
-
-module.exports = merge;
-
-},{"./mergeInto":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mergeInto.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mergeHelpers.js":[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule mergeHelpers
- *
- * requiresPolyfills: Array.isArray
- */
-
-"use strict";
-
-var invariant = require("./invariant");
-var keyMirror = require("./keyMirror");
-
-/**
- * Maximum number of levels to traverse. Will catch circular structures.
- * @const
- */
-var MAX_MERGE_DEPTH = 36;
-
-/**
- * We won't worry about edge cases like new String('x') or new Boolean(true).
- * Functions are considered terminals, and arrays are not.
- * @param {*} o The item/object/value to test.
- * @return {boolean} true iff the argument is a terminal.
- */
-var isTerminal = function(o) {
-  return typeof o !== 'object' || o === null;
-};
-
-var mergeHelpers = {
-
-  MAX_MERGE_DEPTH: MAX_MERGE_DEPTH,
-
-  isTerminal: isTerminal,
-
-  /**
-   * Converts null/undefined values into empty object.
-   *
-   * @param {?Object=} arg Argument to be normalized (nullable optional)
-   * @return {!Object}
-   */
-  normalizeMergeArg: function(arg) {
-    return arg === undefined || arg === null ? {} : arg;
-  },
-
-  /**
-   * If merging Arrays, a merge strategy *must* be supplied. If not, it is
-   * likely the caller's fault. If this function is ever called with anything
-   * but `one` and `two` being `Array`s, it is the fault of the merge utilities.
-   *
-   * @param {*} one Array to merge into.
-   * @param {*} two Array to merge from.
-   */
-  checkMergeArrayArgs: function(one, two) {
-    ("production" !== process.env.NODE_ENV ? invariant(
-      Array.isArray(one) && Array.isArray(two),
-      'Tried to merge arrays, instead got %s and %s.',
-      one,
-      two
-    ) : invariant(Array.isArray(one) && Array.isArray(two)));
-  },
-
-  /**
-   * @param {*} one Object to merge into.
-   * @param {*} two Object to merge from.
-   */
-  checkMergeObjectArgs: function(one, two) {
-    mergeHelpers.checkMergeObjectArg(one);
-    mergeHelpers.checkMergeObjectArg(two);
-  },
-
-  /**
-   * @param {*} arg
-   */
-  checkMergeObjectArg: function(arg) {
-    ("production" !== process.env.NODE_ENV ? invariant(
-      !isTerminal(arg) && !Array.isArray(arg),
-      'Tried to merge an object, instead got %s.',
-      arg
-    ) : invariant(!isTerminal(arg) && !Array.isArray(arg)));
-  },
-
-  /**
-   * Checks that a merge was not given a circular object or an object that had
-   * too great of depth.
-   *
-   * @param {number} Level of recursion to validate against maximum.
-   */
-  checkMergeLevel: function(level) {
-    ("production" !== process.env.NODE_ENV ? invariant(
-      level < MAX_MERGE_DEPTH,
-      'Maximum deep merge depth exceeded. You may be attempting to merge ' +
-      'circular structures in an unsupported way.'
-    ) : invariant(level < MAX_MERGE_DEPTH));
-  },
-
-  /**
-   * Checks that the supplied merge strategy is valid.
-   *
-   * @param {string} Array merge strategy.
-   */
-  checkArrayStrategy: function(strategy) {
-    ("production" !== process.env.NODE_ENV ? invariant(
-      strategy === undefined || strategy in mergeHelpers.ArrayStrategies,
-      'You must provide an array strategy to deep merge functions to ' +
-      'instruct the deep merge how to resolve merging two arrays.'
-    ) : invariant(strategy === undefined || strategy in mergeHelpers.ArrayStrategies));
-  },
-
-  /**
-   * Set of possible behaviors of merge algorithms when encountering two Arrays
-   * that must be merged together.
-   * - `clobber`: The left `Array` is ignored.
-   * - `indexByIndex`: The result is achieved by recursively deep merging at
-   *   each index. (not yet supported.)
-   */
-  ArrayStrategies: keyMirror({
-    Clobber: true,
-    IndexByIndex: true
-  })
-
-};
-
-module.exports = mergeHelpers;
-
-}).call(this,require('_process'))
-},{"./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","./keyMirror":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/keyMirror.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mergeInto.js":[function(require,module,exports){
-/**
- * Copyright 2013-2014 Facebook, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule mergeInto
- * @typechecks static-only
- */
-
-"use strict";
-
-var mergeHelpers = require("./mergeHelpers");
-
-var checkMergeObjectArg = mergeHelpers.checkMergeObjectArg;
-
-/**
- * Shallow merges two structures by mutating the first parameter.
- *
- * @param {object} one Object to be merged into.
- * @param {?object} two Optional object with properties to merge from.
- */
-function mergeInto(one, two) {
-  checkMergeObjectArg(one);
-  if (two != null) {
-    checkMergeObjectArg(two);
-    for (var key in two) {
-      if (!two.hasOwnProperty(key)) {
-        continue;
-      }
-      one[key] = two[key];
-    }
-  }
-}
-
-module.exports = mergeInto;
-
-},{"./mergeHelpers":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mergeHelpers.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/mixInto.js":[function(require,module,exports){
-/**
- * Copyright 2013-2014 Facebook, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule mixInto
- */
-
-"use strict";
-
-/**
- * Simply copies properties to the prototype.
- */
-var mixInto = function(constructor, methodBag) {
-  var methodName;
-  for (methodName in methodBag) {
-    if (!methodBag.hasOwnProperty(methodName)) {
-      continue;
-    }
-    constructor.prototype[methodName] = methodBag[methodName];
-  }
-};
-
-module.exports = mixInto;
-
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/monitorCodeUse.js":[function(require,module,exports){
-(function (process){
-/**
- * Copyright 2014 Facebook, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule monitorCodeUse
  */
@@ -27948,126 +21805,21 @@ function monitorCodeUse(eventName, data) {
 module.exports = monitorCodeUse;
 
 }).call(this,require('_process'))
-},{"./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/objMap.js":[function(require,module,exports){
-/**
- * Copyright 2013-2014 Facebook, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule objMap
- */
-
-"use strict";
-
-/**
- * For each key/value pair, invokes callback func and constructs a resulting
- * object which contains, for every key in obj, values that are the result of
- * of invoking the function:
- *
- *   func(value, key, iteration)
- *
- * @param {?object} obj Object to map keys over
- * @param {function} func Invoked for each key/val pair.
- * @param {?*} context
- * @return {?object} Result of mapping or null if obj is falsey
- */
-function objMap(obj, func, context) {
-  if (!obj) {
-    return null;
-  }
-  var i = 0;
-  var ret = {};
-  for (var key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      ret[key] = func.call(context, obj[key], key, i++);
-    }
-  }
-  return ret;
-}
-
-module.exports = objMap;
-
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/objMapKeyVal.js":[function(require,module,exports){
-/**
- * Copyright 2013-2014 Facebook, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule objMapKeyVal
- */
-
-"use strict";
-
-/**
- * Behaves the same as `objMap` but invokes func with the key first, and value
- * second. Use `objMap` unless you need this special case.
- * Invokes func as:
- *
- *   func(key, value, iteration)
- *
- * @param {?object} obj Object to map keys over
- * @param {!function} func Invoked for each key/val pair.
- * @param {?*} context
- * @return {?object} Result of mapping or null if obj is falsey
- */
-function objMapKeyVal(obj, func, context) {
-  if (!obj) {
-    return null;
-  }
-  var i = 0;
-  var ret = {};
-  for (var key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      ret[key] = func.call(context, key, obj[key], i++);
-    }
-  }
-  return ret;
-}
-
-module.exports = objMapKeyVal;
-
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/onlyChild.js":[function(require,module,exports){
+},{"./invariant":135,"_process":156}],146:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule onlyChild
  */
 "use strict";
 
-var ReactComponent = require("./ReactComponent");
+var ReactElement = require("./ReactElement");
 
 var invariant = require("./invariant");
 
@@ -28084,51 +21836,63 @@ var invariant = require("./invariant");
  */
 function onlyChild(children) {
   ("production" !== process.env.NODE_ENV ? invariant(
-    ReactComponent.isValidComponent(children),
+    ReactElement.isValidElement(children),
     'onlyChild must be passed a children with exactly one child.'
-  ) : invariant(ReactComponent.isValidComponent(children)));
+  ) : invariant(ReactElement.isValidElement(children)));
   return children;
 }
 
 module.exports = onlyChild;
 
 }).call(this,require('_process'))
-},{"./ReactComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactComponent.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/performanceNow.js":[function(require,module,exports){
+},{"./ReactElement":61,"./invariant":135,"_process":156}],147:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @providesModule performanceNow
- * @typechecks static-only
+ * @providesModule performance
+ * @typechecks
  */
 
 "use strict";
 
 var ExecutionEnvironment = require("./ExecutionEnvironment");
 
-/**
- * Detect if we can use window.performance.now() and gracefully
- * fallback to Date.now() if it doesn't exist.
- * We need to support Firefox < 15 for now due to Facebook's webdriver
- * infrastructure.
- */
-var performance = null;
+var performance;
 
 if (ExecutionEnvironment.canUseDOM) {
-  performance = window.performance || window.webkitPerformance;
+  performance =
+    window.performance ||
+    window.msPerformance ||
+    window.webkitPerformance;
 }
 
+module.exports = performance || {};
+
+},{"./ExecutionEnvironment":30}],148:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule performanceNow
+ * @typechecks
+ */
+
+var performance = require("./performance");
+
+/**
+ * Detect if we can use `window.performance.now()` and gracefully fallback to
+ * `Date.now()` if it doesn't exist. We need to support Firefox < 15 for now
+ * because of Facebook's testing infrastructure.
+ */
 if (!performance || !performance.now) {
   performance = Date;
 }
@@ -28137,21 +21901,92 @@ var performanceNow = performance.now.bind(performance);
 
 module.exports = performanceNow;
 
-},{"./ExecutionEnvironment":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ExecutionEnvironment.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/shallowEqual.js":[function(require,module,exports){
+},{"./performance":147}],149:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * @providesModule setInnerHTML
+ */
+
+"use strict";
+
+var ExecutionEnvironment = require("./ExecutionEnvironment");
+
+var WHITESPACE_TEST = /^[ \r\n\t\f]/;
+var NONVISIBLE_TEST = /<(!--|link|noscript|meta|script|style)[ \r\n\t\f\/>]/;
+
+/**
+ * Set the innerHTML property of a node, ensuring that whitespace is preserved
+ * even in IE8.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * @param {DOMElement} node
+ * @param {string} html
+ * @internal
+ */
+var setInnerHTML = function(node, html) {
+  node.innerHTML = html;
+};
+
+if (ExecutionEnvironment.canUseDOM) {
+  // IE8: When updating a just created node with innerHTML only leading
+  // whitespace is removed. When updating an existing node with innerHTML
+  // whitespace in root TextNodes is also collapsed.
+  // @see quirksmode.org/bugreports/archives/2004/11/innerhtml_and_t.html
+
+  // Feature detection; only IE8 is known to behave improperly like this.
+  var testElement = document.createElement('div');
+  testElement.innerHTML = ' ';
+  if (testElement.innerHTML === '') {
+    setInnerHTML = function(node, html) {
+      // Magic theory: IE8 supposedly differentiates between added and updated
+      // nodes when processing innerHTML, innerHTML on updated nodes suffers
+      // from worse whitespace behavior. Re-adding a node like this triggers
+      // the initial and more favorable whitespace behavior.
+      // TODO: What to do on a detached node?
+      if (node.parentNode) {
+        node.parentNode.replaceChild(node, node);
+      }
+
+      // We also implement a workaround for non-visible tags disappearing into
+      // thin air on IE8, this only happens if there is no visible text
+      // in-front of the non-visible tags. Piggyback on the whitespace fix
+      // and simply check if any non-visible tags appear in the source.
+      if (WHITESPACE_TEST.test(html) ||
+          html[0] === '<' && NONVISIBLE_TEST.test(html)) {
+        // Recover leading whitespace by temporarily prepending any character.
+        // \uFEFF has the potential advantage of being zero-width/invisible.
+        node.innerHTML = '\uFEFF' + html;
+
+        // deleteData leaves an empty `TextNode` which offsets the index of all
+        // children. Definitely want to avoid this.
+        var textNode = node.firstChild;
+        if (textNode.data.length === 1) {
+          node.removeChild(textNode);
+        } else {
+          textNode.deleteData(0, 1);
+        }
+      } else {
+        node.innerHTML = html;
+      }
+    };
+  }
+}
+
+module.exports = setInnerHTML;
+
+},{"./ExecutionEnvironment":30}],150:[function(require,module,exports){
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule shallowEqual
  */
@@ -28177,7 +22012,7 @@ function shallowEqual(objA, objB) {
       return false;
     }
   }
-  // Test for B'a keys missing from A.
+  // Test for B's keys missing from A.
   for (key in objB) {
     if (objB.hasOwnProperty(key) && !objA.hasOwnProperty(key)) {
       return false;
@@ -28188,22 +22023,14 @@ function shallowEqual(objA, objB) {
 
 module.exports = shallowEqual;
 
-},{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/shouldUpdateReactComponent.js":[function(require,module,exports){
-(function (process){
+},{}],151:[function(require,module,exports){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule shouldUpdateReactComponent
  * @typechecks static-only
@@ -28212,63 +22039,37 @@ module.exports = shallowEqual;
 "use strict";
 
 /**
- * Given a `prevComponentInstance` and `nextComponent`, determines if
- * `prevComponentInstance` should be updated as opposed to being destroyed or
- * replaced by a new instance. The second argument is a descriptor. Future
- * versions of the reconciler should only compare descriptors to other
- * descriptors.
+ * Given a `prevElement` and `nextElement`, determines if the existing
+ * instance should be updated as opposed to being destroyed or replaced by a new
+ * instance. Both arguments are elements. This ensures that this logic can
+ * operate on stateless trees without any backing instance.
  *
- * @param {?object} prevComponentInstance
- * @param {?object} nextDescriptor
- * @return {boolean} True if `prevComponentInstance` should be updated.
+ * @param {?object} prevElement
+ * @param {?object} nextElement
+ * @return {boolean} True if the existing instance should be updated.
  * @protected
  */
-function shouldUpdateReactComponent(prevComponentInstance, nextDescriptor) {
-  // TODO: Remove warning after a release.
-  if (prevComponentInstance && nextDescriptor &&
-      prevComponentInstance.constructor === nextDescriptor.constructor && (
-        (prevComponentInstance.props && prevComponentInstance.props.key) ===
-        (nextDescriptor.props && nextDescriptor.props.key)
-      )) {
-    if (prevComponentInstance._owner === nextDescriptor._owner) {
-      return true;
-    } else {
-      if ("production" !== process.env.NODE_ENV) {
-        if (prevComponentInstance.state) {
-          console.warn(
-            'A recent change to React has been found to impact your code. ' +
-            'A mounted component will now be unmounted and replaced by a ' +
-            'component (of the same class) if their owners are different. ' +
-            'Previously, ownership was not considered when updating.',
-            prevComponentInstance,
-            nextDescriptor
-          );
-        }
-      }
-    }
+function shouldUpdateReactComponent(prevElement, nextElement) {
+  if (prevElement && nextElement &&
+      prevElement.type === nextElement.type &&
+      prevElement.key === nextElement.key &&
+      prevElement._owner === nextElement._owner) {
+    return true;
   }
   return false;
 }
 
 module.exports = shouldUpdateReactComponent;
 
-}).call(this,require('_process'))
-},{"_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/toArray.js":[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2014 Facebook, Inc.
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule toArray
  * @typechecks
@@ -28282,7 +22083,7 @@ var invariant = require("./invariant");
  * This API assumes the caller knows the contents of the data type. For less
  * well defined inputs use createArrayFrom.
  *
- * @param {object|function} obj
+ * @param {object|function|filelist} obj
  * @return {array}
  */
 function toArray(obj) {
@@ -28332,30 +22133,23 @@ function toArray(obj) {
 module.exports = toArray;
 
 }).call(this,require('_process'))
-},{"./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/traverseAllChildren.js":[function(require,module,exports){
+},{"./invariant":135,"_process":156}],153:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2013-2014 Facebook, Inc.
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule traverseAllChildren
  */
 
 "use strict";
 
+var ReactElement = require("./ReactElement");
 var ReactInstanceHandles = require("./ReactInstanceHandles");
-var ReactTextComponent = require("./ReactTextComponent");
 
 var invariant = require("./invariant");
 
@@ -28390,9 +22184,9 @@ function userProvidedKeyEscaper(match) {
  * @return {string}
  */
 function getComponentKey(component, index) {
-  if (component && component.props && component.props.key != null) {
+  if (component && component.key != null) {
     // Explicit key
-    return wrapUserProvidedKey(component.props.key);
+    return wrapUserProvidedKey(component.key);
   }
   // Implicit key determined by the index in the set
   return index.toString(36);
@@ -28433,16 +22227,17 @@ function wrapUserProvidedKey(key) {
  */
 var traverseAllChildrenImpl =
   function(children, nameSoFar, indexSoFar, callback, traverseContext) {
+    var nextName, nextIndex;
     var subtreeCount = 0;  // Count of children found in the current subtree.
     if (Array.isArray(children)) {
       for (var i = 0; i < children.length; i++) {
         var child = children[i];
-        var nextName = (
+        nextName = (
           nameSoFar +
           (nameSoFar ? SUBSEPARATOR : SEPARATOR) +
           getComponentKey(child, i)
         );
-        var nextIndex = indexSoFar + subtreeCount;
+        nextIndex = indexSoFar + subtreeCount;
         subtreeCount += traverseAllChildrenImpl(
           child,
           nextName,
@@ -28462,40 +22257,32 @@ var traverseAllChildrenImpl =
         // All of the above are perceived as null.
         callback(traverseContext, null, storageName, indexSoFar);
         subtreeCount = 1;
-      } else if (children.type && children.type.prototype &&
-                 children.type.prototype.mountComponentIntoNode) {
+      } else if (type === 'string' || type === 'number' ||
+                 ReactElement.isValidElement(children)) {
         callback(traverseContext, children, storageName, indexSoFar);
         subtreeCount = 1;
-      } else {
-        if (type === 'object') {
-          ("production" !== process.env.NODE_ENV ? invariant(
-            !children || children.nodeType !== 1,
-            'traverseAllChildren(...): Encountered an invalid child; DOM ' +
-            'elements are not valid children of React components.'
-          ) : invariant(!children || children.nodeType !== 1));
-          for (var key in children) {
-            if (children.hasOwnProperty(key)) {
-              subtreeCount += traverseAllChildrenImpl(
-                children[key],
-                (
-                  nameSoFar + (nameSoFar ? SUBSEPARATOR : SEPARATOR) +
-                  wrapUserProvidedKey(key) + SUBSEPARATOR +
-                  getComponentKey(children[key], 0)
-                ),
-                indexSoFar + subtreeCount,
-                callback,
-                traverseContext
-              );
-            }
+      } else if (type === 'object') {
+        ("production" !== process.env.NODE_ENV ? invariant(
+          !children || children.nodeType !== 1,
+          'traverseAllChildren(...): Encountered an invalid child; DOM ' +
+          'elements are not valid children of React components.'
+        ) : invariant(!children || children.nodeType !== 1));
+        for (var key in children) {
+          if (children.hasOwnProperty(key)) {
+            nextName = (
+              nameSoFar + (nameSoFar ? SUBSEPARATOR : SEPARATOR) +
+              wrapUserProvidedKey(key) + SUBSEPARATOR +
+              getComponentKey(children[key], 0)
+            );
+            nextIndex = indexSoFar + subtreeCount;
+            subtreeCount += traverseAllChildrenImpl(
+              children[key],
+              nextName,
+              nextIndex,
+              callback,
+              traverseContext
+            );
           }
-        } else if (type === 'string') {
-          var normalizedText = new ReactTextComponent(children);
-          callback(traverseContext, normalizedText, storageName, indexSoFar);
-          subtreeCount += 1;
-        } else if (type === 'number') {
-          var normalizedNumber = new ReactTextComponent('' + children);
-          callback(traverseContext, normalizedNumber, storageName, indexSoFar);
-          subtreeCount += 1;
         }
       }
     }
@@ -28516,32 +22303,28 @@ var traverseAllChildrenImpl =
  * @param {?*} children Children tree object.
  * @param {!function} callback To invoke upon traversing each child.
  * @param {?*} traverseContext Context for traversal.
+ * @return {!number} The number of children in this subtree.
  */
 function traverseAllChildren(children, callback, traverseContext) {
-  if (children !== null && children !== undefined) {
-    traverseAllChildrenImpl(children, '', 0, callback, traverseContext);
+  if (children == null) {
+    return 0;
   }
+
+  return traverseAllChildrenImpl(children, '', 0, callback, traverseContext);
 }
 
 module.exports = traverseAllChildren;
 
 }).call(this,require('_process'))
-},{"./ReactInstanceHandles":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactInstanceHandles.js","./ReactTextComponent":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/ReactTextComponent.js","./invariant":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/invariant.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/warning.js":[function(require,module,exports){
+},{"./ReactElement":61,"./ReactInstanceHandles":69,"./invariant":135,"_process":156}],154:[function(require,module,exports){
 (function (process){
 /**
- * Copyright 2014 Facebook, Inc.
+ * Copyright 2014, Facebook, Inc.
+ * All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule warning
  */
@@ -28560,7 +22343,7 @@ var emptyFunction = require("./emptyFunction");
 var warning = emptyFunction;
 
 if ("production" !== process.env.NODE_ENV) {
-  warning = function(condition, format ) {var args=Array.prototype.slice.call(arguments,2);
+  warning = function(condition, format ) {for (var args=[],$__0=2,$__1=arguments.length;$__0<$__1;$__0++) args.push(arguments[$__0]);
     if (format === undefined) {
       throw new Error(
         '`warning(condition, format, ...args)` requires a warning ' +
@@ -28578,10 +22361,10 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = warning;
 
 }).call(this,require('_process'))
-},{"./emptyFunction":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/emptyFunction.js","_process":"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/react.js":[function(require,module,exports){
+},{"./emptyFunction":116,"_process":156}],155:[function(require,module,exports){
 module.exports = require('./lib/React');
 
-},{"./lib/React":"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/React.js"}],"/usr/local/lib/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js":[function(require,module,exports){
+},{"./lib/React":37}],156:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -28669,4 +22452,4 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}]},{},["/Users/danielfarrelly/Projects/timezone/app/app.js"]);
+},{}]},{},[1]);

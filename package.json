@@ -1,6 +1,6 @@
 {
   "name": "Timezone",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Remote teams + Timezones",
   "main": "index.js",
   "scripts": {
@@ -13,16 +13,15 @@
   "license": "MIT",
   "dependencies": {
     "autoprefixer-stylus": "^0.4.0",
-    "envify": "^1.2.1",
-    "express": "^4.8.5",
-    "moment-timezone": "0.0.5",
-    "morgan": "^1.0.0",
-    "node-jsx": "^0.10.0",
-    "react": "^0.10.0",
-    "react-tools": "^0.10.0",
-    "stylus": "^0.48.1"
+    "express": "^4.10.7",
+    "moment-timezone": "0.2.5",
+    "morgan": "^1.5.1",
+    "node-jsx": "^0.12.4",
+    "react": "^0.12.2",
+    "react-tools": "^0.12.2",
+    "stylus": "^0.49.3"
   },
   "devDependencies": {
-    "reactify": "^0.14.0"
+    "reactify": "^0.17.1"
   }
 }
