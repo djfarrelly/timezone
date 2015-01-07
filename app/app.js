@@ -1,8 +1,9 @@
-var React  = require('react'),
-    moment = require('moment-timezone');
+var React  = require('react');
+var moment = require('moment-timezone');
 
 var App = require('./views/app.jsx');
-var people = require('./people.js');
+
+var people = window.people;
 
 // The global time:
 var time = moment();

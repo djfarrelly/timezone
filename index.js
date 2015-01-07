@@ -1,11 +1,13 @@
-var express = require('express'),
-    app = express(),
-    logger = require('morgan'),
-    stylus = require('stylus'),
-    autoprefixer  = require('autoprefixer-stylus'),
-    React = require('react'),
-    moment = require('moment-timezone'),
-    fs = require('fs');
+var express = require('express');
+var app = express();
+var logger = require('morgan');
+var stylus = require('stylus');
+var autoprefixer  = require('autoprefixer-stylus');
+var React = require('react');
+var moment = require('moment-timezone');
+var fs = require('fs');
+
+var people = require('./people.json');
 
 // Allow direct requiring of .jsx files
 require('node-jsx').install({extension: '.jsx'});
@@ -14,11 +16,13 @@ require('node-jsx').install({extension: '.jsx'});
 function template (body, done) {
   fs.readFile('./app/views/layout.hbs', 'utf8', function (err, layout) {
     if (err) done(err);
-    done(null, layout.replace('{{{body}}}', body));
+    done(null, layout
+                .replace('{{{body}}}', body)
+                .replace('{{{people}}}', JSON.stringify(people)));
   });
 }
 
-app.use(logger());
+app.use(logger('common'));
 
 // Stylus
 app.use(
@@ -37,7 +41,6 @@ app.use(
 app.get('/', function(err, res){
 
   var App = require('./app/views/app.jsx');
-  var people = require('./app/people.js');
 
   // The global time:
   var time = moment();

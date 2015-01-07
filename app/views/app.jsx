@@ -1,13 +1,13 @@
 /** @jsx React.DOM */
 
-var React        = require('react'),
-    TimezoneList = require('./timezoneList.jsx');
+var React        = require('react');
+var TimezoneList = require('./timezoneList.jsx');
 
 module.exports = React.createClass({
   getInitialState: function() {
     return {
       timeFormat: 'h:mm a'
-    }
+    };
   },
   toggleTimeFormat: function() {
     this.setState({

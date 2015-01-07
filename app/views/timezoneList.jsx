@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
-var React    = require('react'),
-    Timezone = require('./timezone.jsx');
+var React    = require('react');
+var Timezone = require('./timezone.jsx');
 
 module.exports = React.createClass({
   render: function() {

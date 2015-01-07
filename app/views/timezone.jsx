@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 
-var React = require('react'),
-    moment = require('moment-timezone'),
-    Person = require('./person.jsx');
+var React = require('react');
+var moment = require('moment-timezone');
+var Person = require('./person.jsx');
 
 module.exports = React.createClass({
   render: function() {
@@ -16,7 +16,7 @@ module.exports = React.createClass({
 
     this.props.model.sort(function(a, b){
       return a.name > b.name ? 1 : -1;
-    })
+    });
 
     var timezoneClasses = 'timezone timezone-hour-' + localTime.hour();
 
@@ -24,7 +24,8 @@ module.exports = React.createClass({
       <h3 className="timezone-time">{displayTime}</h3>
       <p className="timezone-offset">{offset}</p>
       {this.props.model.map(function(person){
-        return <Person model={person} />;
+        var key = person.name + Math.floor(Math.random() * 10);
+        return <Person model={person} key={key} />;
       })}
     </div>;
   }
