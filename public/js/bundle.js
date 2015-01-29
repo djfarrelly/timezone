@@ -72,8 +72,9 @@ window.addEventListener('keyup', function(e){
 function reRender() {
 
   var now = moment();
-  if (now.minute() === time.minute()) return;
+  if (now.hour() === time.hour() && now.minute() === time.minute()) return;
 
+  time.hour( now.hour() );
   time.minute( now.minute() );
 
   React.render(
