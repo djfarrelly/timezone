@@ -68,8 +68,7 @@ window.addEventListener('keyup', function(e){
 
 });
 
-// Check every 10 seconds for an updated time
-setInterval(function(){
+function reRender() {
 
   var now = moment();
   if (now.minute() === time.minute()) return;
@@ -84,4 +83,10 @@ setInterval(function(){
     targetNode
   );
 
-}, 1000 * 10);
+}
+
+// Check every 10 seconds for an updated time
+setInterval(reRender, 1000 * 10);
+
+// Check on window focus
+window.onfocus = reRender;
