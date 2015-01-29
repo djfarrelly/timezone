@@ -20,9 +20,15 @@ module.exports = React.createClass({
 
     var timezoneClasses = 'timezone timezone-hour-' + localTime.hour();
 
+    // temp:
+    var topCity = this.props.model[0].tz.replace(/.+\//g, '').replace(/_/g,' ');
+
     return <div className={timezoneClasses}>
-      <h3 className="timezone-time">{displayTime}</h3>
-      <p className="timezone-offset">{offset}</p>
+      <div className="timezone-header">
+        <h3 className="timezone-time">{displayTime}</h3>
+        <p className="timezone-name">{topCity}</p>
+        <p className="timezone-offset">{offset}</p>
+      </div>
       {this.props.model.map(function(person){
         var key = person.name + Math.floor(Math.random() * 10);
         return <Person model={person} key={key} />;
