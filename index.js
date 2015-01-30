@@ -8,6 +8,7 @@ var moment = require('moment-timezone');
 var fs = require('fs');
 
 var people = require('./people.json');
+var transform = require('./app/utils/transform.js');
 
 // Allow direct requiring of .jsx files
 require('node-jsx').install({extension: '.jsx'});
@@ -42,29 +43,9 @@ app.get('/', function(err, res){
 
   var App = require('./app/views/app.jsx');
 
-  // The global time:
-  var time = moment();
-
-  function appendTime(person) {
-    person.time = moment( time ).tz( person.tz );
-  }
-
-  function sortByTimezone(a, b){
-    return a.time.zone() - b.time.zone();
-  }
-
-  // Append a moment date to each person
-  people.forEach(appendTime);
-  people.sort(sortByTimezone);
-
   // Organize into timezones
-  var timezones = {};
-
-  people.forEach(function(person){
-    var offset = person.time.zone();
-    if ( !timezones[ offset ] ) timezones[ offset ] = [];
-    timezones[ offset ].push( person );
-  });
+  var time = moment();
+  var timezones = transform(time, people);
 
   var body = React.renderComponentToString(
     App({

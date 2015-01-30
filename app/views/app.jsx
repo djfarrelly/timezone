@@ -15,8 +15,6 @@ module.exports = React.createClass({
     });
   },
   render: function() {
-    
-    var displayTime = this.props.time.format( this.state.timeFormat );
 
     return (
       <div className="container">

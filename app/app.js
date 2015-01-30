@@ -1,35 +1,13 @@
 var React  = require('react');
 var moment = require('moment-timezone');
 
+var transform = require('./utils/transform.js');
 var App = React.createFactory(require('./views/app.jsx'));
-
-var people = window.people;
-
-// The global time:
-var time = moment();
-
-function appendTime(person) {
-  person.time = moment( time ).tz( person.tz );
-}
-
-function sortByTimezone(a, b){
-  return a.time.zone() - b.time.zone();
-}
-
-// Append a moment date to each person
-people.forEach(appendTime);
-people.sort(sortByTimezone);
 
 
 // Organize into timezones
-var timezones = {};
-
-people.forEach(function(person){
-  var offset = person.time.zone();
-  if ( !timezones[ offset ] ) timezones[ offset ] = [];
-  timezones[ offset ].push( person );
-});
-
+var time = moment();
+var timezones = transform(time, window.people);
 
 // Add the component to the DOM
 var targetNode = document.querySelector('#app');
