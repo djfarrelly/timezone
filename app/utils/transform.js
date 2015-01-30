@@ -6,7 +6,7 @@ function appendTime(time, person) {
 }
 
 function sortByTimezone(a, b){
-  return a.time.zone() - b.time.zone();
+  return b.time.zone() - a.time.zone();
 }
 
 
@@ -16,14 +16,40 @@ module.exports = function transform(time, people) {
   people.forEach(appendTime.bind(people, time));
   people.sort(sortByTimezone);
 
-  // Organize into timezones
-  var timezones = {};
+  var timezones = people.reduce(function(zones, person){
+    var last = zones[ zones.length - 1 ];
+    var offset = last && last.people[0].time.zone();
 
-  people.forEach(function(person){
-    var offset = person.time.zone();
-    if ( !timezones[ offset ] ) timezones[ offset ] = [];
-    timezones[ offset ].push( person );
+    if (last && offset === person.time.zone()) {
+      last.people.push(person);
+    } else {
+      zones.push({
+        tz: person.tz,
+        people: [ person ]
+      });
+    }
+
+    return zones;
+  }, []);
+
+  timezones.forEach(function(timezone){
+    if (timezone.people.length / people.length > 0.2)
+      timezone.major = true;
   });
+
+  // // Organize into timezones
+  // var timezones = {};
+
+  // people.forEach(function(person){
+  //   var offset = person.time.zone();
+  //   if ( !timezones[ offset ] ) timezones[ offset ] = [];
+  //   timezones[ offset ].push( person );
+  // });
+
+  // for (var offset in timezones) {
+  //   if (timezones[offset].length / people.length > 20)
+  //     timezones[offset]
+  // }
 
   return timezones;
 

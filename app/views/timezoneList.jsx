@@ -5,18 +5,12 @@ var Timezone = require('./timezone.jsx');
 
 module.exports = React.createClass({
   render: function() {
-
-    var offsets = Object.keys( this.props.timezones );
-
-    offsets.sort(function(a, b){ return b - a; });
-
     return <div className="timezone-list">
-      {offsets.map(function(offset){
-        return <Timezone key={offset}
+      {this.props.timezones.map(function(timezone){
+        return <Timezone key={timezone.tz}
                          time={this.props.time}
                          timeFormat={this.props.timeFormat}
-                         offset={offset}
-                         model={this.props.timezones[ offset ]} />;
+                         model={timezone} />;
       }.bind(this))}
     </div>;
   }

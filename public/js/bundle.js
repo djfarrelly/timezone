@@ -80,7 +80,7 @@ function appendTime(time, person) {
 }
 
 function sortByTimezone(a, b){
-  return a.time.zone() - b.time.zone();
+  return b.time.zone() - a.time.zone();
 }
 
 
@@ -90,14 +90,40 @@ module.exports = function transform(time, people) {
   people.forEach(appendTime.bind(people, time));
   people.sort(sortByTimezone);
 
-  // Organize into timezones
-  var timezones = {};
+  var timezones = people.reduce(function(zones, person){
+    var last = zones[ zones.length - 1 ];
+    var offset = last && last.people[0].time.zone();
 
-  people.forEach(function(person){
-    var offset = person.time.zone();
-    if ( !timezones[ offset ] ) timezones[ offset ] = [];
-    timezones[ offset ].push( person );
+    if (last && offset === person.time.zone()) {
+      last.people.push(person);
+    } else {
+      zones.push({
+        tz: person.tz,
+        people: [ person ]
+      });
+    }
+
+    return zones;
+  }, []);
+
+  timezones.forEach(function(timezone){
+    if (timezone.people.length / people.length > 0.2)
+      timezone.major = true;
   });
+
+  // // Organize into timezones
+  // var timezones = {};
+
+  // people.forEach(function(person){
+  //   var offset = person.time.zone();
+  //   if ( !timezones[ offset ] ) timezones[ offset ] = [];
+  //   timezones[ offset ].push( person );
+  // });
+
+  // for (var offset in timezones) {
+  //   if (timezones[offset].length / people.length > 20)
+  //     timezones[offset]
+  // }
 
   return timezones;
 
@@ -120,7 +146,6 @@ module.exports = React.createClass({displayName: "exports",
     });
   },
   render: function() {
-
     return (
       React.createElement("div", {className: "container"}, 
         React.createElement(TimezoneList, {time: this.props.time, 
@@ -163,18 +188,20 @@ module.exports = React.createClass({displayName: "exports",
     // We clone the time object itself so the this time is bound to
     // the global app time
 
-    var localTime   = moment( this.props.time ).zone( parseInt( this.props.offset, 10) ),
+    var localTime   = moment( this.props.time ).tz( this.props.model.tz ),
         displayTime = localTime.format( this.props.timeFormat ),
         offset      = localTime.format('Z');
 
-    this.props.model.sort(function(a, b){
+    this.props.model.people.sort(function(a, b){
       return a.name > b.name ? 1 : -1;
     });
 
     var timezoneClasses = 'timezone timezone-hour-' + localTime.hour();
 
+    if (this.props.model.major) timezoneClasses += ' timezone-major';
+
     // temp:
-    var topCity = this.props.model[0].tz.replace(/.+\//g, '').replace(/_/g,' ');
+    var topCity = this.props.model.tz.replace(/.+\//g, '').replace(/_/g,' ');
 
     return React.createElement("div", {className: timezoneClasses}, 
       React.createElement("div", {className: "timezone-header"}, 
@@ -182,10 +209,12 @@ module.exports = React.createClass({displayName: "exports",
         React.createElement("p", {className: "timezone-name"}, topCity), 
         React.createElement("p", {className: "timezone-offset"}, offset)
       ), 
-      this.props.model.map(function(person){
-        var key = person.name + Math.floor(Math.random() * 10);
-        return React.createElement(Person, {model: person, key: key});
-      })
+      React.createElement("div", {className: "timezone-people"}, 
+        this.props.model.people.map(function(person){
+          var key = person.name + Math.floor(Math.random() * 10);
+          return React.createElement(Person, {model: person, key: key});
+        })
+      )
     );
   }
 });
@@ -198,24 +227,18 @@ var Timezone = require('./timezone.jsx');
 
 module.exports = React.createClass({displayName: "exports",
   render: function() {
-
-    var offsets = Object.keys( this.props.timezones );
-
-    offsets.sort(function(a, b){ return b - a; });
-
     return React.createElement("div", {className: "timezone-list"}, 
-      offsets.map(function(offset){
-        return React.createElement(Timezone, {key: offset, 
+      this.props.timezones.map(function(timezone){
+        return React.createElement(Timezone, {key: timezone.tz, 
                          time: this.props.time, 
                          timeFormat: this.props.timeFormat, 
-                         offset: offset, 
-                         model: this.props.timezones[ offset]});
+                         model: timezone});
       }.bind(this))
     );
   }
 });
 },{"./timezone.jsx":"/Users/danielfarrelly/Projects/timezone/app/views/timezone.jsx","react":"/Users/danielfarrelly/Projects/timezone/node_modules/react/react.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/data/packed/latest.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
 	"version": "2014j",
 	"zones": [
 		"Africa/Abidjan|LMT GMT|g.8 0|01|-2ldXH.Q",

@@ -15,7 +15,6 @@ module.exports = React.createClass({
     });
   },
   render: function() {
-
     return (
       <div className="container">
         <TimezoneList time={this.props.time}
