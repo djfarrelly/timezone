@@ -200,8 +200,23 @@ module.exports = React.createClass({displayName: "exports",
 
     if (this.props.model.major) timezoneClasses += ' timezone-major';
 
-    // temp:
-    var topCity = this.props.model.tz.replace(/.+\//g, '').replace(/_/g,' ');
+    var tzCounts = this.props.model.people.reduce(function(counts, person) {
+      
+      if (!counts[person.tz])
+        counts[person.tz] = 1;
+      else
+        counts[person.tz]++;
+
+      return counts;
+    }, {});
+
+    var topTz = Object.keys(tzCounts)[0];
+    for (var tz in tzCounts) {
+      if (tzCounts[tz] > tzCounts[topTz])
+        topTz = tz;
+    }
+    
+    var topCity = topTz.replace(/.+\//g, '').replace(/_/g,' ');
 
     return React.createElement("div", {className: timezoneClasses}, 
       React.createElement("div", {className: "timezone-header"}, 
@@ -238,7 +253,7 @@ module.exports = React.createClass({displayName: "exports",
   }
 });
 },{"./timezone.jsx":"/Users/danielfarrelly/Projects/timezone/app/views/timezone.jsx","react":"/Users/danielfarrelly/Projects/timezone/node_modules/react/react.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/data/packed/latest.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
+module.exports=module.exports={
 	"version": "2014j",
 	"zones": [
 		"Africa/Abidjan|LMT GMT|g.8 0|01|-2ldXH.Q",

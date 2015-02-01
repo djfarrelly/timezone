@@ -22,8 +22,23 @@ module.exports = React.createClass({
 
     if (this.props.model.major) timezoneClasses += ' timezone-major';
 
-    // temp:
-    var topCity = this.props.model.tz.replace(/.+\//g, '').replace(/_/g,' ');
+    var tzCounts = this.props.model.people.reduce(function(counts, person) {
+      
+      if (!counts[person.tz])
+        counts[person.tz] = 1;
+      else
+        counts[person.tz]++;
+
+      return counts;
+    }, {});
+
+    var topTz = Object.keys(tzCounts)[0];
+    for (var tz in tzCounts) {
+      if (tzCounts[tz] > tzCounts[topTz])
+        topTz = tz;
+    }
+    
+    var topCity = topTz.replace(/.+\//g, '').replace(/_/g,' ');
 
     return <div className={timezoneClasses}>
       <div className="timezone-header">
