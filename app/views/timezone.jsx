@@ -60,8 +60,9 @@ module.exports = React.createClass({
         {columns.map(function(column){
           return <div className="timezone-people-column">
             {column.map(function(person){
-            var key = (person.name + person.city).replace(' ','');
-            return <Person model={person} key={key} />;
+              // NOTE: Replace with future user id
+              var key = person.avatar.substr(person.avatar.length - 20, 20);
+              return <Person model={person} key={key} />;
             })}
           </div>
         })}
