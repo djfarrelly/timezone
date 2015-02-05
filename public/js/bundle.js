@@ -218,6 +218,16 @@ module.exports = React.createClass({displayName: "exports",
     
     var topCity = topTz.replace(/.+\//g, '').replace(/_/g,' ');
 
+    var peoplePerCol = 7;
+
+    var columns = this.props.model.people.reduce(function(cols, person){
+      if (cols[cols.length - 1] && cols[cols.length - 1].length  < peoplePerCol)
+        cols[cols.length - 1].push(person);
+      else
+        cols.push([ person ]);
+      return cols;
+    }, []);
+
     return React.createElement("div", {className: timezoneClasses}, 
       React.createElement("div", {className: "timezone-header"}, 
         React.createElement("h3", {className: "timezone-time"}, displayTime), 
@@ -225,9 +235,13 @@ module.exports = React.createClass({displayName: "exports",
         React.createElement("p", {className: "timezone-offset"}, offset)
       ), 
       React.createElement("div", {className: "timezone-people"}, 
-        this.props.model.people.map(function(person){
-          var key = person.name + Math.floor(Math.random() * 10);
-          return React.createElement(Person, {model: person, key: key});
+        columns.map(function(column){
+          return React.createElement("div", {className: "timezone-people-column"}, 
+            column.map(function(person){
+            var key = (person.name + person.city).replace(' ','');
+            return React.createElement(Person, {model: person, key: key});
+            })
+          )
         })
       )
     );
@@ -253,7 +267,7 @@ module.exports = React.createClass({displayName: "exports",
   }
 });
 },{"./timezone.jsx":"/Users/danielfarrelly/Projects/timezone/app/views/timezone.jsx","react":"/Users/danielfarrelly/Projects/timezone/node_modules/react/react.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/data/packed/latest.json":[function(require,module,exports){
-module.exports=module.exports={
+module.exports=module.exports=module.exports=module.exports=module.exports={
 	"version": "2014j",
 	"zones": [
 		"Africa/Abidjan|LMT GMT|g.8 0|01|-2ldXH.Q",
@@ -1250,6 +1264,7 @@ moment.tz.load(require('./data/packed/latest.json'));
 }));
 
 },{"moment":"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/node_modules/moment/moment.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/node_modules/moment/moment.js":[function(require,module,exports){
+(function (global){
 (function (global){
 //! moment.js
 //! version : 2.8.4
@@ -4188,6 +4203,7 @@ moment.tz.load(require('./data/packed/latest.json'));
     }
 }).call(this);
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],"/Users/danielfarrelly/Projects/timezone/node_modules/react/lib/AutoFocusMixin.js":[function(require,module,exports){
 /**

@@ -40,6 +40,16 @@ module.exports = React.createClass({
     
     var topCity = topTz.replace(/.+\//g, '').replace(/_/g,' ');
 
+    var peoplePerCol = 7;
+
+    var columns = this.props.model.people.reduce(function(cols, person){
+      if (cols[cols.length - 1] && cols[cols.length - 1].length  < peoplePerCol)
+        cols[cols.length - 1].push(person);
+      else
+        cols.push([ person ]);
+      return cols;
+    }, []);
+
     return <div className={timezoneClasses}>
       <div className="timezone-header">
         <h3 className="timezone-time">{displayTime}</h3>
@@ -47,9 +57,13 @@ module.exports = React.createClass({
         <p className="timezone-offset">{offset}</p>
       </div>
       <div className="timezone-people">
-        {this.props.model.people.map(function(person){
-          var key = person.name + Math.floor(Math.random() * 10);
-          return <Person model={person} key={key} />;
+        {columns.map(function(column){
+          return <div className="timezone-people-column">
+            {column.map(function(person){
+            var key = (person.name + person.city).replace(' ','');
+            return <Person model={person} key={key} />;
+            })}
+          </div>
         })}
       </div>
     </div>;
