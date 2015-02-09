@@ -5,7 +5,7 @@ $brandColor     = #42A5F5
 $brandColorText = rgb(255, 255, 255)
 $textColor      = rgb(50, 50, 50)
 
-$avatarSize     = 70px
+$avatarSize     = 60px
 
 
 // Basic
@@ -64,7 +64,8 @@ h1, h2, h3, h4, h5
   display: flex
   
 .timezone-people-column
-  min-width: $avatarSize + 10px
+  min-width: $avatarSize
+  margin-right: 1em
 
 // Timezones that are in nighttime
 for hour in 0 1 2 3 4 5 6 7 22 23
@@ -96,8 +97,7 @@ for hour in 0 1 2 3 4 5 6 7 22 23
 
 .person
   position: relative
-  margin: 0.8em
-  text-align: center
+  margin: 0.8em 0
 
   &:hover
     .person-info
@@ -122,6 +122,7 @@ for hour in 0 1 2 3 4 5 6 7 22 23
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24)
   font-size: 0.8em
   font-weight: bold
+  text-align: center
 
   p
     margin: 0
@@ -142,3 +143,5 @@ for hour in 0 1 2 3 4 5 6 7 22 23
   max-width: $avatarSize
   height: 100%
   border-radius: 50%
+  // border: 2px solid #fff
+  // box-shadow: 0 1px 1px rgba(0,0,0,0.2)
