@@ -186,41 +186,41 @@ var PEOPLE_PER_COL = 7;
 
 module.exports = React.createClass({displayName: "exports",
 
+  getCountsOf: function(list, param) {
+    return list
+      .map(function(el) {
+        return el[param];
+      })
+      .sort()
+      .reduce(function(counts, el) {
+        if (!counts[el])
+          counts[el] = 1;
+        else
+          counts[el]++;
+        return counts;
+      }, {});
+  },
+
+  getHighestOccuring: function(counts) {
+    var keys = Object.keys(counts);
+    return keys.reduce(function(prev, curr){
+      return counts[curr] > counts[prev] ? curr : prev;
+    }, keys[0]);
+  },
+
   getTopTimezone: function() {
 
-    var tzCounts = this.props.model.people.reduce(function(counts, person) {
-      if (!counts[person.tz])
-        counts[person.tz] = 1;
-      else
-        counts[person.tz]++;
-      return counts;
-    }, {});
-
-    var topTz = Object.keys(tzCounts)[0];
-    for (var tz in tzCounts) {
-      if (tzCounts[tz] > tzCounts[topTz])
-        topTz = tz;
-    }
+    var tzCounts = this.getCountsOf(this.props.model.people, 'tz');
+    var topTz = this.getHighestOccuring(tzCounts);
     
     return topTz.replace(/.+\//g, '').replace(/_/g,' ');
   },
 
   getTopCity: function() {
 
-    var cityCounts = this.props.model.people.reduce(function(counts, person) {
-      if (!counts[person.city])
-        counts[person.city] = 1;
-      else
-        counts[person.city]++;
-      return counts;
-    }, {});
+    var cityCounts = this.getCountsOf(this.props.model.people, 'city');
+    var topCity = this.getHighestOccuring(cityCounts);
 
-    var topCity = Object.keys(cityCounts)[0];
-    for (var city in cityCounts) {
-      if (cityCounts[city] > cityCounts[topCity])
-        topCity = city;
-    }
-    
     return cityCounts[topCity] === 1 && this.props.model.people.length > 1 ?
       this.getTopTimezone() :
       topCity;
@@ -298,7 +298,7 @@ module.exports = React.createClass({displayName: "exports",
   }
 });
 },{"./timezone.jsx":"/Users/danielfarrelly/Projects/timezone/app/views/timezone.jsx","react":"/Users/danielfarrelly/Projects/timezone/node_modules/react/react.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/data/packed/latest.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
 	"version": "2014j",
 	"zones": [
 		"Africa/Abidjan|LMT GMT|g.8 0|01|-2ldXH.Q",
