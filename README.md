@@ -7,8 +7,8 @@ to see where and **when** their coworkers are.
 
 # Setup
 
-Clone this repo and add a `people.json` file in the repo's root directory. 
-Timezone codes for the `tz` field are can be found [here](http://momentjs.com/timezone/). 
+Clone this repo and add a `people.json` file in the repo's root directory.
+Timezone codes for the `tz` field are can be found [here](http://momentjs.com/timezone/).
 Each person object should have data in the following format:
 
 ```json
@@ -32,8 +32,8 @@ Each person object should have data in the following format:
 # Deploy
 
 This project is designed with a Procfile to deploy to a Heroku instance. Please
-check with Heorku's up to date documentation for any latest changes. You should
-be able to commit your changes in your forked repo (including adding your own 
+check with Heroku's up to date documentation for any latest changes. You should
+be able to commit your changes in your forked repo (including adding your own
 people.json file) then run:
 
 ```bash
@@ -51,7 +51,7 @@ installed on your system to compile the project assets. After install Node.js, r
   $ npm install -g browserify
 ```
 
-To run the server and download all depdencies for the project run this in the
+To run the server and download all dependencies for the project run this in the
 project root directory:
 
 ```bash
