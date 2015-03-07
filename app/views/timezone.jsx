@@ -31,15 +31,13 @@ module.exports = React.createClass({
   },
 
   getTopTimezone: function() {
-
     var tzCounts = this.getCountsOf(this.props.model.people, 'tz');
     var topTz = this.getHighestOccuring(tzCounts);
-    
+
     return topTz.replace(/.+\//g, '').replace(/_/g,' ');
   },
 
   getTopCity: function() {
-
     var cityCounts = this.getCountsOf(this.props.model.people, 'city');
     var topCity = this.getHighestOccuring(cityCounts);
 
@@ -49,13 +47,12 @@ module.exports = React.createClass({
   },
 
   getPeopleColumns: function() {
-    
     this.props.model.people.sort(function(a, b){
       return a.name > b.name ? 1 : -1;
     });
 
     return this.props.model.people.reduce(function(cols, person){
-      if (cols[cols.length - 1] && 
+      if (cols[cols.length - 1] &&
           cols[cols.length - 1].length  < PEOPLE_PER_COL)
         cols[cols.length - 1].push(person);
       else
@@ -76,7 +73,7 @@ module.exports = React.createClass({
     var timezoneClasses = 'timezone timezone-hour-' + localTime.hour();
 
     if (this.props.model.major) timezoneClasses += ' timezone-major';
-    
+
     var topCity = this.getTopCity();
     var columns = this.getPeopleColumns();
 
@@ -88,10 +85,18 @@ module.exports = React.createClass({
       </div>
       <div className="timezone-people">
         {columns.map(function(column, idx){
+
           return <div className="timezone-people-column" key={"column-" + idx}>
             {column.map(function(person){
               // NOTE: Replace with future user id
-              var key = person.avatar.substr(person.avatar.length - 20, 20);
+
+              var key = null;
+              if(person.avatar) {
+                key = person.avatar.substr(person.avatar.length - 20, 20);
+              }else {
+                key = (Math.random() + 1).toString(36).substring(20);
+              }
+
               return <Person model={person} key={key} />;
             })}
           </div>

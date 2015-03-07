@@ -163,10 +163,20 @@ var React = require('react');
 var moment = require('moment-timezone');
 
 module.exports = React.createClass({displayName: "exports",
+  getNameInitials: function() {
+    return this.props.model.name.replace(/[^A-Z]/g, '');
+  },
+
+  getSafeAvatarSource: function() {
+    person = this.props.model;
+
+    return person.avatar ? person.avatar : "http://placehold.it/60&text=" + this.getNameInitials();
+  },
+
   render: function() {
     var person = this.props.model;
     return React.createElement("div", {className: "person", key: person.name}, 
-      React.createElement("img", {src: person.avatar, className: "avatar"}), 
+      React.createElement("img", {src: this.getSafeAvatarSource(), className: "avatar"}), 
       React.createElement("div", {className: "person-info"}, 
         React.createElement("p", {className: "person-name"}, person.name), 
         React.createElement("p", {className: "person-city"}, person.city)
@@ -209,15 +219,13 @@ module.exports = React.createClass({displayName: "exports",
   },
 
   getTopTimezone: function() {
-
     var tzCounts = this.getCountsOf(this.props.model.people, 'tz');
     var topTz = this.getHighestOccuring(tzCounts);
-    
+
     return topTz.replace(/.+\//g, '').replace(/_/g,' ');
   },
 
   getTopCity: function() {
-
     var cityCounts = this.getCountsOf(this.props.model.people, 'city');
     var topCity = this.getHighestOccuring(cityCounts);
 
@@ -227,13 +235,12 @@ module.exports = React.createClass({displayName: "exports",
   },
 
   getPeopleColumns: function() {
-    
     this.props.model.people.sort(function(a, b){
       return a.name > b.name ? 1 : -1;
     });
 
     return this.props.model.people.reduce(function(cols, person){
-      if (cols[cols.length - 1] && 
+      if (cols[cols.length - 1] &&
           cols[cols.length - 1].length  < PEOPLE_PER_COL)
         cols[cols.length - 1].push(person);
       else
@@ -254,7 +261,7 @@ module.exports = React.createClass({displayName: "exports",
     var timezoneClasses = 'timezone timezone-hour-' + localTime.hour();
 
     if (this.props.model.major) timezoneClasses += ' timezone-major';
-    
+
     var topCity = this.getTopCity();
     var columns = this.getPeopleColumns();
 
@@ -266,10 +273,18 @@ module.exports = React.createClass({displayName: "exports",
       ), 
       React.createElement("div", {className: "timezone-people"}, 
         columns.map(function(column, idx){
+
           return React.createElement("div", {className: "timezone-people-column", key: "column-" + idx}, 
             column.map(function(person){
               // NOTE: Replace with future user id
-              var key = person.avatar.substr(person.avatar.length - 20, 20);
+
+              var key = null;
+              if(person.avatar) {
+                key = person.avatar.substr(person.avatar.length - 20, 20);
+              }else {
+                key = (Math.random() + 1).toString(36).substring(20);
+              }
+
               return React.createElement(Person, {model: person, key: key});
             })
           )
