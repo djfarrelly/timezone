@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Alfred Bourbon",
+    "city": "NYC",
+    "tz": "America/New_York"
+  },
+  {
+    "name": "John McGregor",
+    "city": "Madrid",
+    "tz": "Europe/Madrid"
+  }
+]
