@@ -8,7 +8,7 @@ to see where and **when** their coworkers are.
 # Setup
 
 Clone this repo and add a `people.json` file in the repo's root directory.
-Timezone codes for the `tz` field are can be found [here](http://momentjs.com/timezone/).
+Timezone codes for the `tz` field can be found [here](http://momentjs.com/timezone/).
 Each person object should have data in the following format:
 
 ```json
