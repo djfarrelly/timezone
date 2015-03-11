@@ -4,20 +4,31 @@ var React = require('react');
 var moment = require('moment-timezone');
 
 module.exports = React.createClass({
-  getNameInitials: function() {
-    return this.props.model.name.replace(/[^A-Z]/g, '');
+  person: function(){
+    return this.props.model;
   },
 
-  getSafeAvatarSource: function() {
-    person = this.props.model;
+  hasAvatar: function() {
+    return !!this.person().avatar;
+  },
 
-    return person.avatar ? person.avatar : "http://placehold.it/60&text=" + this.getNameInitials();
+  renderAvatarBlock: function() {
+    if(this.hasAvatar()) {
+      return <img className="avatar" src={this.person().avatar} />;
+    } else {
+      return <span className="pseudo-avatar"><strong>{this.getNameInitials()}</strong></span>;
+    }
+  },
+
+  getNameInitials: function() {
+    return this.person().name.replace(/[^A-Z]/g, '');
   },
 
   render: function() {
-    var person = this.props.model;
+    var person = this.person();
+
     return <div className="person" key={person.name}>
-      <img src={this.getSafeAvatarSource()} className="avatar"/>
+      {this.renderAvatarBlock()}
       <div className="person-info">
         <p className="person-name">{person.name}</p>
         <p className="person-city">{person.city}</p>

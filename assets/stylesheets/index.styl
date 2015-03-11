@@ -57,12 +57,12 @@ h1, h2, h3, h4, h5
 
 .timezone
   padding: 1em
-  
+
 // .timezone-major
-  
+
 .timezone-people
   display: flex
-  
+
 .timezone-people-column
   min-width: $avatarSize
   margin-right: 1em
@@ -78,7 +78,7 @@ for hour in 0 1 2 3 4 5 6 7 22 23
   width: 80px
   text-align: left
   white-space: nowrap;
-  
+
   p
     margin: 0.3em 0
     overflow: hidden
@@ -86,7 +86,7 @@ for hour in 0 1 2 3 4 5 6 7 22 23
 
 .timezone-time
   margin: 0.3em 0
-  
+
 .timezone-name
   font-size: 0.6em
   text-transform: uppercase
@@ -141,11 +141,19 @@ for hour in 0 1 2 3 4 5 6 7 22 23
   text-overflow: ellipsis
   overflow: hidden
 
-.avatar
+avatar-block()
   display: block
+  height: 100%
+  min-height: $avatarSize
   width: 100%
   max-width: $avatarSize
-  height: 100%
   border-radius: 50%
-  // border: 2px solid #fff
-  // box-shadow: 0 1px 1px rgba(0,0,0,0.2)
+
+.avatar
+  avatar-block()
+
+.pseudo-avatar
+  avatar-block()
+  line-height: $avatarSize
+  text-align: center
+  background-color: lightgray
