@@ -3,6 +3,10 @@
   "version": "0.2.0",
   "description": "Remote teams + Timezones",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/djfarrelly/timezone.git"
+  },
   "scripts": {
     "start": "node ./index.js",
     "build": "browserify -t reactify ./app/app.js -o ./public/js/bundle.js",
