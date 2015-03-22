@@ -47,8 +47,8 @@ app.get('/', function(err, res){
   var time = moment();
   var timezones = transform(time, people);
 
-  var body = React.renderComponentToString(
-    App({
+  var body = React.renderToString(
+    React.createElement(App, {
       time: time,
       timezones: timezones
     })

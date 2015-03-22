@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 var React = require('react');
 var moment = require('moment-timezone');
 var Person = require('./person.jsx');
