@@ -2,7 +2,7 @@ var React  = require('react');
 var moment = require('moment-timezone');
 
 var transform = require('./utils/transform.js');
-var App = React.createFactory(require('./views/app.jsx'));
+var App = require('./views/app.jsx');
 
 
 // Organize into timezones
@@ -13,7 +13,7 @@ var timezones = transform(time, window.people);
 var targetNode = document.querySelector('#app');
 
 React.render(
-  App({
+  React.createElement(App, {
     time: time,
     timezones: timezones
   }),
@@ -37,7 +37,7 @@ window.addEventListener('keyup', function(e){
 
   // Push new data to re-render component
   React.render(
-    App({
+    React.createElement(App, {
       time: time,
       timezones: timezones
     }),
@@ -55,7 +55,7 @@ function reRender() {
   time.minute( now.minute() );
 
   React.render(
-    App({
+    React.createElement(App, {
       time: time,
       timezones: timezones
     }),
