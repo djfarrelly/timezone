@@ -302,7 +302,7 @@ module.exports = React.createClass({displayName: "exports",
   }
 });
 },{"./timezone.jsx":"/Users/danielfarrelly/Projects/timezone/app/views/timezone.jsx","react":"/Users/danielfarrelly/Projects/timezone/node_modules/react/react.js"}],"/Users/danielfarrelly/Projects/timezone/node_modules/moment-timezone/data/packed/latest.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
 	"version": "2015a",
 	"zones": [
 		"Africa/Abidjan|LMT GMT|g.8 0|01|-2ldXH.Q",

@@ -16,14 +16,14 @@
   "author": "Dan Farrelly <daniel.j.farrelly@gmail.com> (http://djfarrelly.com/)",
   "license": "MIT",
   "dependencies": {
-    "autoprefixer-stylus": "^0.4.0",
+    "autoprefixer-stylus": "^0.5.0",
     "express": "^4.10.7",
     "moment-timezone": "^0.3.1",
     "morgan": "^1.5.1",
     "node-jsx": "^0.12.4",
     "react": "^0.12.2",
     "react-tools": "^0.12.2",
-    "stylus": "^0.49.3"
+    "stylus": "^0.50.0"
   },
   "devDependencies": {
     "reactify": "^0.17.1"
