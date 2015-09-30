@@ -1,7 +1,9 @@
 # Timezone
 
 Timezone is an application aimed at helping remote teams by making it easier
-to see where and **when** their coworkers are.
+to see where and **when** their coworkers are. This is the stripped down open
+source version of **[Timezone.io](http://timezone.io)** which you can sign up for
+if you'd rather not self-host and take advantage of newer features!
 
 ![Screenshot](https://dl.dropboxusercontent.com/u/50627698/timezone-github.png)
 
