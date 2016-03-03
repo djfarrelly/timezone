@@ -1,19 +1,27 @@
 var moment = require('moment-timezone');
+var gravatar = require('gravatar');
 
 
 function appendTime(time, person) {
   person.time = moment( time ).tz( person.tz );
 }
 
-function sortByTimezone(a, b){
+function sortByTimezone(a, b) {
   return a.time.utcOffset() - b.time.utcOffset();
 }
 
+function gravatar2Avatar(person) {
+  // If someone has a gravatar, resolve it to a url
+  if (!person.avatar && person.gravatar) {
+    person.avatar = gravatar.url(person.gravatar, {s: '100'}, true);
+  }
+}
 
 module.exports = function transform(time, people) {
 
   // Append a moment date to each person
   people.forEach(appendTime.bind(people, time));
+  people.forEach(gravatar2Avatar.bind(people));
   people.sort(sortByTimezone);
 
   var timezones = people.reduce(function(zones, person){

@@ -7,16 +7,26 @@ feel free to sign up for free at **[Timezone.io](http://timezone.io)** and
 contribute issues and pull requests on that project's repo!
 
 Timezone is an application aimed at helping remote teams by making it easier
-to see where and **when** their coworkers are. This project was the basis for 
-the larger [Timezone.io](https://github.com/timezoneio/timezoneio) project and
-is meant for self-hosting.
+to see where and **when** their coworkers are. This is the stripped down open
+source version of **[Timezone.io](http://timezone.io)** which you can sign
+up for if you'd rather not self-host and take advantage of newer features!
 
 ![Screenshot](https://dl.dropboxusercontent.com/u/50627698/timezone-github.png)
 
 # Setup
 
 Clone this repo and add a `people.json` file in the repo's root directory.
-Timezone codes for the `tz` field can be found [here](http://momentjs.com/timezone/).
+
+Each person can have the following data values:
+
+* Personal Details
+  * **name**: The person's display name *MANDATORY*
+  * Image (If both are present, `avatar` is used) *OPTIONAL*
+    * **avatar**: A url to the person's image
+    * **gravatar**: The email address for the person's gravatar
+  * **city**: The person's city name *OPTIONAL*
+  * **tz**: Timezone codes for the `tz` field can be found [here](http://momentjs.com/timezone/). *MANDATORY*
+
 Each person object should have data in the following format:
 
 ```json
@@ -29,7 +39,7 @@ Each person object should have data in the following format:
   },
   {
     "name": "Niel",
-    "avatar": "https://d389zggrogs7qo.cloudfront.net/images/team/niel.jpg",
+    "gravatar": "niel@example.com",
     "city": "Cape Town",
     "tz": "Africa/Johannesburg"
   }
