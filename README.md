@@ -1,22 +1,29 @@
 # Timezone
 
-> **Note** For the repo for the SaaS app **[Timezone.io](http://timezone.io)** 
-head over to **[timezoneio/timezoneio](https://github.com/timezoneio/timezoneio)**.
-This project is the original, simple version meant to be self-hosted. Please
-feel free to sign up for free at **[Timezone.io](http://timezone.io)** and 
-contribute issues and pull requests on that project's repo!
-
-Timezone is an application aimed at helping remote teams by making it easier
-to see where and **when** their coworkers are. This project was the basis for 
-the larger [Timezone.io](https://github.com/timezoneio/timezoneio) project and
-is meant for self-hosting.
+Timezone is an application aimed at helping remote teams by making it
+easier to see where and **when** their coworkers are. This is the stripped
+down open source version of **[Timezone.io](http://timezone.io)** which
+you can sign up for if you'd rather not self-host and take advantage of
+newer features!
 
 ![Screenshot](https://dl.dropboxusercontent.com/u/50627698/timezone-github.png)
 
 # Setup
 
 Clone this repo and add a `people.json` file in the repo's root directory.
-Timezone codes for the `tz` field can be found [here](http://momentjs.com/timezone/).
+
+Each person can have the following data values:
+
+* Personal Details
+  * **name**: The person's display name *MANDATORY*
+  * **avatar**: A url to the person's image *OPTIONAL*
+  * **city**: The person's city name *OPTIONAL*
+  * Timezone Information (Either `tz` or `lat` and `lng` must be present. If both are present, `tz` is used.) *MANDATORY*
+    * **tz**: Timezone codes for the `tz` field can be found [here](http://momentjs.com/timezone/).
+    * **lat** and **lng**: Latitude and Longitude Information.  Don't use oceans.  When used, this does *not* populate the city information.
+
+**Note:** In each timezone, the city with the most number of people is used for the column name, unless TZ display is selected.  See **Configuration** below.
+
 Each person object should have data in the following format:
 
 ```json
@@ -31,7 +38,8 @@ Each person object should have data in the following format:
     "name": "Niel",
     "avatar": "https://d389zggrogs7qo.cloudfront.net/images/team/niel.jpg",
     "city": "Cape Town",
-    "tz": "Africa/Johannesburg"
+    "lat": "-33.952456",
+    "lng": "18.460860"
   }
 ]
 ```
