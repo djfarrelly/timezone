@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Dan",
+    "avatar": "https://d389zggrogs7qo.cloudfront.net/images/team/dan.jpg",
+    "city": "NYC",
+    "tz": "America/New_York"
+  },
+  {
+    "name": "Niel",
+    "avatar": "https://d389zggrogs7qo.cloudfront.net/images/team/niel.jpg",
+    "city": "Cape Town",
+    "tz": "Africa/Johannesburg"
+  }
+]

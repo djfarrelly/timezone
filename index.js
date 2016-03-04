@@ -7,7 +7,7 @@ var React = require('react');
 var moment = require('moment-timezone');
 var fs = require('fs');
 
-var people = require('./people.json');
+var people = require('./data/people.json');
 var transform = require('./app/utils/transform.js');
 
 // Allow direct requiring of .jsx files
