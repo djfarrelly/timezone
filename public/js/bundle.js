@@ -257,7 +257,10 @@ module.exports = React.createClass({displayName: "exports",
 
     if (this.props.model.major) timezoneClasses += ' timezone-major';
 
-    var topCity = this.getTopCity();
+    var topCity = this.props.model.tz;
+    if (!process.env.USE_TZ) {
+        var topCity = this.getTopCity();
+    }
     var columns = this.getPeopleColumns();
 
     return React.createElement("div", {className: timezoneClasses}, 
