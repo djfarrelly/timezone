@@ -30,6 +30,10 @@ Each person object should have data in the following format:
 ]
 ```
 
+# Configuration
+
+By default, timezone uses port 3000.  This port can be changed by setting
+the environment variable, `PORT`.  i.e. `PORT=80` to use port 80.
 
 # Deploy
 
