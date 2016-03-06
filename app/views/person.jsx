@@ -19,7 +19,12 @@ module.exports = React.createClass({
   },
 
   getNameInitials: function() {
-    return this.person().name.replace(/[^A-Z]/g, '');
+    var hasInitial = new RegExp(/[A-Z]/);
+    if (hasInitial.test(this.person().name)) { 
+      return this.person().name.replace(/[^A-Z]/g, '');
+    } else {
+      return this.person().name.substring(0,1);
+    }
   },
 
   render: function() {
