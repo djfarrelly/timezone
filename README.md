@@ -33,7 +33,21 @@ Each person object should have data in the following format:
 # Configuration
 
 By default, timezone uses port 3000.  This port can be changed by setting
-the environment variable, `PORT`.  i.e. `PORT=80` to use port 80.
+the environment variable, `PORT` or via the `config.json` file.
+
+## Environment Variable
+
+Set `PORT=80` to use port 80.
+
+## `config.json`
+
+Create a file called `config.json` with contents as follows to use port 80:
+
+```json
+{
+  "PORT": 80
+}
+```
 
 # Deploy
 

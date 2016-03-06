@@ -6,9 +6,14 @@ var autoprefixer  = require('autoprefixer-stylus');
 var React = require('react');
 var moment = require('moment-timezone');
 var fs = require('fs');
+var nconf = require('nconf');
 
 var people = require('./people.json');
 var transform = require('./app/utils/transform.js');
+
+// support configuration from ENV and config.json
+nconf.env()
+  .file({ file: './config.json' });
 
 // Allow direct requiring of .jsx files
 require('node-jsx').install({extension: '.jsx'});
@@ -64,4 +69,4 @@ app.get('/', function(err, res){
 // Static files
 app.use(express.static(__dirname + '/public'));
 
-app.listen(process.env.PORT || 3000);
+app.listen(nconf.get('PORT') || 3000);
