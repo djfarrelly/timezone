@@ -13,7 +13,7 @@
     "watch": "watchify -t reactify ./app/app.js -o ./public/js/bundle.js -v",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Dan Farrelly <daniel.j.farrelly@gmail.com> (http://djfarrelly.com/)",
+  "author": "Dan Farrelly <daniel.j.farrelly@gmail.com> (http://danfarrelly.nyc)",
   "license": "MIT",
   "dependencies": {
     "autoprefixer-stylus": "^0.5.0",
