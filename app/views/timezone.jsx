@@ -1,6 +1,12 @@
 var React = require('react');
 var moment = require('moment-timezone');
 var Person = require('./person.jsx');
+var fs = require('fs');
+var nconf = require('nconf');
+
+// support configuration from ENV and config.json
+nconf.env()
+  .file({ file: './config.json' });
 
 var PEOPLE_PER_COL = 7;
 
@@ -73,8 +79,8 @@ module.exports = React.createClass({
     if (this.props.model.major) timezoneClasses += ' timezone-major';
 
     var topCity = this.props.model.tz;
-    if (!process.env.USE_TZ) {
-        var topCity = this.getTopCity();
+    if (!nconf.get('USE_TZ')) {
+        topCity = this.getTopCity();
     }
 
     var columns = this.getPeopleColumns();

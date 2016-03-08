@@ -40,24 +40,29 @@ Each person object should have data in the following format:
   }
 ]
 ```
-# Configuration
 
 # Configuration
 
 By default, timezone uses port 3000.  This port can be changed by setting
 the environment variable, `PORT` or via the `config.json` file.
 
+By default, in each timezone, the city with the most number of people
+is used for the column name.  This can be overridden by setting the
+environment variable, `USE_TZ` or via the `config.json` file..
+
 ## Environment Variable
 
-Set `PORT=80` to use port 80.
+* Set `PORT=80` to use port 80.
+* Set `USE_TZ=1` to use display Timezone names instead of cities.
 
 ## `config.json`
 
-Create a file called `config.json` with contents as follows to use port 80:
+Create a file called `config.json` with contents as follows:
 
 ```json
 {
-  "PORT": 80
+  "PORT": 80,
+  "USE_TZ": 1
 }
 ```
 
