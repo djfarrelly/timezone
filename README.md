@@ -1,9 +1,15 @@
 # Timezone
 
+> **Note** For the repo for the SaaS app **[Timezone.io](http://timezone.io)** 
+head over to **[timezoneio/timezoneio](https://github.com/timezoneio/timezoneio)**.
+This project is the original, simple version meant to be self-hosted. Please
+feel free to sign up for free at **[Timezone.io](http://timezone.io)** and 
+contribute issues and pull requests on that project's repo!
+
 Timezone is an application aimed at helping remote teams by making it easier
-to see where and **when** their coworkers are. This is the stripped down open
-source version of **[Timezone.io](http://timezone.io)** which you can sign up for
-if you'd rather not self-host and take advantage of newer features!
+to see where and **when** their coworkers are. This project was the basis for 
+the larger [Timezone.io](https://github.com/timezoneio/timezoneio) project and
+is meant for self-hosting.
 
 ![Screenshot](https://dl.dropboxusercontent.com/u/50627698/timezone-github.png)
 
