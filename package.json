@@ -23,7 +23,8 @@
     "node-jsx": "^0.12.4",
     "react": "^0.13.1",
     "react-tools": "^0.13.1",
-    "stylus": "^0.50.0"
+    "stylus": "^0.50.0",
+    "tzwhere": "^1.0.0"
   },
   "devDependencies": {
     "reactify": "^1.1.0"
