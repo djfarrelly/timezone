@@ -1,0 +1,24 @@
+name: timezone
+type: nodejs:6.9
+
+dependencies:
+  nodejs:
+    browserify: "^13.1.1"
+
+web:
+  commands:
+    start: "node /app/index.js"
+  locations:
+    "/":
+      passthru: true
+      root: "public"
+      allow: true
+
+mounts:
+  "/run": "shared:files/run"
+
+disk: 512
+
+hooks:
+    build: |
+        npm run build

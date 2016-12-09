@@ -1,0 +1,7 @@
+"http://{default}/":
+    type: upstream
+    upstream: "timezone:http"
+
+"http://www.{default}/":
+    type: redirect
+    to: "http://{default}/"
