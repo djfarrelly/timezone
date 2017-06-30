@@ -3,7 +3,7 @@
 Timezone is an application aimed at helping remote teams by making it easier
 to see where and **when** their coworkers are.
 
-![Screenshot](https://dl.dropboxusercontent.com/u/50627698/timezone-github.png)
+![Screenshot](public/images/sample.png)
 
 # Setup
 
