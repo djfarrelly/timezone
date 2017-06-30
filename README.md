@@ -11,7 +11,7 @@ to see where and **when** their coworkers are. This project was the basis for
 the larger [Timezone.io](https://github.com/timezoneio/timezoneio) project and
 is meant for self-hosting.
 
-![Screenshot](https://dl.dropboxusercontent.com/u/50627698/timezone-github.png)
+![Screenshot](public/images/sample.png)
 
 # Setup
 
